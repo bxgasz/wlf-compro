@@ -67,7 +67,7 @@ const dropdownOpen = ref(false)
 const dropdownRef = ref(null)
 
 const menuItems = [
-  { href: '/web-admin/profile', icon: UserCircleIcon, text: 'Edit profile' },
+  { href: '/admin/profile', icon: UserCircleIcon, text: 'Edit profile' },
 ]
 
 const toggleDropdown = () => {

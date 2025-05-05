@@ -12,6 +12,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,6 +21,10 @@ Route::middleware('auth')->get('/', function () {
 });
 
 Route::middleware('auth')->prefix('/admin')->group(function () {
+    Route::get('/profile', [UserController::class, 'getProfile'])->name('profile');
+    Route::post('/profile', [UserController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/change-password', [UserController::class, 'updatePassword'])->name('update.password');
+    
     Route::get('/inbox', [InboxController::class, 'index'])->name('inbox.index');
     Route::get('/inbox/data', [InboxController::class, 'data'])->name('inbox.data');
     Route::get('/inbox/{inbox}', [InboxController::class, 'show'])->name('inbox.show');
@@ -59,7 +64,13 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
 
+    Route::resource('/user', UserController::class);
+    Route::post('/user-status/{user}', [UserController::class, 'updateStatus'])->name('user.status');
+    Route::get('/user-list', [UserController::class, 'data'])->name('user.data');
+
     Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.logout');
+
+    Route::middleware(['role:admin,manager'])->group(function () {});
 });
 
 Route::middleware('guest')->prefix('admin')->group(function () {

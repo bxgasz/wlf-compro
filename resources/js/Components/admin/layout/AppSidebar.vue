@@ -50,8 +50,8 @@
     >
       <nav class="mb-6">
         <div class="flex flex-col gap-4">
-          <div v-for="(menuGroup, groupIndex) in menuGroups" :key="groupIndex">
-            <h2
+          <div v-for="(menuGroup, groupIndex) in menuGroups" :key="groupIndex" :class="menuGroup.role.includes(page.props.auth.user.role) ? 'mb-[1rem]' : ''">
+            <h2 v-if="menuGroup.role.includes(page.props.auth.user.role)"
               :class="[
                 'mb-4 text-xs uppercase flex leading-[20px] text-gray-400',
                 !isExpanded && !isHovered
@@ -64,7 +64,7 @@
               </template>
               <HorizontalDots v-else />
             </h2>
-            <ul class="flex flex-col gap-4">
+            <ul class="flex flex-col" :class="menuGroup.role.includes(page.props.auth.user.role) ? 'gap-4' : ''">
               <li v-for="(item, index) in menuGroup.items" :key="item.name">
                 <button
                   v-if="item.subItems"
@@ -234,117 +234,114 @@ const { isExpanded, isMobileOpen, isHovered, openSubmenu } = useSidebar();
 const menuGroups = [
   {
     title: "",
-    // role: ['admin', 'manager', 'staff'],
+    role: ['admin', 'manager', 'staff'],
     items: [
       {
         icon: EmailIcon,
         name: "Inbox",
         path: "/admin/inbox",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       }
     ]
   },
   {
     title: "Master Data",
-    // role: ['admin', 'manager'],
+    role: ['admin', 'manager'],
     items: [
       {
         icon: CategoryIcon,
         name: "Category",
         path: '/admin/category',
-        // role: ['admin', 'manager']
+        role: ['admin', 'manager']
       },
       {
         icon: TagIcon,
         name: "Tag",
         path: '/admin/tag',
-        // role: ['admin', 'manager']
+        role: ['admin', 'manager']
       },
       {
         icon: ContentTypeIcon,
         name: "Content Type",
         path: '/admin/content-type',
-        // role: ['admin', 'manager']
+        role: ['admin', 'manager']
       },
     ]
   },
   {
-    title: "",
-    // role: ['admin', 'manager', 'staff'],
+    title: "Menu",
+    role: ['admin', 'manager', 'staff'],
     items: [
       {
         icon: MenuIcon,
         name: "Menu",
         path: "/admin/menu",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       }
     ]
   },
   {
     title: "Career",
-    // role: ['admin', 'manager', 'staff'],
+    role: ['admin', 'manager', 'staff'],
     items: [
       {
         icon: BriefCaseIcon,
         name: "Career",
         path: "/admin/career",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       }
     ]
   },
   {
     title: 'Media',
+    role: ['admin', 'manager', 'staff'],
     items: [
       {
         icon: NewsIcon,
         name: "News Stories",
         path: "/admin/news-stories",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       },
       {
         icon: GridIcon,
         name: "Resource",
         path: "/admin/resource",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       },
       {
         icon: ProgramIcon,
         name: "Program Category",
         path: "/admin/program-categories",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       },
       {
         icon: ProgramsIcon,
         name: "Program",
         path: "/admin/program",
-        // role: ['admin', 'manager', 'staff']
+        role: ['admin', 'manager', 'staff']
       },
     ]
   },
-  // {
-  //   title: "Menu",
-  //   items: [
-  //     {
-  //       icon: GridIcon,
-  //       name: "Dashboard",
-  //       subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-  //     },
-  //     {
-  //       icon: UserCircleIcon,
-  //       name: "User Management",
-  //       path: "/user",
-  //     },
-  //   ],
-  // },
+  {
+    title: "Team Management",
+    role: ['admin', 'manager', 'staff'],
+    items: [
+      {
+        icon: UserCircleIcon,
+        name: "User Management",
+        path: "/admin/user",
+      },
+    ],
+  },
   {
     title: "Setting",
-    // role: ['admin'],
+    role: ['admin'],
     items: [
       {
         icon: SettingsIcon,
         name: "Setting",
         path: "/admin/setting",
-        // role: ['admin']
+        role: ['admin']
       },
     ]
   }
