@@ -27,7 +27,7 @@ class SettingController extends Controller
         $request->all();
 
         $request->validate([
-            'title' => 'requrie',
+            'title' => 'required',
             'email' => 'sometimes|nullable|email',
             'phone_no' => 'sometimes|nullable',
             'favicon' => 'sometimes|nullable|mimes:jpeg,png,jpg|max:1024',
