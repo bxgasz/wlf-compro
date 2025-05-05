@@ -58,6 +58,8 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
+
+    Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.logout');
 });
 
 Route::middleware('guest')->prefix('admin')->group(function () {
