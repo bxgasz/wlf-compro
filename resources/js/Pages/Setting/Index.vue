@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const form = useForm({
-   title: '',
+   title: props.setting.title,
    favicon: '',
    logo: '',
    instagram_url: props.setting.instagram_url,
@@ -154,7 +154,7 @@ const handleSubmit = () => {
             <div class="">
                <TextInput 
                   v-model="form.title"
-                  type="url"
+                  type="text"
                   title="Company Title"
                   placeholder="Enter a company title"
                />
