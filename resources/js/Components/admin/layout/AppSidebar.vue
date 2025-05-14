@@ -50,7 +50,7 @@
     >
       <nav class="mb-6">
         <div class="flex flex-col gap-4">
-          <div v-for="(menuGroup, groupIndex) in menuGroups" :key="groupIndex" :class="menuGroup.role.includes(page.props.auth.user.role) ? 'mb-[1rem]' : ''">
+          <div v-for="(menuGroup, groupIndex) in menuGroups" :key="groupIndex">
             <h2 v-if="menuGroup.role.includes(page.props.auth.user.role)"
               :class="[
                 'mb-4 text-xs uppercase flex leading-[20px] text-gray-400',

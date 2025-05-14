@@ -31,6 +31,12 @@ const form = useForm({
    footer_notes_id: props.setting.footer_notes?.id ?? '',
 })
 
+const formCta = useForm({
+   cta_title_en: props.setting.cta_title?.en ?? '',
+   cta_title_id: props.setting.cta_title?.id ?? '',
+   cta_link: props.setting.cta_link ?? '',
+})
+
 const favicon_preview = ref(props.setting.favicon ?? null)
 const logo_preview = ref(props.setting.logo ?? null)
 
@@ -64,6 +70,22 @@ const handleSubmit = () => {
          form.processing = false
          router.reload({ only: ['setting'] });
          HelperService.toastSuccess('Setting updated successfully')
+      },
+      onError: (error) => {
+         HelperService.toastError('Failed update data')
+      }
+   })
+}
+
+const handleSubmitCta = () => {
+   formCta.processing = true
+   formCta.post(route('setting.cta', props.setting.id), {
+      preserveScroll: true,
+      forceFormData: true,
+      onSuccess: () => {
+         form.processing = false
+         router.reload({ only: ['setting'] })
+         HelperService.toastSuccess('Setting CTA update successfully')
       },
       onError: (error) => {
          HelperService.toastError('Failed update data')
@@ -336,6 +358,57 @@ const handleSubmit = () => {
 
             <div class="flex justify-end mt-3">
                <Button @click="handleSubmit" size="sm" variant="primary" :disabled="form.processing"> Save Data </Button>
+            </div>
+         </div>
+      </ComponentCard>
+
+      <ComponentCard title="CTA (Call To Action) Section" class="mt-5">
+         <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+               <div class="">
+                  <TextInput
+                     v-model="formCta.cta_title_en"
+                     type="text"
+                     title="Cta title in EN"
+                     placeholder="Enter a cta title"
+                  />
+                  <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                  {{ formCta.errors.cta_title_en }}
+                  </label>
+               </div>
+               <div class="">
+                  <TextInput
+                     v-model="formCta.cta_title_id"
+                     type="text"
+                     title="Cta title in ID"
+                     placeholder="Enter a cta title"
+                  />
+                  <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                  {{ formCta.errors.cta_title_id }}
+                  </label>
+               </div>
+            </div>
+
+            <div class="">
+               <TextInput
+                  v-model="formCta.cta_link"
+                  type="url"
+                  title="Button Link"
+                  placeholder="Enter a cta url"
+               />
+               <label
+                  class="block text-sm font-medium text-error-500"
+               >
+               {{ formCta.errors.cta_link }}
+               </label>
+            </div>
+
+            <div class="flex justify-end mt-3">
+               <Button @click="handleSubmitCta" size="sm" variant="primary" :disabled="form.processing"> Save Data </Button>
             </div>
          </div>
       </ComponentCard>

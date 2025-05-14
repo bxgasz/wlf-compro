@@ -23,5 +23,8 @@ class Setting extends Model
         'location',
         'gmap_url',
         'footer_notes',
+
+        'cta_title',
+        'cta_link',
     ];
 }

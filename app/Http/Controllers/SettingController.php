@@ -17,7 +17,8 @@ class SettingController extends Controller
         return Inertia::render('Setting/Index', [
             'setting' => [
                 ...$setting->toArray(),
-                'footer_notes' => json_decode($setting->footer_notes, true)
+                'footer_notes' => json_decode($setting->footer_notes, true),
+                'cta_title' => json_decode($setting->cta_title, true),
             ]
         ]);
     }
@@ -103,6 +104,36 @@ class SettingController extends Controller
             DB::rollBack();
 
             return back()->with('error', 'Password updated successfully!');
+        }
+    }
+
+    public function updateCta(Request $request, Setting $setting)
+    {
+        $request->validate([
+            'cta_title_en' => 'required',
+            'cta_title_id' => 'required',
+            'cta_link' => 'required|url',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $setting->update([
+                'cta_title' => json_encode([
+                    'en' => $request->cta_title_en,
+                    'id' => $request->cta_title_id,
+                ]),
+                'cta_link' => $request->cta_link
+            ]);
+
+            DB::commit();
+
+            return back()->with('success', 'Setting CTA updated successfully!');
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            return back()->with('error', 'Setting failed to update');
         }
     }
 }

@@ -63,6 +63,7 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');
+    Route::post('/setting-cta/{setting}', [SettingController::class, 'updateCta'])->name('setting.cta');
 
     Route::resource('/user', UserController::class);
     Route::post('/user-status/{user}', [UserController::class, 'updateStatus'])->name('user.status');
