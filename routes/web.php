@@ -4,13 +4,16 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentTypeController;
+use App\Http\Controllers\GranteeManagementController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsStoriesController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProgramCategoryController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -60,6 +63,18 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource('/program', ProgramController::class);
     Route::post('/program-update/{program}', [ProgramController::class, 'update'])->name('program.update');
     Route::get('/program-list', [ProgramController::class, 'data'])->name('program.data');
+
+    Route::resource('/static-page', StaticPageController::class);
+    Route::post('/static-page-update/{static_page}', [StaticPageController::class, 'update'])->name('static-page.update');
+    Route::get('/static-page-list', [StaticPageController::class, 'data'])->name('static-page.data');
+
+    Route::resource('/partner', PartnerController::class);
+    Route::post('/partner-update/{partner}', [PartnerController::class, 'update'])->name('partner.update');
+    Route::get('/partner-list', [PartnerController::class, 'data'])->name('partner.data');
+
+    Route::resource('/grantee', GranteeManagementController::class);
+    Route::post('/grantee-update/{grantee}', [GranteeManagementController::class, 'update'])->name('grantee.update');
+    Route::get('/grantee-list', [GranteeManagementController::class, 'data'])->name('grantee.data');
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');

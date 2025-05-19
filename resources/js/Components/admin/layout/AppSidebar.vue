@@ -226,6 +226,9 @@ import NewsIcon from "@/Icons/NewsIcon.vue";
 import GridIcon from "@/Icons/GridIcon.vue";
 import ProgramIcon from "@/Icons/ProgramIcon.vue";
 import ProgramsIcon from "@/Icons/ProgramsIcon.vue";
+import UserCheckIcon from "@/Icons/UserCheckIcon.vue";
+import PartnersIcon from "@/Icons/PartnersIcon.vue";
+import ImageIcon from "@/Icons/ImageIcon.vue";
 
   const page = usePage();
 
@@ -277,6 +280,12 @@ const menuGroups = [
         name: "Menu",
         path: "/admin/menu",
         role: ['admin', 'manager', 'staff']
+      },
+      {
+        icon: ImageIcon,
+        name: "Static Page",
+        path: "/admin/static-page",
+        role: ['admin', 'manager', 'staff']
       }
     ]
   },
@@ -327,9 +336,19 @@ const menuGroups = [
     role: ['admin', 'manager', 'staff'],
     items: [
       {
+        icon: UserCheckIcon,
+        name: "Grantee Management",
+        path: "/admin/grantee",
+      },
+      {
         icon: UserCircleIcon,
         name: "User Management",
         path: "/admin/user",
+      },
+      {
+        icon: PartnersIcon,
+        name: "Partner Management",
+        path: "/admin/partner",
       },
     ],
   },
