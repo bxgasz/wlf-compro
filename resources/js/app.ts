@@ -9,6 +9,7 @@ import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
+import i18n from './Lang/i18n';
   
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';  
   
@@ -19,6 +20,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })  
             .use(plugin)  
             .use(ZiggyVue)  
+            .use(i18n)
             .component('QuillEditor', QuillEditor)
             .component("v-select", vSelect)
             .mount(el);  

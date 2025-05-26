@@ -12,6 +12,9 @@ export default {
   theme: {
     fontFamily: {
       outfit: ['Outfit', 'sans-serif'],
+      oswald: ['Oswald', 'sans-serif'],
+      lato: ['Lato', 'sans-serif'],
+      playfair: ['Playfair Display', 'serif']
     },
     screens: {
       '2xsm': '375px',

@@ -93,3 +93,7 @@ Route::middleware('guest')->prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'auth'])->name('auth.post');
 });
+
+Route::get('/', function () {
+    return Inertia::render('LandingPage/Home/Index');
+})->name('home');
