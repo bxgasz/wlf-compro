@@ -40,7 +40,7 @@ const modules = [
                   <template v-else>
                      <img :src="banner.media" :alt="banner.title[locale]">
                   </template> -->
-                  <img src="assets/img/home/hero.png" alt="banner">
+                  <img src="/assets/img/home/hero.png" alt="banner">
                </div>
                <div class="w-screen px-8 max-w-7xl absolute inset-0 left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 flex items-center z-20">
                   <div class="flex flex-col justify-center z-20 w-[50%]">
@@ -74,7 +74,7 @@ const modules = [
             <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Read More</Link>
          </div>
          <div class="w-full flex justify-end">
-            <img src="assets/img/home/who-are-we.png" alt="video" class="h-60 w-[90%] object-cover rounded-3xl">
+            <img src="/assets/img/home/who-are-we.png" alt="video" class="h-60 w-[90%] object-cover rounded-3xl">
          </div>
       </div>
       </div>
@@ -91,7 +91,7 @@ const modules = [
                <div class="flex justify-between my-8">
                   <Link href="#" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="i in 3" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
-                        <img src="assets/img/home/our-program.png" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
+                        <img src="/assets/img/home/our-program.png" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
                      </div>
                      <div class="h-full w-full absolute p-8 z-20 flex flex-col justify-between">
                         <div class="flex justify-end w-full">
@@ -117,7 +117,7 @@ const modules = [
             <div class="grid grid-cols-1 lg:grid-cols-[40%,60%] gap-4 min-h-[364px]">
                <Link href="#" class="relative w-full fading group" role="button">
                   <div class="w-full h-full overflow-hidden img-our-program rounded-2xl">
-                     <img src="assets/img/home/news.jpg"
+                     <img src="/assets/img/home/news.jpg"
                            alt="" 
                            class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                   </div>
@@ -132,7 +132,7 @@ const modules = [
                <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0">
                   <Link href="#" class="grid grid-cols-1 lg:grid-cols-[50%,50%] group" role="button" v-for="i in 2">
                      <div class="w-full h-full overflow-hidden rounded-2xl">
-                        <img src="assets/img/home/news.jpg"
+                        <img src="/assets/img/home/news.jpg"
                            alt="" 
                            class="object-cover h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
@@ -161,7 +161,7 @@ const modules = [
                      <p class="text-[#262C51] text-2xl font-semibold">Permata Petani</p>
                   </div>
                   <div class="w-[26rem] border-2 border-gray-200 rounded-3xl -mt-32">
-                     <img src="assets/img/home/publications.png" alt="publication" class="w-full h-auto rounded-3xl">
+                     <img src="/assets/img/home/publications.png" alt="publication" class="w-full h-auto rounded-3xl">
                   </div>
                </div>
             </div>
@@ -177,7 +177,7 @@ const modules = [
       </div>
       <div class="flex gap-3 bg-[#2F3C87] py-20">
          <div class="w-72 aspect-square rounded-3xl overflow-hidden flex-shrink-0" v-for="i in 15">
-            <img src="assets/img/home/news.jpg" alt="instagram" class="w-full h-full object-cover">
+            <img src="/assets/img/home/news.jpg" alt="instagram" class="w-full h-full object-cover">
          </div>
       </div>
 
