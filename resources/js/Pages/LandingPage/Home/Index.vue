@@ -158,7 +158,7 @@ const modules = [
                   <div class="">
                      <h1 class="font-playfair text-[#262C51] text-5xl font-bold">New <br> Publication</h1>
                      <p class="text-[#262C51] text-base font-medium mt-5">16 Feb 2025</p>
-                     <p class="text-[#262C51] text-2xl font-semibold">Permata Petani</p>
+                     <p class="text-[#] text-2xl font-semibold">Permata Petani</p>
                   </div>
                   <div class="w-[26rem] border-2 border-gray-200 rounded-3xl -mt-32">
                      <img src="/assets/img/home/publications.png" alt="publication" class="w-full h-auto rounded-3xl">

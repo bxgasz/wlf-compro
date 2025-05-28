@@ -111,6 +111,17 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
 
 <template>
    <nav class="w-full flex justify-center items-center py-5 absolute top-0 z-40 bg-transparent px-8">
+      <div class="w-full bg-[#D86727] h-7 absolute top-0 flex justify-center">
+         <div class="max-w-7xl w-full px-8 flex justify-between items-center text-sm">
+            <p class="text-white">Equal opportunity for all Indonesians to flourish</p>
+            <div class="flex items-center gap-4">
+               <p class="text-white">Change Language</p>
+               <div class="flex gap-2">
+                  <p class="text-white font-bold">EN</p> | <p class="text-[#262C51]">ID</p>
+               </div>
+            </div>
+         </div>
+      </div>
       <div class="justify-between items-center w-full lg:flex hidden mt-7 max-w-7xl px-8">
          <Link :href="route('home')" class="ms-2">
             <div class="w-[5rem] h-auto">
@@ -164,7 +175,5 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
             </Link>
          </div>
       </div>
-
-
    </nav>
 </template>
