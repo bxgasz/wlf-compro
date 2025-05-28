@@ -94,6 +94,6 @@ Route::middleware('guest')->prefix('admin')->group(function () {
     Route::post('/login', [AuthController::class, 'auth'])->name('auth.post');
 });
 
-Route::get('/', function () {
+Route::get('/landing-page/home', function () {
     return Inertia::render('LandingPage/Home/Index');
 })->name('home');
