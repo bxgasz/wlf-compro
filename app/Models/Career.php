@@ -12,10 +12,11 @@ class Career extends Model
         'title',
         'description',
         'slug',
-        'location',
-        'salary_range',
+        // 'location',
+        // 'salary_range',
         'status',
         'type',
-        'created_by'
+        'created_by',
+        'image'
     ];
 }

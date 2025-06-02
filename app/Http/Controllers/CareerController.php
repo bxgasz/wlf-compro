@@ -6,6 +6,7 @@ use App\Models\Career;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -58,16 +59,15 @@ class CareerController extends Controller
             'desc_en' => 'required',
             'desc_id' => 'required',
             'slug' => 'required',
-            'location' => 'required',
-            'salary_range' => 'required',
             'status' => 'required',
             'type' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg,webp|max:1584'
         ]);
 
         try {
             DB::beginTransaction();
 
-            $career = Career::create([
+            $storeData = [
                 'title' => json_encode([
                     'en' => $request->title_en,
                     'id' => $request->title_id,
@@ -77,13 +77,21 @@ class CareerController extends Controller
                     'id' => $request->desc_id,
                 ]),
                 'slug' => $request->slug,
-                'location' => $request->location,
-                'salary_range' => $request->salary_range,
                 'status' => $request->status,
                 'type' => $request->type,
                 'created_by' => Auth::user()->id,
-            ]);
+            ];
 
+            
+            if ($request->hasFile('image')) {
+                $fileName = time() . '-image_' . $request->file('image')->getClientOriginalName();
+                $filePath = Storage::disk('public')->putFileAs('/career', $request->file('image'), $fileName);
+                
+                $storeData['image'] = asset('/storage/' . $filePath);
+            }
+
+            $career = Career::create($storeData);
+            
             DB::commit();
 
             return back()->with('success', 'Data created successfully');
@@ -99,14 +107,11 @@ class CareerController extends Controller
 
     public function edit(Career $career)
     {
-        $salary = explode('-', $career->salary_range);
         return Inertia::render('Career/Edit', [
             'career' => [
                 ...$career->toArray(),
                 'title' => json_decode($career->title, true),
                 'description' => json_decode($career->description, true),
-                'start_salary' => $salary[0],
-                'to_salary' => $salary[1],
             ],
         ]);
     }
@@ -119,16 +124,15 @@ class CareerController extends Controller
             'desc_en' => 'required',
             'desc_id' => 'required',
             'slug' => 'required',
-            'location' => 'required',
-            'salary_range' => 'required',
             'status' => 'required',
             'type' => 'required',
+            'image' => 'nullable|mimes:jpeg,png,jpg,webp|max:1584'
         ]);
 
         try {
             DB::beginTransaction();
 
-            $career->update([
+            $updateData = [
                 'title' => json_encode([
                     'en' => $request->title_en,
                     'id' => $request->title_id,
@@ -138,11 +142,24 @@ class CareerController extends Controller
                     'id' => $request->desc_id,
                 ]),
                 'slug' => $request->slug,
-                'location' => $request->location,
-                'salary_range' => $request->salary_range,
                 'type' => $request->type,
                 'status' => $request->status,
-            ]);
+            ];
+
+            if ($request->hasFile('image')) {
+                $oldImagePath = str_replace(url('/storage/'), '', $career->image);
+
+                if (Storage::disk('public')->exists($oldImagePath)) {
+                    Storage::disk('public')->delete($oldImagePath);
+                }
+
+                $fileName = time() . '-image_' . $request->file('image')->getClientOriginalName();
+                $filePath = Storage::disk('public')->putFileAs('/career', $request->file('image'), $fileName);
+                
+                $updateData['image'] = asset('/storage/' . $filePath);
+            }
+
+            $career->update($updateData);
 
             DB::commit();
 
@@ -159,6 +176,14 @@ class CareerController extends Controller
     public function destroy(Career $career)
     {
         try {
+            if ($career->image) {
+                $oldImagePath = str_replace(url('/storage/'), '', $career->image);
+
+                if (Storage::disk('public')->exists($oldImagePath)) {
+                    Storage::disk('public')->delete($oldImagePath);
+                }
+            }
+
             $career->delete();
 
             return response()->json([

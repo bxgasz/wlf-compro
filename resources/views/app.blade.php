@@ -6,6 +6,8 @@
 
         <link rel="icon" href="{{ $settings['favicon'] }}">
 
+        <title>{{ $settings['title'] }}</title>
+
         @routes
         @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead

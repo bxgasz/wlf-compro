@@ -11,7 +11,7 @@ import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import i18n from './Lang/i18n';
   
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';  
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'WLF';  
   
 createInertiaApp({  
     title: (title) => `${title} - ${appName}`,  

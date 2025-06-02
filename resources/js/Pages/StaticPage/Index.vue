@@ -101,8 +101,8 @@ const handleDelete = async(id) => {
             </template>
             <template #content="{ row }">
                <div class="flex gap-2">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400"><strong>ID:</strong> {{ row.content['id'].slice(0, 50) }}</p>
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400"><strong>EN:</strong> {{ row.content['en'].slice(0,50) }}</p>
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400 flex gap-1"><strong>ID:</strong> <p v-html="row.content['id'].slice(0, 50)"></p></p>
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400 flex gap-1"><strong>EN:</strong> <p v-html="row.content['en'].slice(0, 50)"></p></p>
                </div>
             </template>
             <template #action="{ row }">

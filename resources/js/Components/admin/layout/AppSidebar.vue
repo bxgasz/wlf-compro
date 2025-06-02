@@ -108,6 +108,7 @@
                   />
                 </button>
                 <Link
+                  :preserve-scroll="true"
                   v-else-if="item.path"
                   :href="item.path"
                   :class="[
@@ -148,6 +149,7 @@
                     <ul class="mt-2 space-y-1 ml-9">
                       <li v-for="subItem in item.subItems" :key="subItem.name">
                         <Link
+                          :preserve-scroll="true"
                           :href="subItem.path"
                           :class="[
                             'menu-dropdown-item',
@@ -229,6 +231,7 @@ import ProgramsIcon from "@/Icons/ProgramsIcon.vue";
 import UserCheckIcon from "@/Icons/UserCheckIcon.vue";
 import PartnersIcon from "@/Icons/PartnersIcon.vue";
 import ImageIcon from "@/Icons/ImageIcon.vue";
+import PinIcon from "@/Icons/PinIcon.vue";
 
   const page = usePage();
 
@@ -243,6 +246,12 @@ const menuGroups = [
         icon: EmailIcon,
         name: "Inbox",
         path: "/admin/inbox",
+        role: ['admin', 'manager', 'staff']
+      },
+      {
+        icon: PinIcon,
+        name: "Subscribtions",
+        path: "/admin/subscriber",
         role: ['admin', 'manager', 'staff']
       }
     ]

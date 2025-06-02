@@ -16,6 +16,8 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
+use App\Models\Subscription;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -33,6 +35,7 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::get('/inbox/{inbox}', [InboxController::class, 'show'])->name('inbox.show');
 
     Route::resource('/category', CategoryController::class);
+    Route::post('/category-update/{category}', [CategoryController::class, 'update'])->name('category.update-data');
     Route::get('/category-list', [CategoryController::class, 'data'])->name('category.data');
 
     Route::resource('/tag', TagController::class);
@@ -46,6 +49,7 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 
     Route::resource('/career', CareerController::class);
     Route::get('/career-list', [CareerController::class, 'data'])->name('career.data');
+    Route::post('/career-update/{career}', [CareerController::class, 'update'])->name('career.update-data');
     Route::post('/career-status/{career}', [CareerController::class, 'updateStatus'])->name('career.status');
 
     Route::resource('/resource', ResourceController::class);
@@ -83,6 +87,19 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource('/user', UserController::class);
     Route::post('/user-status/{user}', [UserController::class, 'updateStatus'])->name('user.status');
     Route::get('/user-list', [UserController::class, 'data'])->name('user.data');
+
+    Route::get('/subscriber', function (Request $request) {
+        $search = $request->search;
+
+        $subscriptions = Subscription::when($search, function ($q) use ($search) {
+            $q->whereRaw('LOWER(email) LIKE ?', '%'. $search .'%');
+        })->orderBy('created_at', 'desc')
+        ->paginate(10);
+        
+        return Inertia::render('Subcription/Index', [
+            'subscriptions' => $subscriptions
+        ]);
+    });
 
     Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.logout');
 

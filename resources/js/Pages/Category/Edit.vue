@@ -18,7 +18,21 @@ const form = useForm({
    desc_en: props.category.description.en,
    title_id: props.category.title.id,
    desc_id: props.category.description.id,
+   image: null
 })
+
+const image_preview = ref(props.category.image ?? null)
+
+const imageInput = ref(null)
+
+const openFile = () => {
+   imageInput.value.click()
+}
+
+const handleUpload = (e) => {
+   form.image = e.target.files[0]
+   image_preview.value = URL.createObjectURL(e.target.files[0])
+}
 
 const tabActive = ref('id')
 
@@ -28,7 +42,7 @@ const handleChangeTab = (tab) => {
 
 const handleSubmit = async() => {
    form.processing = true
-   form.put(route('category.update', props.category.id), {
+   form.post(route('category.update-data', props.category.id), {
       preserveScroll: true,
       onSuccess: () => {
          form.processing = false
@@ -101,6 +115,41 @@ const handleSubmit = async() => {
                   {{ form.errors.desc_id }}
                </label>
             </div>
+         </div>
+
+         <div class="space-y-6">
+            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+            Image <span class="text-error-500">*</span></label>
+            <div as="button" @click="openFile" class="cursor-pointer p-12 flex justify-center border border-dashed border-gray-300 rounded-xl" data-hs-file-upload-trigger="">
+               <div class="text-center" v-if="!image_preview">
+                  <span class="inline-flex justify-center items-center size-16 bg-gray-100 text-gray-800 rounded-full">
+                  <svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                     <polyline points="17 8 12 3 7 8"></polyline>
+                     <line x1="12" x2="12" y1="3" y2="15"></line>
+                  </svg>
+                  </span>
+
+                  <div class="mt-4 flex flex-wrap justify-center text-sm leading-6 text-gray-600">
+                  <span class="pe-1 font-medium text-gray-800 dark:text-gray-400">
+                     Upload your file here or
+                  </span>
+                  <span class="font-semibold text-blue-600 hover:text-blue-700 rounded-lg decoration-2 hover:underline focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2">browse</span>
+                  </div>
+
+                  <p class="mt-1 text-xs text-gray-400">
+                  Pick a file up to 1MB.
+                  </p>
+               </div>
+
+               <img v-else="image_preview" :src="image_preview" alt="preview">
+            </div>
+            <label
+                  class="block text-sm font-medium text-error-500"
+               >
+               {{ form.errors.image }}
+            </label>   
+            <input class="hidden" type="file" ref="imageInput" name="file" accept="image/*" @input="handleUpload" />
          </div>
 
          <div class="flex justify-between mt-3 items-center">

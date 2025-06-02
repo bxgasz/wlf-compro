@@ -101,9 +101,9 @@ const handleSubmit = async() => {
                <TextInput 
                   v-model="form.title_en"
                   type="text"
-                  title="Title"
+                  title="Stories"
                   :required="true"
-                  placeholder="Enter a title"
+                  placeholder="Enter a stories"
                />
                <label
                   class="block text-sm font-medium text-error-500"
@@ -118,9 +118,9 @@ const handleSubmit = async() => {
                <TextInput 
                   v-model="form.title_id"
                   type="text"
-                  title="Title"
+                  title="Stories"
                   :required="true"
-                  placeholder="Enter a title"
+                  placeholder="Enter a stories"
                />
                <label
                   class="block text-sm font-medium text-error-500"

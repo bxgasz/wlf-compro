@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -57,15 +58,26 @@ class CategoryController extends Controller
             'title_id' => 'required|min:6|max:50',
             'desc_en' => 'required',
             'desc_id' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg,webp|max:1584'
         ]);
 
         try {
             DB::beginTransaction();
 
-            $category = Category::create([
+
+            $storeData = [
                 'title' => json_encode([ 'en' => $request->title_en, 'id' => $request->title_id ]),
                 'description' => json_encode([ 'en' => $request->desc_en, 'id' => $request->desc_id ]),
-            ]);
+            ];
+
+            if ($request->hasFile('image')) {
+                $fileName = time() . '-image_' . $request->file('image')->getClientOriginalName();
+                $filePath = Storage::disk('public')->putFileAs('/categories', $request->file('image'), $fileName);
+                
+                $storeData['image'] = asset('/storage/' . $filePath);
+            }
+
+            $category = Category::create($storeData);
 
             DB::commit();
 
@@ -87,6 +99,7 @@ class CategoryController extends Controller
                 'id' => $category->id,
                 'title' => json_decode($category->title, true),
                 'description' => json_decode($category->description, true),
+                'image' => $category->image
             ]
         ]);
     }
@@ -98,15 +111,31 @@ class CategoryController extends Controller
             'title_id' => 'required|min:6|max:50',
             'desc_en' => 'required',
             'desc_id' => 'required',
+            'image' => 'nullable|mimes:jpeg,png,jpg,webp|max:1584'
         ]);
 
         try {
             DB::beginTransaction();
 
-            $category->update([
+            $updateData = [
                 'title' => json_encode([ 'en' => $request->title_en, 'id' => $request->title_id ]),
                 'description' => json_encode([ 'en' => $request->desc_en, 'id' => $request->desc_id ]),
-            ]);
+            ];
+
+            if ($request->hasFile('image')) {
+                $oldImagePath = str_replace(url('/storage/'), '', $category->image);
+
+                if (Storage::disk('public')->exists($oldImagePath)) {
+                    Storage::disk('public')->delete($oldImagePath);
+                }
+
+                $fileName = time() . '-image_' . $request->file('image')->getClientOriginalName();
+                $filePath = Storage::disk('public')->putFileAs('/category', $request->file('image'), $fileName);
+                
+                $updateData['image'] = asset('/storage/' . $filePath);
+            }
+
+            $category->update($updateData);
 
             DB::commit();
 
@@ -130,6 +159,15 @@ class CategoryController extends Controller
         }
 
         try {
+
+            if ($category->image) {
+                $oldImagePath = str_replace(url('/storage/'), '', $category->image);
+
+                if (Storage::disk('public')->exists($oldImagePath)) {
+                    Storage::disk('public')->delete($oldImagePath);
+                }
+            }
+
             $category->delete();
 
             return response()->json([

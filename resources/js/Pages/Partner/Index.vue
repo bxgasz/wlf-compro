@@ -95,8 +95,8 @@ const handleDelete = async(id) => {
          <Table :data="lists" :field="fields" :order="order" @page-change="handlePageChange" @sort-change="handleSortData">
             <template #description="{ row }">
                <div class="flex gap-2">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400"><strong>ID:</strong> {{ row.description['id'].slice(0, 50) }}</p>
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400"><strong>EN:</strong> {{ row.description['en'].slice(0,50) }}</p>
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400 flex gap-1"><strong>ID:</strong> <p v-html="row.description['id'].slice(0, 50)"></p></p>
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400 flex gap-1"><strong>EN:</strong> <p v-html="row.description['en'].slice(0, 50)"></p></p>
                </div>
             </template>
             <template #logo="{ row }">
