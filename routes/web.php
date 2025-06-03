@@ -119,7 +119,7 @@ Route::get('/about-us', function () {
     return Inertia::render('LandingPage/About/Index');
 })->name('about-us');
 
-Route::get('/cnfn', function () {
+Route::get('/cfcn', function () {
     return Inertia::render('LandingPage/GrandOpputurnities/CFCN');
 })->name('cfcn');
 
