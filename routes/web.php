@@ -111,6 +111,18 @@ Route::middleware('guest')->prefix('admin')->group(function () {
     Route::post('/login', [AuthController::class, 'auth'])->name('auth.post');
 });
 
-Route::get('/landing-page/home', function () {
+Route::get('/', function () {
     return Inertia::render('LandingPage/Home/Index');
 })->name('home');
+
+Route::get('/about-us', function () {
+    return Inertia::render('LandingPage/About/Index');
+})->name('about-us');
+
+Route::get('/cnfn', function () {
+    return Inertia::render('LandingPage/GrandOpputurnities/CFCN');
+})->name('cfcn');
+
+Route::get('/grantee', function () {
+    return Inertia::render('LandingPage/Grantee/Index');
+})->name('grantee');
