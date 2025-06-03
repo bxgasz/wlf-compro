@@ -126,3 +126,7 @@ Route::get('/cfcn', function () {
 Route::get('/grantee', function () {
     return Inertia::render('LandingPage/Grantee/Index');
 })->name('grantee');
+
+Route::get('/news-detail', function () {
+    return Inertia::render('LandingPage/NewsStories/Detail');
+})->name('news-detail');
