@@ -123,8 +123,8 @@ Route::get('/our-program/{categories}/{program}', [LandingPageController::class,
 Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
 Route::get('/publication/{title}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
 
-Route::get('/cfcn', [LandingPageController::class, 'home'])->name('cfcn');
+Route::get('/cfcn', [LandingPageController::class, 'cfcn'])->name('cfcn');
 
-Route::get('/grantee', [LandingPageController::class, 'home'])->name('grantee');
+Route::get('/grantee', [LandingPageController::class, 'grantee'])->name('grantee');
 
-Route::get('/news-detail', [LandingPageController::class, 'home'])->name('news-detail');
+Route::get('/news-detail', [LandingPageController::class, 'programDetail'])->name('news-detail');
