@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\GranteeManagementController;
 use App\Http\Controllers\InboxController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsStoriesController;
 use App\Http\Controllers\PartnerController;
@@ -111,22 +112,19 @@ Route::middleware('guest')->prefix('admin')->group(function () {
     Route::post('/login', [AuthController::class, 'auth'])->name('auth.post');
 });
 
-Route::get('/', function () {
-    return Inertia::render('LandingPage/Home/Index');
-})->name('home');
+Route::get('/', [LandingPageController::class, 'home'])->name('home');
 
-Route::get('/about-us', function () {
-    return Inertia::render('LandingPage/About/Index');
-})->name('about-us');
+Route::get('/about-us', [LandingPageController::class, 'aboutUs'])->name('about-us');
 
-Route::get('/cfcn', function () {
-    return Inertia::render('LandingPage/GrandOpputurnities/CFCN');
-})->name('cfcn');
+Route::get('/our-program', [LandingPageController::class, 'ourProgram'])->name('our-program');
+Route::get('/our-program/{categories}', [LandingPageController::class, 'subProgram'])->name('sub-program');
+Route::get('/our-program/{categories}/{program}', [LandingPageController::class, 'programDetail'])->name('detail-program');
 
-Route::get('/grantee', function () {
-    return Inertia::render('LandingPage/Grantee/Index');
-})->name('grantee');
+Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
+Route::get('/publication/{title}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
 
-Route::get('/news-detail', function () {
-    return Inertia::render('LandingPage/NewsStories/Detail');
-})->name('news-detail');
+Route::get('/cfcn', [LandingPageController::class, 'home'])->name('cfcn');
+
+Route::get('/grantee', [LandingPageController::class, 'home'])->name('grantee');
+
+Route::get('/news-detail', [LandingPageController::class, 'home'])->name('news-detail');
