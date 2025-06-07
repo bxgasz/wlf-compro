@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('link_01')->nullable();
             $table->string('link_02')->nullable();
             $table->integer('order_num')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable()->after('created_at');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
