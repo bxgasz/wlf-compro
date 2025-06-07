@@ -16,16 +16,16 @@ const { locale } = useI18n()
 
             <div class="grid grid-cols-2 md:gap-15 lg:gap-36">
                <div class="space-y-3">
-                  <Link href="route('landing.about')" class="block hover:text-[#D86727] hover:font-semibold">About Us</Link>
-                  <Link href="route('landing.governance')" class="block hover:text-[#D86727] hover:font-semibold">Our Program</Link>
-                  <Link href="route('landing.project')" class="block hover:text-[#D86727] hover:font-semibold">Resources</Link>
-                  <Link href="route('landing.project')" class="block hover:text-[#D86727] hover:font-semibold">News & Stories</Link>
-                  <Link href="route('landing.project')" class="block hover:text-[#D86727] hover:font-semibold">Work With Us</Link>
+                  <Link :href="route('about-us')" class="block hover:text-[#D86727] hover:font-semibold">About Us</Link>
+                  <Link :href="route('our-program')" class="block hover:text-[#D86727] hover:font-semibold">Our Program</Link>
+                  <Link href="route('reources')" class="block hover:text-[#D86727] hover:font-semibold">Resources</Link>
+                  <Link :href="route('publications')" class="block hover:text-[#D86727] hover:font-semibold">News & Stories</Link>
+                  <Link href="route('')" class="block hover:text-[#D86727] hover:font-semibold">Work With Us</Link>
                </div>
 
                <div class="space-y-3">
-                  <Link href="route('landing.media')" class="mb-2 hover:text-[#D86727] hover:font-semibold">Contact Us</Link>
-                  <Link href="route('landing.life-at-bss')" class="block hover:text-[#D86727] hover:font-semibold">Join Us</Link>
+                  <Link :href="route('contact')" class="mb-2 hover:text-[#D86727] hover:font-semibold">Contact Us</Link>
+                  <Link href="route('life-at-bss')" class="block hover:text-[#D86727] hover:font-semibold">Join Us</Link>
                </div>
             </div>
 

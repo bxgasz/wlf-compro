@@ -12,7 +12,7 @@ export default {
   theme: {
     fontFamily: {
       outfit: ['Outfit', 'sans-serif'],
-      oswald: ['Oswald', 'sans-serif'],
+      montserrat: ['Montserrat', 'sans-serif'],
       lato: ['Lato', 'sans-serif'],
       playfair: ['Playfair Display', 'serif']
     },

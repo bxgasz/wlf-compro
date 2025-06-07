@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentTypeController;
@@ -52,6 +53,11 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::get('/career-list', [CareerController::class, 'data'])->name('career.data');
     Route::post('/career-update/{career}', [CareerController::class, 'update'])->name('career.update-data');
     Route::post('/career-status/{career}', [CareerController::class, 'updateStatus'])->name('career.status');
+
+    Route::resource('/banner', BannerController::class);
+    Route::get('/banner-list', [BannerController::class, 'data'])->name('banner.data');
+    Route::post('/banner-update/{banner}', [BannerController::class, 'update'])->name('banner.update');
+    Route::post('/banner-status/{banner}', [BannerController::class, 'updateStatus'])->name('banner.status');
 
     Route::resource('/resource', ResourceController::class);
     Route::post('/resource-update/{resource}', [ResourceController::class, 'update'])->name('resource.update');
@@ -123,8 +129,10 @@ Route::get('/our-program/{categories}/{program}', [LandingPageController::class,
 Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
 Route::get('/publication/{title}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
 
-Route::get('/cfcn', [LandingPageController::class, 'cfcn'])->name('cfcn');
+Route::get('/grand-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
 
 Route::get('/grantee', [LandingPageController::class, 'grantee'])->name('grantee');
+Route::get('/grantee-custom', [LandingPageController::class, 'granteeTemplatePage'])->name('grantee.custom');
 
-Route::get('/news-detail', [LandingPageController::class, 'programDetail'])->name('news-detail');
+Route::get('/contact-us', [LandingPageController::class, 'contactUs'])->name('contact');
+Route::get('/donate', [LandingPageController::class, 'donate'])->name('donate');

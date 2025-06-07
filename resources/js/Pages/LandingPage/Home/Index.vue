@@ -1,23 +1,56 @@
 <script setup>
 import Navbar from '../Components/Navbar.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, A11y, Autoplay } from 'swiper/modules'
+import { Pagination, A11y, Autoplay, Navigation } from 'swiper/modules'
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import 'swiper/css/navigation';
 import { Link } from '@inertiajs/vue3';
 import ArrowBack from '@/Icons/ArrowBack.vue';
 import Footer from '../Components/Footer.vue';
+import { useI18n } from 'vue-i18n';
+import ChevronIcon from '@/Icons/ChevronIcon.vue';
+
+const props = defineProps({
+   banners: Object
+})
 
 const modules = [
    Autoplay,
    Pagination,
    A11y
 ]
+
+const modules2 = [
+   Autoplay,
+   Navigation,
+   A11y
+]
+
+const { locale } = useI18n()
+
+const locations = [
+   {
+      type: 'project_area',
+      top: 25,
+      left: 38
+   },
+   {
+      type: 'project_area',
+      top: 20,
+      left: 90
+   },
+   {
+      type: 'project_area',
+      top: 65,
+      left: 90
+   },
+]
 </script>
 
 <template>
-   <div class="w-full bg-[#F1EAE7] z-0 font-lato font-light text-[18px] overflow-hidden">
+   <div class="w-full bg-[#F1EAE7] z-0 font-lato text-[18px] overflow-hidden">
       <Navbar/>
 
       <!-- hero section -->
@@ -29,9 +62,9 @@ const modules = [
             :slide-per-view="3"
             :pagination="{ clickable: true }"
          >
-            <swiper-slide class="relative h-full" v-for="i in 5">
+            <swiper-slide class="relative h-full" v-for="(banner, index) in banners">
                <div class="image-container">
-                  <!-- <template v-if="banner.type == 'video'">
+                  <template v-if="banner.type == 'video'">
                      <video autoplay muted loop playsinline>
                            <source :src="banner.media" type="video/mp4">
                            {{ $t('news.detail.banner-vid') }}
@@ -39,22 +72,19 @@ const modules = [
                   </template>
                   <template v-else>
                      <img :src="banner.media" :alt="banner.title[locale]">
-                  </template> -->
-                  <img src="/assets/img/home/hero.png" alt="banner">
+                  </template>
                </div>
                <div class="w-screen px-8 max-w-7xl absolute inset-0 left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 flex items-center z-20">
                   <div class="flex flex-col justify-center z-20 w-[50%]">
                      <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold">
-                        <!-- {{ banner.title[locale] }} -->
-                        Equal opportunity for all indonesians flourish
+                        {{ banner.title[locale] }}
                      </h1>
                      <div class="flex items-center my-5" v-if="true">
-                        <!-- <p class="text-xl text-slate-300 ms-7">{{ banner.desc[locale] }}</p> -->
-                        <p class="text-xl text-slate-300">To empower vulnerable and marginalized communities by bridging learning and access to opportunities in four intervention sectors.</p>
+                        <p class="text-xl text-slate-300">{{ banner.desc[locale] }}</p>
                      </div>
                      <div class="flex gap-4 items-center">
-                        <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More' }}</Link>
-                        <!-- <Link v-if="banner.link_02" :href="banner.link_02" class="border border-[#D7261C] text-[#D7261C] px-6 py-3 font-semibold rounded-xl w-fit">{{ locale == 'id' ? 'Informasi Lainnya' : 'Another Information' }}</Link> -->
+                        <Link v-if="banner.link_01" :href="banner.link_01" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More' }}</Link>
+                        <Link v-if="banner.link_02" :href="banner.link_02" class="border border-[#D86727] text-[#D86727] px-6 py-3 font-semibold rounded-xl w-fit">{{ locale == 'id' ? 'Informasi Lainnya' : 'Another Information' }}</Link>
                      </div>
                   </div>
                </div>
@@ -82,7 +112,7 @@ const modules = [
       <div class="relative mt-20 w-full">
          <div class="w-full h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727]"></div>
          <div class="w-full h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727] -mt-52"></div>
-         <div class="w-full h-72 md:h-96 bg-[#D86727] rounded-t-[35%] lg:rounded-t-full -mt-72"></div>
+         <div class="w-full h-72 md:h-[28rem] bg-[#D86727] rounded-t-[35%] lg:rounded-t-[300px] -mt-72"></div>
 
          <!-- our program section -->
          <div class="w-full flex justify-center absolute top-10">
@@ -107,8 +137,70 @@ const modules = [
          </div>
       </div>
 
+      <div class="flex justify-center w-full">
+         <div class="max-w-7xl text-center w-full my-20">
+            <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold">What We Do</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 mt-20">
+               <div class="relative w-[85%]">
+                  <img src="/assets/img/home/map.png" alt="project location" class="w-full brightness-[0.8]">
+                  
+                  <div
+                     v-for="(location, index) in locations"
+                     :key="index"
+                     class="absolute w-[8px] md:w-[15px] h-[8px] md:h-[15px] rounded-[50%] cursor-pointer -translate-x-1/2 -translate-y-1/2" :class="location.type == 'project_area' ? 'bg-[#E75E00]' : 'bg-white'"
+                     :style="{
+                     top: location.top + '%',
+                     left: location.left + '%',
+                     }"
+                     @click="handleShowPopup(location)"
+                  >
+                     <span class="absolute inline-flex right-0 h-full w-full animate-ping rounded-full opacity-75" :class="location.type == 'project_area' ? 'bg-[#E75E00]' : 'bg-white'"></span>
+                  </div>
+
+                  <div v-if="showPopup" @click.stop ref="popupRef" class="absolute bg-[#24252A80]/50 backdrop-blur-sm rounded-lg p-3 -translate-x-[50%] -translate-y-[120%]" :style="{ top: selectedLocation.top + '%', left: selectedLocation.left + '%', }">
+                     <p class="text-white text-[16px]"><strong>{{ selectedLocation.title[locale] }}</strong></p>
+                     <!-- <p class="text-white text-[14px]" v-html="selectedLocation.address"></p> -->
+                  </div>
+
+               </div>
+
+               <div class="w-full">
+                  <swiper
+                        ref="swiperRef"
+                        :modules="modules2"
+                        :slide-per-view="3"
+                        :navigation="{
+                           nextEl: '.custom-next',
+                           prevEl: '.custom-prev',
+                        }"
+                  >
+                     <SwiperSlide v-for="i in 2">
+                        <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white w-fit mb-5">Selesai</p>
+                        <div class="w-full h-40">
+                           <img src="/assets/img/ourprogram/program2.png" alt="program" class="w-full h-full object-cover rounded-[20px]">
+                        </div>
+                        <p class="text-left my-5">05 May 2025</p>
+                        <p class="w-full font-medium text-left">
+                           Developing Holistic Integrated Early Childhood Development Model
+                        </p>
+                     </SwiperSlide>
+                  </swiper>
+                  <div class="flex justify-start w-full items-center gap-5 mb-5 mt-5 relative z-99">
+                     <button class="bg-[#E75E00] rounded-full p-2 flex justify-center items-center custom-prev">
+                        <ChevronIcon class="w-[1rem] h-[1rem] text-white" />
+                     </button>
+                     <button class="bg-[#E75E00] rounded-full p-2 flex justify-center items-center rotate-180 custom-next">
+                        <ChevronIcon class="w-[1rem] h-[1rem] text-white" />
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <!-- news section -->
-      <div class="bg-[#D86727] flex justify-center">
+      <div class="bg-[#D86727] flex justify-center pt-20">
          <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] max-w-7xl px-8 h-[80%] gap-10 lg:gap-0">
             <div class="flex flex-col gap-5">
                <h1 class="font-playfair text-white text-5xl font-bold">News <br>& Stories</h1>

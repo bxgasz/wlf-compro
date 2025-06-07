@@ -3,18 +3,51 @@ import ArrowBack from '@/Icons/ArrowBack.vue';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import { Link } from '@inertiajs/vue3';
+import Accordion from '../Components/Accordion.vue';
 
+const lists = [
+   {
+      question:
+         'Apakah komunitas yang belum memiliki legalitas, atau berbentuk perusahaan, perusahaan daerah bisa mengakses dana hibah WLF baik secara mandiri maupun sebagai anggota konsorsium?',
+      answer:
+         'Tidak bisa. Call for Concept Notes yang sedang dipublikasikan saat ini ditujukan untuk organisasi masyarakat sipil atau organisasi non-profit yang berbadan hukum resmi sebagai yayasan atau perkumpulan serta terdaftar pada Kementerian Hukum dan Hak Asasi Manusia.',
+   },
+   {
+      question:
+         'Apakah organisasi yang belum memiliki NPWP dan/atau belum melaporkan pajak tahunan bisa mengajukan concept note?',
+      answer:
+         '-',
+   },
+   {
+      question:
+         'Terkait pengalaman pengelolaan dana, apakah ada batas minimal besaran dana yang pernah dikelola maupun ketentuan khusus terkait sumber pendanaannya?',
+      answer:
+         '-',
+   },
+   {
+      question:
+         'Apakah organisasi yang mengajukan usulan proyek harus mempunyai pengalaman terkait proyek tersebut?',
+      answer:
+         '-',
+   },
+   {
+      question:
+         'Apakah organisasi yang belum pernah dilakukan audit eksternal dapat mengajukan concept note?',
+      answer:
+         '-',
+   },
+]
 </script>
 
 <template>
-   <div class="w-full bg-[#F1EAE7] z-0 font-lato font-light text-[18px] overflow-hidden">
+   <div class="w-full z-0 font-lato text-[18px] overflow-hidden">
       <Navbar/>
 
       <div class="w-full text-center relative">
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
+         <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
             Call for concept note 2025
          </h1>
       </div>
@@ -87,10 +120,19 @@ import { Link } from '@inertiajs/vue3';
       </div>
 
       <div class="w-full flex justify-center my-20">
-         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
-            <p class="">WLF mengundang Organisasi Masyarakat Sipil, khususnya yang telah memiliki pengalaman bekerja di wilayah Nusa Tenggara Timur (NTT)  untuk mengirimkan Pernyataan Minat Kerjasama dan Concept Note yang berisi deskripsi singkat ide proyek dan tujuan yang ingin dicapai.</p>
-            <p class="">Durasi proyek yang dapat diajukan minimal 6 bulan hingga maksimal 18 bulan, dengan anggaran maksimal sebesar 1 (satu) miliar rupiah.</p>
-            <p class="">Lokasi pelaksanaan proyek yang diusulkan harus berada di Provinsi Nusa Tenggara Timur, sesuai dengan wilayah kerja WLF saat ini. Pengajuan Pernyataan Minat Kerjasama Hibah WLF dapat dilakukan mulai 8 Januari 2025 sampai dengan selambat-lambatnya 22 Januari 2025 jam 23.59 WIB.</p>
+         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-3">
+            <p class="">WLF akan mengadakan sesi penjelasan mengenai teknis Call for Concept Note WLF secara daring pada tanggal 15 Januari 2025 jam 10.00-11.30 WIB.</p>
+            <p>Bagi organisasi yang berminat silahkan melakukan Pendaftaran Sesi Penjelasan Call for Concept Note WLF paling lambat tanggal 14 Januari 2025.</p>
+            <p>*Sesi ini tidak bersifat wajib diikuti calon aplikan.</p>
+         </div>
+      </div>
+
+      <div class="w-full flex justify-center mt-36 mb-20">
+         <div class="max-w-3xl px-8 space-y-15">
+            <h1 class="uppercase text-4xl font-montserrat font-bold text-center">Frequently Asked Questions</h1>
+            <p class="text-center">Dokumen FAQ (pertanyaan yang sering diajukan) ini ditujukan untuk merespon pertanyaan-pertanyaan yang sering muncul dan jawabannya belum tercermin dalam lembar informasi Call for Concept Notes di website WLF. Kami menghimbau setiap organisasi untuk secara seksama membaca ketentuan Call for Concept Notes WLF terlebih dahulu.</p>
+
+            <Accordion :list="lists"/>
          </div>
       </div>
 
@@ -103,7 +145,7 @@ import { Link } from '@inertiajs/vue3';
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 100%;
+  height: 20rem;
 }
 
 .img-our-program::after {

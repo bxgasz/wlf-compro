@@ -2,35 +2,71 @@
 import { ref } from 'vue';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
+import ArrowBack from '@/Icons/ArrowBack.vue';
 
 const tabActive = ref('home')
+
+const partners = [
+   {
+      title: 'acer',
+      image: '/assets/img/about/acer.png'
+   },
+   {
+      title: 'Sumba Integrated Development',
+      image: '/assets/img/about/sid.png'
+   },
+   {
+      title: 'Bina Tani Sejahtera',
+      image: '/assets/img/about/binatani.png'
+   },
+   {
+      title: 'SATUNAMA',
+      image: '/assets/img/about/satunama.png'
+   },
+   {
+      title: 'DESMA',
+      image: '/assets/img/about/desma.png'
+   },
+   {
+      title: 'Platform Usaha Sosial',
+      image: '/assets/img/about/plus.png'
+   },
+   {
+      title: 'INSPIRASI',
+      image: '/assets/img/about/inspirasi.png'
+   },
+   {
+      title: 'REMDEC SWAPRAKARSA',
+      image: '/assets/img/about/remdec.png'
+   },
+]
 </script>
 
 <template>
-   <div class="w-full bg-[#F1EAE7] z-0 font-lato font-light text-[18px] overflow-hidden">
+   <div class="w-ful z-0 bg-white font-lato font-light text-[18px] overflow-hidden">
       <Navbar/>
 
       <div class="w-full text-center relative">
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             Grantee <Portal></Portal>
          </h1>
       </div>
 
       <div class="w-full flex justify-center bg-[#2F3C87] gap-8 h-24 items-end">
-         <div @click="tabActive = 'home'" role="button" :class="tabActive == 'home' ? 'bg-[#F1EAE7] rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Home</div>
-         <div @click="tabActive = 'panduan'" role="button" :class="tabActive == 'panduan' ? 'bg-[#F1EAE7] rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Panduan</div>
-         <div @click="tabActive = 'format_pelaporan'" role="button" :class="tabActive == 'format_pelaporan' ? 'bg-[#F1EAE7] rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Format Laporan</div>
-         <div @click="tabActive = 'pelaporan'" role="button" :class="tabActive == 'pelaporan' ? 'bg-[#F1EAE7] rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Pelaporan</div>
+         <div @click="tabActive = 'home'" role="button" :class="tabActive == 'home' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Home</div>
+         <div @click="tabActive = 'panduan'" role="button" :class="tabActive == 'panduan' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Panduan</div>
+         <div @click="tabActive = 'format_pelaporan'" role="button" :class="tabActive == 'format_pelaporan' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Format Laporan</div>
+         <div @click="tabActive = 'pelaporan'" role="button" :class="tabActive == 'pelaporan' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Pelaporan</div>
       </div>
 
       <template v-if="tabActive == 'home'">
          <div class="flex justify-center mt-20">
             <div class="max-w-7xl w-full px-8">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%]">
-                  <h1 class="font-playfair text-[#2F3C87] text-5xl font-bold">Apa itu <br> Grantee Portal?</h1>
+                  <h1 class="font-montserrat text-[#2F3C87] text-5xl font-bold">Apa itu <br> Grantee Portal?</h1>
                   <div class="font-medium">
                      <p>Grantee Portal ini merupakan laman untuk mendukung pengelolaan proyek-proyek yang dilakukan oleh mitra-mitra WLF. Pada laman ini dapat diakses: (1) panduan dan kebijakan WLF terbaru, (2) format-format laporan yang berlaku, dan (3) pelaporan, untuk laporan keuangan dan narasi mitra.</p>
                      <p>Untuk dapat mengakses portal, grantee wajib mendaftarkan alamat email (google based). Seluruh pelaporan mitra baik berupa laporan proyek maupun keuangan disampaikan kepada WLF melalui portal ini. </p>
@@ -140,6 +176,38 @@ const tabActive = ref('home')
                      </div>
                   </div>
                </div>
+            </div>
+         </div>
+      </template>
+
+      <template v-if="tabActive == 'pelaporan'">
+         <div class="w-full flex justify-center mt-20">
+            <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
+               <p class="">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+               <p class="">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+            </div>
+
+         </div>
+         <div class="w-full flex justify-center mt-20">
+            <div class="max-w-7xl px-8">
+               <div class="flex flex-wrap justify-center gap-5 w-full">
+                  <div class="relative border border-[#E75E00] rounded-[20px] p-3 lg:w-[calc(18%)] shadow-xl shadow-[#D86727]/20" v-for="i in partners">
+                     <div class="w-full h-56 flex items-center">
+                        <img :src="i.image" alt="image" class="w-full object-cover rounded-t-[20px]">
+                     </div>
+                     <div class="h-full w-full absolute p-8 z-20 top-0 flex flex-col justify-between">
+                        <div class="flex justify-end w-full">
+                           <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
+                        </div>
+                     </div>
+                     <p class="font-montserrat text-[#E75E00] font-bold text-center capitalize">{{ i.title }}</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="w-full flex justify-center my-20">
+            <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
+               <p class="">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
             </div>
          </div>
       </template>

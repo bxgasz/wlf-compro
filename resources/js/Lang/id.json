@@ -1,4 +1,15 @@
 {
-  
+  "contact.title": "Hubungi Kami",
+  "contact.description": "Sebelum mulai, silakan lengkapi formulir berikut.Kirim dan tunggu kabar selanjutnya dari kami.",
+  "contact.name": "Nama Lengkap",
+  "contact.phone": "Nomor Telepon",
+  "contact.email": "Email",
+  "contact.subject": "Subjek",
+  "contact.message": "Pesan",
+  "contact.button": "Kirim",
+  "contact.location": "location",
+  "contact.modal.header": "Pesan berhasil dikirim",
+  "contact.moda.text": "Terima kasih telah menghubungi kami. Pihak kami akan mempelajari pesan Anda terlebih dahulu.",
+  "contact.moda.button": "Kembali Ke Beranda"
 }
  

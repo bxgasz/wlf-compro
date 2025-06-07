@@ -1,4 +1,15 @@
 {
-  
+  "contact.title": "Contact Us",
+  "contact.description": "Before starting, please complete the following form. Submit and wait to hear from us.",
+  "contact.name": "Full Name",
+  "contact.phone": "Phone Number",
+  "contact.email": "Email",
+  "contact.subject": "Subject",
+  "contact.message": "Message",
+  "contact.button": "Send",
+  "contact.location": "location",
+  "contact.modal.header": "Message sent successfully",
+  "contact.modal.text": "Thank you for contacting us. We will study your message first.",
+  "contact.modal.button": "Back to Home"
 }
  

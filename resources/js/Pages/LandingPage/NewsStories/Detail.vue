@@ -48,12 +48,12 @@ onUnmounted(() => {
       </div>
    </div>
    
-   <div class="w-full z-0 font-lato font-light text-[18px] overflow-hidden">
+   <div class="w-full z-0 font-lato text-[18px] overflow-hidden">
       <Navbar/>
       <div class="flex justify-center px-8 lg:px-0">
          <div class="w-full flex justify-center mt-28 max-w-5xl px-8">
             <div class="text-center w-full">
-               <h1 class=" text-[2rem] md:text-[40px] leading-[1.1] font-playfair font-extrabold">
+               <h1 class=" text-[2rem] md:text-[40px] leading-[1.1] font-montserrat font-extrabold">
                   <!-- {{ news.title[locale] }} -->
                   Basic Literacy Development in Southwest Sumba
                </h1>
@@ -111,7 +111,7 @@ onUnmounted(() => {
          <div class="w-[100%] h-full bg-[#0D0E13] absolute right-0 flex lg:hidden"></div>
          <div class="flex justify-center">
             <div class="inset-0 py-20 translate-y-1 flex flex-col items-center w-full max-w-5xl">
-               <h2 class=" text-[2rem] md:text-4xl leading-[1.1] font-playfair font-medium mb-10 text-center uppercase">{{ $t('news.detail.otherNews') }}</h2>
+               <h2 class=" text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-medium mb-10 text-center uppercase">{{ $t('news.detail.otherNews') }}</h2>
 
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                   <Link :href="route('landing.news-detail', { category: item.category_id, title: item.slug ? item.slug : item.title[locale], date: new Date(item.created_at).toISOString().split('T')[0] })" class="lg:w-[278px] group" v-for="item in otherNews.data">

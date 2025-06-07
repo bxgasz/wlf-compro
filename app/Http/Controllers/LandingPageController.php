@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -10,7 +11,17 @@ class LandingPageController extends Controller
 {
     public function home()
     {
-        return Inertia::render('LandingPage/Home/Index');
+        $banners = Banner::select('title', 'type', 'desc', 'media', 'link_01', 'link_02')->where('is_active', true)
+        ->orderBy('order_num', 'asc')
+        ->get()->map(function ($banner) {
+            $banner->title = json_decode($banner->title, true);
+            $banner->desc = json_decode($banner->desc, true);
+            return $banner;
+        });
+
+        return Inertia::render('LandingPage/Home/Index', [
+            'banners' => $banners
+        ]);
     }
 
     public function aboutUs()
@@ -52,5 +63,20 @@ class LandingPageController extends Controller
     public function grantee()
     {
         return Inertia::render('LandingPage/Grantee/Index');
+    }
+
+    public function granteeTemplatePage()
+    {
+        return Inertia::render('LandingPage/Grantee/TemplatePage');
+    }
+
+    public function contactUs()
+    {
+        return Inertia::render('LandingPage/Contact/Index');
+    }
+    
+    public function donate()
+    {
+        return Inertia::render('LandingPage/Donate/Index');
     }
 }

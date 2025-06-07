@@ -128,16 +128,17 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
                <img :src="page.props.settings.logo" alt="logo" class="w-full h-full object-contain">
             </div>
          </Link>
-         <div class="w-full flex justify-center">
+         <div class="w-auto flex justify-center">
             <div v-for="(nav, index) in navLinks" :key="nav.key" class="relative">
                <Link :href="nav.link">
-                  <p class="text-[16px] mx-8 font-bold" :class="isActive(nav.link) ? 'text-[#D86727] font-bold' : 'text-white hover:text-[#ff8b48]'">{{ lang == 'id' ? nav.text_id : nav.text_en }}</p>
+                  <p class="text-[16px] mx-4 font-bold" :class="isActive(nav.link) ? 'text-[#D86727] font-bold' : 'text-white hover:text-[#ff8b48]'">{{ lang == 'id' ? nav.text_id : nav.text_en }}</p>
                </Link>
             </div>
          </div>
-         <div class="flex gap-7 items-center">
+         <div class="flex gap-3 items-center w-auto">
             <SearchIcon class="text-white w-8"/>
-            <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
+            <Link :href="route('donate')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
+            <Link :href="route('grantee')" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
          </div>
       </div>
 

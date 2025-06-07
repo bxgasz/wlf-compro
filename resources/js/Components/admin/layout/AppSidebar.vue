@@ -311,6 +311,18 @@ const menuGroups = [
     ]
   },
   {
+    title: "Media",
+    role: ['admin', 'manager', 'staff'],
+    items: [
+      {
+        icon: ImageIcon,
+        name: "Banner Management",
+        path: "/admin/banner",
+        role: ['admin', 'manager', 'staff']
+      },
+    ]
+  },
+  {
     title: 'Media',
     role: ['admin', 'manager', 'staff'],
     items: [

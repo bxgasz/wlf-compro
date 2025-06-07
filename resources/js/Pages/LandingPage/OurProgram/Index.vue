@@ -86,14 +86,14 @@ const ourProgram = [
 </script>
 
 <template>
-   <div class="w-full z-0 font-lato font-light text-[18px] overflow-hidden">
+   <div class="w-full z-0 font-lato text-[18px] overflow-hidden">
       <Navbar/>
 
       <div class="w-full text-center relative">
          <div class="image-container">
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             Our Program
          </h1>
       </div>
@@ -109,7 +109,7 @@ const ourProgram = [
             <div class="w-full border border-[#E75E00] rounded-2xl shadow-xl shadow-[#D86727]/20 my-10" v-for="(list, index) in ourProgram">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] p-5">
                   <div class="flex flex-col gap-5">
-                     <h1 class="font-playfair text-4xl text-[#E75E00] uppercase">{{ list.title }}</h1>
+                     <h1 class="font-montserrat text-4xl text-[#E75E00] uppercase font-bold">{{ list.title }}</h1>
                      <Link :href="list.link" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">See What to do</Link>
                   </div>
                   <div class="w-full">
@@ -117,10 +117,10 @@ const ourProgram = [
                         ref="swiperRef"
                         :modules="modules"
                         :slide-per-view="3"
-                        :pagination="{ el: '.custom-pagination', clickable: true }"
+                        :pagination="{ el: '.custom-pagination-' + index, clickable: true }"
                         :navigation="{
-                           nextEl: '.custom-next',
-                           prevEl: '.custom-prev',
+                           nextEl: '.custom-next-' + index,
+                           prevEl: '.custom-prev-' + index,
                         }"
                      >
                         <SwiperSlide v-for="(item, index) in list.data">
@@ -129,20 +129,20 @@ const ourProgram = [
                                  <img :src="item.img" :alt="item.title" class="w-full h-full object-cover rounded-[20px]">
                               </div>
                               <div class="">
-                                 <h1 class="font-playfair text-2xl text-[#E75E00] uppercase">{{ item.title }}</h1>
+                                 <h1 class="font-montserrat text-2xl text-[#E75E00] uppercase font-bold">{{ item.title }}</h1>
                                  <p>{{ item.description }}</p>
                               </div>
                            </div>
                         </SwiperSlide>
-                        <div class="custom-pagination md:!w-auto mt-5"></div>
+                        <div :class="`${'custom-pagination-' + index}`, 'md:!w-auto mt-5'"></div>
                      </swiper>
                   </div>
                </div>
                <div class="flex justify-end w-full items-center gap-5 mb-5 px-8 relative z-99">
-                  <button class="bg-[#E75E00] rounded-full p-2 flex justify-center items-center custom-prev">
+                  <button class="bg-[#E75E00] rounded-full p-2 flex justify-center items-center" :class="'custom-prev-' + index">
                      <ChevronIcon class="w-[1rem] h-[1rem] text-white" />
                   </button>
-                  <button class="bg-[#E75E00] rounded-full p-2 flex justify-center items-center rotate-180 custom-next">
+                  <button class="bg-[#E75E00] rounded-full p-2 flex justify-center items-center rotate-180 custom-next" :class="'custom-next-' + index">
                      <ChevronIcon class="w-[1rem] h-[1rem] text-white" />
                   </button>
                </div>
