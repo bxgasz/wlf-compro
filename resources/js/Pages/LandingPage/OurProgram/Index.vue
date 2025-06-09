@@ -94,8 +94,8 @@ const ourProgram = [
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
          <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
-            Our Program
-         </h1>
+            {{ $t('our-program.title') }}
+         </h1> 
       </div>
 
       <div class="w-full flex justify-center mt-20">

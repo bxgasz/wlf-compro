@@ -24,6 +24,50 @@ const handleScroll = () => {
   showPopupShare.value = window.scrollY > 100;
 };
 
+const otherNews = {
+  data: [
+    {
+      id: 1,
+      title: {
+        en: 'Breaking News: New Tech Launched',
+        id: 'Berita Terbaru: Teknologi Baru Diluncurkan',
+      },
+      slug: 'breaking-news-new-tech-launched',
+      banner: '/assets/img/home/news-1.jpg',
+      thumbnail: '',
+      created_at: '2025-06-08T14:23:00',
+      category_id: 3,
+      type: 'article',
+    },
+    {
+      id: 2,
+      title: {
+        en: 'Interview with the CEO of Future Corp',
+        id: 'Wawancara dengan CEO Future Corp',
+      },
+      slug: null, // slug bisa null dan fallback ke title[locale]
+      banner: '/assets/img/home/news-2.jpg',
+      thumbnail: '',
+      created_at: '2025-06-07T10:00:00',
+      category_id: 5,
+      type: 'article',
+    },
+    {
+      id: 3,
+      title: {
+        en: 'Top 10 AI Trends in 2025',
+        id: '10 Tren AI Teratas di Tahun 2025',
+      },
+      slug: 'top-10-ai-trends-2025',
+      banner: '/assets/img/home/news-3.jpg',
+      thumbnail: '',
+      created_at: '2025-06-05T08:45:00',
+      category_id: 4,
+      type: 'article',
+    }
+  ]
+}
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
@@ -106,29 +150,31 @@ onUnmounted(() => {
          </div>
       </div>
 
-      <!-- <div class="relative w-full h-fit mt-20">
-         <div class="w-[84%] h-full bg-[#0D0E13] absolute right-0 hidden lg:flex" style="clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);"></div>
-         <div class="w-[100%] h-full bg-[#0D0E13] absolute right-0 flex lg:hidden"></div>
+      <div class="relative w-full h-fit mt-20">
+         <div class="w-[84%] h-full absolute right-0 hidden lg:flex" style="clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);"></div>
+         <div class="w-[100%] h-full absolute right-0 flex lg:hidden"></div>
          <div class="flex justify-center">
             <div class="inset-0 py-20 translate-y-1 flex flex-col items-center w-full max-w-5xl">
-               <h2 class=" text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-medium mb-10 text-center uppercase">{{ $t('news.detail.otherNews') }}</h2>
+               <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold mb-10 text-center uppercase">{{ $t('publications.detail.other') }}</h2>
 
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                  <Link :href="route('landing.news-detail', { category: item.category_id, title: item.slug ? item.slug : item.title[locale], date: new Date(item.created_at).toISOString().split('T')[0] })" class="lg:w-[278px] group" v-for="item in otherNews.data">
-                     <div class=" w-full h-[219px] lg:h-[182px] overflow-hidden" >
-                        <img :src="item.type == 'video' ? item.thumbnail : item.banner" 
-                           :alt="item.title" 
-                           class="object-cover h-full w-full group-hover:scale-125 transition duration-300 ease-in-out">
+                  <Link href="#" class="relative w-full fading group" role="button" v-for="(data, i) in otherNews.data" :key="i">
+                     <div class="w-full h-[20rem] overflow-hidden img-our-program rounded-2xl">
+                        <img :src="data.banner"
+                              alt="" 
+                              class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
-                     <div class="pt-6">
-                        <p class="text-gray-300 text-[10px] sm:text-[16px] w-full">{{ formatDate(item.created_at) }}</p>
-                        <p class=" text-[16px] w-full">{{ item.title[locale] }}</p>
+                     <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50 text-white p-8 z-20">
+                        <div class="">
+                           <p class="text-white text-[10px] sm:text-[16px] w-full">15 Feb 2025</p>
+                           <p class="text-white text-[16px] sm:text-[20px] w-full font-medium">Pak Ape dan Kelas yang Lebih Hidup Berkat Metode Mengajar Interaktif</p>
+                        </div>
                      </div>
                   </Link>
                </div>
             </div>
          </div>
-      </div> -->
+      </div>
       <div class="mt-20"></div>
       <Footer />
    </div>

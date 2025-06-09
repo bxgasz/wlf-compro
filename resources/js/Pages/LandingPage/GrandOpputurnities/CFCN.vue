@@ -48,7 +48,7 @@ const lists = [
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
          <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
-            Call for concept note 2025
+            {{ $t('grandopp.title') }}
          </h1>
       </div>
 
@@ -65,7 +65,7 @@ const lists = [
                <div class="flex gap-5 justify-start my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
                   <Link href="#" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[35rem] flex-shrink-0 flex justify-start relative fading group" v-for="i in 3" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
-                        <img src="/assets/img/home/our-program.png" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
+                        <img :src="`/assets/img/grandopp/${i}.jpg`" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
                      </div>
                      <div class="h-full w-full absolute p-8 z-20 flex flex-col justify-between">
                         <div class="flex justify-end w-full">

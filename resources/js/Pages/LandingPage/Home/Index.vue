@@ -11,6 +11,7 @@ import ArrowBack from '@/Icons/ArrowBack.vue';
 import Footer from '../Components/Footer.vue';
 import { useI18n } from 'vue-i18n';
 import ChevronIcon from '@/Icons/ChevronIcon.vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
    banners: Object
@@ -45,6 +46,29 @@ const locations = [
       type: 'project_area',
       top: 65,
       left: 90
+   },
+]
+
+const youtubeVideoId = 'bgXWh1oQRfE'
+
+const showVideo = ref(false)
+
+const youtubeUrl = computed(() =>
+  `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`
+)
+
+const programs = [
+   {
+      title: 'Early Childhood Development',
+      image: '/assets/img/home/our-program.png'
+   },
+   {
+      title: 'Literacy and Numeracy for early grades',
+      image: '/assets/img/home/program-2.png'
+   },
+   {
+      title: 'Economic Empowerment',
+      image: '/assets/img/home/program-3.png'
    },
 ]
 </script>
@@ -95,18 +119,51 @@ const locations = [
 
       <!-- who are we section -->
       <div class="w-full flex justify-center">
-      <div class="mt-20 max-w-7xl grid grid-cols-1 lg:grid-cols-[20%,30%,50%] gap-5 px-8">
-         <h1 class="text-5xl font-playfair font-bold text-[#262C51]">
-            Who We Are
-         </h1>
-         <div class="text-[#262C51] text-sm flex flex-col justify-between gap-5 lg:gap-0">
-            <p class="font-medium text-base">The William & Lily Foundation (WLF) is a philanthropic organization to continue the philanthropic legacy of William and Lily Soeryadjaya in Indonesia. Established in 2009, William & Lily Foundation work as an active grant-making foundation that work closely with implementing partners to support three key areas that consist of education, health, and economic empowerment.</p>
-            <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Read More</Link>
+         <div class="mt-20 max-w-7xl grid grid-cols-1 lg:grid-cols-[20%,30%,50%] gap-5 px-8">
+            <h1 class="text-5xl font-playfair font-bold text-[#262C51]">
+               Who We Are
+            </h1>
+            <div class="text-[#262C51] text-sm flex flex-col justify-between gap-5 lg:gap-0">
+               <p class="font-medium text-base">The William & Lily Foundation (WLF) is a philanthropic organization to continue the philanthropic legacy of William and Lily Soeryadjaya in Indonesia. Established in 2009, William & Lily Foundation work as an active grant-making foundation that work closely with implementing partners to support three key areas that consist of education, health, and economic empowerment.</p>
+               <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Read More</Link>
+            </div>
+            <div>
+               <div class="w-full cursor-pointer" @click="showVideo = true">
+                  <img
+                  src="/assets/img/home/who-are-we.png"
+                  alt="video"
+                  class="h-60 w-full lg:w-[90%] object-cover rounded-3xl"
+                  />
+               </div>
+
+               <div
+                  v-if="showVideo"
+                  class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+                  @click.self="showVideo = false"
+               >
+                  <div class="relative w-full max-w-3xl px-4">
+                  <!-- Tombol close -->
+                  <button
+                     class="absolute top-0 right-0 text-white text-3xl font-bold z-10"
+                     @click="showVideo = false"
+                  >
+                     &times;
+                  </button>
+
+                  <!-- YouTube Embed -->
+                  <div class="relative pt-[56.25%]">
+                     <iframe
+                        class="absolute top-0 left-0 w-full h-full rounded-xl"
+                        :src="youtubeUrl"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                     ></iframe>
+                  </div>
+                  </div>
+               </div>
+            </div>
          </div>
-         <div class="w-full">
-            <img src="/assets/img/home/who-are-we.png" alt="video" class="h-60 w-full lg:w-[90%] object-cover rounded-3xl">
-         </div>
-      </div>
       </div>
 
       <div class="relative mt-20 w-full">
@@ -119,16 +176,16 @@ const locations = [
             <div class="max-w-7xl px-8 w-full">
                <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">Our Program</h1>
                <div class="flex gap-5 justify-start my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
-                  <Link href="#" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="i in 3" :key="i">
+                  <Link href="#" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programs" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
-                        <img src="/assets/img/home/our-program.png" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
+                        <img :src="data.image" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
                      </div>
                      <div class="h-full w-full absolute p-8 z-20 flex flex-col justify-between">
                         <div class="flex justify-end w-full">
                            <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
                         </div>
                         <div class="">
-                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold">Early Childhood Development</p>
+                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold capitalize">{{ data.title }}</p>
                         </div>
                      </div>
                   </Link>
@@ -224,7 +281,7 @@ const locations = [
                <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0">
                   <Link href="#" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="i in 2">
                      <div class="w-full h-full overflow-hidden rounded-2xl">
-                        <img src="/assets/img/home/news.jpg"
+                        <img :src="`/assets/img/home/news-${i + 1}.jpg`"
                            alt="" 
                            class="object-cover h-[140px] md:h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>

@@ -18,7 +18,7 @@ const tabActive = ref('Early Childhood Development')
 
       <div class="w-full text-center relative">
          <div class="image-container">
-            <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
+            <img src="/assets/img/ourprogram/program1.png" alt="our-program">
          </div>
          <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             Our Program
@@ -44,18 +44,6 @@ const tabActive = ref('Early Childhood Development')
                         <div class="flex w-full justify-between my-5">
                            <p class="text-gray-500">05 May 2025</p>
                            <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white">Selesai</p>
-                        </div>
-                        <p class="w-full font-medium">
-                           Developing Holistic Integrated Early Childhood Development Model
-                        </p>
-                     </div>
-                     <div class="w-full">
-                        <div class="w-full h-40">
-                           <img src="/assets/img/ourprogram/program2.png" alt="program" class="w-full h-full object-cover rounded-[20px]">
-                        </div>
-                        <div class="flex w-full justify-between my-5">
-                           <p class="text-gray-500">05 May 2025</p>
-                           <p class="bg-[#C5BF00] text-sm p-1 px-3 rounded-full text-white">Berlangsung</p>
                         </div>
                         <p class="w-full font-medium">
                            Developing Holistic Integrated Early Childhood Development Model

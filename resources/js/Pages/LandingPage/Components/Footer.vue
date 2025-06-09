@@ -1,10 +1,31 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3';
+import { HelperService } from '@/Helper/Alert';
+import { Link, router, useForm, usePage } from '@inertiajs/vue3';
 import { useI18n } from 'vue-i18n';
 
 const page = usePage()
 
 const { locale } = useI18n()
+
+const form = useForm({
+   email: ''
+})  
+
+const handleSubscribe = () => {
+   form.processing = true
+   form.post(route('email.subscribe'), {
+      preserveScroll: true,
+      onSuccess: () => {
+         form.processing = false
+         form.reset()
+         HelperService.toastSuccess('Subscribed to newsletter!')
+         router.reload()
+      },
+      onError: (error) => {
+         HelperService.toastError('Failed to subscribe')
+      }
+   })
+}
 </script>
 <template>
    <footer class="text-white py-20 bg-[#2F3C87] border-t border-[#262C51]">
@@ -12,20 +33,21 @@ const { locale } = useI18n()
          <div class="flex justify-between flex-col sm:flex-wrap sm:flex-row gap-6">
             <div class="w-full sm:w-auto">
                <img :src="page.props.settings.logo" alt="BSS Logo" class="h-10 mb-4">
+
+               <div class="flex flex-col sm:flex-row justify-between text-gray-400 text-sm">
+                  <p>{{ page.props.settings.footer_notes[locale] ?? '© 2024 Hak cipta dilindungi oleh undang-undang.' }}</p>
+               </div>
             </div>
 
-            <div class="grid grid-cols-2 md:gap-15 lg:gap-36">
+            <div class="grid">
                <div class="space-y-3">
                   <Link :href="route('about-us')" class="block hover:text-[#D86727] hover:font-semibold">About Us</Link>
                   <Link :href="route('our-program')" class="block hover:text-[#D86727] hover:font-semibold">Our Program</Link>
-                  <Link href="route('reources')" class="block hover:text-[#D86727] hover:font-semibold">Resources</Link>
+                  <Link href="#" class="block hover:text-[#D86727] hover:font-semibold">Resources</Link>
                   <Link :href="route('publications')" class="block hover:text-[#D86727] hover:font-semibold">News & Stories</Link>
-                  <Link href="route('')" class="block hover:text-[#D86727] hover:font-semibold">Work With Us</Link>
-               </div>
-
-               <div class="space-y-3">
-                  <Link :href="route('contact')" class="mb-2 hover:text-[#D86727] hover:font-semibold">Contact Us</Link>
-                  <Link href="route('life-at-bss')" class="block hover:text-[#D86727] hover:font-semibold">Join Us</Link>
+                  <Link href="#" class="block hover:text-[#D86727] hover:font-semibold">Work With Us</Link>
+                  <Link :href="route('contact')" class="block hover:text-[#D86727] hover:font-semibold">Contact Us</Link>
+                  <Link href="#" class="block hover:text-[#D86727] hover:font-semibold">Join Us</Link>
                </div>
             </div>
 
@@ -51,14 +73,31 @@ const { locale } = useI18n()
                      <a v-if="page.props.settings.youtube_url" :href="page.props.settings.youtube_url"><img role="button" src="/assets/icon/yt.svg" alt="youtube"></a>
                   </div>
                </p>
+
+               <h3 class="font-semibold mb-2 capitalize mt-5">Subscribe to our newsletter</h3>
+               <div class="relative w-fit">
+                  <input
+                     type="email"
+                     v-model="form.email"
+                     placeholder="Enter your email...."
+                     class="pl-4 pr-20 py-2 rounded-full text-sm focus:outline-none w-64 text-black"
+                  />
+                  <button
+                  @click="handleSubscribe"
+                  class="absolute right-1 top-1/2 -translate-y-1/2 bg-[#f26522] text-white text-sm font-semibold px-4 py-1.5 rounded-full hover:bg-[#d45315]"
+                  >
+                  Send
+               </button>
+            </div>
+            <label
+               class="block text-sm font-medium text-error-500 mt-2"
+            >
+               {{ form.errors.email }}
+            </label>
             </div>
          </div>
 
          <div class="border-t border-gray-700 my-6"></div>
-
-         <div class="flex flex-col sm:flex-row justify-between text-gray-400 text-sm">
-            <p>{{ page.props.settings.footer_notes[locale] ?? '© 2024 Hak cipta dilindungi oleh undang-undang.' }}</p>
-         </div>
       </div>
    </footer>
 </template>

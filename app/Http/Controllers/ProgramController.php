@@ -65,21 +65,17 @@ class ProgramController extends Controller
            'title_en' => 'required|string|min:5',
            'description_en' => 'required',
            'description_id' => 'required',
-           'implementing_partner' => 'required',
            'slug' => [
                 'required',
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
                 'unique:programs,slug',
             ],
            'sector' => 'required',
-           'location' => 'required',
-           'start_date' => 'required',
-           'end_date' => 'required',
            'type' => 'required',
            'banner' => 'required_if:type,media|nullable|mimes:jpeg,png,jpg|max:51200',
            'youtube_link' => 'required_if:type,link|nullable|url',
-           'document' => 'required|mimes:pdf,doc,docx|max:10124',
            'program_category_id' => 'required',
+           'document' => 'nullable|mimes:pdf,doc,docx|max:10124',
          ]);
 
        try {
@@ -101,7 +97,6 @@ class ProgramController extends Controller
                'start_date' => $request->start_date,
                'end_date' => $request->end_date,
                'program_category_id' => $request->program_category_id,
-               'youtube_link' => 'lol'
            ];
 
             if ($request->type == 'link') {
@@ -170,22 +165,23 @@ class ProgramController extends Controller
 
    public function update(Request $request, Program $program)
    {
+        if ($request->type == 'link') {
+            $request->validate([
+                'youtube_link' => 'required_if:type,link|url',
+            ]);
+        } 
+
        $request->validate([
            'title_id' => 'required|string|min:5',
            'title_en' => 'required|string|min:5',
            'description_en' => 'required',
            'description_id' => 'required',
-           'implementing_partner' => 'required',
            'slug' => [
                 'required',
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
                 // 'unique:programs,slug',
             ],
            'sector' => 'required',
-           'location' => 'required',
-           'start_date' => 'required',
-           'end_date' => 'required',
-           'youtube_link' => 'required_if:type,link|nullable|url',
            'banner' => 'required_if:type,img|nullable|mimes:jpeg,png,jpg|max:51200',
            'document' => 'nullable|mimes:pdf,doc,docx|max:10124',
            'program_category_id' => 'required',

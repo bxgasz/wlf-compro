@@ -136,3 +136,15 @@ Route::get('/grantee-custom', [LandingPageController::class, 'granteeTemplatePag
 
 Route::get('/contact-us', [LandingPageController::class, 'contactUs'])->name('contact');
 Route::get('/donate', [LandingPageController::class, 'donate'])->name('donate');
+
+Route::post('/subscribe-newsletter', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email'
+    ]);
+
+    $subscriptions = Subscription::create([
+        'email' => $request->email
+    ]);
+
+    return back()->with('success', 'Data created successfully');
+})->name('email.subscribe');

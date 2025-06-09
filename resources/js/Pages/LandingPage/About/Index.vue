@@ -140,7 +140,7 @@ const tabOurTeam = ref('management')
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
          <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
-            About Us
+            {{ $t('about.title') }}
          </h1>
       </div>
 

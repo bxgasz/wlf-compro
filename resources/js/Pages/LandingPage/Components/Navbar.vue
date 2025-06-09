@@ -13,8 +13,8 @@ const showNavbar = ref(false)
 const showNavbarPopUp = ref(false)
 
 const { locale } = useI18n()
-// const lang = ref(localStorage.getItem('locale') || 'en')
-const lang = ref('en')
+
+const lang = ref(ref(localStorage.getItem('locale') || 'en'))
 
 const changeLanguage = (language) => {
   locale.value = language
@@ -117,7 +117,8 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
             <div class="hidden lg:flex items-center gap-4">
                <p class="text-white">Change Language</p>
                <div class="flex gap-2">
-                  <p class="text-white font-bold">EN</p> | <p class="text-[#262C51]">ID</p>
+                  <p role="button" @click="changeLanguage('en')" :class="lang == 'en' ? 'text-white font-bold' : 'text-[#262C51]'">EN</p> | 
+                  <p role="button" @click="changeLanguage('id')" :class="lang == 'id' ? 'text-white font-bold' : 'text-[#262C51]'">ID</p>
                </div>
             </div>
          </div>

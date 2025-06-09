@@ -153,7 +153,7 @@ const handleSubmit = async() => {
                   v-model="form.implementing_partner"
                   type="text"
                   title="Implementing Partner"
-                  :required="true"
+                  :required="false"
                   placeholder="Enter a implementing partner"
                />
                <label
@@ -183,7 +183,7 @@ const handleSubmit = async() => {
                   v-model="form.location"
                   type="text"
                   title="Location"
-                  :required="true"
+                  :required="false"
                   placeholder="Enter a location"
                />
                <label
@@ -197,7 +197,7 @@ const handleSubmit = async() => {
                <div class="">
                   <DatePicker
                      v-model="form.start_date" 
-                     :required="true"
+                     :required="false"
                      title="Start Date"
                   />  
                   <label
@@ -209,7 +209,7 @@ const handleSubmit = async() => {
                <div class="">
                   <DatePicker
                      v-model="form.end_date" 
-                     :required="true"
+                     :required="false"
                      title="End Date"
                   />  
                   <label
@@ -225,7 +225,7 @@ const handleSubmit = async() => {
                   :options="categories" 
                   v-model="form.program_category_id" 
                   :required="true"
-                  title="Category"
+                  title="Program Category"
                />  
                <label
                      class="block text-sm font-medium text-error-500"
@@ -313,7 +313,7 @@ const handleSubmit = async() => {
 
             <div class="space-y-6">
                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-               Document <span class="text-error-500">*</span></label>
+               Document</label>
                <div as="button" @click="openDocument" class="cursor-pointer p-12 flex justify-center border border-dashed border-gray-300 rounded-xl" data-hs-file-upload-trigger="">
                   <div class="text-center">
                      <span class="inline-flex justify-center items-center size-16 bg-gray-100 text-gray-800 rounded-full">

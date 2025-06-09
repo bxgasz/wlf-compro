@@ -37,6 +37,9 @@
 import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 
+import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect/index.js'
+import 'flatpickr/dist/plugins/monthSelect/style.css'
+
 const props = defineProps({
    required: {
       type: Boolean,
@@ -52,9 +55,16 @@ const model = defineModel({
 });
 
 const flatpickrConfig = {
-  dateFormat: 'Y-m-d',
+  dateFormat: 'Y-m',
   altInput: true,
-  altFormat: 'F j, Y',
+  altFormat: 'F Y',
   wrap: true,
+  plugins: [
+    new monthSelectPlugin({
+      shorthand: true,      // Jika true, bulan tampil sebagai singkatan (Jun)
+      dateFormat: "Y-m",    // Format penyimpanan data
+      altFormat: "F Y",     // Format tampilan
+    }),
+  ],
 }
 </script>
