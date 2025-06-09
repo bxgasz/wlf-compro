@@ -99,7 +99,7 @@ const lists = [
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">1</p>
                   <p class="font-bold">Informasi Call for Concept Note.</p>
                   <p>Dokumen ini berisikan informasi lebih detail mengenai dana hibah WLF, persyaratan organisasi yang dapat mengajukan, tata cara mengajukan/mengirimkan concept note, proses seleksi dan informasi terkait lainnya.</p>
-                  <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
                </div>
             </div>
 
@@ -110,7 +110,7 @@ const lists = [
                   <p>Dokumen ini berisikan formulir concept note yang harus diisi oleh organisasi yang berminat mengajukan pernyataan minat kerjasama hibah WLF.
                   Mohon pastikan aplikasi yang Anda ajukan sudah memenuhi semua persyaratan dan kriteria dana hibah WLF. Hanya organisasi yang memenuhi persyaratan yang akan dipertimbangkan.
                   </p>
-                  <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
                </div>
                <div class="w-72 h-80">
                   <img src="/assets/img/grandopp/step2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
