@@ -126,10 +126,13 @@ Route::get('/our-program', [LandingPageController::class, 'ourProgram'])->name('
 Route::get('/our-program/{categories}', [LandingPageController::class, 'subProgram'])->name('sub-program');
 Route::get('/our-program/{categories}/{program}', [LandingPageController::class, 'programDetail'])->name('detail-program');
 
+Route::get('/our-impact', [LandingPageController::class, 'ourImpact'])->name('our-impact');
+
 Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
 Route::get('/publication/{title}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
 
-Route::get('/grand-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
+Route::get('/grant-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
+Route::get('/career', [LandingPageController::class, 'career'])->name('career');
 
 Route::get('/grantee', [LandingPageController::class, 'grantee'])->name('grantee');
 Route::get('/grantee-custom', [LandingPageController::class, 'granteeTemplatePage'])->name('grantee.custom');

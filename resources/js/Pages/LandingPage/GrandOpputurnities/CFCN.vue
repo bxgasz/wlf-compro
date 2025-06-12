@@ -85,7 +85,7 @@ const lists = [
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
             <p class="">WLF mengundang Organisasi Masyarakat Sipil, khususnya yang telah memiliki pengalaman bekerja di wilayah Nusa Tenggara Timur (NTT)  untuk mengirimkan Pernyataan Minat Kerjasama dan Concept Note yang berisi deskripsi singkat ide proyek dan tujuan yang ingin dicapai.</p>
             <p class="">Durasi proyek yang dapat diajukan minimal 6 bulan hingga maksimal 18 bulan, dengan anggaran maksimal sebesar 1 (satu) miliar rupiah.</p>
-            <p class="">Lokasi pelaksanaan proyek yang diusulkan harus berada di Provinsi Nusa Tenggara Timur, sesuai dengan wilayah kerja WLF saat ini. Pengajuan Pernyataan Minat Kerjasama Hibah WLF dapat dilakukan mulai 8 Januari 2025 sampai dengan selambat-lambatnya 22 Januari 2025 jam 23.59 WIB.</p>
+            <p class="">Lokasi pelaksanaan proyek yang diusulkan harus berada di Provinsi Nusa Tenggara Timur, sesuai dengan wilayah kerja WLF saat ini.Pengajuan Pernyataan Minat Kerjasama Hibah WLF dapat dilakukan mulai 8 Januari 2025 sampai dengan selambat-lambatnya 22 Januari 2025 jam 23.59 WIB.</p>
          </div>
       </div>
 

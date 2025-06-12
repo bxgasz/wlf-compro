@@ -34,6 +34,11 @@ class LandingPageController extends Controller
         return Inertia::render('LandingPage/OurProgram/Index');
     }
 
+    public function  ourImpact() 
+    {
+        return Inertia::render('LandingPage/OurImpact/Index');
+    }
+
     public function subProgram($categories) 
     {
         //programcategories with program
@@ -58,6 +63,11 @@ class LandingPageController extends Controller
     public function cfcn()
     {
         return Inertia::render('LandingPage/GrandOpputurnities/CFCN');
+    }
+
+    public function career()
+    {
+        return Inertia::render('LandingPage/GrandOpputurnities/Career');
     }
 
     public function grantee()
