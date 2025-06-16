@@ -20,7 +20,7 @@ const modules = [
 const ourProgram = [
    {
       title: 'early childhood development',
-      link: route('sub-program', 'categories'),
+      link: route('sub-program', 'aaaaaaaaaaaaaaa'),
       data: [
          {
             img: '/assets/img/ourprogram/program1.png',
@@ -109,8 +109,8 @@ const ourProgram = [
             <div class="w-full border border-[#E75E00] rounded-2xl shadow-xl shadow-[#D86727]/20 my-10" v-for="(list, index) in ourProgram">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] p-5">
                   <div class="flex flex-col gap-5">
-                     <h1 class="font-montserrat text-4xl text-[#E75E00] uppercase font-bold">{{ list.title }}</h1>
-                     <Link :href="list.link" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">See What to do</Link>
+                     <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] uppercase font-bold">{{ list.title }}</h1>
+                     <Link :href="list.link" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">See What to do</Link>
                   </div>
                   <div class="w-full">
                      <swiper

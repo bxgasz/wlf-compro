@@ -93,8 +93,11 @@ const news = [
 
       <div class="w-full flex justify-center my-20">
          <div class="max-w-7xl w-full px-8">
-            <div class="grid grid-cols-[25%,70%] gap-10">
-               <div class="">
+            <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">
+               <div class="lg:hidden">
+                  <p role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i }}</p>
+               </div>
+               <div class="hidden lg:block">
                   <p role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i }}</p>
                </div>
                <div class="">
@@ -199,7 +202,7 @@ const news = [
   pointer-events: none;
 }
 
-.image-container img, .image-container video{
+.image-container-hero img, .image-container-hero video{
    width: 100%;
    height: 100%;
    object-fit: cover;

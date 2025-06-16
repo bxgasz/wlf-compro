@@ -27,7 +27,7 @@ Route::middleware('auth')->get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::middleware('auth')->prefix('/admin')->group(function () {
+Route::middleware('auth:web')->prefix('/admin')->group(function () {
     Route::get('/profile', [UserController::class, 'getProfile'])->name('profile');
     Route::post('/profile', [UserController::class, 'updateProfile'])->name('profile.update');
     Route::post('/change-password', [UserController::class, 'updatePassword'])->name('update.password');
@@ -134,8 +134,8 @@ Route::get('/publication/{title}', [LandingPageController::class, 'detailPublica
 Route::get('/grant-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
 Route::get('/career', [LandingPageController::class, 'career'])->name('career');
 
-Route::get('/grantee', [LandingPageController::class, 'grantee'])->name('grantee');
-Route::get('/grantee-custom', [LandingPageController::class, 'granteeTemplatePage'])->name('grantee.custom');
+Route::get('/grantee', [LandingPageController::class, 'grantee'])->name('grantee')->middleware('auth:grantee');
+// Route::get('/grantee-custom', [LandingPageController::class, 'granteeTemplatePage'])->name('grantee.custom');
 
 Route::get('/contact-us', [LandingPageController::class, 'contactUs'])->name('contact');
 Route::get('/donate', [LandingPageController::class, 'donate'])->name('donate');
@@ -151,3 +151,7 @@ Route::post('/subscribe-newsletter', function (Request $request) {
 
     return back()->with('success', 'Data created successfully');
 })->name('email.subscribe');
+
+Route::get('/login-grantee', [AuthController::class, 'loginGrantee'])->name('auth.login-grantee');
+Route::post('/login-grantee', [AuthController::class, 'authGrantee'])->name('auth.post-grantee');
+Route::post('/logout-grantee', [AuthController::class, 'destroyGrantee'])->name('grantee.logout');

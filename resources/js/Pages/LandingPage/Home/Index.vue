@@ -195,11 +195,11 @@ const programs = [
       </div>
 
       <div class="flex justify-center w-full">
-         <div class="max-w-7xl text-center w-full my-20">
+         <div class="max-w-7xl text-center w-full my-20 px-8">
             <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold">What We Do</h2>
 
-            <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 mt-20">
-               <div class="relative w-[85%]">
+            <div class="grid grid-cols-1 lg:grid-cols-[65%,25%] gap-10 lg:gap-20 mt-20">
+               <div class="relative w-full">
                   <img src="/assets/img/home/map.png" alt="project location" class="w-full brightness-[0.8]">
                   
                   <div

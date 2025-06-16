@@ -4,7 +4,7 @@ import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, A11y, Autoplay } from 'swiper/modules'
+import { Pagination, A11y, Autoplay, Navigation } from 'swiper/modules'
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
@@ -16,6 +16,11 @@ const modules = [
    Autoplay,
    Pagination,
    A11y
+]
+
+const modulesJourney = [
+   Pagination,
+   Navigation
 ]
 
 const ourValues = [
@@ -153,24 +158,54 @@ const tabOurTeam = ref('management')
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl px-8 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-[20%,100%]">
-               <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold">
+            <div class="grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-[20%,100%]">
+               <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold text-center lg:text-left">
                   Our <br> Journey
                </h2>
 
                <div class="bg-[#D86727] rounded-[20px] w-full p-10">
                   <div class="flex gap-5 h-64 w-full items-center">
-                     <div class="flex flex-col gap-5" v-for="i in 8">
-                        <p class="font-bold text-xl text-white">20{{ 9 + i }}</p>
-                        <div class="w-40 h-24">
-                           <img src="/assets/img/about/journey.jpg" alt="journey" class="rounded-xl">
-                        </div>
-                        <p class="text-white">Description of journey</p>
-                     </div>
+                     <swiper
+                        :spaceBetween="5"
+                        :centeredSlides="false"
+                        :modules="modulesJourney"
+                        :breakpoints="{
+                           0: {
+                              slidesPerView: 1.2,
+                           },
+                           600: {
+                              slidesPerView: 2.5,
+                           },
+                           768: {
+                              slidesPerView: 3.5,
+                           },
+                           1024: {
+                              slidesPerView: 5,
+                           },
+                           1280: {
+                              slidesPerView: 6
+                           }
+                        }"
+                        :navigation="{
+                           nextEl: '.custom-next',
+                           prevEl: '.custom-prev',
+                        }"
+                        class="w-full"
+                     >
+                        <swiper-slide v-for="i in 8">
+                           <div class="flex flex-col gap-5">
+                              <p class="font-bold text-xl text-white">20{{ 9 + i }}</p>
+                              <div class="w-40 h-24">
+                                 <img src="/assets/img/about/journey.jpg" alt="journey" class="rounded-xl">
+                              </div>
+                              <p class="text-white">Description of journey</p>
+                           </div>
+                        </swiper-slide>
+                     </swiper>
                   </div>
                   <div class="w-[80%] flex justify-end gap-2">
-                     <ArrowBack class="bg-white rounded-full w-8 h-8 flex items-center justify-center p-2" />
-                     <ArrowBack class="bg-white rounded-full w-8 h-8 flex items-center justify-center p-2 rotate-180" />
+                     <ArrowBack class="bg-white rounded-full w-8 h-8 flex items-center justify-center p-2 custom-prev" role="button"/>
+                     <ArrowBack class="bg-white rounded-full w-8 h-8 flex items-center justify-center p-2 rotate-180 custom-next"  role="button"/>
                   </div>
                </div>
             </div>
@@ -178,7 +213,7 @@ const tabOurTeam = ref('management')
       </div>
 
       <div class="w-full flex justify-center mt-20">
-         <div class="w-full max-w-7xl px-8">
+         <div class="w-full max-w-7xl px-8 space-y-5">
             <div class="w-full flex justify-center">
                <h2 class="text-[#2B3E8C] text-4xl font-extrabold font-montserrat">
                   Visi & Misi
@@ -204,8 +239,8 @@ const tabOurTeam = ref('management')
       <div class="flex justify-center mt-20">
          <div class="bg-[#2B3E8C] max-w-7xl h-full w-full rounded-3xl mx-8 p-10">
             <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] gap-10 justify-center items-center">
-               <div class="w-full h-[150%] rounded-3xl">
-                  <img src="/assets/img/home/hero.png" alt="publication" class="w-[22rem] h-full object-cover rounded-3xl">
+               <div class="w-full h-full lg:h-[150%] rounded-3xl">
+                  <img src="/assets/img/home/hero.png" alt="publication" class="w-full h-full object-cover rounded-3xl">
                </div>
                <div class="text-white">
                   <h1 class="font-montserrat text-2xl font-bold">Visi</h1>
@@ -226,12 +261,12 @@ const tabOurTeam = ref('management')
             <div class="w-full h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727]"></div>
             <div class="w-full h-60 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727] -mt-32"></div>
 
-            <div class="w-full flex justify-center absolute top-10">
-               <div class="max-w-7xl px-8 w-full">
+            <div class="w-full flex justify-center -mt-[30rem]">
+               <div class="max-w-7xl px-8 w-full justify-center">
                   <h1 class="text-5xl font-montserrat text-[#262C51] font-bold text-center">Values</h1>
                   <p class="text-center mt-5">Lorem ipsum dolor sit amet consectetur adipiscing elit. <br> Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
-                  <div class="flex gap-5 justify-start -mt-13 mb-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
-                     <div class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex flex-col justify-center items-center gap-5" v-for="(values, index) in ourValues" :key="index">
+                  <div class="flex flex-col lg:flex-row gap-10 justify-center items-center mt-10 lg:-mt-13 mb-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
+                     <div class="w-[19rem] h-fit lg:w-[24rem] lg:h-[27rem] flex flex-col justify-center items-center gap-5 text-center" v-for="(values, index) in ourValues" :key="index">
                         <div class="w-20 h-20">
                            <img :src="values.icon" alt="values" class="w-full h-full object-cover">
                         </div>
@@ -245,12 +280,24 @@ const tabOurTeam = ref('management')
       </div>
 
       <div class="w-full flex justify-center mt-20">
-         <div class="max-w-7xl pe-8 w-full">
-            <div class="flex gap-20">
-               <div class="bg-[#D86727] rounded-[20px] w-[100%] p-10 -ms-44">
-                  <div class="flex flex-wrap gap-5 min-h-64 w-full items-center justify-end">
+         <div class="max-w-7xl w-full px-8">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
+
+               <div class="lg:hidden">
+                  <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold">
+                     Our Team
+                  </h2>
+
+                  <div class="flex gap-2 mt-10">
+                     <button @click="tabOurTeam = 'management'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</button>
+                     <button @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</button>
+                  </div>
+               </div>
+
+               <div class="bg-[#D86727] rounded-[20px] w-[100%] p-10 lg:-ms-44">
+                  <div class="flex flex-wrap gap-5 min-h-64 w-full items-center justify-center md:justify-between lg:justify-end">
                      <div class="text-white space-y-3" v-for="(data, index) in ourTeam" :key="index">
-                        <div class="w-72 h-44">
+                        <div class="lg:w-72 h-44">
                            <img :src="data.image" alt="values" class="w-full h-full object-cover rounded-[20px]">
                         </div>
                         <h3 class="text-[20px] font-bold">{{ data.name }}</h3>
@@ -259,7 +306,7 @@ const tabOurTeam = ref('management')
                   </div>
                </div>
 
-               <div class="w-[20%]">
+               <div class="w-[20%] hidden lg:block">
                   <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold">
                      Our Team
                   </h2>
@@ -282,10 +329,10 @@ const tabOurTeam = ref('management')
                :slide-per-view="3"
                :pagination="{ clickable: true }"
             >
-               <swiper-slide class="h-full" v-for="i in ourPartners">
-                  <div class="flex flex-wrap justify-center gap-10">
-                     <div class="w-40 h-40" v-for="data in i.data">
-                        <img :src="data.image" alt="img">
+               <swiper-slide class="h-full !w-full" v-for="i in ourPartners">
+                  <div class="w-full flex flex-wrap justify-center gap-10 mb-10 lg:mb-0">
+                     <div class="h-15 w-15 lg:w-40 lg:h-40" v-for="data in i.data">
+                        <img :src="data.image" alt="img" class="w-full h-full object-contain">
                      </div>
                   </div>
                </swiper-slide>
@@ -293,11 +340,11 @@ const tabOurTeam = ref('management')
          </div>
       </div>
 
-      <div class="flex justify-center mt-20 w-full bg-[#2B3E8C] rounded-t-[300px]">
+      <div class="flex justify-center mt-20 w-full bg-[#2B3E8C] rounded-t-[100px] lg:rounded-t-[300px]">
          <div class="max-w-7xl px-8 my-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-               <div class="w-[572px] h-[284px]">
-                  <iframe class="rounded-[20px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2342680692304!2d106.82871827509548!3d-6.232817993755369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ef32de8be3%3A0x9bb807c61923a77e!2sWilliam%20%26%20Lily%20Foundation!5e0!3m2!1sid!2sid!4v1748936984987!5m2!1sid!2sid" width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               <div class="w-full h-[284px]">
+                  <iframe class="rounded-[20px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2342680692304!2d106.82871827509548!3d-6.232817993755369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ef32de8be3%3A0x9bb807c61923a77e!2sWilliam%20%26%20Lily%20Foundation!5e0!3m2!1sid!2sid!4v1748936984987!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                </div>
                <div class="flex flex-col gap-5">
                   <h1 class="text-5xl font-montserrat text-white font-bold">Contact Us</h1>

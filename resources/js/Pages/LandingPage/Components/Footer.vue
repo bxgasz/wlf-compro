@@ -47,7 +47,7 @@ const handleSubscribe = () => {
                   <Link :href="route('publications')" class="block hover:text-[#D86727] hover:font-semibold">News & Stories</Link>
                   <Link href="#" class="block hover:text-[#D86727] hover:font-semibold">Work With Us</Link>
                   <Link :href="route('contact')" class="block hover:text-[#D86727] hover:font-semibold">Contact Us</Link>
-                  <Link href="#" class="block hover:text-[#D86727] hover:font-semibold">Join Us</Link>
+                  <Link :href="route('career')" class="block hover:text-[#D86727] hover:font-semibold">Join Us</Link>
                </div>
             </div>
 

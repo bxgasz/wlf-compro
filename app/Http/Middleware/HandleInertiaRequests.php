@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -43,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 'footer_notes' => json_decode($setting->footer_notes, true)
             ],
             'auth.user' => fn () => $request->user() ? $request->user() : null,
+            'auth.grantee' => fn () => Auth::guard('grantee')->user() ?: null,
         ]);
     }
 }

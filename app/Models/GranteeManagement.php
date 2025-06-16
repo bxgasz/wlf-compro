@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class GranteeManagement extends Model
+class GranteeManagement extends Authenticatable
 {
     protected $table = 'grantee_management';
 
@@ -13,5 +14,10 @@ class GranteeManagement extends Model
         'email',
         'foundation',
         'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GranteeManagement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
@@ -57,7 +58,7 @@ class GranteeManagementController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'foundation' => $request->foundation,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
             ];
 
             $grantee = GranteeManagement::create($storeData);
@@ -84,7 +85,6 @@ class GranteeManagementController extends Controller
                 'name' => $grantee->name,
                 'email' => $grantee->email,
                 'foundation' => $grantee->foundation,
-                'password' => $grantee->password,
             ],
         ]);
     }
@@ -105,7 +105,7 @@ class GranteeManagementController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'foundation' => $request->foundation,
-                'password' => $request->password,
+                'password' => Hash::make($grantee->password),
             ];
 
             $grantee->update($updateData);

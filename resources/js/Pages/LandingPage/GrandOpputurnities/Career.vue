@@ -20,7 +20,7 @@ import Navbar from '../Components/Navbar.vue';
 
       <div class="flex justify-center w-full my-20">
          <div class="max-w-7xl px-8 w-full">
-            <div class="grid grid-cols-3 gap-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                <Link href="#" class="relative w-full fading group" role="button" v-for="i in 3" :key="i">
                   <div class="relative w-full fading group">
                      <div class="w-full h-[20rem] overflow-hidden img-our-program rounded-2xl">

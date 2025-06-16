@@ -5,6 +5,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n'
 
 const page = usePage()
+const grantee = computed(() => page.props.auth?.grantee)
 
 const showLangButton = ref(false)
 const showLangButtonPopUp = ref(false)
@@ -60,9 +61,9 @@ const navLinks = [
    {
       img: '',
       text_id: 'Kesempatan',
-      text_en: 'Grand Oppoturnities',
-      key: 'grand-oppoturnities',
-      link: '/grand-oppoturnities',
+      text_en: 'Grant Oppoturnities',
+      key: 'grant-oppoturnities',
+      link: '/grant-oppoturnities',
    },
 ]
 
@@ -139,7 +140,8 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
          <div class="flex gap-3 items-center w-auto">
             <SearchIcon class="text-white w-8"/>
             <Link :href="route('donate')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
-            <Link :href="route('grantee')" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
+            <Link v-if="!grantee" :href="route('grantee')" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
+            <Link v-else :href="route('grantee.logout')" method="post" as="button" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">Logout</Link>
          </div>
       </div>
 
@@ -171,10 +173,20 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
             </div>
          </div>
          
-         <div class="w-full bg-[#D7261C] absolute mt-5 p-3 rounded-lg" :class="{ 'opacity-100 translate-y-0': showNavbar, 'opacity-0 -translate-y-1 hidden': !showNavbar }">
-            <Link v-for="(nav, index) in navLinks" :key="nav.key" :href="nav.link">
-               <p class="text-slate-100 text-[16px] hover:text-slate-100 p-3 mt-2 hover:bg-[#c0000b] rounded-md" :class="{ 'bg-[#c0000b]' : isActive(nav.link) }">{{ lang == 'id' ? nav.text_id : nav.text_en }}</p>
-            </Link>
+         <div class="w-full bg-[#D86727]/60 backdrop-blur-md absolute mt-5 p-5 rounded-lg" :class="{ 'opacity-100 translate-y-0': showNavbar, 'opacity-0 -translate-y-1 hidden': !showNavbar }">
+            <div class="w-auto flex flex-col gap-5 justify-center">
+               <div v-for="(nav, index) in navLinks" :key="nav.key" class="relative">
+                  <Link :href="nav.link">
+                     <p class="text-[16px] mx-4 font-bold" :class="isActive(nav.link) ? 'text-[#D86727] font-bold' : 'text-white hover:text-[#ff8b48]'">{{ lang == 'id' ? nav.text_id : nav.text_en }}</p>
+                  </Link>
+               </div>
+            </div>
+            <div class="flex flex-col mt-5 gap-5 mx-4 w-auto">
+               <SearchIcon class="text-white w-8"/>
+               <Link :href="route('donate')" class="bg-[#D86727] h-fit hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
+               <Link v-if="!grantee" :href="route('grantee')" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
+               <Link v-else :href="route('grantee.logout')" method="post" as="button" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">Logout</Link>
+            </div>
          </div>
       </div>
    </nav>

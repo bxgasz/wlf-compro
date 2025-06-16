@@ -55,7 +55,7 @@ const partners = [
          </h1>
       </div>
 
-      <div class="w-full flex justify-center bg-[#2F3C87] gap-8 h-24 items-end">
+      <div class="w-full flex justify-start lg:justify-center overflow-auto px-8 bg-[#2F3C87] lg:gap-8 h-24 items-end">
          <div @click="tabActive = 'home'" role="button" :class="tabActive == 'home' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Home</div>
          <div @click="tabActive = 'panduan'" role="button" :class="tabActive == 'panduan' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Panduan</div>
          <div @click="tabActive = 'format_pelaporan'" role="button" :class="tabActive == 'format_pelaporan' ? 'bg-white rounded-t-xl text-[#2F3C87]' : 'text-white'" class="flex justify-center items-center px-10 h-[80%] font-bold">Format Laporan</div>
@@ -67,7 +67,7 @@ const partners = [
             <div class="max-w-7xl w-full px-8">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%]">
                   <h1 class="font-montserrat text-[#2F3C87] text-5xl font-bold">Apa itu <br> Grantee Portal?</h1>
-                  <div class="font-medium">
+                  <div class="font-medium mt-5 lg:mt-0">
                      <p>Grantee Portal ini merupakan laman untuk mendukung pengelolaan proyek-proyek yang dilakukan oleh mitra-mitra WLF. Pada laman ini dapat diakses: (1) panduan dan kebijakan WLF terbaru, (2) format-format laporan yang berlaku, dan (3) pelaporan, untuk laporan keuangan dan narasi mitra.</p>
                      <p>Untuk dapat mengakses portal, grantee wajib mendaftarkan alamat email (google based). Seluruh pelaporan mitra baik berupa laporan proyek maupun keuangan disampaikan kepada WLF melalui portal ini. </p>
                   </div>
@@ -81,7 +81,7 @@ const partners = [
                   <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
-                           <img src="/assets/img/grantee/grantee-1.jpg" alt="grantee" class="w-full h-full object-cover rounded-tl-[150px]">
+                           <img src="/assets/img/grantee/grantee-1.jpg" alt="grantee" class="w-full h-full object-cover rounded-t-[180px] lg:rounded-tl-[150px] lg:rounded-tr-none">
                         </div>
                         <h3 class="text-2xl font-bold">Nilai-Nilai</h3>
                         <p>Dalam pengelolaan dana hibah, WLF menerapkan 7 nilai-nilai dasar. Nilai-nilai ini pula yang diharapkan akan dipraktikkan oleh lembaga mitra. </p>
@@ -107,7 +107,7 @@ const partners = [
 
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
-                           <img src="/assets/img/grantee/grantee-3.jpg" alt="grantee" class="w-full h-full object-cover rounded-tr-[150px]">
+                           <img src="/assets/img/grantee/grantee-3.jpg" alt="grantee" class="w-full h-full object-cover lg:rounded-tr-[150px]">
                         </div>
                         <h3 class="text-2xl font-bold">Siklus Pengelolaan Proyek</h3>
                         <ul class="list-decimal">
@@ -122,19 +122,19 @@ const partners = [
          </div>
 
          <div class="relative">
-            <div class="w-full h-72 md:h-52 bg-[#2B3E8C]"></div>
+            <div class="w-full h-20 lg:h-72 md:h-52 bg-[#2B3E8C]"></div>
             <div class="flex justify-center mt-4 w-full">
                <div class="w-full max-w-[1600px] h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727]"></div>
             </div>
             <div class="flex justify-center mt-4 w-full">
-               <div class="w-full max-w-[1600px] h-96 rounded-t-[35%] lg:rounded-t-[200px] border-t border-[#D86727] -mt-52"></div>
+               <div class="w-full max-w-[1600px] h-[60rem] lg:h-96 rounded-t-[35%] lg:rounded-t-[200px] border-t border-[#D86727] -mt-52"></div>
             </div>
 
             <div class="absolute w-full top-[50%] -translate-y-1/2 flex justify-center">
-               <div class="max-w-7xl h-full w-full mx-8 flex justify-center gap-10">
-                  <div class="w-[478px] space-y-8">
-                     <div class="w-full h-[248px]">
-                        <img src="/assets/img/grantee/poin-1.png" alt="poin1" class="rounded-3xl h-full w-full object-cover shadow-xl shadow-[#D86727]/20">
+               <div class="max-w-7xl h-full w-full mx-8 grid grid-cols-1 lg:grid-cols-2 justify-center gap-10">
+                  <div class="w-full space-y-8">
+                     <div class="w-full h-[248px] flex justify-center">
+                        <img src="/assets/img/grantee/poin-1.png" alt="poin1" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
                      </div>
                      <h3 class="text-center text-2xl text-[#E75E00] font-bold">Pengiriman Laporan Kuartal</h3>
                      <p class="font-medium">Masing-masing laporan dikirimkan melalui Grantee Portal. Setelah mengunggah ke Grantee Portal, mitra menginfokan kepada officer terkait melalui surel. </p>
@@ -143,9 +143,9 @@ const partners = [
                         <li>Laporan keuangan: Dikirimkan kepada Grant Officer dan Admin and Finance Manager dengan cc kepada Program Officer.</li>
                      </ul>
                   </div>
-                  <div class="w-[478px] space-y-8">
-                     <div class="w-full h-[248px]">
-                        <img src="/assets/img/grantee/poin-2.png" alt="poin2" class="rounded-3xl h-full w-full object-cover shadow-xl shadow-[#D86727]/20">
+                  <div class="w-full space-y-8">
+                     <div class="w-full h-[248px] flex justify-center">
+                        <img src="/assets/img/grantee/poin-2.png" alt="poin2" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
                      </div>
                      <h3 class="text-center text-2xl text-[#E75E00] font-bold">Pertanyaan</h3>
                      <p class="font-medium">Apabila anda menemui kesulitan atau memiliki pertanyaan dalam mengakses atau mempergunakan portal ini, silakan untuk menghubungi Program Officer yang bertanggungjawab atas proyek Anda. </p>
@@ -221,7 +221,7 @@ const partners = [
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 100%;
+  height: 20rem;
 }
 
 .image-container::after {

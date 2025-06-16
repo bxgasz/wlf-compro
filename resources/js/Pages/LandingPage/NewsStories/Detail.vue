@@ -198,7 +198,7 @@ span {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 100%;
+  height: 10rem;
 }
 
 .image-container::after {

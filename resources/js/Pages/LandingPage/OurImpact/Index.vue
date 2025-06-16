@@ -33,33 +33,35 @@ const showMore = () => {
 
             <div class="w-full flex justify-center -mt-56">
                <div class="max-w-7xl px-8 w-full">
-                  <div class="grid grid-cols-[25%,55%,20%] items-center">
-                     <div class="flex flex-col gap-5">
+                  <div class="grid grid-cols-1 lg:grid-cols-[25%,55%,20%] items-center">
+                     <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:order-1">
                         <div class="">
-                           <h2 class="text-4xl font-montserrat text-[#2B3E8C] font-bold">32.041 People</h2>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">32.041 People</h2>
                            <p>reached</p>
                         </div>
                         <div class="">
-                           <h2 class="text-4xl font-montserrat text-[#2B3E8C] font-bold">24 Villages</h2>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">24 Villages</h2>
                            <p>served</p>
                         </div>
                         <div class="">
-                           <h2 class="text-4xl font-montserrat text-[#2B3E8C] font-bold">67.286 Hours</h2>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">67.286 Hours</h2>
                            <p>per day served</p>
                         </div>
                         <div class="">
-                           <h2 class="text-4xl font-montserrat text-[#2B3E8C] font-bold">446 Youth</h2>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">446 Youth</h2>
                            <p>involved</p>
                         </div>
                      </div>
-                     <div class="w-full -mt-20">
-                        <img src="/assets/img/ourImpact/img.png" alt="bg" class="w-full h-full object-contain">
+                     <div class="w-full -mt-20 order-1 lg:order-2">
+                        <img src="/assets/img/ourImpact/img2.png" alt="bg" class="w-full h-full object-contain">
                      </div>
-                     <div class="flex flex-col gap-5 justify-center items-center">
-                        <h2 class="text-4xl font-montserrat text-[#2B3E8C] font-bold">Sustainable Development Goals</h2>
-                        <img src="/assets/img/about/values-1.png" alt="values-1" class="w-16 h-16">
-                        <img src="/assets/img/about/values-2.png" alt="values-2" class="w-16 h-16">
-                        <img src="/assets/img/about/values-3.png" alt="values-3" class="w-16 h-16">
+                     <div class="flex flex-col gap-5 justify-center items-center order-3 my-10 lg:mt-0">
+                        <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold text-center lg:text-left">Sustainable Development Goals</h2>
+                        <div class="flex flex-row lg:flex-col gap-5">
+                           <img src="/assets/img/about/values-1.png" alt="values-1" class="w-16 h-16">
+                           <img src="/assets/img/about/values-2.png" alt="values-2" class="w-16 h-16">
+                           <img src="/assets/img/about/values-3.png" alt="values-3" class="w-16 h-16">
+                        </div>
                      </div>
                   </div>
                </div>
@@ -68,12 +70,12 @@ const showMore = () => {
       </div>
 
       <div class="w-full text-center bg-[#2B3E8C]">
-         <h2 class="text-4xl font-bold font-montserrat py-8 text-white">Stories of Our Impact</h2>
+         <h2 class="text-2xl lg:text-4xl font-bold font-montserrat py-8 text-white">Stories of Our Impact</h2>
       </div>
 
       <div class="flex justify-center w-full my-20">
          <div class="max-w-7xl px-8 w-full">
-            <div class="grid grid-cols-4 gap-16">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
                <Link href="#" class="relative w-full fading group" role="button" v-for="i in 10" :key="i">
                   <div class="relative w-full fading group">
                      <div class="w-full h-[10rem] overflow-hidden img-our-program rounded-2xl">
