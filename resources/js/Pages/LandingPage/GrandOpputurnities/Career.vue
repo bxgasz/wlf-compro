@@ -2,7 +2,13 @@
 import { Link } from '@inertiajs/vue3';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
+import { useI18n } from 'vue-i18n';
 
+const props = defineProps({
+   careers: Object
+})
+
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -21,22 +27,22 @@ import Navbar from '../Components/Navbar.vue';
       <div class="flex justify-center w-full my-20">
          <div class="max-w-7xl px-8 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-               <Link href="#" class="relative w-full fading group" role="button" v-for="i in 3" :key="i">
+               <Link href="#" class="relative w-full fading group" role="button" v-for="(data, i) in careers" :key="i">
                   <div class="relative w-full fading group">
                      <div class="w-full h-[20rem] overflow-hidden img-our-program rounded-2xl">
-                        <img src="/assets/img/ourImpact/imp-1.jpg"
+                        <img :src="data.image"
                               alt="" 
                               class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                   </div>
-                  <p class="w-full text-gray-500 mt-3">FULLTIME</p>
-                  <p class="w-full mt-3">OFFICER</p>
+                  <p class="w-full text-gray-500 mt-3">{{ data.type }}</p>
+                  <p class="w-full mt-3">{{ data.title[locale] }}</p>
                </Link>
             </div>
 
-            <div class="w-full flex justify-center mt-10">
+            <!-- <div class="w-full flex justify-center mt-10">
                <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
-            </div>
+            </div> -->
          </div>
       </div>
 

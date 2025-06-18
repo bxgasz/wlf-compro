@@ -15,12 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectUsersTo(function (Request $request) {
-            dd(Auth::guard('grantee')->check());
             if (Auth::guard('grantee')->check()) {
                 return route('grantee');
             }
 
-            return route('news-stories.index');
+            return route('content.index');
         });
         $middleware->redirectGuestsTo(function (Request $request) {
             if ($request->is('grantee*')) {

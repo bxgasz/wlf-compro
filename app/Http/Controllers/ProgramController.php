@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use App\Models\Program;
 use App\Models\ProgramCategory;
 use Illuminate\Http\Request;
@@ -45,6 +46,14 @@ class ProgramController extends Controller
 
    public function create()
    {
+    $locations = Location::all()->map(function ($category) {
+        $title = json_decode($category->title, true);
+        return [
+        'value' => $category->id, 
+        'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
+        ];
+    });
+
       $categoriess = ProgramCategory::all()->map(function ($category) {
          $title = json_decode($category->title, true);
          return [
@@ -54,7 +63,8 @@ class ProgramController extends Controller
       });
 
       return Inertia::render('Program/Create', [
-         'categories' => $categoriess
+         'categories' => $categoriess,
+         'locations' => $locations
       ]);
    }
 
@@ -65,6 +75,7 @@ class ProgramController extends Controller
            'title_en' => 'required|string|min:5',
            'description_en' => 'required',
            'description_id' => 'required',
+           'location_id' => 'required',
            'slug' => [
                 'required',
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
@@ -93,6 +104,8 @@ class ProgramController extends Controller
                'implementing_partner' => $request->implementing_partner,
                'slug' => $request->slug,
                'sector' => $request->sector,
+               'status' => 'draft',
+               'location_id' => $request->location_id,
                'location' => $request->location,
                'start_date' => $request->start_date,
                'end_date' => $request->end_date,
@@ -142,6 +155,14 @@ class ProgramController extends Controller
             'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
             ];
         });
+
+        $locations = Location::all()->map(function ($category) {
+            $title = json_decode($category->title, true);
+            return [
+            'value' => $category->id, 
+            'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
+            ];
+        });
         
         return Inertia::render('Program/Edit', [
             'program' => [
@@ -151,15 +172,18 @@ class ProgramController extends Controller
                 'banner' => $program->banner,
                 'implementing_partner' => $program->implementing_partner,
                 'sector' => $program->sector,
+                'location_id' => $program->location_id,
                 'location' => $program->location,
                 'start_date' => $program->start_date,
                 'end_date' => $program->end_date,
                 'youtube_link' => $program->youtube_link,
                 'document' => $program->document,
+                'status' => $program->status,
                 'slug' => $program->slug,
                 'program_category_id' => $program->program_category_id,
             ],
-            'categories' => $categoriess
+            'categories' => $categoriess,
+            'locations' => $locations
         ]);
    }
 
@@ -176,6 +200,7 @@ class ProgramController extends Controller
            'title_en' => 'required|string|min:5',
            'description_en' => 'required',
            'description_id' => 'required',
+           'location_id' => 'required',
            'slug' => [
                 'required',
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
@@ -202,7 +227,9 @@ class ProgramController extends Controller
                'implementing_partner' => $request->implementing_partner,
                'slug' => $request->slug,
                'sector' => $request->sector,
+               'status' => $request->status,
                'location' => $request->location,
+               'location_id' => $request->location_id,
                'start_date' => $request->start_date,
                'end_date' => $request->end_date,
                'program_category_id' => $request->program_category_id,

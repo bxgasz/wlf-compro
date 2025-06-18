@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function login()
     {
         if (Auth::guard('web')->check()) {
-            redirect(route('news-stories.index'));
+            redirect(route('content.index'));
         } else {
             return Inertia::render('Auth/Signin');
         }
@@ -29,7 +29,7 @@ class AuthController extends Controller
         if (Auth::guard('web')->attempt(array('email' => $request->email, 'password' => $request->password))) {
             $request->session()->regenerate();
 
-            return redirect(route('news-stories.index'));
+            return redirect(route('content.index'));
         }
 
         throw ValidationException::withMessages(['password' => 'Password or email not match, or account not active']);

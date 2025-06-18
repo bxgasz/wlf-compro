@@ -10,6 +10,10 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Link, usePage } from '@inertiajs/vue3';
 
+const props = defineProps({
+   partners: Object
+})
+
 const page = usePage()
 
 const modules = [
@@ -25,19 +29,24 @@ const modulesJourney = [
 
 const ourValues = [
    {
-      icon: '/assets/img/about/values-1.png',
-      title: 'Zero Hunger',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex'
+      icon: '/assets/img/about/1.svg',
+      title: 'Empowerment',
    },
    {
-      icon: '/assets/img/about/values-2.png',
-      title: 'Quality Education',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex'
+      icon: '/assets/img/about/2.svg',
+      title: 'Collaboration',
    },
    {
-      icon: '/assets/img/about/values-3.png',
-      title: 'Decent Work and Economic Growth',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex'
+      icon: '/assets/img/about/3.png',
+      title: 'Accountability & Integrity',
+   },
+   {
+      icon: '/assets/img/about/4.svg',
+      title: 'Sustainability',
+   },
+   {
+      icon: '/assets/img/about/5.svg',
+      title: 'Driven by Needs',
    },
 ]
 
@@ -265,13 +274,12 @@ const tabOurTeam = ref('management')
                <div class="max-w-7xl px-8 w-full justify-center">
                   <h1 class="text-5xl font-montserrat text-[#262C51] font-bold text-center">Values</h1>
                   <p class="text-center mt-5">Lorem ipsum dolor sit amet consectetur adipiscing elit. <br> Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
-                  <div class="flex flex-col lg:flex-row gap-10 justify-center items-center mt-10 lg:-mt-13 mb-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
-                     <div class="w-[19rem] h-fit lg:w-[24rem] lg:h-[27rem] flex flex-col justify-center items-center gap-5 text-center" v-for="(values, index) in ourValues" :key="index">
+                  <div class="flex flex-col lg:flex-row flex-wrap gap-10 justify-center items-center mt-10 lg:mt-20 mb-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
+                     <div class="w-[19rem] h-fit flex flex-col justify-center items-center gap-5 text-center" v-for="(values, index) in ourValues" :key="index">
                         <div class="w-20 h-20">
                            <img :src="values.icon" alt="values" class="w-full h-full object-cover">
                         </div>
                         <h3 class="text-[20px] text-[#C7202F] font-bold">{{ values.title }}</h3>
-                        <p class="text-center">{{ values.description }}</p>
                      </div>
                   </div>
                </div>
@@ -279,7 +287,7 @@ const tabOurTeam = ref('management')
          </div>
       </div>
 
-      <div class="w-full flex justify-center mt-20">
+      <div class="w-full flex justify-center mt-20" v-if="page.props.settings.show_organization_team">
          <div class="max-w-7xl w-full px-8">
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
@@ -322,21 +330,22 @@ const tabOurTeam = ref('management')
          <div class="max-w-7xl px-8">
             <h1 class="text-5xl font-montserrat text-[#262C51] font-bold text-center">Our Partners</h1>
 
-            <swiper
+            <swiper v-if="partners.length != 0"
                class="h-fit mt-20"
                :modules="modules"
                :autoplay="{ delay: 8000, disableOnInteraction: false }"
                :slide-per-view="3"
                :pagination="{ clickable: true }"
             >
-               <swiper-slide class="h-full !w-full" v-for="i in ourPartners">
+               <swiper-slide class="h-full !w-full" v-for="(chunk, i) in partners">
                   <div class="w-full flex flex-wrap justify-center gap-10 mb-10 lg:mb-0">
-                     <div class="h-15 w-15 lg:w-40 lg:h-40" v-for="data in i.data">
-                        <img :src="data.image" alt="img" class="w-full h-full object-contain">
+                     <div class="h-15 w-15 lg:w-40 lg:h-40" v-for="(data, i) in chunk">
+                        <img :src="data.logo" alt="img" class="w-full h-full object-contain">
                      </div>
                   </div>
                </swiper-slide>
             </swiper>
+            <div class="w-full text-center mt-10" v-else>No partners yet</div>
          </div>
       </div>
 
@@ -349,7 +358,7 @@ const tabOurTeam = ref('management')
                <div class="flex flex-col gap-5">
                   <h1 class="text-5xl font-montserrat text-white font-bold">Contact Us</h1>
                   <p class="text-white">
-                     Menara Karya, Lt. 17, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950
+                     {{ page.props.settings.location ?? 'Menara Karya, Lt. 17, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950' }}
                   </p>
                   <div class="flex gap-2">
                      <a href="'tel:'+page.props.settings.phone_no"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>

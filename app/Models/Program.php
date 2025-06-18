@@ -19,6 +19,8 @@ class Program extends Model
         'youtube_link',
         'banner',
         'description',
+        'location_id',
+        'status',
         'document',
         'program_category_id',
     ];
@@ -26,5 +28,10 @@ class Program extends Model
     public function programCategory()
     {
         return $this->hasOne(ProgramCategory::class, 'id', 'program_category_id');
+    }
+
+    public function locationMap()
+    {
+        return $this->hasOne(Location::class, 'id', 'location_id');
     }
 }

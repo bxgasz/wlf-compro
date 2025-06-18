@@ -10,38 +10,36 @@ import EditIcon from '@/Icons/EditIcon.vue';
 import PlusIcon from '@/Icons/PlusIcon.vue';
 import TrashIcon from '@/Icons/TrashIcon.vue';
 import { Link } from '@inertiajs/vue3';
-import axios from 'axios';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const props = defineProps({
-   newsStories: Object
+   locations: Object
 })
 
 const fields = [
    { "key": "title", "label": "Title", "sort": true },
-   { "key": "writter", "label": "Writter", "sort": true },
-   { "key": "type", "label": "Type", "sort": true },
+   { "key": "address", "label": "Address" },
    { "key": "action", "label": "Action" },
 ]
 
-const lists = ref(props.newsStories)
+const lists = ref(props.locations)
 
 const searchText = ref('')
 const perPage = ref(10)
 const sort = ref('')
 const order = ref('desc')
 
-const getNewsStories = async (page) => {
+const getLocations = async (page) => {
    const searchParams = new URLSearchParams({
       search: searchText.value,
       perPage: perPage.value,
       page: page,
-      sort: sort.value,
-      order: order.value
+      order: order.value,
+      sort: sort.value
    })
 
    try {
-      const res = await axios.get(route('content.data') + '?' + searchParams.toString())
+      const res = await axios.get(route('location.data') + '?' + searchParams.toString())
       lists.value = res.data
    } catch (error) {
       HelperService.toastError(error)
@@ -49,37 +47,37 @@ const getNewsStories = async (page) => {
 }
 
 const handlePageChange = (page) => {
-   getNewsStories(page)
+   getLocations(page)
 }
 
 const handleSortData = (field) => {
    sort.value = field
    order.value = order.value == 'desc' ? 'asc' : 'desc'
-   getNewsStories()
+   getLocations()
 }
 
 const handleDelete = async(id) => {
-   HelperService.confirmDelete(
-      async() => await axios.delete(route('content.destroy', id)),
-      async() => {
-         HelperService.toastSuccess('Data deleted successfully')
-         await getNewsStories()
-      }
-   )
+  HelperService.confirmDelete(
+    async() => await axios.delete(route('location.destroy', id)),
+    async () => {
+      HelperService.toastSuccess('Data deleted successfully')
+      await getLocations()
+    }
+  )
 }
 </script>
 
 <template>
    <AdminLayout>
       <PageBreadcrumb :page-list="[
-         { label: 'News Stories Management', href: '', currPage: true }
+         { label: 'Location Management', href: '', currPage: true }
       ]" />
 
-      <ComponentCard title="Data News Stories">
+      <ComponentCard title="Data Location">
          <template #searchbar>
             <div class="flex items-center gap-2">
                <TextInput
-                  @keyup.enter="getNewsStories"
+                  @keyup.enter="getLocations"
                   class="w-72"
                   v-model="searchText"
                   placeholder="Search someting"
@@ -88,20 +86,25 @@ const handleDelete = async(id) => {
             </div>
          </template>
          <template #button>
-            <Link :href="route('content.create')">
+            <Link :href="route('location.create')">
                <Button size="sm" variant="primary" :endIcon="PlusIcon"> Add </Button>
             </Link>
          </template>
-         <Table :data="lists" :field="fields" :order="order" @page-change="handlePageChange" @sort-change="handleSortData">
+         <Table :data="lists" :field="fields" @page-change="handlePageChange" @sort-change="handleSortData" order="desc">
             <template #title="{ row }">
-               <div class="flex gap-2">
+              <div class="flex gap-2">
                   <p class="text-gray-500 text-theme-sm dark:text-gray-400"><strong>ID:</strong> {{ row.title['id'].slice(0, 50) }}</p>
                   <p class="text-gray-500 text-theme-sm dark:text-gray-400"><strong>EN:</strong> {{ row.title['en'].slice(0,50) }}</p>
                </div>
             </template>
+            <template #address="{ row }">
+               <div class="flex gap-2">
+                  <p class="text-gray-500 text-theme-sm dark:text-gray-400" v-html="row.address"></p>
+               </div>
+            </template>
             <template #action="{ row }">
                <div class="flex gap-2">
-                  <Link :href="route('content.edit', row.id)">
+                  <Link :href="route('location.edit', row.id)">
                      <EditIcon class="cursor-pointer text-gray-700 hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-500"/>
                   </Link>
                   <button @click="handleDelete(row.id)">

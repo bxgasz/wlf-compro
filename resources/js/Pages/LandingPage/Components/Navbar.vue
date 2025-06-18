@@ -139,7 +139,7 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
          </div>
          <div class="flex gap-3 items-center w-auto">
             <SearchIcon class="text-white w-8"/>
-            <Link :href="route('donate')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
+            <Link v-if="page.props.settings.show_donate_button" :href="route('donate')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
             <Link v-if="!grantee" :href="route('grantee')" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
             <Link v-else :href="route('grantee.logout')" method="post" as="button" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">Logout</Link>
          </div>
@@ -183,7 +183,7 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
             </div>
             <div class="flex flex-col mt-5 gap-5 mx-4 w-auto">
                <SearchIcon class="text-white w-8"/>
-               <Link :href="route('donate')" class="bg-[#D86727] h-fit hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
+               <Link v-if="page.props.settings.show_donate_button" :href="route('donate')" class="bg-[#D86727] h-fit hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
                <Link v-if="!grantee" :href="route('grantee')" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
                <Link v-else :href="route('grantee.logout')" method="post" as="button" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">Logout</Link>
             </div>

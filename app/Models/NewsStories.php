@@ -21,6 +21,7 @@ class NewsStories extends Model
         'status',
         'created_by',
         'category_id',
+        'document'
     ];
 
     public function tags()

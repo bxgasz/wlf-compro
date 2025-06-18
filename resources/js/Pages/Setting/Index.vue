@@ -7,6 +7,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { HelperService } from '@/Helper/Alert';
 import { router, useForm } from '@inertiajs/vue3';
 import { QuillEditor } from '@vueup/vue-quill';
+import Swal from 'sweetalert2';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -93,6 +94,36 @@ const handleSubmitCta = () => {
    })
 }
 
+const toggleShowSection = async(event, section) => {
+  event.preventDefault();
+
+    Swal.fire({
+        icon: 'question',
+        title: 'Warning',
+        text: 'Are you sure want to switch to show mode?',
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: 'Yes, change to show mode',
+        cancelButtonText: 'No',
+
+    }).then(async ({ isConfirmed }) => {
+        if(isConfirmed) {
+         try {
+            await axios.post(route('setting.show-section', { setting: props.setting.id, section: section })).then(() => {
+               HelperService.toastSuccess('Mode changed successfully')
+               window.location.reload()
+            }).catch(error => {
+               HelperService.toastError(error)   
+            })
+          } catch (error) {
+            console.log(error)
+            HelperService.toastError('Error changed mode')
+          }
+        }
+    });
+}
+
 </script>
 
 <template>
@@ -100,6 +131,66 @@ const handleSubmitCta = () => {
       <PageBreadcrumb :page-list="[
          { label: 'Setting Content', href: '', currPage: true  }
       ]"/>
+
+      <ComponentCard title="Show Section Management" class="mb-5">
+         <h1 class="mb-5 text-xl font-bold">Component</h1>
+
+         <div class="flex items-center gap-5">
+            <label for="">Button Donate</label>
+            <label class="inline-flex items-center cursor-pointer">
+               <input
+                  type="checkbox"
+                  class="sr-only peer"
+                  :checked="setting.show_donate_button"
+                  @change="toggleShowSection($event, 'show_donate_button')"
+               >
+               <div
+                  class="relative w-11 h-6 rounded-full transition-all 
+                     peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500
+                     "
+                  :class="setting.show_donate_button == true ? 'bg-blue-600 dark:bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'"
+               >
+                  <div
+                     class="absolute top-0.5 left-0.5 h-5 w-5 bg-white border border-gray-300 rounded-full shadow 
+                     dark:border-gray-600"
+                     :class="setting.show_donate_button == true ? 'translate-x-5 transition-all transform' : ''"
+                  ></div>
+               </div>
+               <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  {{ setting.show_donate_button == true ? "Active" : "Disabled" }}
+               </span>
+            </label>
+         </div>
+
+         <h1 class="mb-5 text-xl font-bold">About Page</h1>
+
+         <div class="flex items-center gap-5">
+            <label for="">Organization & Team Section</label>
+            <label class="inline-flex items-center cursor-pointer">
+               <input
+                  type="checkbox"
+                  class="sr-only peer"
+                  :checked="setting.show_organization_team"
+                  @change="toggleShowSection($event, 'show_organization_team')"
+               >
+               <div
+                  class="relative w-11 h-6 rounded-full transition-all 
+                     peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500
+                     "
+                  :class="setting.show_organization_team == true ? 'bg-blue-600 dark:bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'"
+               >
+                  <div
+                     class="absolute top-0.5 left-0.5 h-5 w-5 bg-white border border-gray-300 rounded-full shadow 
+                     dark:border-gray-600"
+                     :class="setting.show_organization_team == true ? 'translate-x-5 transition-all transform' : ''"
+                  ></div>
+               </div>
+               <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  {{ setting.show_organization_team == true ? "Active" : "Disabled" }}
+               </span>
+            </label>
+         </div>
+      </ComponentCard>
 
       <ComponentCard title="setting">
          <div class="space-y-6">

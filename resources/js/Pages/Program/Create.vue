@@ -13,7 +13,8 @@ import { router, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
-   categories: Array
+   categories: Array,
+   locations: Array
 })
 
 const form = useForm({
@@ -23,6 +24,7 @@ const form = useForm({
    'description_id': '',
    'implementing_partner': '',
    'slug': '',
+   'location_id': '',
    'sector': '',
    'location': '',
    'start_date': '',
@@ -232,7 +234,21 @@ const handleSubmit = async() => {
                   >
                   {{ form.errors.program_category_id }}
                </label>   
-            </div>   
+            </div>
+            
+            <div class="">
+               <SearchSelect 
+                  :options="locations" 
+                  v-model="form.location_id" 
+                  :required="true"
+                  title="Location point"
+               />  
+               <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                  {{ form.errors.location_id }}
+               </label>   
+            </div>
 
             <label class="text-sm font-medium text-gray-700 dark:text-gray-400 flex gap-3 items-center">
                <div class="">

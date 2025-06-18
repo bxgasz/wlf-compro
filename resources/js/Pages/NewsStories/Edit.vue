@@ -24,6 +24,7 @@ const form = useForm({
    'meta_title': props.newsStories.meta_title,
    'meta_description': props.newsStories.meta_description,
    'banner': null,
+   'document': '',
    'type': props.newsStories.type,
    'content_en': props.newsStories.content.en,
    'content_id': props.newsStories.content.id,
@@ -39,8 +40,9 @@ const status = [
 ]
 
 const type = [
-   { label: 'News', value: 'news' },
-   { label: 'Story', value: 'story' },
+   { label: 'Stories', value: 'story' },
+   { label: 'Publications', value: 'publication' },
+   { label: 'Annual Report', value: 'annual_report' },
 ]
 
 const tabActive = ref('id')
@@ -61,13 +63,28 @@ const handleUploadBanner = (e) => {
    banner_preview.value = URL.createObjectURL(e.target.files[0])
 }
 
+const fileInput = ref(null)
+const fileName = ref(props.newsStories.document ?? '')
+
+const openFile = () => {
+   fileInput.value.click()
+}
+
+const handleUpload = (e) => {
+   const file = e.target.files[0]
+   form.document = file
+
+   fileName.value = file.name
+
+}
+
 const handleSubmit = async() => {
    form.processing = true
-   form.post(route('news-stories.update', props.newsStories.id), {
+   form.post(route('content.update', props.newsStories.id), {
       preserveScroll: true,
       onSuccess: () => {
          form.processing = false
-         router.visit(route('news-stories.index'))
+         router.visit(route('content.index'))
       },
       onError: (error) => {
          console.log(error)
@@ -81,10 +98,10 @@ const handleSubmit = async() => {
    <AdminLayout>
       {{ console.log(tags) }}
       <PageBreadcrumb :page-list="[
-         { label: 'News Stories Management', href: 'news-stories.index', currPage: false },
-         { label: 'update News Stories', href: '', currPage: true }
+         { label: 'Content Management', href: 'content.index', currPage: false },
+         { label: 'update Content', href: '', currPage: true }
       ]"/>
-      <ComponentCard title="update News Stories">
+      <ComponentCard title="update Content">
          <div class="flex gap-3 justify-center">
             <Button @click="handleChangeTab('id')" size="sm" :variant="tabActive == 'id' ? 'primary' : 'outline'">ID</Button>
             <Button @click="handleChangeTab('en')" size="sm" :variant="tabActive == 'en' ? 'primary' : 'outline'">EN</Button>
@@ -209,6 +226,47 @@ const handleSubmit = async() => {
                   {{ form.errors.banner }}
                </label>   
                <input class="hidden" type="file" ref="bannerInput" name="file" accept="image/*" @input="handleUploadBanner" />
+            </div>
+
+            <div class="space-y-6" v-if="form.type == 'publication' || form.type == 'annual_report'">
+               <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+               Document <span class="text-error-500">*</span></label>
+               <div as="button" @click="openFile" class="cursor-pointer p-12 flex justify-center border border-dashed border-gray-300 rounded-xl" data-hs-file-upload-trigger="">
+                  <div class="text-center">
+                     <span class="inline-flex justify-center items-center size-16 bg-gray-100 text-gray-800 rounded-full">
+                     <svg v-if="!fileName" class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" x2="12" y1="3" y2="15"></line>
+                     </svg>
+                     <DocumentIcons v-else />
+                     </span>
+
+                     <div class="" v-if="!fileName">
+                        <div class="mt-4 flex flex-wrap justify-center text-sm leading-6 text-gray-600">
+                           <span class="pe-1 font-medium text-gray-800 dark:text-gray-400">
+                              Upload your file here or
+                           </span>
+                           <span class="font-semibold text-blue-600 hover:text-blue-700 rounded-lg decoration-2 hover:underline focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2">browse</span>
+                        </div>
+      
+                        <p class="mt-1 text-xs text-gray-400">
+                           Pick a file up to 10MB.
+                        </p>
+                     </div>
+                     <div class="mt-4 flex flex-wrap justify-center text-sm leading-6 text-gray-600" v-else>
+                        <span class="pe-1 font-medium text-gray-800 dark:text-gray-400">
+                           {{ fileName }}
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                  {{ form.errors.document }}
+               </label>   
+               <input class="hidden" type="file" ref="fileInput" accept="application/pdf" name="file" @input="handleUpload" />
             </div>
 
             <div class="description">

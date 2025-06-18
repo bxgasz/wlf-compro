@@ -12,9 +12,13 @@ import Footer from '../Components/Footer.vue';
 import { useI18n } from 'vue-i18n';
 import ChevronIcon from '@/Icons/ChevronIcon.vue';
 import { computed, ref } from 'vue';
+import { formatDate } from '@/Helper/FormatDate';
 
 const props = defineProps({
-   banners: Object
+   banners: Object,
+   programCategories: Object,
+   stories: Object,
+   programs: Object
 })
 
 const modules = [
@@ -57,20 +61,20 @@ const youtubeUrl = computed(() =>
   `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`
 )
 
-const programs = [
-   {
-      title: 'Early Childhood Development',
-      image: '/assets/img/home/our-program.png'
-   },
-   {
-      title: 'Literacy and Numeracy for early grades',
-      image: '/assets/img/home/program-2.png'
-   },
-   {
-      title: 'Economic Empowerment',
-      image: '/assets/img/home/program-3.png'
-   },
-]
+// const programCategories = [
+//    {
+//       title: 'Early Childhood Development',
+//       image: '/assets/img/home/our-program.png'
+//    },
+//    {
+//       title: 'Literacy and Numeracy for early grades',
+//       image: '/assets/img/home/program-2.png'
+//    },
+//    {
+//       title: 'Economic Empowerment',
+//       image: '/assets/img/home/program-3.png'
+//    },
+// ]
 </script>
 
 <template>
@@ -176,7 +180,7 @@ const programs = [
             <div class="max-w-7xl px-8 w-full">
                <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">Our Program</h1>
                <div class="flex gap-5 justify-start my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
-                  <Link href="#" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programs" :key="i">
+                  <Link :href="route('sub-program', data.slug)" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programCategories" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
                         <img :src="data.image" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
                      </div>
@@ -185,7 +189,7 @@ const programs = [
                            <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
                         </div>
                         <div class="">
-                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold capitalize">{{ data.title }}</p>
+                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold capitalize">{{ data.title[locale] }}</p>
                         </div>
                      </div>
                   </Link>
@@ -198,21 +202,21 @@ const programs = [
          <div class="max-w-7xl text-center w-full my-20 px-8">
             <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold">What We Do</h2>
 
-            <div class="grid grid-cols-1 lg:grid-cols-[65%,25%] gap-10 lg:gap-20 mt-20">
-               <div class="relative w-full">
-                  <img src="/assets/img/home/map.png" alt="project location" class="w-full brightness-[0.8]">
+            <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 lg:gap-20 mt-20">
+               <div class="relative w-full h-full">
+                  <img src="/assets/img/home/map.png" alt="project location" class="w-full h-full brightness-[0.8]">
                   
                   <div
-                     v-for="(location, index) in locations"
+                     v-for="(data, index) in programs"
                      :key="index"
-                     class="absolute w-[8px] md:w-[15px] h-[8px] md:h-[15px] rounded-[50%] cursor-pointer -translate-x-1/2 -translate-y-1/2" :class="location.type == 'project_area' ? 'bg-[#E75E00]' : 'bg-white'"
+                     class="absolute w-[8px] md:w-[15px] h-[8px] md:h-[15px] rounded-[50%] cursor-pointer -translate-x-1/2 -translate-y-1/2 bg-[#E75E00]"
                      :style="{
-                     top: location.top + '%',
-                     left: location.left + '%',
+                     top: data.location_map.top + '%',
+                     left: data.location_map.left + '%',
                      }"
-                     @click="handleShowPopup(location)"
+                     @click="handleShowPopup(data.location)"
                   >
-                     <span class="absolute inline-flex right-0 h-full w-full animate-ping rounded-full opacity-75" :class="location.type == 'project_area' ? 'bg-[#E75E00]' : 'bg-white'"></span>
+                     <span class="absolute inline-flex right-0 h-full w-full animate-ping rounded-full opacity-75 bg-[#E75E00]"></span>
                   </div>
 
                   <div v-if="showPopup" @click.stop ref="popupRef" class="absolute bg-[#24252A80]/50 backdrop-blur-sm rounded-lg p-3 -translate-x-[50%] -translate-y-[120%]" :style="{ top: selectedLocation.top + '%', left: selectedLocation.left + '%', }">
@@ -232,14 +236,14 @@ const programs = [
                            prevEl: '.custom-prev',
                         }"
                   >
-                     <SwiperSlide v-for="i in 2">
-                        <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white w-fit mb-5">Selesai</p>
+                     <SwiperSlide v-for="(data, index) in programs">
+                        <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white w-fit mb-5">{{ data.status }}</p>
                         <div class="w-full h-40">
-                           <img src="/assets/img/ourprogram/program2.png" alt="program" class="w-full h-full object-cover rounded-[20px]">
+                           <img :src="data.banner" alt="program" class="w-full h-full object-cover rounded-[20px]">
                         </div>
-                        <p class="text-left my-5">05 May 2025</p>
+                        <p class="text-left my-5">{{ formatDate(data.created_at) }}</p>
                         <p class="w-full font-medium text-left">
-                           Developing Holistic Integrated Early Childhood Development Model
+                           {{ data.title[locale] }}
                         </p>
                      </SwiperSlide>
                   </swiper>
@@ -258,36 +262,36 @@ const programs = [
 
       <!-- news section -->
       <div class="bg-[#D86727] flex justify-center pt-20">
-         <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] max-w-7xl px-8 h-[80%] gap-10 lg:gap-0">
+         <div class="grid grid-cols-1 w-full lg:grid-cols-[30%,70%] max-w-7xl px-8 h-[80%] gap-10 lg:gap-0">
             <div class="flex flex-col gap-5">
                <h1 class="font-playfair text-white text-5xl font-bold">News <br>& Stories</h1>
-               <Link href="#" class="bg-[#2F3C87] hover:bg-[#3c50c0] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit hidden lg:flex">See All News & Stories</Link>
+               <Link :href="route('publications')" class="bg-[#2F3C87] hover:bg-[#3c50c0] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit hidden lg:flex">See All News & Stories</Link>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-[40%,60%] gap-4 min-h-[364px]">
-               <Link href="#" class="relative w-full fading group" role="button">
+               <Link :href="route('publications-detail', { category: stories[0].category_id, title: stories[0].slug ? stories[0].slug : stories[0].title[lang], date:  new Date(stories[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button">
                   <div class="w-full h-full overflow-hidden img-our-program rounded-2xl">
-                     <img src="/assets/img/home/news.jpg"
+                  <img :src="stories[0].banner"
                            alt="" 
                            class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                   </div>
                   <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50 text-white p-8 z-20">
                      <div class="">
-                        <p class="text-white text-[10px] sm:text-[16px] w-full">15 Feb 2025</p>
-                        <p class="text-white text-[16px] sm:text-[20px] w-full font-medium">Pak Ape dan Kelas yang Lebih Hidup Berkat Metode Mengajar Interaktif</p>
+                        <p class="text-white text-[10px] sm:text-[16px] w-full">{{ formatDate(stories[0].created_at) }}</p>
+                        <p class="text-white text-[16px] sm:text-[20px] w-full font-medium">{{ stories[0].title[locale] }}</p>
                      </div>
                   </div>
                </Link>
                
-               <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0">
-                  <Link href="#" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="i in 2">
+               <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0" v-if="stories.length > 1">
+                  <Link :href="route('publications-detail', { category: data[1].category_id, title: data[1].slug ? data[1].slug : data[1].title[lang], date:  new Date(data[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="(data, i) in stories.slice(1)">
                      <div class="w-full h-full overflow-hidden rounded-2xl">
                         <img :src="`/assets/img/home/news-${i + 1}.jpg`"
                            alt="" 
                            class="object-cover h-[140px] md:h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                      <div class="w-[95%]">
-                        <p class="text-white text-[10px] sm:text-[16px] w-full">15 Feb 2025</p>
-                        <p class="text-white text-[16px] sm:text-[20px] w-full font-bold">Pak Ape dan Kelas yang Lebih Hidup Berkat Metode Mengajar Interaktif</p>
+                        <p class="text-white text-[10px] sm:text-[16px] w-full">{{ formatDate(data.created_at) }}</p>
+                        <p class="text-white text-[16px] sm:text-[20px] w-full font-bold">{{ formatDate(data.title[locale]) }}</p>
                      </div>
                   </Link>
                </div>

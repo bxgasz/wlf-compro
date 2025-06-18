@@ -232,6 +232,7 @@ import UserCheckIcon from "@/Icons/UserCheckIcon.vue";
 import PartnersIcon from "@/Icons/PartnersIcon.vue";
 import ImageIcon from "@/Icons/ImageIcon.vue";
 import PinIcon from "@/Icons/PinIcon.vue";
+import LocationIcon from "@/Icons/LocationIcon.vue";
 
   const page = usePage();
 
@@ -273,31 +274,37 @@ const menuGroups = [
         role: ['admin', 'manager']
       },
       {
-        icon: ContentTypeIcon,
-        name: "Content Type",
-        path: '/admin/content-type',
+        icon: LocationIcon,
+        name: "Location",
+        path: "/admin/location",
         role: ['admin', 'manager']
       },
+      // {
+      //   icon: ContentTypeIcon,
+      //   name: "Content Type",
+      //   path: '/admin/content-type',
+      //   role: ['admin', 'manager']
+      // },
     ]
   },
-  {
-    title: "Menu",
-    role: ['admin', 'manager', 'staff'],
-    items: [
-      {
-        icon: MenuIcon,
-        name: "Menu",
-        path: "/admin/menu",
-        role: ['admin', 'manager', 'staff']
-      },
-      {
-        icon: ImageIcon,
-        name: "Static Page",
-        path: "/admin/static-page",
-        role: ['admin', 'manager', 'staff']
-      }
-    ]
-  },
+  // {
+  //   title: "Menu",
+  //   role: ['admin', 'manager', 'staff'],
+  //   items: [
+  //     {
+  //       icon: MenuIcon,
+  //       name: "Menu",
+  //       path: "/admin/menu",
+  //       role: ['admin', 'manager', 'staff']
+  //     },
+  //     {
+  //       icon: ImageIcon,
+  //       name: "Static Page",
+  //       path: "/admin/static-page",
+  //       role: ['admin', 'manager', 'staff']
+  //     }
+  //   ]
+  // },
   {
     title: "Career",
     role: ['admin', 'manager', 'staff'],
@@ -320,6 +327,12 @@ const menuGroups = [
         path: "/admin/banner",
         role: ['admin', 'manager', 'staff']
       },
+      {
+        icon: MenuIcon,
+        name: "Our Impact Management",
+        path: "/admin/our-impact-management",
+        role: ['admin', 'manager', 'staff']
+      },
     ]
   },
   {
@@ -328,16 +341,16 @@ const menuGroups = [
     items: [
       {
         icon: NewsIcon,
-        name: "News Stories",
-        path: "/admin/news-stories",
+        name: "Content Management",
+        path: "/admin/content",
         role: ['admin', 'manager', 'staff']
       },
-      {
-        icon: GridIcon,
-        name: "Resource",
-        path: "/admin/resource",
-        role: ['admin', 'manager', 'staff']
-      },
+      // {
+      //   icon: GridIcon,
+      //   name: "Resource",
+      //   path: "/admin/resource",
+      //   role: ['admin', 'manager', 'staff']
+      // },
       {
         icon: ProgramIcon,
         name: "Program Category",

@@ -16,10 +16,11 @@ return new class extends Migration
             $table->string('meta_title');
             $table->string('meta_description');
             $table->json('title');
-            $table->enum('type', ['story', 'news']);
+            $table->enum('type', ['story', 'news', 'annual_report', 'publication']);
             $table->string('slug');
             $table->json('content');
             $table->string('banner');
+            $table->string('document')->nullable();
             $table->string('writter');
 
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');

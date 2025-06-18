@@ -8,8 +8,10 @@ use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\GranteeManagementController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsStoriesController;
+use App\Http\Controllers\OurImpactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProgramCategoryController;
 use App\Http\Controllers\ProgramController;
@@ -63,9 +65,9 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
     Route::post('/resource-update/{resource}', [ResourceController::class, 'update'])->name('resource.update');
     Route::get('/resource-list', [ResourceController::class, 'data'])->name('resource.data');
 
-    Route::resource('/news-stories', NewsStoriesController::class);
-    Route::post('/news-stories-update/{news_story}', [NewsStoriesController::class, 'update'])->name('news-stories.update');
-    Route::get('/news-stories-list', [NewsStoriesController::class, 'data'])->name('news-stories.data');
+    Route::resource('/content', NewsStoriesController::class);
+    Route::post('/content-update/{content}', [NewsStoriesController::class, 'update'])->name('content.update');
+    Route::get('/content-list', [NewsStoriesController::class, 'data'])->name('content.data');
 
     Route::resource('/program-categories', ProgramCategoryController::class);
     Route::post('/program-categories-update/{program_category}', [ProgramCategoryController::class, 'update'])->name('program-categories.update');
@@ -95,6 +97,12 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
     Route::post('/user-status/{user}', [UserController::class, 'updateStatus'])->name('user.status');
     Route::get('/user-list', [UserController::class, 'data'])->name('user.data');
 
+    Route::resource('/location', LocationController::class);
+    Route::get('/location-list', [LocationController::class, 'data'])->name('location.data');
+
+    Route::get('/our-impact-management', [OurImpactController::class, 'index'])->name('our-impact-management.index');
+    Route::post('/our-impact-management/{id?}', [OurImpactController::class, 'updateOrCreate'])->name('our-impact-management.upstore');
+
     Route::get('/subscriber', function (Request $request) {
         $search = $request->search;
 
@@ -109,6 +117,7 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
     });
 
     Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.logout');
+    Route::post('show-section/{setting}/{section}', [SettingController::class, 'toggleShowSection'])->name('setting.show-section');
 
     Route::middleware(['role:admin,manager'])->group(function () {});
 });
@@ -129,7 +138,7 @@ Route::get('/our-program/{categories}/{program}', [LandingPageController::class,
 Route::get('/our-impact', [LandingPageController::class, 'ourImpact'])->name('our-impact');
 
 Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
-Route::get('/publication/{title}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
+Route::get('/publication/{category}/{title}/{date}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
 
 Route::get('/grant-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
 Route::get('/career', [LandingPageController::class, 'career'])->name('career');

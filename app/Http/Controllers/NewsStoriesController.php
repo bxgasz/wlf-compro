@@ -90,8 +90,14 @@ class NewsStoriesController extends Controller
             'writter' => 'required|string',
             'tags' => 'required|array',
             '*tags' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
         ]);
+
+        if ($request->type == 'publication' || $request->type == 'annual_report') {
+            $request->validate([
+                'document' => 'required|mimes:pdf,doc,docx|max:10124'
+            ]);
+        }
 
         try {
             DB::beginTransaction();
@@ -104,7 +110,7 @@ class NewsStoriesController extends Controller
                 'slug' => $request->slug,
                 'meta_title' => $request->meta_title,
                 'meta_description' => $request->meta_description,
-                'type' => $request->type,
+                'type' => 'story',
                 'content' => json_encode([
                     'en' => $request->content_en,
                     'id' => $request->content_id,
@@ -123,13 +129,20 @@ class NewsStoriesController extends Controller
                 $storeData['banner'] = asset('/storage/'. $filePath);
             }
 
+            if ($request->hasFile('document') && $request->type == 'publication' || $request->type == 'annual_report') {
+                $fileName = time() . '_' . $request->file('document')->getClientOriginalName();
+                $filePath = Storage::disk('public')->putFileAs('/content/' . $storeData['type'], $request->file('document'), $fileName);
+
+                $storeData['document'] = asset('/storage/' . $filePath);
+            } 
+
             $newsStories = NewsStories::create($storeData);
 
             $newsStories->tags()->attach($request->tags);
 
             DB::commit();
 
-            return redirect(route('news-stories.index'));
+            return redirect(route('content.index'));
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -141,7 +154,7 @@ class NewsStoriesController extends Controller
         }
     }
 
-    public function edit(NewsStories $news_story)
+    public function edit(NewsStories $content)
     {
         $tags = Tag::all()->map(function ($tag) {
             $title = json_decode($tag->title, true);
@@ -161,25 +174,26 @@ class NewsStoriesController extends Controller
 
         return Inertia::render('NewsStories/Edit', [
             'newsStories' => [
-                'id' => $news_story->id,
-                'title' => json_decode($news_story->title, true),
-                'meta_title' => $news_story->meta_title,
-                'meta_description' => $news_story->meta_description,
-                'banner' => $news_story->banner,
-                'slug' => $news_story->slug,
-                'type' => $news_story->type,
-                'content' => json_decode($news_story->content, true),
-                'writter' => $news_story->writter,
-                'status' => $news_story->status,
-                'category_id' => $news_story->category_id,
-                'tags' => $news_story->tags->pluck('id')
+                'id' => $content->id,
+                'title' => json_decode($content->title, true),
+                'meta_title' => $content->meta_title,
+                'meta_description' => $content->meta_description,
+                'banner' => $content->banner,
+                'document' => $content->document,
+                'slug' => $content->slug,
+                'type' => $content->type,
+                'content' => json_decode($content->content, true),
+                'writter' => $content->writter,
+                'status' => $content->status,
+                'category_id' => $content->category_id,
+                'tags' => $content->tags->pluck('id')
             ],
             'tags' => $tags,
             'categories' => $categories,
         ]);
     }
 
-    public function update(Request $request, NewsStories $news_story)
+    public function update(Request $request, NewsStories $content)
     {
         $request->validate([
             'title_id' => 'required|string|min:5',
@@ -189,7 +203,7 @@ class NewsStoriesController extends Controller
             'slug' => [
                 'required',
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
-                // Rule::unique('news_stories', 'slug')->ignore($news_story->id),
+                // Rule::unique('news_stories', 'slug')->ignore($content->id),
             ],
             'meta_title' => 'required|string', 
             'meta_description' => 'required|string',
@@ -199,7 +213,8 @@ class NewsStoriesController extends Controller
             'status' => 'required|string',
             'tags' => 'required|array',
             '*tags' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'document' => 'nullable|mimes:pdf,doc,docx|max:10124'
         ]);
 
         try {
@@ -224,8 +239,16 @@ class NewsStoriesController extends Controller
                 'category_id' => $request->category_id,
             ];
 
+            if ($request->type == 'story') {
+                $oldMediaPath = str_replace(url('/storage/'), '', $content->document);
+
+                if (Storage::disk('public')->exists($oldMediaPath)) {
+                    Storage::disk('public')->delete($oldMediaPath);
+                }
+            }
+
             if ($request->hasFile('banner')) {
-                $oldMediaPath = str_replace(url('/storage/'), '', $news_story->banner);
+                $oldMediaPath = str_replace(url('/storage/'), '', $content->banner);
 
                 if (Storage::disk('public')->exists($oldMediaPath)) {
                     Storage::disk('public')->delete($oldMediaPath);
@@ -238,16 +261,30 @@ class NewsStoriesController extends Controller
                 $updateData['banner'] = asset('/storage/'. $filePath);
             }
 
+            if ($request->hasFile('document') && $request->type == 'publication' || $request->type == 'annual_report') {
+                $oldMediaPath = str_replace(url('/storage/'), '', $content->document);
+
+                if (Storage::disk('public')->exists($oldMediaPath)) {
+                    Storage::disk('public')->delete($oldMediaPath);
+                }
+
+                $fileName = time() . '_' . $request->file('document')->getClientOriginalName();
+                $filePath = Storage::disk('public')->putFileAs('/content/' . $updateData['type'], $request->file('document'), $fileName);
+
+                $updateData['document'] = asset('/storage/' . $filePath);
+            } 
+
             if ($updateData['status'] == 'published') {
                 $updateData['editor_by'] = Auth::user()->id;
             }
 
-            $news_story->update($updateData);
-            $news_story->tags()->sync($request->tags);
+            $content->update($updateData);
+            $content->tags()->sync($request->tags);
+
 
             DB::commit();
 
-            return redirect(route('news-stories.index'));
+            return redirect(route('content.index'));
         } catch (\Throwable $th) {
             DB::rollBack();
             dd($th->getMessage());
@@ -257,18 +294,18 @@ class NewsStoriesController extends Controller
         }
     }
 
-    public function destroy(NewsStories $news_story)
+    public function destroy(NewsStories $content)
     {
         try {
-            if ($news_story->banner) {
-                $oldMediaPath = str_replace(url('/storage/'), '', $news_story->banner);
+            if ($content->banner) {
+                $oldMediaPath = str_replace(url('/storage/'), '', $content->banner);
 
                 if (Storage::disk('public')->exists($oldMediaPath)) {
                     Storage::disk('public')->delete($oldMediaPath);
                 }
             }
 
-            $news_story->delete();
+            $content->delete();
 
             return response()->json([
                 'success' => true,

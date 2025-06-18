@@ -4,6 +4,13 @@ import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import { Link } from '@inertiajs/vue3';
 import Accordion from '../Components/Accordion.vue';
+import { useI18n } from 'vue-i18n';
+
+const props = defineProps({
+   programCategories: Object
+})
+
+const { locale } = useI18n()
 
 const lists = [
    {
@@ -63,16 +70,16 @@ const lists = [
          <div class="w-full flex justify-center">
             <div class="max-w-7xl px-8 w-full">
                <div class="flex gap-5 justify-start my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
-                  <Link href="#" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[35rem] flex-shrink-0 flex justify-start relative fading group" v-for="i in 3" :key="i">
+                  <Link :href="route('sub-program', data.slug)" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[35rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programCategories" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
-                        <img :src="`/assets/img/grandopp/${i}.jpg`" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
+                        <img :src="data.image" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
                      </div>
                      <div class="h-full w-full absolute p-8 z-20 flex flex-col justify-between">
                         <div class="flex justify-end w-full">
                            <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
                         </div>
                         <div class="">
-                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold">Early Childhood Development</p>
+                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold">{{ data.title[locale] }}</p>
                         </div>
                      </div>
                   </Link>

@@ -5,6 +5,7 @@ import ComponentCard from '@/Components/common/ComponentCard.vue';
 import PageBreadcrumb from '@/Components/common/PageBreadcrumb.vue';
 import DatePicker from '@/Components/DatePicker.vue';
 import SearchSelect from '@/Components/SearchSelect.vue';
+import SelectInput from '@/Components/SelectInput.vue';
 import TextArea from '@/Components/TextArea.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { HelperService } from '@/Helper/Alert';
@@ -14,8 +15,15 @@ import { ref } from 'vue';
 
 const props = defineProps({
    categories: Array,
+   locations: Array,
    program: Object
 })
+
+const status = [
+   { label: 'Published', value: 'published' },
+   { label: 'Draft', value: 'draft' },
+   { label: 'Closed', value: 'closed' },
+]
 
 const form = useForm({
    'title_en': props.program.title.en,
@@ -26,6 +34,8 @@ const form = useForm({
    'slug': props.program.slug,
    'sector': props.program.sector,
    'location': props.program.location,
+   'status': props.program.status,
+   'location_id': props.program.location_id,
    'start_date': props.program.start_date,
    'end_date': props.program.end_date,
    'youtube_link': props.program.youtube_link ?? '',
@@ -222,6 +232,19 @@ const handleSubmit = async() => {
             </div>
 
             <div class="">
+               <SelectInput
+                  title="Status"
+                  :options="status"
+                  v-model="form.status"
+               />
+               <label
+                  class="block text-sm font-medium text-error-500"
+               >
+                  {{ form.errors.status }}
+               </label>
+            </div>
+
+            <div class="">
                <SearchSelect 
                   :options="categories" 
                   v-model="form.program_category_id" 
@@ -234,6 +257,20 @@ const handleSubmit = async() => {
                   {{ form.errors.program_category_id }}
                </label>   
             </div>   
+
+            <div class="">
+               <SearchSelect 
+                  :options="locations" 
+                  v-model="form.location_id" 
+                  :required="true"
+                  title="Location point"
+               />  
+               <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                  {{ form.errors.program_category_id }}
+               </label>   
+            </div>
 
             <label class="text-sm font-medium text-gray-700 dark:text-gray-400 flex gap-3 items-center">
                <div class="">

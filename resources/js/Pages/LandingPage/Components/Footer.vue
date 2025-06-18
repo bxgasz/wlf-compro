@@ -35,7 +35,7 @@ const handleSubscribe = () => {
                <img :src="page.props.settings.logo" alt="BSS Logo" class="h-10 mb-4">
 
                <div class="flex flex-col sm:flex-row justify-between text-gray-400 text-sm">
-                  <p>{{ page.props.settings.footer_notes[locale] ?? '© 2024 Hak cipta dilindungi oleh undang-undang.' }}</p>
+                  <p>{{ page.props.settings.footer_notes ?? '© 2024 Hak cipta dilindungi oleh undang-undang.' }}</p>
                </div>
             </div>
 

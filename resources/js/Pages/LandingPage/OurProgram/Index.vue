@@ -9,6 +9,11 @@ import "swiper/css/pagination";
 import 'swiper/css/navigation';
 import "swiper/css/autoplay";
 import ChevronIcon from '@/Icons/ChevronIcon.vue';
+import { useI18n } from 'vue-i18n';
+
+const props = defineProps({
+   programCategories: Object
+})
 
 const modules = [
    Autoplay,
@@ -16,6 +21,8 @@ const modules = [
    Navigation,
    A11y
 ]
+
+const { locale } = useI18n()
 
 const ourProgram = [
    {
@@ -106,11 +113,11 @@ const ourProgram = [
 
       <div class="w-full flex justify-center">
          <div class="max-w-7xl px-8">
-            <div class="w-full border border-[#E75E00] rounded-2xl shadow-xl shadow-[#D86727]/20 my-10" v-for="(list, index) in ourProgram">
+            <div v-if="programCategories.length > 0" class="w-full border border-[#E75E00] rounded-2xl shadow-xl shadow-[#D86727]/20 my-10" v-for="(list, index) in programCategories">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] p-5">
                   <div class="flex flex-col gap-5">
-                     <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] uppercase font-bold">{{ list.title }}</h1>
-                     <Link :href="list.link" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">See What to do</Link>
+                     <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] uppercase font-bold">{{ list.title[locale] }}</h1>
+                     <Link :href="route('sub-program', list.slug)" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">See What to do</Link>
                   </div>
                   <div class="w-full">
                      <swiper
@@ -123,14 +130,14 @@ const ourProgram = [
                            prevEl: '.custom-prev-' + index,
                         }"
                      >
-                        <SwiperSlide v-for="(item, index) in list.data">
+                        <SwiperSlide v-if="list.programs.length > 0" v-for="(item, index) in list.programs">
                            <div class="grid grid-cols-1 lg:grid-cols-2 w-full gap-10">
                               <div class="w-full h-64">
-                                 <img :src="item.img" :alt="item.title" class="w-full h-full object-cover rounded-[20px]">
+                                 <img :src="item.banner" :alt="item.title[locale]" class="w-full h-full object-cover rounded-[20px]">
                               </div>
                               <div class="">
-                                 <h1 class="font-montserrat text-2xl text-[#E75E00] uppercase font-bold">{{ item.title }}</h1>
-                                 <p>{{ item.description }}</p>
+                                 <h1 class="font-montserrat text-2xl text-[#E75E00] uppercase font-bold">{{ item.title[locale] }}</h1>
+                                 <p v-html="item.description[locale]"></p>
                               </div>
                            </div>
                         </SwiperSlide>
@@ -147,6 +154,7 @@ const ourProgram = [
                   </button>
                </div>
             </div>
+            <div v-else class="w-full text-center">No Programs Yet</div>
          </div>
       </div>
 

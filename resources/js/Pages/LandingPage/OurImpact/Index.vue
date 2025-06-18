@@ -2,7 +2,15 @@
 import { Link } from '@inertiajs/vue3';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
+import { formatDate } from '@/Helper/FormatDate';
+import { useI18n } from 'vue-i18n';
 
+const props = defineProps({
+   stories: Object,
+   impact: Object
+})
+
+const { locale } = useI18n()
 const showMore = () => {
 
 }
@@ -36,31 +44,32 @@ const showMore = () => {
                   <div class="grid grid-cols-1 lg:grid-cols-[25%,55%,20%] items-center">
                      <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:order-1">
                         <div class="">
-                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">32.041 People</h2>
-                           <p>reached</p>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_1[locale] }}</h2>
+                           <p>{{ impact.subtitle_1[locale] }}</p>
                         </div>
                         <div class="">
-                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">24 Villages</h2>
-                           <p>served</p>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_2[locale] }}</h2>
+                           <p>{{ impact.subtitle_2[locale] }}</p>
                         </div>
                         <div class="">
-                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">67.286 Hours</h2>
-                           <p>per day served</p>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_3[locale] }}</h2>
+                           <p>{{ impact.subtitle_3[locale] }}</p>
                         </div>
                         <div class="">
-                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">446 Youth</h2>
-                           <p>involved</p>
+                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_4[locale] }}</h2>
+                           <p>{{ impact.subtitle_4[locale] }}</p>
                         </div>
                      </div>
                      <div class="w-full -mt-20 order-1 lg:order-2">
-                        <img src="/assets/img/ourImpact/img2.png" alt="bg" class="w-full h-full object-contain">
+                        <img :src="impact.image ?? '/assets/img/ourImpact/img2.png'" alt="bg" class="w-full h-full object-contain">
                      </div>
                      <div class="flex flex-col gap-5 justify-center items-center order-3 my-10 lg:mt-0">
-                        <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold text-center lg:text-left">Sustainable Development Goals</h2>
+                        <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold text-center lg:text-left">{{ impact.sdg_title[locale] }}</h2>
                         <div class="flex flex-row lg:flex-col gap-5">
-                           <img src="/assets/img/about/values-1.png" alt="values-1" class="w-16 h-16">
-                           <img src="/assets/img/about/values-2.png" alt="values-2" class="w-16 h-16">
-                           <img src="/assets/img/about/values-3.png" alt="values-3" class="w-16 h-16">
+                           <div class="flex flex-col justify-center items-center gap-2" v-for="(data, i) in impact.sub_icons">
+                              <img :src="data.icon" alt="values-1" class="w-16 h-16">
+                              <h3 class="text-[20px] text-[#C7202F] font-bold">{{ data.text[locale] }}</h3>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -76,28 +85,28 @@ const showMore = () => {
       <div class="flex justify-center w-full my-20">
          <div class="max-w-7xl px-8 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
-               <Link href="#" class="relative w-full fading group" role="button" v-for="i in 10" :key="i">
+               <Link :href="route('publications-detail', { category: data.category_id, title: data.slug ? data.slug : data.title[lang], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in stories" :key="i">
                   <div class="relative w-full fading group">
                      <div class="w-full h-[10rem] overflow-hidden img-our-program rounded-2xl">
-                        <img src="/assets/img/ourImpact/imp-1.jpg"
+                        <img :src="data.banner"
                               alt="" 
                               class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                      <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50 text-white p-4 z-20">
                         <div class="">
-                           <p class="text-white text-[10px] sm:text-[16px] w-full">15 Feb 2025</p>
+                           <p class="text-white text-[10px] sm:text-[16px] w-full">{{ formatDate(data.created_at) }}</p>
                         </div>
                      </div>
                   </div>
-                  <p class="w-full font-bold mt-3">Name</p>
-                  <p class="w-full mt-3">Lorem Ipsum Title</p>
-                  <p class="w-full mt-3">“Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean ”</p>
+                  <p class="w-full font-bold mt-3">{{ data.title[locale] }}</p>
+                  <p class="w-full mt-3">{{ data.writter }}</p>
+                  <p class="w-full mt-3" v-html="data.content[locale].slice(0, 300)"></p>
                </Link>
             </div>
 
-            <div class="w-full flex justify-center mt-10">
+            <!-- <div class="w-full flex justify-center mt-10">
                <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">Read More Stories</button>
-            </div>
+            </div> -->
          </div>
       </div>
       

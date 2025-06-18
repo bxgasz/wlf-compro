@@ -136,4 +136,13 @@ class SettingController extends Controller
             return back()->with('error', 'Setting failed to update');
         }
     }
+
+    public function toggleShowSection(Setting $setting, $section)
+    {
+        $setting->update([
+            $section => !$setting->$section
+        ]);
+
+        return back()->with('success', 'Setting updated successfully!');
+    }
 }
