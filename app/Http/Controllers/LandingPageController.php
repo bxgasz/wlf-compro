@@ -122,10 +122,56 @@ class LandingPageController extends Controller
         });
     }
 
-    public function programDetail($categories, Program $program) 
+    public function programDetail($category, $title, $date) 
     {
-        return Inertia::render('LandingPage/OurProgram/ProgramDetail', [
-            'program' => $program
+        if (!$title && !$date) {
+            return redirect()->back();
+        }
+
+        $content = Program::with(['programCategory'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')
+        ->where('program_category_id', $category)->whereDate('created_at', $date)->first();
+
+        if (!$content) {
+            return redirect(route('home'));
+        }
+
+        $otherContent = Program::whereNot('id', $content->id)
+            ->orderByRaw('CASE WHEN program_category_id = ? THEN 1 ELSE 2 END', [$content->category_id])
+            ->orderBy('category_id', 'desc')
+            ->paginate(3);
+        
+        $otherContent->setCollection(
+            $otherContent->getCollection()->map(function ($item) {
+                return [
+                    ...$item->toArray(),
+                    'title' => json_decode($item->title, true),
+                ];
+            })
+        );
+
+
+        return Inertia::render('LandingPage/Content/ProgramDetail', [
+            'content' => [
+                'id' => $content->id,
+                'title' => json_decode($content->title),
+                'slug' => $content->slug,
+                'implementing_partner' => $content->implementing_partner,
+                'meta_head' => $content->meta_head,
+                'sector' => $content->sector,
+                'location' => $content->location,
+                'start_date' => $content->start_date,
+                'end_date' => $content->end_date,
+                'youtube_link' => $content->youtube_link,
+                'description' => json_decode($content->description, true),
+                'banner' => $content->banner,
+                'location_id' => $content->location_id,
+                'category' => $content->programCategory ? json_decode($content->programCategory->title, true) : null,
+                'status' => $content->status,
+                'document' => $content->document, 
+                'program_category_id' => $content->program_category_id, 
+                'created_at' => $content->created_at,
+            ],
+            'otherContent' => $otherContent
         ]);
     }
 
@@ -176,9 +222,62 @@ class LandingPageController extends Controller
         ]);
     
     }
-    public function detailPublication($title) 
+    public function detailContent($category, $title, $date) 
     {
-        return Inertia::render('LandingPage/NewsStories/Detail');
+        if (!$title && !$date) {
+            return redirect()->back();
+        }
+
+        $content = NewsStories::with(['category', 'tags'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')
+        ->where('category_id', $category)->whereDate('created_at', $date)->first();
+
+        if (!$content) {
+            return redirect(route('home'));
+        }
+
+        $otherContent = NewsStories::whereNot('id', $content->id)
+            ->where('type', $content->type)
+            ->orderByRaw('CASE WHEN category_id = ? THEN 1 ELSE 2 END', [$content->category_id])
+            ->orderBy('category_id', 'desc')
+            ->paginate(3);
+        
+        $otherContent->setCollection(
+            $otherContent->getCollection()->map(function ($item) {
+                return [
+                    ...$item->toArray(),
+                    'title' => json_decode($item->title, true),
+                ];
+            })
+        );
+
+
+        return Inertia::render('LandingPage/Content/Detail', [
+            'content' => [
+                'id' => $content->id,
+                'title' => json_decode($content->title),
+                'slug' => $content->slug,
+                'type' => $content->type,
+                'meta_head' => $content->meta_head,
+                'meta_desc' => $content->meta_desc,
+                'banner' => $content->banner,
+                'document' => $content->document,
+                'type' => $content->type,
+                'thumbnail' => $content->thumbnail,
+                'description' => json_decode($content->content, true),
+                'author' => $content->author,
+                'category_id' => $content->category_id,
+                'category' => $content->category ? json_decode($content->category->title, true) : null,
+                'tags' =>  $content->tags->map(function ($tag) {
+                    return [
+                        'value' => $tag->id,
+                        'label' => json_decode($tag->title, true)['id'] ?? 'Untitled',
+                        'en' => json_decode($tag->title, true)['en'] ?? 'Untitled',
+                    ];
+                }),
+                'created_at' => $content->created_at
+            ],
+            'otherContent' => $otherContent
+        ]);
     }
 
     public function cfcn()
@@ -210,9 +309,31 @@ class LandingPageController extends Controller
         ]);
     }
 
+    public function careerDetail(Career $career) 
+    {
+        return Inertia::render('LandingPage/Content/CareerDetail', [
+            'content' => [
+                'id' => $career->id,
+                'title' => json_decode($career->title, true),
+                'description' => json_decode($career->description, true),
+                'type' => $career->type,
+                'created_at' => $career->created_at,
+                'image' => $career->image,
+            ]
+        ]);
+    }
+
     public function grantee()
     {
-        return Inertia::render('LandingPage/Grantee/Index');
+        $granteePartners = Partner::where('type', 'grantee')->get()->map(function ($grantee) {
+            $grantee->description = json_decode($grantee->description, true);
+
+            return $grantee;
+        });
+
+        return Inertia::render('LandingPage/Grantee/Index', [
+            'granteePartners' => $granteePartners
+        ]);
     }
 
     public function granteeTemplatePage()

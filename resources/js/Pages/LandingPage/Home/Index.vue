@@ -125,11 +125,11 @@ const youtubeUrl = computed(() =>
       <div class="w-full flex justify-center">
          <div class="mt-20 max-w-7xl grid grid-cols-1 lg:grid-cols-[20%,30%,50%] gap-5 px-8">
             <h1 class="text-5xl font-playfair font-bold text-[#262C51]">
-               Who We Are
+               {{ $t('home.who-we-are.title') }}
             </h1>
             <div class="text-[#262C51] text-sm flex flex-col justify-between gap-5 lg:gap-0">
-               <p class="font-medium text-base">The William & Lily Foundation (WLF) is a philanthropic organization to continue the philanthropic legacy of William and Lily Soeryadjaya in Indonesia. Established in 2009, William & Lily Foundation work as an active grant-making foundation that work closely with implementing partners to support three key areas that consist of education, health, and economic empowerment.</p>
-               <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Read More</Link>
+               <p class="font-medium text-base">{{ $t('home.who-we-are') }}</p>
+               <Link :href="route('about-us')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('home.readmore') }}</Link>
             </div>
             <div>
                <div class="w-full cursor-pointer" @click="showVideo = true">
@@ -178,7 +178,7 @@ const youtubeUrl = computed(() =>
          <!-- our program section -->
          <div class="w-full flex justify-center absolute top-10">
             <div class="max-w-7xl px-8 w-full">
-               <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">Our Program</h1>
+               <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">{{ $t('home.our-program') }}</h1>
                <div class="flex gap-5 justify-start my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
                   <Link :href="route('sub-program', data.slug)" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programCategories" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
@@ -200,7 +200,7 @@ const youtubeUrl = computed(() =>
 
       <div class="flex justify-center w-full" v-if="programs.length > 0">
          <div class="max-w-7xl text-center w-full my-20 px-8">
-            <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold">What We Do</h2>
+            <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-playfair font-bold">{{ $t('home.whatwedo') }}</h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 lg:gap-20 mt-20">
                <div class="relative w-full h-full">
@@ -264,8 +264,8 @@ const youtubeUrl = computed(() =>
       <div class="bg-[#D86727] flex justify-center pt-20" v-if="stories.length > 0">
          <div class="grid grid-cols-1 w-full lg:grid-cols-[30%,70%] max-w-7xl px-8 h-[80%] gap-10 lg:gap-0">
             <div class="flex flex-col gap-5">
-               <h1 class="font-playfair text-white text-5xl font-bold">News <br>& Stories</h1>
-               <Link :href="route('publications')" class="bg-[#2F3C87] hover:bg-[#3c50c0] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit hidden lg:flex">See All News & Stories</Link>
+               <h1 class="font-playfair text-white text-5xl font-bold">{{ $t('home.stories') }}</h1>
+               <Link :href="route('publications')" class="bg-[#2F3C87] hover:bg-[#3c50c0] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit hidden lg:flex">{{ $t('home.storiesbutton') }}</Link>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-[40%,60%] gap-4 min-h-[364px]">
                <Link :href="route('publications-detail', { category: stories[0].category_id, title: stories[0].slug ? stories[0].slug : stories[0].title[lang], date:  new Date(stories[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button">
@@ -312,7 +312,7 @@ const youtubeUrl = computed(() =>
                      <img src="/assets/img/home/publications.png" alt="publication" class="w-full h-auto rounded-3xl">
                   </div>
                   <div class="">
-                     <h1 class="font-playfair text-[#262C51] text-5xl font-bold">New <br> Publication</h1>
+                     <h1 class="font-playfair text-[#262C51] text-5xl font-bold">{{ $t('home.publication') }}</h1>
                      <p class="text-[#262C51] text-base font-medium mt-5">16 Feb 2025</p>
                      <p class="text-[#] text-2xl font-semibold">Permata Petani</p>
                   </div>
@@ -327,7 +327,7 @@ const youtubeUrl = computed(() =>
       <!-- instagram section -->
        <div class="w-full flex justify-center bg-[#2F3C87] pt-28">
          <div class="max-w-7xl flex flex-wrap gap-5 justify-between w-full px-8">
-            <h1 class="font-playfair text-white text-5xl font-bold">Follow Us</h1>
+            <h1 class="font-playfair text-white text-5xl font-bold">{{ $t('home.follow') }}</h1>
             <p class="text-white text-2xl font-bold flex gap-2 items-center"><img role="button" src="/assets/icon/instagram.svg" alt="instagram" class="w-8 h-8"> @williamlilyfoundation</p>
          </div>
       </div>

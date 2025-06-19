@@ -47,7 +47,7 @@ const handleSubmit = async() => {
       preserveScroll: true,
       onSuccess: () => {
          form.processing = false
-         router.visit(route('partner.index'))
+         router.visit(route('grantee.partner'))
       },
       onError: (error) => {
          console.log(error)
@@ -61,10 +61,10 @@ const handleSubmit = async() => {
    <AdminLayout>
       {{ console.log(tags) }}
       <PageBreadcrumb :page-list="[
-         { label: 'News Stories Management', href: 'partner.index', currPage: false },
-         { label: 'update News Stories', href: '', currPage: true }
+         { label: 'Grantee Management', href: 'grantee.partner', currPage: false },
+         { label: 'update Grantee', href: '', currPage: true }
       ]"/>
-      <ComponentCard title="Update Partner">
+      <ComponentCard title="Update Grantee">
          <div class="flex gap-3 justify-center">
             <Button @click="handleChangeTab('id')" size="sm" :variant="tabActive == 'id' ? 'primary' : 'outline'">ID</Button>
             <Button @click="handleChangeTab('en')" size="sm" :variant="tabActive == 'en' ? 'primary' : 'outline'">EN</Button>

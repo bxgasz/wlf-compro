@@ -87,7 +87,7 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
 
     Route::get('/grantee-partner-management', [PartnerController::class, 'indexGrantee'])->name('grantee.partner');
     Route::get('/grantee-partner-management-create', [PartnerController::class, 'createGrantee'])->name('grantee.partner-create');
-    Route::get('/grantee-partner-management/{grantee}', [PartnerController::class, 'editGrantee'])->name('grantee.partner-edit');
+    Route::get('/grantee-partner-management/{partner}', [PartnerController::class, 'editGrantee'])->name('grantee.partner-edit');
 
     Route::resource('/grantee', GranteeManagementController::class);
     Route::post('/grantee-update/{grantee}', [GranteeManagementController::class, 'update'])->name('grantee.update');
@@ -142,7 +142,11 @@ Route::get('/our-program/{categories}/{program}', [LandingPageController::class,
 Route::get('/our-impact', [LandingPageController::class, 'ourImpact'])->name('our-impact');
 
 Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
-Route::get('/publication/{category}/{title}/{date}', [LandingPageController::class, 'detailPublication'])->name('publications-detail');
+
+// content-detail all (stories, annual_report, publication)
+Route::get('/publication/{category}/{title}/{date}', [LandingPageController::class, 'detailContent'])->name('publications-detail');
+Route::get('/program/{category}/{title}/{date}', [LandingPageController::class, 'programDetail'])->name('program-detail');
+Route::get('/career/{career}', [LandingPageController::class, 'careerDetail'])->name('career-detail');
 
 Route::get('/grant-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
 Route::get('/career', [LandingPageController::class, 'career'])->name('career');

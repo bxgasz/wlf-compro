@@ -5,77 +5,19 @@ import Navbar from '../Components/Navbar.vue';
 import { Link } from '@inertiajs/vue3';
 import { formatDate } from '@/Helper/FormatDate';
 
+const props = defineProps({
+   datas: Object,
+   type: String
+})
+
 const categories = [
-   'Product Knowledge',
-   'Annual Report'
+   { title: 'Product Knowledge', value: 'publication' },
+   { title: 'Annual Report', value: 'annual_report' }
 ]
 
-const tabActive = ref('Product Knowledge')
+const tabActive = ref(props.type)
 
 const lang = 'en'
-
-const news = [
-  {
-    category_id: 1,
-    slug: 'early-childhood-education',
-    title: {
-      en: 'Early Childhood Education Program Launched',
-      id: 'Program Pendidikan Anak Usia Dini Diluncurkan'
-    },
-    created_at: '2025-05-15T10:30:00Z',
-    banner: '/assets/img/ourprogram/program1.png',
-  },
-  {
-    category_id: 2,
-    slug: 'literacy-improvement-video',
-    title: {
-      en: 'Improving Literacy Through Community Programs',
-      id: 'Meningkatkan Literasi Lewat Program Komunitas'
-    },
-    created_at: '2025-05-20T09:00:00Z',
-    banner: '/assets/img/ourprogram/program1.png',
-  },
-  {
-    category_id: 3,
-    slug: '',
-    title: {
-      en: 'Empowering Women Through Microbusiness',
-      id: 'Pemberdayaan Perempuan Melalui Usaha Mikro'
-    },
-    created_at: '2025-05-22T13:45:00Z',
-    banner: '/assets/img/ourprogram/program1.png',
-  },
-  {
-    category_id: 3,
-    slug: '',
-    title: {
-      en: 'Empowering Women Through Microbusiness',
-      id: 'Pemberdayaan Perempuan Melalui Usaha Mikro'
-    },
-    created_at: '2025-05-22T13:45:00Z',
-    banner: '/assets/img/ourprogram/program1.png',
-  },
-  {
-    category_id: 3,
-    slug: '',
-    title: {
-      en: 'Empowering Women Through Microbusiness',
-      id: 'Pemberdayaan Perempuan Melalui Usaha Mikro'
-    },
-    created_at: '2025-05-22T13:45:00Z',
-    banner: '/assets/img/ourprogram/program1.png',
-  },
-  {
-    category_id: 3,
-    slug: '',
-    title: {
-      en: 'Empowering Women Through Microbusiness',
-      id: 'Pemberdayaan Perempuan Melalui Usaha Mikro'
-    },
-    created_at: '2025-05-22T13:45:00Z',
-    banner: '/assets/img/ourprogram/program1.png',
-  },
-]
 </script>
 
 <template>
@@ -86,7 +28,7 @@ const news = [
          <div class="image-container-hero">
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
             {{ $t('publications.title') }}
          </h1>
       </div>
@@ -95,50 +37,50 @@ const news = [
          <div class="max-w-7xl w-full px-8">
             <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">
                <div class="lg:hidden">
-                  <p role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i }}</p>
+                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title }}</Link>
                </div>
-               <div class="hidden lg:block">
-                  <p role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i }}</p>
+               <div class="hidden lg:flex flex-col">
+                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title }}</Link>
                </div>
                <div class="">
-                  <div class="w-full" v-if="news.length > 0">
+                  <div class="w-full" v-if="datas.length > 0">
                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-[364px]">
-                        <Link :href="route('publications-detail', { category: news[0].category_id, title: news[0].slug ? news[0].slug : news[0].title[lang], date:  new Date(news[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
+                        <Link :href="route('publications-detail', { category: datas[0].category_id, title: datas[0].slug ? datas[0].slug : datas[0].title[lang], date:  new Date(datas[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
                            <div class="w-full h-full overflow-hidden fading rounded-[20px]">
-                              <img :src="news[0].banner"
+                              <img :src="datas[0].banner"
                                     alt="Excavator" 
                                     class="object-cover w-full rounded-[20px] h-full group-hover:scale-125 transform ease-in-out duration-300">
                            </div>
                            <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50  p-8 z-20">
                               <div class="">
-                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(news[0].created_at, lang) }}</p>
-                                 <p class="text-white text-[16px] sm:text-[20px] w-full">{{ news[0].title[lang] }}</p>
+                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[0].created_at, lang) }}</p>
+                                 <p class="text-white text-[16px] sm:text-[20px] w-full">{{ datas[0].title[lang] }}</p>
                               </div>
                            </div>
                         </Link>
                         
                         <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0">
-                           <Link v-if="news.length >= 2" :href="route('publications-detail', { category: news[1].category_id, title: news[1].slug ? news[1].slug : news[1].title[lang], date:  new Date(news[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group gap-5" role="button">
+                           <Link v-if="datas.length >= 2" :href="route('publications-detail', { category: datas[1].category_id, title: datas[1].slug ? datas[1].slug : datas[1].title[lang], date:  new Date(datas[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group gap-5" role="button">
                               <div class="w-full h-full overflow-hidden rounded-[20px]">
-                                 <img :src="news[1].banner"
+                                 <img :src="datas[1].banner"
                                     alt="Excavator" 
                                     class="object-cover h-[219px] lg:h-[182px] rounded-[20px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                               </div>
                               <div class="md:ml-4 mt-4 md:mb-4 lg:mt-0">
-                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(news[1].created_at, lang) }}</p>
-                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ news[1].title[lang] }}</p>
+                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[1].created_at, lang) }}</p>
+                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[1].title[lang] }}</p>
                               </div>
                            </Link>
 
-                           <Link v-if="news.length >= 3" :href="route('publications-detail', { category: news[2].category_id, title: news[2].slug ? news[2].slug : news[2].title[lang], date:  new Date(news[2].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group" role="button">
+                           <Link v-if="datas.length >= 3" :href="route('publications-detail', { category: datas[2].category_id, title: datas[2].slug ? datas[2].slug : datas[2].title[lang], date:  new Date(datas[2].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group" role="button">
                               <div class="w-full h-full overflow-hidden rounded-[20px]">
-                                 <img :src="news[2].banner"
+                                 <img :src="datas[2].banner"
                                     alt="Excavator" 
                                     class="object-cover h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300 rounded-[20px]">
                               </div>
                               <div class="md:ml-4 mt-4 lg:mt-0">
-                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(news[2].created_at, lang) }}</p>
-                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ news[2].title[lang] }}</p>
+                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[2].created_at, lang) }}</p>
+                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[2].title[lang] }}</p>
                               </div>
                            </Link>
                         </div>
@@ -148,7 +90,7 @@ const news = [
                      <div class="mt-8">
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                            <Link
-                              v-for="(item, index) in news.slice(3)"
+                              v-for="(item, index) in datas.slice(3)"
                               :key="index"
                               :href="route('publications-detail', { category: item.category_id, title: item.slug ? item.slug : item.title[lang], date: new Date(item.created_at).toISOString().split('T')[0] })"
                               class="group flex flex-col w-full h-full rounded overflow-hidden"
@@ -169,11 +111,11 @@ const news = [
                      </div>
 
 
-                     <div class="w-full flex justify-center mt-10">
+                     <!-- <div class="w-full flex justify-center mt-10">
                         <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
-                     </div>
+                     </div> -->
                   </div>
-                  <div class="w-full text-center " v-else>No data provided for News</div>
+                  <div class="w-full text-center " v-else>No data provided</div>
                </div>
             </div>
          </div>

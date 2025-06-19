@@ -100,7 +100,11 @@ class PartnerController extends Controller
 
             DB::commit();
 
-            return redirect(route('partner.index'));
+            if ($partner->type == 'partner') {
+                return redirect(route('partner.index'));
+            } else {
+                return redirect(route('grantee.partner'));
+            }
         } catch (\Throwable $th) {
             DB::rollBack();
 
@@ -180,7 +184,11 @@ class PartnerController extends Controller
 
             DB::commit();
 
-            return redirect(route('partner.index'));
+            if ($partner->type == 'partner') {
+                return redirect(route('partner.index'));
+            } else {
+                return redirect(route('grantee.partner'));
+            }
         } catch (\Throwable $th) {
             DB::rollBack();
             dd($th->getMessage());

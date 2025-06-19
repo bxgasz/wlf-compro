@@ -72,10 +72,10 @@ const handleDelete = async(id) => {
 <template>
    <AdminLayout>
       <PageBreadcrumb :page-list="[
-         { label: 'News Stories Management', href: '', currPage: true }
+         { label: 'Content Management', href: '', currPage: true }
       ]" />
 
-      <ComponentCard title="Data News Stories">
+      <ComponentCard title="Data Content">
          <template #searchbar>
             <div class="flex items-center gap-2">
                <TextInput

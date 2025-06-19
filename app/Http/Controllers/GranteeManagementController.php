@@ -95,7 +95,6 @@ class GranteeManagementController extends Controller
             'name' => 'required|string',
             'email' => 'required',
             'foundation' => 'required',
-            'password' => 'required'
         ]);
 
         try {

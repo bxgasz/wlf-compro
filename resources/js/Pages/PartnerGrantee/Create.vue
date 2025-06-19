@@ -17,6 +17,7 @@ const form = useForm({
    'link': '',
    'description_en': '',
    'description_id': '',
+   'type': 'grantee'
 })
 
 const tabActive = ref('id')
@@ -43,7 +44,7 @@ const handleSubmit = async() => {
       preserveScroll: true,
       onSuccess: () => {
          form.processing = false
-         router.visit(route('partner.index'))
+         router.visit(route('grantee.partner'))
       },
       onError: (error) => {
          console.log(error)
@@ -57,10 +58,10 @@ const handleSubmit = async() => {
    <AdminLayout>
       {{ console.log(tags) }}
       <PageBreadcrumb :page-list="[
-         { label: 'grantee Management', href: 'partner.index', currPage: false },
-         { label: 'Create Partner', href: '', currPage: true }
+         { label: 'grantee Management', href: 'grantee.partner', currPage: false },
+         { label: 'Create Grantee', href: '', currPage: true }
       ]"/>
-      <ComponentCard title="Create Partner">
+      <ComponentCard title="Create Grantee">
          <div class="flex gap-3 justify-center">
             <Button @click="handleChangeTab('id')" size="sm" :variant="tabActive == 'id' ? 'primary' : 'outline'">ID</Button>
             <Button @click="handleChangeTab('en')" size="sm" :variant="tabActive == 'en' ? 'primary' : 'outline'">EN</Button>

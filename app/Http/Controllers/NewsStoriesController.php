@@ -261,7 +261,7 @@ class NewsStoriesController extends Controller
                 $updateData['banner'] = asset('/storage/'. $filePath);
             }
 
-            if ($request->hasFile('document') && $request->type == 'publication' || $request->type == 'annual_report') {
+            if ($request->hasFile('document') && $request->type == 'publication' || $request->hasFile('document') && $request->type == 'annual_report') {
                 $oldMediaPath = str_replace(url('/storage/'), '', $content->document);
 
                 if (Storage::disk('public')->exists($oldMediaPath)) {
@@ -287,7 +287,7 @@ class NewsStoriesController extends Controller
             return redirect(route('content.index'));
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th->getMessage());
+            dd($th);
             throw ValidationException::withMessages([
                 'error' => 'Something went wrong'
             ]);

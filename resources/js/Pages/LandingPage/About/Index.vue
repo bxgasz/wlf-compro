@@ -153,23 +153,22 @@ const tabOurTeam = ref('management')
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('about.title') }}
          </h1>
       </div>
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl text-center px-8 text-[#000000] font-medium flex justify-center">
-            <p class="max-w-[70%]">The William & Lily Foundation (WLF) is a philanthropic organization based in Indonesia established in 2009 to continue the philanthropic values of William and Lily Soeryadjaya. Since 2017, WLF has operated as a grant-making organization actively collaborating with various organizations at both national and local levels. Through this approach, WLF focuses on three key areas: early childhood development, basic literacy and numeracy, and economic empowerment.
-            </p>
+            <p class="max-w-[70%]">{{ $t('about.description') }}</p>
          </div>
       </div>
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl px-8 w-full">
             <div class="grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-[20%,100%]">
-               <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold text-center lg:text-left">
-                  Our <br> Journey
+               <h2 class="text-[#2B3E8C] text-4xl font-playfair font-extrabold text-center lg:text-left">
+                  {{ $t('about.journey') }}
                </h2>
 
                <div class="bg-[#D86727] rounded-[20px] w-full p-10">
@@ -224,8 +223,8 @@ const tabOurTeam = ref('management')
       <div class="w-full flex justify-center mt-20">
          <div class="w-full max-w-7xl px-8 space-y-5">
             <div class="w-full flex justify-center">
-               <h2 class="text-[#2B3E8C] text-4xl font-extrabold font-montserrat">
-                  Visi & Misi
+               <h2 class="text-[#2B3E8C] text-4xl font-extrabold font-playfair">
+                  {{ $t('about.visi-mission') }}
                </h2>
             </div>
 
@@ -235,7 +234,7 @@ const tabOurTeam = ref('management')
             </div>
 
             <div class="w-full justify-center flex">
-               <p class="text-center text-[#000000] font-medium max-w-[80%]">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.</p>
+               <p class="text-center text-[#000000] font-medium max-w-[80%]">{{ $t('about.visi-mission.description') }}</p>
             </div>
 
             <div class="w-full flex justify-end gap-3">
@@ -252,9 +251,9 @@ const tabOurTeam = ref('management')
                   <img src="/assets/img/home/hero.png" alt="publication" class="w-full h-full object-cover rounded-3xl">
                </div>
                <div class="text-white">
-                  <h1 class="font-montserrat text-2xl font-bold">Visi</h1>
+                  <h1 class="font-montserrat text-2xl font-bold">{{ $t('about.visi.title') }}</h1>
                   <p class="text-[#] text-base font-medium">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
-                  <h1 class="font-montserrat text-2xl font-bold mt-16">Misi</h1>
+                  <h1 class="font-montserrat text-2xl font-bold mt-16">{{ $t('about.mission.title') }}</h1>
                   <p class="text-[#] text-base font-medium">1. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
                   <p class="text-[#] text-base font-medium">2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta facere, eius harum laboriosam, temporibus nemo sunt officia, sit at dolor necessitatibus nihil repudiandae fuga odio minus eos autem voluptatem.</p>
                   <p class="text-[#] text-base font-medium">3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
@@ -272,14 +271,14 @@ const tabOurTeam = ref('management')
 
             <div class="w-full flex justify-center -mt-[30rem]">
                <div class="max-w-7xl px-8 w-full justify-center">
-                  <h1 class="text-5xl font-montserrat text-[#262C51] font-bold text-center">Values</h1>
+                  <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">{{ $t('about.values.title') }}</h1>
                   <p class="text-center mt-5">Lorem ipsum dolor sit amet consectetur adipiscing elit. <br> Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
                   <div class="flex flex-col lg:flex-row flex-wrap gap-10 justify-center items-center mt-10 lg:mt-20 mb-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
                      <div class="w-[19rem] h-fit flex flex-col justify-center items-center gap-5 text-center" v-for="(values, index) in ourValues" :key="index">
                         <div class="w-20 h-20">
                            <img :src="values.icon" alt="values" class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-[20px] text-[#C7202F] font-bold">{{ values.title }}</h3>
+                        <h3 class="text-[20px] text-[#2B3E8C] font-bold">{{ values.title }}</h3>
                      </div>
                   </div>
                </div>
@@ -292,7 +291,7 @@ const tabOurTeam = ref('management')
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
                <div class="lg:hidden">
-                  <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold">
+                  <h2 class="text-[#2B3E8C] text-4xl font-playfair font-extrabold">
                      Our Team
                   </h2>
 
@@ -315,7 +314,7 @@ const tabOurTeam = ref('management')
                </div>
 
                <div class="w-[20%] hidden lg:block">
-                  <h2 class="text-[#2B3E8C] text-4xl font-montserrat font-extrabold">
+                  <h2 class="text-[#2B3E8C] text-4xl font-playfair font-extrabold">
                      Our Team
                   </h2>
 
@@ -328,7 +327,7 @@ const tabOurTeam = ref('management')
 
       <div class="flex justify-center mt-20" v-if="partners.length != 0">
          <div class="max-w-7xl px-8">
-            <h1 class="text-5xl font-montserrat text-[#262C51] font-bold text-center">Our Partners</h1>
+            <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">{{ $t('about.partner') }}</h1>
 
             <swiper
                class="h-fit mt-20"
@@ -355,7 +354,7 @@ const tabOurTeam = ref('management')
                   <iframe class="rounded-[20px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2342680692304!2d106.82871827509548!3d-6.232817993755369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ef32de8be3%3A0x9bb807c61923a77e!2sWilliam%20%26%20Lily%20Foundation!5e0!3m2!1sid!2sid!4v1748936984987!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                </div>
                <div class="flex flex-col gap-5">
-                  <h1 class="text-5xl font-montserrat text-white font-bold">Contact Us</h1>
+                  <h1 class="text-5xl font-playfair text-white font-bold">{{ $t('about.contact') }}</h1>
                   <p class="text-white">
                      {{ page.props.settings.location ?? 'Menara Karya, Lt. 17, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950' }}
                   </p>

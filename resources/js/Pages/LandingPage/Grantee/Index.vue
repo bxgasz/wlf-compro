@@ -3,6 +3,11 @@ import { ref } from 'vue';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import ArrowBack from '@/Icons/ArrowBack.vue';
+import { Link } from '@inertiajs/vue3';
+
+const props = defineProps({
+   granteePartners: Object
+})
 
 const tabActive = ref('home')
 
@@ -50,7 +55,7 @@ const partners = [
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('grantee.title') }}
          </h1>
       </div>
@@ -66,10 +71,10 @@ const partners = [
          <div class="flex justify-center mt-20">
             <div class="max-w-7xl w-full px-8">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%]">
-                  <h1 class="font-montserrat text-[#2F3C87] text-5xl font-bold">Apa itu <br> Grantee Portal?</h1>
+                  <h1 class="font-montserrat text-[#2F3C87] text-5xl font-bold">{{ $t('grantee.question') }}</h1>
                   <div class="font-medium mt-5 lg:mt-0">
-                     <p>Grantee Portal ini merupakan laman untuk mendukung pengelolaan proyek-proyek yang dilakukan oleh mitra-mitra WLF. Pada laman ini dapat diakses: (1) panduan dan kebijakan WLF terbaru, (2) format-format laporan yang berlaku, dan (3) pelaporan, untuk laporan keuangan dan narasi mitra.</p>
-                     <p>Untuk dapat mengakses portal, grantee wajib mendaftarkan alamat email (google based). Seluruh pelaporan mitra baik berupa laporan proyek maupun keuangan disampaikan kepada WLF melalui portal ini. </p>
+                     <p>{{ $t('grantee.description.1') }}</p>
+                     <p>{{ $t('grantee.description.2') }}</p>
                   </div>
                </div>
             </div>
@@ -83,15 +88,10 @@ const partners = [
                         <div class="h-90 w-full">
                            <img src="/assets/img/grantee/grantee-1.jpg" alt="grantee" class="w-full h-full object-cover rounded-t-[180px] lg:rounded-tl-[150px] lg:rounded-tr-none">
                         </div>
-                        <h3 class="text-2xl font-bold">Nilai-Nilai</h3>
-                        <p>Dalam pengelolaan dana hibah, WLF menerapkan 7 nilai-nilai dasar. Nilai-nilai ini pula yang diharapkan akan dipraktikkan oleh lembaga mitra. </p>
+                        <h3 class="text-2xl font-bold">{{ $t('grantee.values.title') }}</h3>
+                        <p>{{ $t('grantee.values.description') }}</p>
                         <ul class="list-disc">
-                           <li>Pemberdayaan</li>
-                           <li>Kolaborasi</li>
-                           <li>Akuntabillitas & Integritas</li>
-                           <li>Komunikasi Terbuka</li>
-                           <li>Berdasarkan kebutuhan</li>
-                           <li>Value-for-money (efisiensi dan efektivitas dalam pengelolaan dan penganggaran kegiatan proyek)</li>
+                           <li v-for="i in 7">{{ $t('grantee.values.' + i) }}</li>
                         </ul>
                      </div>
 
@@ -99,21 +99,19 @@ const partners = [
                         <div class="h-90 w-full">
                            <img src="/assets/img/grantee/grantee-1.jpg" alt="grantee" class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-2xl font-bold">Guiding Principles</h3>
-                        <p>WLF menerapkan dan mendorong mitra-mitranya untuk menerapkan dua guiding principles: challenging gender norms dan promoting universal access dalam impementasi program-programnya. 
-                        Challenging gender norms merefleksikan langkah-langkah mitra yang memungkinkan untuk menantang norma-norma gender yang tidak adil yang berlaku di konteks lokal proyek.
-                        Promoting universal access merefleksikan bagaimana pelibatan kelompok marjinal tereksklusi dan disabilitas yang terkait proyek dapat berpartisipasi dalam proyek.  </p>
+                        <h3 class="text-2xl font-bold">{{ $t('grantee.guiding.title') }}</h3>
+                        <p>{{ $t('grantee.guiding.description') }}</p>
                      </div>
 
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
                            <img src="/assets/img/grantee/grantee-3.jpg" alt="grantee" class="w-full h-full object-cover lg:rounded-tr-[150px]">
                         </div>
-                        <h3 class="text-2xl font-bold">Siklus Pengelolaan Proyek</h3>
+                        <h3 class="text-2xl font-bold">{{ $t('grantee.cycle.title') }}</h3>
                         <ul class="list-decimal">
-                           <li>Diskusi bulanan: setiap bulan, waktu sesuai kesepakatan dengan program officer (minggu ke-3).</li>
-                           <li>Unggah foto/video: setelah kegiatan, dan/atau ketika ada dokumentasi cerita perubahan.</li>
-                           <li>Laporan kuartal proyek dan keuangan: setiap 3 bulan, sesuai dengan tenggat yang diatur dalam Perjanjian Kerja Sama. </li>
+                           <li>{{ $t('grantee.cycle.1') }}</li>
+                           <li>{{ $t('grantee.cycle.2') }}</li>
+                           <li>{{ $t('grantee.cycle.3') }}</li>
                         </ul>
                      </div>
                   </div>
@@ -188,20 +186,20 @@ const partners = [
             </div>
 
          </div>
-         <div class="w-full flex justify-center mt-20">
+         <div class="w-full flex justify-center mt-20" v-if="granteePartners.length > 0">
             <div class="max-w-7xl px-8">
                <div class="flex flex-wrap justify-center gap-5 w-full">
-                  <div class="relative border border-[#E75E00] rounded-[20px] p-3 lg:w-[calc(18%)] shadow-xl shadow-[#D86727]/20" v-for="i in partners">
+                  <Link :href="data.link" class="relative border border-[#E75E00] rounded-[20px] p-3 lg:w-[calc(18%)] shadow-xl shadow-[#D86727]/20" v-for="(data, i) in granteePartners" :key="i">
                      <div class="w-full h-56 flex items-center">
-                        <img :src="i.image" alt="image" class="w-full object-cover rounded-t-[20px]">
+                        <img :src="data.logo" alt="image" class="w-full object-cover rounded-t-[20px]">
                      </div>
                      <div class="h-full w-full absolute p-8 z-20 top-0 flex flex-col justify-between">
                         <div class="flex justify-end w-full">
                            <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
                         </div>
                      </div>
-                     <p class="font-montserrat text-[#E75E00] font-bold text-center capitalize">{{ i.title }}</p>
-                  </div>
+                     <p class="font-montserrat text-[#E75E00] font-bold text-center capitalize">{{ data.title }}</p>
+                  </Link>
                </div>
             </div>
          </div>

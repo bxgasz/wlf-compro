@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\GranteeManagement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -68,7 +70,7 @@ class AuthController extends Controller
             return redirect(route('grantee'));
         }
 
-        throw ValidationException::withMessages(['password' => 'Password or email not match, or account not active']);
+        throw ValidationException::withMessages(['password' => 'Password or email not match']);
     }
 
     public function destroyGrantee(Request $request)

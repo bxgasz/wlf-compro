@@ -54,15 +54,15 @@ const lists = [
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
+         <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
             {{ $t('grandopp.title') }}
          </h1>
       </div>
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
-            <p class="font-extrabold text-center">UNDANGAN MENGIRIMKAN CONCEPT NOTES UNTUK PELUANG DANA HIBAH WLF 2025</p>
-            <p class="">William & Lily Foundation (WLF) membuka peluang dana hibah untuk mendukung proyek-proyek inovatif yang berfokus pada:</p>
+            <p class="font-extrabold text-center">{{ $t('cfcn.subtitle') }}</p>
+            <p class="">{{ $t('cfcn.description') }}</p>
          </div>
       </div>
 
@@ -90,9 +90,9 @@ const lists = [
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
-            <p class="">WLF mengundang Organisasi Masyarakat Sipil, khususnya yang telah memiliki pengalaman bekerja di wilayah Nusa Tenggara Timur (NTT)  untuk mengirimkan Pernyataan Minat Kerjasama dan Concept Note yang berisi deskripsi singkat ide proyek dan tujuan yang ingin dicapai.</p>
-            <p class="">Durasi proyek yang dapat diajukan minimal 6 bulan hingga maksimal 18 bulan, dengan anggaran maksimal sebesar 1 (satu) miliar rupiah.</p>
-            <p class="">Lokasi pelaksanaan proyek yang diusulkan harus berada di Provinsi Nusa Tenggara Timur, sesuai dengan wilayah kerja WLF saat ini.Pengajuan Pernyataan Minat Kerjasama Hibah WLF dapat dilakukan mulai 8 Januari 2025 sampai dengan selambat-lambatnya 22 Januari 2025 jam 23.59 WIB.</p>
+            <p class="">{{ $t('cfcn.description.1') }}</p>
+            <p class="">{{ $t('cfcn.description.2') }}</p>
+            <p class="">{{ $t('cfcn.description.3') }}</p>
          </div>
       </div>
 
@@ -104,20 +104,19 @@ const lists = [
                </div>
                <div class="flex flex-col gap-5">
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">1</p>
-                  <p class="font-bold">Informasi Call for Concept Note.</p>
-                  <p>Dokumen ini berisikan informasi lebih detail mengenai dana hibah WLF, persyaratan organisasi yang dapat mengajukan, tata cara mengajukan/mengirimkan concept note, proses seleksi dan informasi terkait lainnya.</p>
-                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <p class="font-bold">{{ $t('cfcn.step1.title') }}</p>
+                  <p>{{ $t('cfcn.step1.description') }}</p>
+                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</Link>
                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-[70%,30%] mt-20 gap-5">
                <div class="flex flex-col gap-5">
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">2</p>
-                  <p class="font-bold">Formulir Concept Note</p>
-                  <p>Dokumen ini berisikan formulir concept note yang harus diisi oleh organisasi yang berminat mengajukan pernyataan minat kerjasama hibah WLF.
-                  Mohon pastikan aplikasi yang Anda ajukan sudah memenuhi semua persyaratan dan kriteria dana hibah WLF. Hanya organisasi yang memenuhi persyaratan yang akan dipertimbangkan.
+                  <p class="font-bold">{{ $t('cfcn.step2.title') }}</p>
+                  <p>{{ $t('cfcn.step2.description') }}
                   </p>
-                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</Link>
                </div>
                <div class="w-72 h-80">
                   <img src="/assets/img/grandopp/step2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
@@ -128,16 +127,16 @@ const lists = [
 
       <div class="w-full flex justify-center my-20">
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-3">
-            <p class="">WLF akan mengadakan sesi penjelasan mengenai teknis Call for Concept Note WLF secara daring pada tanggal 15 Januari 2025 jam 10.00-11.30 WIB.</p>
-            <p>Bagi organisasi yang berminat silahkan melakukan Pendaftaran Sesi Penjelasan Call for Concept Note WLF paling lambat tanggal 14 Januari 2025.</p>
-            <p>*Sesi ini tidak bersifat wajib diikuti calon aplikan.</p>
+            <p class="">{{ $t('cfcn.afterdesc1') }}</p>
+            <p>{{ $t('cfcn.afterdesc2') }}</p>
+            <p>{{ $t('cfcn.afterdesc3') }}</p>
          </div>
       </div>
 
       <div class="w-full flex justify-center mt-36 mb-20">
          <div class="max-w-3xl px-8 space-y-15">
-            <h1 class="uppercase text-4xl font-montserrat font-bold text-center">Frequently Asked Questions</h1>
-            <p class="text-center">Dokumen FAQ (pertanyaan yang sering diajukan) ini ditujukan untuk merespon pertanyaan-pertanyaan yang sering muncul dan jawabannya belum tercermin dalam lembar informasi Call for Concept Notes di website WLF. Kami menghimbau setiap organisasi untuk secara seksama membaca ketentuan Call for Concept Notes WLF terlebih dahulu.</p>
+            <h1 class="uppercase text-4xl font-playfair font-bold text-center">{{ $t('cfcn.faq.title') }}</h1>
+            <p class="text-center">{{ $t('cfcn.faq.description') }}</p>
 
             <Accordion :list="lists"/>
          </div>

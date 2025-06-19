@@ -44,10 +44,10 @@ const handleSubmit = async() => {
    <AdminLayout>
       {{ console.log(tags) }}
       <PageBreadcrumb :page-list="[
-         { label: 'Grantee Management', href: 'grantee.index', currPage: false },
-         { label: 'Create Grantee', href: '', currPage: true }
+         { label: 'Grantee User Management', href: 'grantee.index', currPage: false },
+         { label: 'Create Grantee User', href: '', currPage: true }
       ]"/>
-      <ComponentCard title="Create Grantee">
+      <ComponentCard title="Create Grantee User">
          <div class="space-y-6">
             <div class="">
                <TextInput 

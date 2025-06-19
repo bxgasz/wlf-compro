@@ -24,14 +24,14 @@ const showMore = () => {
          <div class="image-container">
             <img src="/assets/img/ourImpact/bg-section.jpg" alt="ourImpact">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('our-impact.title') }}
          </h1>
       </div>
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl text-center px-8 text-[#000000] font-medium flex justify-center">
-            <p class="max-w-[70%]">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+            <p class="max-w-[70%]">{{ $t('our-impact.description') }}</p>
          </div>
       </div>
 
@@ -79,7 +79,7 @@ const showMore = () => {
       </div>
 
       <div class="w-full text-center bg-[#2B3E8C]">
-         <h2 class="text-2xl lg:text-4xl font-bold font-montserrat py-8 text-white">Stories of Our Impact</h2>
+         <h2 class="text-2xl lg:text-4xl font-bold font-playfair py-8 text-white">Stories of Our Impact</h2>
       </div>
 
       <div class="flex justify-center w-full my-20">

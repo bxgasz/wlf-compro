@@ -100,7 +100,7 @@ const ourProgram = [
          <div class="image-container">
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('our-program.title') }}
          </h1> 
       </div>
@@ -114,7 +114,7 @@ const ourProgram = [
       <div class="w-full flex justify-center">
          <div class="max-w-7xl px-8">
             <div v-if="programCategories.length > 0" class="w-full border border-[#E75E00] rounded-2xl shadow-xl shadow-[#D86727]/20 my-10" v-for="(list, index) in programCategories">
-               <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] p-5">
+               <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] lg:gap-5 p-5">
                   <div class="flex flex-col gap-5">
                      <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] uppercase font-bold">{{ list.title[locale] }}</h1>
                      <Link :href="route('sub-program', list.slug)" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">See What to do</Link>

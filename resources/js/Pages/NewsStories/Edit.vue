@@ -24,7 +24,7 @@ const form = useForm({
    'meta_title': props.newsStories.meta_title,
    'meta_description': props.newsStories.meta_description,
    'banner': null,
-   'document': '',
+   'document': null,
    'type': props.newsStories.type,
    'content_en': props.newsStories.content.en,
    'content_id': props.newsStories.content.id,

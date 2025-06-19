@@ -48,10 +48,10 @@ const handleSubmit = async() => {
    <AdminLayout>
       {{ console.log(tags) }}
       <PageBreadcrumb :page-list="[
-         { label: 'Grantee Management', href: 'grantee.index', currPage: false },
-         { label: 'update Grantee', href: '', currPage: true }
+         { label: 'Grantee User Management', href: 'grantee.index', currPage: false },
+         { label: 'update Grantee User', href: '', currPage: true }
       ]"/>
-      <ComponentCard title="Update Grantee">
+      <ComponentCard title="Update Grantee User">
          <div class="space-y-6">
             <div class="">
                <TextInput 

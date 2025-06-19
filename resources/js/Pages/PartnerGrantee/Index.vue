@@ -88,7 +88,7 @@ const handleDelete = async(id) => {
             </div>
          </template>
          <template #button>
-            <Link :href="route('partner.create')">
+            <Link :href="route('grantee.partner-create')">
                <Button size="sm" variant="primary" :endIcon="PlusIcon"> Add </Button>
             </Link>
          </template>
@@ -106,7 +106,7 @@ const handleDelete = async(id) => {
             </template>
             <template #action="{ row }">
                <div class="flex gap-2">
-                  <Link :href="route('partner.edit', row.id)">
+                  <Link :href="route('grantee.partner-edit', row.id)">
                      <EditIcon class="cursor-pointer text-gray-700 hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-500"/>
                   </Link>
                   <button @click="handleDelete(row.id)">

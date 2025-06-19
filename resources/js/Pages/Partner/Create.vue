@@ -17,6 +17,7 @@ const form = useForm({
    'link': '',
    'description_en': '',
    'description_id': '',
+   'type': 'partner'
 })
 
 const tabActive = ref('id')

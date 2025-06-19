@@ -113,10 +113,10 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
 <template>
    <nav class="w-full flex justify-center items-center py-5 absolute top-0 z-40 bg-transparent px-8">
       <div class="w-full bg-[#D86727] h-7 absolute top-0 flex justify-center">
-         <div class="max-w-7xl w-full px-8 flex justify-center lg:justify-between items-center text-sm">
-            <p class="text-white">Equal opportunity for all Indonesians to flourish</p>
-            <div class="hidden lg:flex items-center gap-4">
-               <p class="text-white">Change Language</p>
+         <div class="max-w-7xl w-full px-8 flex justify-between items-center text-sm">
+            <p class="text-white text-[10px] md:text-base">{{ $t('nav.text') }}</p>
+            <div class="flex items-center gap-4">
+               <p class="hidden lg:flex text-white">Change Language</p>
                <div class="flex gap-2">
                   <p role="button" @click="changeLanguage('en')" :class="lang == 'en' ? 'text-white font-bold' : 'text-[#262C51]'">EN</p> | 
                   <p role="button" @click="changeLanguage('id')" :class="lang == 'id' ? 'text-white font-bold' : 'text-[#262C51]'">ID</p>
@@ -140,8 +140,8 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
          <div class="flex gap-3 items-center w-auto">
             <SearchIcon class="text-white w-8"/>
             <Link v-if="page.props.settings.show_donate_button" :href="route('donate')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
-            <Link v-if="!grantee" :href="route('grantee')" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
-            <Link v-else :href="route('grantee.logout')" method="post" as="button" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">Logout</Link>
+            <Link :href="route('grantee')" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
+            <Link v-if="grantee" :href="route('grantee.logout')" method="post" as="button" class="bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-fit">Logout</Link>
          </div>
       </div>
 
@@ -184,8 +184,8 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
             <div class="flex flex-col mt-5 gap-5 mx-4 w-auto">
                <SearchIcon class="text-white w-8"/>
                <Link v-if="page.props.settings.show_donate_button" :href="route('donate')" class="bg-[#D86727] h-fit hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Donasi' : 'Donate' }}</Link>
-               <Link v-if="!grantee" :href="route('grantee')" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
-               <Link v-else :href="route('grantee.logout')" method="post" as="button" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">Logout</Link>
+               <Link :href="route('grantee')" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">{{ locale == 'id' ? 'Grantee Portal' : 'Grantee Portal' }}</Link>
+               <Link v-if="grantee" :href="route('grantee.logout')" method="post" as="button" class="h-fit bg-[#2B3E8C] hover:bg-[#1e2e6d] ease-in-out duration-500 px-6 py-2.5 text-md text-white rounded-full font-medium w-full text-center">Logout</Link>
             </div>
          </div>
       </div>
