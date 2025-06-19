@@ -31,7 +31,7 @@ class LandingPageController extends Controller
             return $categories;
         });
 
-        $programs = Program::with('locationMap')->orderBy('id', 'desc')->paginate(10)->get()->map(function ($program) {
+        $programs = Program::with('locationMap')->orderBy('id', 'desc')->paginate(10)->map(function ($program) {
             $program->title = json_decode($program->title, true);
             $program->descrption = json_decode($program->descrption, true);
 
