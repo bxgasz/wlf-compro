@@ -13,5 +13,6 @@ class Partner extends Model
         'logo',
         'description',
         'link',
+        'type'
     ];
 }

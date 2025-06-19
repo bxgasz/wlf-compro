@@ -41,7 +41,7 @@ const getPartner = async (page) => {
    })
 
    try {
-      const res = await axios.get(route('partner.data', 'partner') + '?' + searchParams.toString())
+      const res = await axios.get(route('partner.data', 'grantee') + '?' + searchParams.toString())
       lists.value = res.data
    } catch (error) {
       HelperService.toastError(error)
@@ -72,10 +72,10 @@ const handleDelete = async(id) => {
 <template>
    <AdminLayout>
       <PageBreadcrumb :page-list="[
-         { label: 'Partner Management', href: '', currPage: true }
+         { label: 'Grantee Management', href: '', currPage: true }
       ]" />
 
-      <ComponentCard title="Data Partner">
+      <ComponentCard title="Data Grantee">
          <template #searchbar>
             <div class="flex items-center gap-2">
                <TextInput

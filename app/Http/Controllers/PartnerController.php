@@ -13,13 +13,21 @@ class PartnerController extends Controller
 {
     public function index(Request $request)
     {
-        $partners = $this->data($request);
+        $partners = $this->data($request, 'partner');
         return Inertia::render('Partner/Index', [
             'partners' => $partners
         ]);
     }
 
-    public function data(Request $request)
+    public function indexGrantee(Request $request)
+    {
+        $partners = $this->data($request, 'grantee');
+        return Inertia::render('PartnerGrantee/Index', [
+            'partners' => $partners
+        ]);
+    }
+
+    public function data(Request $request, $type)
     {
         $search = $request->search;
         $perPage = $request->perPage ?? 10;
@@ -29,6 +37,7 @@ class PartnerController extends Controller
         $partner = Partner::when($search, function ($q) use($search) {
             $q->whereRaw('LOWER(title) LIKE ?', '%'. $search .'%');
         })
+        ->where('type', $type)
         ->orderBy($sort, $order)
         ->paginate($perPage);
 
@@ -47,6 +56,13 @@ class PartnerController extends Controller
         return Inertia::render('Partner/Create', [
         ]);
     }
+    
+
+    public function createGrantee()
+    {
+        return Inertia::render('PartnerGrantee/Create', [
+        ]);
+    }
 
     public function store(Request $request)
     {
@@ -56,6 +72,7 @@ class PartnerController extends Controller
             'description_id' => 'required',
             'link' => 'required|url',
             'logo' => 'required|mimes:jpeg,png,jpg,webp|max:1584',
+            'type' => 'required'
         ]);
 
         try {
@@ -68,6 +85,7 @@ class PartnerController extends Controller
                     'en' => $request->description_en,
                     'id' => $request->description_id,
                 ]),
+                'type' => $request->type
             ];
 
             if ($request->hasFile('logo')) {
@@ -102,6 +120,21 @@ class PartnerController extends Controller
                 'title' => $partner->title,
                 'logo' => $partner->logo,
                 'link' => $partner->link,
+                'type' => $partner->type,
+                'description' => json_decode($partner->description, true),
+            ],
+        ]);
+    }
+
+    public function editGrantee(Partner $partner)
+    {
+        return Inertia::render('PartnerGrantee/Edit', [
+            'partner' => [
+                'id' => $partner->id,
+                'title' => $partner->title,
+                'logo' => $partner->logo,
+                'link' => $partner->link,
+                'type' => $partner->type,
                 'description' => json_decode($partner->description, true),
             ],
         ]);

@@ -370,8 +370,13 @@ const menuGroups = [
     role: ['admin', 'manager', 'staff'],
     items: [
       {
-        icon: UserCheckIcon,
+        icon: PartnersIcon,
         name: "Grantee Management",
+        path: "/admin/grantee-partner-management",
+      },
+      {
+        icon: UserCheckIcon,
+        name: "Grantee User Management",
         path: "/admin/grantee",
       },
       {

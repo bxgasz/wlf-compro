@@ -141,15 +141,17 @@ class LandingPageController extends Controller
 
         $impact = OurImpact::first();
 
-        for ($i = 1; $i < 5; $i++) {
-            $key = 'title_' . $i;
-            $impact->$key = json_decode($impact->$key, true);
-
-            $key2 = 'subtitle_' . $i;
-            $impact->$key2 = json_decode($impact->$key2, true);
+        if ($impact != null) {
+            for ($i = 1; $i < 5; $i++) {
+                $key = 'title_' . $i;
+                $impact->$key = json_decode($impact->$key, true);
+    
+                $key2 = 'subtitle_' . $i;
+                $impact->$key2 = json_decode($impact->$key2, true);
+            }
+    
+            $impact->sub_icons = json_decode($impact->sub_icons, true);
         }
-
-        $impact->sub_icons = json_decode($impact->sub_icons, true);
 
         return Inertia::render('LandingPage/OurImpact/Index', [
             'stories' => $stories,

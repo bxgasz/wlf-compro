@@ -83,7 +83,11 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
 
     Route::resource('/partner', PartnerController::class);
     Route::post('/partner-update/{partner}', [PartnerController::class, 'update'])->name('partner.update');
-    Route::get('/partner-list', [PartnerController::class, 'data'])->name('partner.data');
+    Route::get('/partner-list/{type}', [PartnerController::class, 'data'])->name('partner.data');
+
+    Route::get('/grantee-partner-management', [PartnerController::class, 'indexGrantee'])->name('grantee.partner');
+    Route::get('/grantee-partner-management-create', [PartnerController::class, 'createGrantee'])->name('grantee.partner-create');
+    Route::get('/grantee-partner-management/{grantee}', [PartnerController::class, 'editGrantee'])->name('grantee.partner-edit');
 
     Route::resource('/grantee', GranteeManagementController::class);
     Route::post('/grantee-update/{grantee}', [GranteeManagementController::class, 'update'])->name('grantee.update');

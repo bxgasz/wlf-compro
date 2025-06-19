@@ -35,7 +35,7 @@ const showMore = () => {
          </div>
       </div>
 
-      <div class="flex justify-center">
+      <div class="flex justify-center" v-if="impact">
          <div class="relative w-full mt-20 max-w-[1600px]">
             <div class="w-full h-56 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727]"></div>
 

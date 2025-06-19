@@ -154,7 +154,6 @@ const ourProgram = [
                   </button>
                </div>
             </div>
-            <div v-else class="w-full text-center">No Programs Yet</div>
          </div>
       </div>
 

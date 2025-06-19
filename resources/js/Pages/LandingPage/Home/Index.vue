@@ -170,7 +170,7 @@ const youtubeUrl = computed(() =>
          </div>
       </div>
 
-      <div class="relative mt-20 w-full">
+      <div class="relative mt-20 w-full" v-if="programCategories.length > 0">
          <div class="w-full h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727]"></div>
          <div class="w-full h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727] -mt-52"></div>
          <div class="w-full h-72 md:h-[28rem] bg-[#D86727] rounded-t-[35%] lg:rounded-t-[300px] -mt-72"></div>
@@ -198,7 +198,7 @@ const youtubeUrl = computed(() =>
          </div>
       </div>
 
-      <div class="flex justify-center w-full">
+      <div class="flex justify-center w-full" v-if="programs.length > 0">
          <div class="max-w-7xl text-center w-full my-20 px-8">
             <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold">What We Do</h2>
 
@@ -261,7 +261,7 @@ const youtubeUrl = computed(() =>
       </div>
 
       <!-- news section -->
-      <div class="bg-[#D86727] flex justify-center pt-20">
+      <div class="bg-[#D86727] flex justify-center pt-20" v-if="stories.length > 0">
          <div class="grid grid-cols-1 w-full lg:grid-cols-[30%,70%] max-w-7xl px-8 h-[80%] gap-10 lg:gap-0">
             <div class="flex flex-col gap-5">
                <h1 class="font-playfair text-white text-5xl font-bold">News <br>& Stories</h1>

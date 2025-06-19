@@ -326,11 +326,11 @@ const tabOurTeam = ref('management')
          </div>
       </div>
 
-      <div class="flex justify-center mt-20">
+      <div class="flex justify-center mt-20" v-if="partners.length != 0">
          <div class="max-w-7xl px-8">
             <h1 class="text-5xl font-montserrat text-[#262C51] font-bold text-center">Our Partners</h1>
 
-            <swiper v-if="partners.length != 0"
+            <swiper
                class="h-fit mt-20"
                :modules="modules"
                :autoplay="{ delay: 8000, disableOnInteraction: false }"
@@ -345,7 +345,6 @@ const tabOurTeam = ref('management')
                   </div>
                </swiper-slide>
             </swiper>
-            <div class="w-full text-center mt-10" v-else>No partners yet</div>
          </div>
       </div>
 
