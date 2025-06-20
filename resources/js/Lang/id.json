@@ -37,7 +37,7 @@
   "about.contact": "Hubungi Kami",
 
   "our-program.title": "Program Kami",
-  "our-program.description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+  "our-program.description": "WLF berfokus pada tiga bidang utama di bidang pendidikan, yaitu Pendidikan Anak Usia Dini, Keaksaraan dan Numerasi Dasar, dan Pendidikan Kejuruan, dengan menggunakan ketiga pendekatan WLF. Dalam konteks pendidikan, implementasi program menekankan peningkatan kapasitas pendidik, membangun hubungan dan keterkaitan antar pemangku kepentingan, memanfaatkan platform yang ada seperti KKG dan Komite Sekolah, serta melakukan advokasi kepada pemerintah terkait untuk memperkuat kerangka kebijakan terkait ketiga fokus tersebut. bidang kerja WLF di bidang pendidikan.",
   "sub-program.other": "Program Lainnya",
 
   "our-impact.title": "Program Kami",
@@ -83,6 +83,20 @@
   "grantee.cycle.1": "Diskusi bulanan: setiap bulan, waktu sesuai kesepakatan dengan program officer (minggu ke-3).",
   "grantee.cycle.2": "Unggah foto/video: setelah kegiatan, dan/atau ketika ada dokumentasi cerita perubahan.",
   "grantee.cycle.3": "Laporan kuartal proyek dan keuangan: setiap 3 bulan, sesuai dengan tenggat yang diatur dalam Perjanjian Kerja Sama. ",
+  "grantee.quarterly": "Pengiriman Laporan Kuartal",
+  "grantee.quarterly.desc": "Masing-masing laporan dikirimkan melalui Grantee Portal. Setelah mengunggah ke Grantee Portal, mitra menginfokan kepada officer terkait melalui surel. ",
+  "grantee.quarterly.1": "Laporan Kemajuan Program: Dikirimkan kepada Program Officer dengan cc kepada Program Lead dan Grant Officer.",
+  "grantee.quarterly.2": "Laporan keuangan: Dikirimkan kepada Grant Officer dan Admin and Finance Manager dengan cc kepada Program Officer.",
+  "grantee.question.title": "Pertanyaan",
+  "grantee.question.description": "Apabila anda menemui kesulitan atau memiliki pertanyaan dalam mengakses atau mempergunakan portal ini, silakan untuk menghubungi Program Officer yang bertanggungjawab atas proyek Anda. ",
+
+  "grantee.reporting.1": "Halaman ini ditujukan bagi mitra WLF untuk keperluan pengiriman laporan kemajuan program dan laporan keuangan dana hibah WLF. Setelah laporan diupdate, mitra diharapkan mengirimkan email pemberitahuan kepada WLF.",
+  "grantee.reporting.2": "Akses pada laman ini diberikan secara terbatas bagi alamat surel yang telah didaftarkan ke WLF terlebih dahulu. Apabila ada perubahan personel penanggung jawab pelaporan program maupun keuangan, mitra harus mengajukan surat permohonan kepada WLF untuk penghentian akses staff yang lama serta pemberian akses untuk staff penggantinya, melalui email kepada Program Officer WLF.",
+  "grantee.reporting.3": "Mitra WLF diwajibkan untuk menyediakan profil dan logo lembaga melalui google form (klik 'Profil Mitra WLF' di atas). Profil lembaga dan logo akan digunakan/diolah oleh WLF untuk kepentingan publikasi produk pengetahuan maupun konten sosial media. Adapun ketentuan untuk pengisian/unggah file sebagai berikut:",
+  "grantee.reporting.4": "Profil lembaga: Profil dibuat dalam bahasa Indonesia dan bahasa inggris, masing-masing sepanjang satu paragraf (5-7 kalimat).",
+  "grantee.reporting.5": "Logo lembaga: Logo diutamakan dalam format PNG dengan resolusi yang baik. Apabila tidak ada logo dalam format PNG, mitra dapat mengirimkan logo dalam format JPG.",
+  "grantee.reporting.6": "Masing-masing mitra hanya perlu mengirimkan profil dan logo sebanyak satu kali selama periode kerja sama, kecuali terjadi perubahan kelembagaan mitra yang berdampak pada perubahan profil dan/atau logo.",
+
   "publications.detail.other": "Konten Lainnya",
 
   "contact.title": "Hubungi Kami",

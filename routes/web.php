@@ -159,7 +159,7 @@ Route::get('/donate', [LandingPageController::class, 'donate'])->name('donate');
 
 Route::post('/subscribe-newsletter', function (Request $request) {
     $request->validate([
-        'email' => 'required|email'
+        'email' => 'required|email|unique:subscriptions,email'
     ]);
 
     $subscriptions = Subscription::create([

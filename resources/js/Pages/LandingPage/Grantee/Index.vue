@@ -134,19 +134,19 @@ const partners = [
                      <div class="w-full h-[248px] flex justify-center">
                         <img src="/assets/img/grantee/poin-1.png" alt="poin1" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
                      </div>
-                     <h3 class="text-center text-2xl text-[#E75E00] font-bold">Pengiriman Laporan Kuartal</h3>
-                     <p class="font-medium">Masing-masing laporan dikirimkan melalui Grantee Portal. Setelah mengunggah ke Grantee Portal, mitra menginfokan kepada officer terkait melalui surel. </p>
+                     <h3 class="text-center text-2xl text-[#E75E00] font-bold">{{ $t('grantee.quarterly') }}</h3>
+                     <p class="font-medium">{{ $t('grantee.quarterly.desc') }}</p>
                      <ul class="list-disc font-medium">
-                        <li>Laporan Kemajuan Program: Dikirimkan kepada Program Officer dengan cc kepada Program Lead dan Grant Officer.</li>
-                        <li>Laporan keuangan: Dikirimkan kepada Grant Officer dan Admin and Finance Manager dengan cc kepada Program Officer.</li>
+                        <li>{{ $t('grantee.quarterly.1') }}</li>
+                        <li>{{ $t('grantee.quarterly.2') }}</li>
                      </ul>
                   </div>
                   <div class="w-full space-y-8">
                      <div class="w-full h-[248px] flex justify-center">
                         <img src="/assets/img/grantee/poin-2.png" alt="poin2" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
                      </div>
-                     <h3 class="text-center text-2xl text-[#E75E00] font-bold">Pertanyaan</h3>
-                     <p class="font-medium">Apabila anda menemui kesulitan atau memiliki pertanyaan dalam mengakses atau mempergunakan portal ini, silakan untuk menghubungi Program Officer yang bertanggungjawab atas proyek Anda. </p>
+                     <h3 class="text-center text-2xl text-[#E75E00] font-bold">{{ $t('grantee.question.title') }}</h3>
+                     <p class="font-medium">{{ $t('grantee.question.description') }}</p>
                   </div>
                </div>
             </div>
@@ -181,10 +181,15 @@ const partners = [
       <template v-if="tabActive == 'pelaporan'">
          <div class="w-full flex justify-center mt-20">
             <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
-               <p class="">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-               <p class="">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+               <p class="">{{ $t('grantee.reporting.1') }}</p>
+               <p class="">{{ $t('grantee.reporting.2') }}</p>
+               <p class="">{{ $t('grantee.reporting.3') }}</p>
+               <ul class="list-disc">
+                  <li>{{ $t('grantee.reporting.4') }}</li>
+                  <li>{{ $t('grantee.reporting.5') }}</li>
+                  <li>{{ $t('grantee.reporting.6') }}</li>
+               </ul>
             </div>
-
          </div>
          <div class="w-full flex justify-center mt-20" v-if="granteePartners.length > 0">
             <div class="max-w-7xl px-8">
@@ -205,7 +210,7 @@ const partners = [
          </div>
          <div class="w-full flex justify-center my-20">
             <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
-               <p class="">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+               <p class=""></p>
             </div>
          </div>
       </template>

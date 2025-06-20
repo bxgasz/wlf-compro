@@ -37,7 +37,7 @@
   "about.contact": "Contact Us",
 
   "our-program.title": "Our Programs",
-  "our-program.description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+  "our-program.description": "WLF focuses on three main areas in education, namely Early Childhood Education, Basic Literacy and Numeracy, and Vocational Education, using the three WLF approaches. In the context of education, program implementation emphasizes enhancing the capacity of educators, building relationships and connections among stakeholders, leveraging existing platforms such as KKG and School Committees, and advocating to the government to strengthen the policy framework related to these three focus areas. WLF's areas of work in the field of education.",
   "sub-program.other": "Other Program",
   
   "our-impact.title": "Pengaruh Kami",
@@ -83,7 +83,19 @@
   "grantee.cycle.1": "Monthly discussions: every month, at a time agreed upon with the program officer (third week).",
   "grantee.cycle.2": "Upload photos/videos: after the activity, and/or when there is documentation of the story of change.",
   "grantee.cycle.3": "Quarterly project and financial reports: every 3 months, in accordance with the deadlines set out in the Cooperation Agreement. ",
-  "publications.detail.other": "Other Content",
+  "grantee.quarterly": "Quarterly Report Submission",
+  "grantee.quarterly.desc": "Each report is submitted through the Grantee Portal. After uploading to the Grantee Portal, the partner informs the relevant officer via email. ",
+  "grantee.quarterly.1": "Program Progress Report: Sent to the Program Officer with cc to the Program Lead and Grant Officer.",
+  "grantee.quarterly.2": "Financial Report: Submitted to the Grant Officer and Admin and Finance Manager with cc to the Program Officer.",
+  "grantee.question.title": "Questions",
+  "grantee.question.description": "If you encounter difficulties or have questions in accessing or using this portal, please contact the Program Officer responsible for your project. ",
+
+  "grantee.reporting.1": "This page is intended for WLF partners for the purpose of submitting program progress reports and WLF grant financial reports. After the report is updated, partners are expected to send a notification email to WLF.",
+  "grantee.reporting.2": "Access to this page is limited to email addresses that have been registered with WLF in advance. If there are changes in the personnel responsible for program or financial reporting, partners must submit a request letter to WLF to terminate access for the previous staff and grant access for the replacement staff, via email to the WLF Program Officer.",
+  "grantee.reporting.3": "WLF partners are required to provide their institutional profile and logo via Google Form (click ‘WLF Partner Profile’ above). The institutional profile and logo will be used/processed by WLF for the purpose of publishing knowledge products and social media content. The requirements for filling in/uploading files are as follows:",
+  "grantee.reporting.4": "Organization profile: The profile must be written in Indonesian and English, each consisting of one paragraph (5-7 sentences).",
+  "grantee.reporting.5": "Organization logo: The logo should preferably be in PNG format with good resolution. If there is no logo in PNG format, the partner may submit the logo in JPG format.",
+  "grantee.reporting.6": "Each partner only needs to submit the profile and logo once during the cooperation period, unless there are institutional changes that affect the profile and/or logo.",
 
   "publications.detail.other": "Other Content",
 

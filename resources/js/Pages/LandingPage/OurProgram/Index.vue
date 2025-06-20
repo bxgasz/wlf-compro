@@ -107,8 +107,8 @@ const ourProgram = [
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl text-center px-8 text-[#000000] font-medium flex justify-center">
-            <p class="max-w-[70%]">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-         </div>
+            <p class="max-w-[70%]">{{ $t('our-program.description') }}</p>
+         </div> 
       </div>
 
       <div class="w-full flex justify-center">
