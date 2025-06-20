@@ -38,7 +38,7 @@ class LandingPageController extends Controller
             return $program;
         });
 
-        $stories = NewsStories::select('id', 'category_id', 'banner', 'type', 'thumbnail', 'title', 'created_at', 'slug')
+        $stories = NewsStories::select('id', 'category_id', 'banner', 'type', 'title', 'created_at', 'slug')
         ->where('type', 'story')
         ->orderBy('id', 'desc')->paginate(3)
         ->map(function ($new) {
