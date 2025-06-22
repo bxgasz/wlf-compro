@@ -233,6 +233,7 @@ import PartnersIcon from "@/Icons/PartnersIcon.vue";
 import ImageIcon from "@/Icons/ImageIcon.vue";
 import PinIcon from "@/Icons/PinIcon.vue";
 import LocationIcon from "@/Icons/LocationIcon.vue";
+import ToolsIcon from "@/Icons/ToolsIcon.vue";
 
   const page = usePage();
 
@@ -369,6 +370,23 @@ const menuGroups = [
     title: "Team Management",
     role: ['admin', 'manager', 'staff'],
     items: [
+      {
+        icon: ToolsIcon,
+        name: "Our Team Management",
+        role: ['admin', 'manager', 'staff'],
+        subItems: [
+          {
+            name: "Management",
+            path: "/admin/management",
+            role: ['admin', 'manager', 'staff']
+          },
+          {
+            name: "Organization",
+            path: "/admin/organization",
+            role: ['admin', 'manager', 'staff']
+          },
+        ]
+      },
       {
         icon: PartnersIcon,
         name: "Grantee Management",

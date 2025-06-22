@@ -9,8 +9,10 @@ use App\Http\Controllers\GranteeManagementController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsStoriesController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OurImpactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProgramCategoryController;
@@ -93,6 +95,14 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
     Route::resource('/grantee', GranteeManagementController::class);
     Route::post('/grantee-update/{grantee}', [GranteeManagementController::class, 'update'])->name('grantee.update');
     Route::get('/grantee-list', [GranteeManagementController::class, 'data'])->name('grantee.data');
+
+    Route::resource('/management', ManagementController::class);
+    Route::post('/management-update/{management}', [ManagementController::class, 'update'])->name('management.update');
+    Route::get('/management-list', [ManagementController::class, 'data'])->name('management.data');
+    Route::post('/management-status/{management}', [ManagementController::class, 'updateStatus'])->name('management.status');
+
+    Route::get('/organization', [OrganizationController::class, 'index'])->name('organization.index');
+    Route::post('/organization', [OrganizationController::class, 'update'])->name('organization.update');
 
     Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update');

@@ -12,7 +12,9 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
-   partners: Object
+   partners: Object,
+   managements: Object,
+   organization: Object
 })
 
 const page = usePage()
@@ -246,14 +248,18 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                </div>
 
                <div class="bg-[#D86727] rounded-[20px] w-[100%] p-10 lg:-ms-44">
-                  <div class="flex flex-wrap gap-5 min-h-64 w-full items-center justify-center md:justify-between lg:justify-end" v-if="page.props.settings.show_team">
-                     <div class="text-white space-y-3" v-for="(data, index) in ourTeam" :key="index">
+                  <div class="flex flex-wrap gap-5 min-h-64 w-full items-center justify-center md:justify-between lg:justify-end" v-if="page.props.settings.show_team && tabOurTeam == 'management'">
+                     <div class="text-white space-y-3 w-full lg:w-[calc(30%)]" v-for="(data, index) in managements" :key="index">
                         <div class="lg:w-72 h-44">
                            <img :src="data.image" alt="values" class="w-full h-full object-cover rounded-[20px]">
                         </div>
-                        <h3 class="text-[20px] font-bold">{{ data.name }}</h3>
-                        <p>{{ data.position }}</p>
+                        <h3 class="text-[20px] font-bold">{{ data.title[locale] }}</h3>
+                        <p>{{ data.position[locale] }}</p>
                      </div>
+                  </div>
+
+                  <div class="w-full" v-if="page.props.settings.show_organization && tabOurTeam == 'organization'">
+                     <img :src="organization.image" alt="organization" class="w-full h-full object-contain">
                   </div>
                </div>
 
@@ -262,8 +268,8 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                      Our Team
                   </h2>
 
-                  <p v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-tl-[20px] mt-10" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</p>
-                  <p v-if="page.props.settings.show_organization" @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-bl-[20px]" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</p>
+                  <p role="button" v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-tl-[20px] mt-10" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</p>
+                  <p role="button" v-if="page.props.settings.show_organization" @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-bl-[20px]" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</p>
                </div>
             </div>
          </div>

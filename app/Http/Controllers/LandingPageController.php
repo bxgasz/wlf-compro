@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Career;
+use App\Models\Management;
 use App\Models\NewsStories;
+use App\Models\Organization;
 use App\Models\OurImpact;
 use App\Models\Partner;
 use App\Models\Program;
@@ -62,8 +64,19 @@ class LandingPageController extends Controller
     {
         $partners = Partner::orderBy('id', 'desc')->get()->chunk(10);
 
+        $managements = Management::orderBy('id', 'desc')->where('is_active', true)->get()->map(function ($management) {
+            $management->title = json_decode($management->title, true);
+            $management->position = json_decode($management->position, true);
+            $management->description = json_decode($management->description, true);
+            return $management;
+        });
+
+        $organization = Organization::first();
+
         return Inertia::render('LandingPage/About/Index', [
-            'partners' => $partners
+            'partners' => $partners,
+            'managements' => $managements,
+            'organization' => $organization,
         ]);
     }
 
