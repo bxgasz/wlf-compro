@@ -13,6 +13,7 @@ import { useI18n } from 'vue-i18n';
 import ChevronIcon from '@/Icons/ChevronIcon.vue';
 import { computed, ref } from 'vue';
 import { formatDate } from '@/Helper/FormatDate';
+import PlayIcon from '@/Icons/PlayIcon.vue';
 
 const props = defineProps({
    banners: Object,
@@ -103,14 +104,14 @@ const youtubeUrl = computed(() =>
                   </template>
                </div>
                <div class="w-screen px-8 max-w-7xl absolute inset-0 left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 flex items-center z-20">
-                  <div class="flex flex-col justify-center z-20 w-[50%]">
+                  <div class="flex flex-col justify-center z-20 w-[80%] lg:w-[50%]">
                      <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold">
                         {{ banner.title[locale] }}
                      </h1>
                      <div class="flex items-center my-5" v-if="true">
                         <p class="text-xl text-slate-300">{{ banner.desc[locale] }}</p>
                      </div>
-                     <div class="flex gap-4 items-center">
+                     <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
                         <Link v-if="banner.link_01" :href="banner.link_01" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More' }}</Link>
                         <Link v-if="banner.link_02" :href="banner.link_02" class="border border-[#D86727] text-[#D86727] px-6 py-3 font-semibold rounded-xl w-fit">{{ locale == 'id' ? 'Informasi Lainnya' : 'Another Information' }}</Link>
                      </div>
@@ -132,12 +133,13 @@ const youtubeUrl = computed(() =>
                <Link :href="route('about-us')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('home.readmore') }}</Link>
             </div>
             <div>
-               <div class="w-full cursor-pointer" @click="showVideo = true">
+               <div class="w-full cursor-pointer relative" @click="showVideo = true">
                   <img
                   src="/assets/img/home/who-are-we.png"
                   alt="video"
                   class="h-60 w-full lg:w-[90%] object-cover rounded-3xl"
                   />
+                  <PlayIcon class="text-white opacity-45 h-20 w-20 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
                </div>
 
                <div
@@ -268,7 +270,7 @@ const youtubeUrl = computed(() =>
                <Link :href="route('publications')" class="bg-[#2F3C87] hover:bg-[#3c50c0] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit hidden lg:flex">{{ $t('home.storiesbutton') }}</Link>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-[40%,60%] gap-4 min-h-[364px]">
-               <Link :href="route('publications-detail', { category: stories[0].category_id, title: stories[0].slug ? stories[0].slug : stories[0].title[lang], date:  new Date(stories[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button">
+               <Link :href="route('publications-detail', { title: stories[0].slug ? stories[0].slug : stories[0].title[lang], date:  new Date(stories[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button">
                   <div class="w-full h-full overflow-hidden img-our-program rounded-2xl">
                   <img :src="stories[0].banner"
                            alt="" 
@@ -281,17 +283,19 @@ const youtubeUrl = computed(() =>
                      </div>
                   </div>
                </Link>
+
+               {{ console.log(stories.slice(1)) }}
                
                <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0" v-if="stories.length > 1">
-                  <Link :href="route('publications-detail', { category: data[1].category_id, title: data[1].slug ? data[1].slug : data[1].title[lang], date:  new Date(data[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="(data, i) in stories.slice(1)">
+                  <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[lang], date:  new Date(data.created_at).toISOString().split('T')[0] })" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="(data, i) in stories.slice(1)">
                      <div class="w-full h-full overflow-hidden rounded-2xl">
-                        <img :src="`/assets/img/home/news-${i + 1}.jpg`"
+                        <img :src="data.banner"
                            alt="" 
                            class="object-cover h-[140px] md:h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                      <div class="w-[95%]">
                         <p class="text-white text-[10px] sm:text-[16px] w-full">{{ formatDate(data.created_at) }}</p>
-                        <p class="text-white text-[16px] sm:text-[20px] w-full font-bold">{{ formatDate(data.title[locale]) }}</p>
+                        <p class="text-white text-[16px] sm:text-[20px] w-full font-bold">{{ data.title[locale] }}</p>
                      </div>
                   </Link>
                </div>

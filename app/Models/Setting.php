@@ -24,10 +24,12 @@ class Setting extends Model
         'gmap_url',
         'footer_notes',
 
-        'show_organization_team',
+        'show_organization',
+        'show_team',
         'show_donate_button',
 
         'cta_title',
         'cta_link',
+        'show_cta'
     ];
 }

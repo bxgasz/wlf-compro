@@ -55,7 +55,7 @@ const partners = [
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('grantee.title') }}
          </h1>
       </div>
@@ -196,7 +196,7 @@ const partners = [
                <div class="flex flex-wrap justify-center gap-5 w-full">
                   <Link :href="data.link" class="relative border border-[#E75E00] rounded-[20px] p-3 lg:w-[calc(18%)] shadow-xl shadow-[#D86727]/20" v-for="(data, i) in granteePartners" :key="i">
                      <div class="w-full h-56 flex items-center">
-                        <img :src="data.logo" alt="image" class="w-full object-cover rounded-t-[20px]">
+                        <img :src="data.logo" alt="image" class="w-full h-full object-contain rounded-t-[20px]">
                      </div>
                      <div class="h-full w-full absolute p-8 z-20 top-0 flex flex-col justify-between">
                         <div class="flex justify-end w-full">

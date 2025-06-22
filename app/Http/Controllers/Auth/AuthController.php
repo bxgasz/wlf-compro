@@ -40,7 +40,7 @@ class AuthController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
-        $request->session()->invalidate();
+        // $request->session()->invalidate();
         $request->session()->regenerateToken();
         
         return redirect(route('auth.login'));
@@ -76,7 +76,7 @@ class AuthController extends Controller
     public function destroyGrantee(Request $request)
     {
         Auth::guard('grantee')->logout();
-        $request->session()->invalidate();
+        // $request->session()->invalidate();
         $request->session()->regenerateToken();
         
         return redirect(route('home'));

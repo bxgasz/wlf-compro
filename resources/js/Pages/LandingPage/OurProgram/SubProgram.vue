@@ -31,7 +31,7 @@ const tabActive = ref(props.category)
          <div class="image-container">
             <img src="/assets/img/ourprogram/program1.png" alt="our-program">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white uppercase w-full max-w-7xl px-8 text-[2rem] md:text-[2.5rem] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ programCategory.title[locale] }}
          </h1>
       </div>

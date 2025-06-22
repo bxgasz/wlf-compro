@@ -36,6 +36,7 @@ const formCta = useForm({
    cta_title_en: props.setting.cta_title?.en ?? '',
    cta_title_id: props.setting.cta_title?.id ?? '',
    cta_link: props.setting.cta_link ?? '',
+   show_cta: props.setting.show_cta
 })
 
 const favicon_preview = ref(props.setting.favicon ?? null)
@@ -165,28 +166,55 @@ const toggleShowSection = async(event, section) => {
          <h1 class="mb-5 text-xl font-bold">About Page</h1>
 
          <div class="flex items-center gap-5">
-            <label for="">Organization & Team Section</label>
+            <label for="">Organization Section</label>
             <label class="inline-flex items-center cursor-pointer">
                <input
                   type="checkbox"
                   class="sr-only peer"
-                  :checked="setting.show_organization_team"
-                  @change="toggleShowSection($event, 'show_organization_team')"
+                  :checked="setting.show_organization"
+                  @change="toggleShowSection($event, 'show_organization')"
                >
                <div
                   class="relative w-11 h-6 rounded-full transition-all 
                      peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500
                      "
-                  :class="setting.show_organization_team == true ? 'bg-blue-600 dark:bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'"
+                  :class="setting.show_organization == true ? 'bg-blue-600 dark:bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'"
                >
                   <div
                      class="absolute top-0.5 left-0.5 h-5 w-5 bg-white border border-gray-300 rounded-full shadow 
                      dark:border-gray-600"
-                     :class="setting.show_organization_team == true ? 'translate-x-5 transition-all transform' : ''"
+                     :class="setting.show_organization == true ? 'translate-x-5 transition-all transform' : ''"
                   ></div>
                </div>
                <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-                  {{ setting.show_organization_team == true ? "Active" : "Disabled" }}
+                  {{ setting.show_organization == true ? "Active" : "Disabled" }}
+               </span>
+            </label>
+         </div>
+
+         <div class="flex items-center gap-5">
+            <label for="">Team Section</label>
+            <label class="inline-flex items-center cursor-pointer">
+               <input
+                  type="checkbox"
+                  class="sr-only peer"
+                  :checked="setting.show_team"
+                  @change="toggleShowSection($event, 'show_team')"
+               >
+               <div
+                  class="relative w-11 h-6 rounded-full transition-all 
+                     peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500
+                     "
+                  :class="setting.show_team == true ? 'bg-blue-600 dark:bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'"
+               >
+                  <div
+                     class="absolute top-0.5 left-0.5 h-5 w-5 bg-white border border-gray-300 rounded-full shadow 
+                     dark:border-gray-600"
+                     :class="setting.show_team == true ? 'translate-x-5 transition-all transform' : ''"
+                  ></div>
+               </div>
+               <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  {{ setting.show_team == true ? "Active" : "Disabled" }}
                </span>
             </label>
          </div>
@@ -455,6 +483,33 @@ const toggleShowSection = async(event, section) => {
 
       <ComponentCard title="CTA (Call To Action) Section" class="mt-5">
          <div class="space-y-6">
+            <div class="flex items-center gap-5">
+               <label for="">Show CTA</label>
+               <label class="inline-flex items-center cursor-pointer">
+                  <input
+                     type="checkbox"
+                     class="sr-only peer"
+                     :checked="setting.show_cta"
+                     @change="toggleShowSection($event, 'show_cta')"
+                  >
+                  <div
+                     class="relative w-11 h-6 rounded-full transition-all 
+                        peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500
+                        "
+                     :class="setting.show_cta == true ? 'bg-blue-600 dark:bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'"
+                  >
+                     <div
+                        class="absolute top-0.5 left-0.5 h-5 w-5 bg-white border border-gray-300 rounded-full shadow 
+                        dark:border-gray-600"
+                        :class="setting.show_cta == true ? 'translate-x-5 transition-all transform' : ''"
+                     ></div>
+                  </div>
+                  <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                     {{ setting.show_cta == true ? "Active" : "Disabled" }}
+                  </span>
+               </label>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                <div class="">
                   <TextInput

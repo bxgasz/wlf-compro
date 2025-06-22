@@ -28,7 +28,7 @@ const lang = 'en'
          <div class="image-container-hero">
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
+         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
             {{ $t('publications.title') }}
          </h1>
       </div>
@@ -45,7 +45,7 @@ const lang = 'en'
                <div class="">
                   <div class="w-full" v-if="datas.length > 0">
                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-[364px]">
-                        <Link :href="route('publications-detail', { category: datas[0].category_id, title: datas[0].slug ? datas[0].slug : datas[0].title[lang], date:  new Date(datas[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
+                        <Link :href="route('publications-detail', { title: datas[0].slug ? datas[0].slug : datas[0].title[lang], date:  new Date(datas[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
                            <div class="w-full h-full overflow-hidden fading rounded-[20px]">
                               <img :src="datas[0].banner"
                                     alt="Excavator" 
@@ -60,7 +60,7 @@ const lang = 'en'
                         </Link>
                         
                         <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0">
-                           <Link v-if="datas.length >= 2" :href="route('publications-detail', { category: datas[1].category_id, title: datas[1].slug ? datas[1].slug : datas[1].title[lang], date:  new Date(datas[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group gap-5" role="button">
+                           <Link v-if="datas.length >= 2" :href="route('publications-detail', { title: datas[1].slug ? datas[1].slug : datas[1].title[lang], date:  new Date(datas[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group gap-5" role="button">
                               <div class="w-full h-full overflow-hidden rounded-[20px]">
                                  <img :src="datas[1].banner"
                                     alt="Excavator" 
@@ -72,7 +72,7 @@ const lang = 'en'
                               </div>
                            </Link>
 
-                           <Link v-if="datas.length >= 3" :href="route('publications-detail', { category: datas[2].category_id, title: datas[2].slug ? datas[2].slug : datas[2].title[lang], date:  new Date(datas[2].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group" role="button">
+                           <Link v-if="datas.length >= 3" :href="route('publications-detail', { title: datas[2].slug ? datas[2].slug : datas[2].title[lang], date:  new Date(datas[2].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group" role="button">
                               <div class="w-full h-full overflow-hidden rounded-[20px]">
                                  <img :src="datas[2].banner"
                                     alt="Excavator" 
@@ -92,7 +92,7 @@ const lang = 'en'
                            <Link
                               v-for="(item, index) in datas.slice(3)"
                               :key="index"
-                              :href="route('publications-detail', { category: item.category_id, title: item.slug ? item.slug : item.title[lang], date: new Date(item.created_at).toISOString().split('T')[0] })"
+                              :href="route('publications-detail', { title: item.slug ? item.slug : item.title[lang], date: new Date(item.created_at).toISOString().split('T')[0] })"
                               class="group flex flex-col w-full h-full rounded overflow-hidden"
                            >
                               <div class="w-full h-[219px] lg:h-[182px] overflow-hidden relative">

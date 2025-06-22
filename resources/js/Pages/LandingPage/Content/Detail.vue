@@ -15,7 +15,7 @@ const props = defineProps({
 const { locale } = useI18n()
 
 const contentTitle = computed(() => props.content?.title?.[locale.value]);
-const contentUrl = computed(() => route('publications-detail', { category: props.content.category_id, title: props.content?.slug ? props.content?.slug : props.content?.title[locale.value], date: new Date(props.content?.created_at).toISOString().split('T')[0] }));
+const contentUrl = computed(() => route('publications-detail', { title: props.content?.slug ? props.content?.slug : props.content?.title[locale.value], date: new Date(props.content?.created_at).toISOString().split('T')[0] }));
 const { copyLink, shareOnFacebook, shareOnLinkedIn, shareOnX } = useShare(contentTitle.value, contentUrl.value);
 
 const showPopupShare = ref(false);
@@ -59,7 +59,7 @@ onUnmounted(() => {
                <div class="flex mt-6 mx-auto justify-center">
                   <p class="text-gray-600 text-[16px]">{{ formatDate(content.created_at) }}</p>
                   <span class="text-gray-600 mx-3">|</span>
-                  <p class="text-gray-600 text-[16px]">{{ content.category[locale] }}</p>
+                  <p class="text-gray-600 text-[16px]">{{ content.category == null ? '' : content.category[locale] }}</p>
                </div>
             </div>
          </div>
@@ -114,7 +114,7 @@ onUnmounted(() => {
                <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold mb-10 text-center uppercase">{{ $t('publications.detail.other') }}</h2>
 
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                  <Link :href="route('publications-detail', { category: data.category_id, title: data.slug ? data.slug : data.title[locale], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in otherContent.data" :key="i">
+                  <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[locale], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in otherContent.data" :key="i">
                      <div class="w-full h-[20rem] overflow-hidden img-our-program rounded-2xl">
                         <img :src="data.banner"
                               alt="" 

@@ -19,7 +19,7 @@ const { locale } = useI18n()
          <div class="image-container">
             <img src="/assets/img/career/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
+         <h1 class="text-white uppercase text-[2rem] md:text-[42px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
             {{ $t('career.title') }}
          </h1>
       </div>

@@ -1,6 +1,6 @@
 <template>
    <div class="h-screen w-full flex items-center justify-center bg-gray-100">
-      <div class="w-[50rem] h-[500px] bg-white shadow-lg overflow-hidden mx-8">
+      <div class="w-[50rem] h-[500px] bg-white shadow-lg mx-8">
          <div class="grid grid-cols-1 lg:grid-cols-2 w-full h-full">
             <div class="w-full h-full hidden lg:flex">
                <img src="/assets/img/grantee/login-grantee.svg" alt="login" class="w-full h-full object-cover">
@@ -114,7 +114,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import FullScreenLayout from '@/Components/admin/layout/FullScreenLayout.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 
 const showPassword = ref(false)

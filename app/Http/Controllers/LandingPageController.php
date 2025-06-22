@@ -38,7 +38,7 @@ class LandingPageController extends Controller
             return $program;
         });
 
-        $stories = NewsStories::select('id', 'category_id', 'banner', 'type', 'thumbnail', 'title', 'created_at', 'slug')
+        $stories = NewsStories::select('id', 'category_id', 'banner', 'type', 'title', 'created_at', 'slug')
         ->where('type', 'story')
         ->orderBy('id', 'desc')->paginate(3)
         ->map(function ($new) {
@@ -222,14 +222,13 @@ class LandingPageController extends Controller
         ]);
     
     }
-    public function detailContent($category, $title, $date) 
+    public function detailContent($title, $date) 
     {
         if (!$title && !$date) {
             return redirect()->back();
         }
 
-        $content = NewsStories::with(['category', 'tags'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')
-        ->where('category_id', $category)->whereDate('created_at', $date)->first();
+        $content = NewsStories::with(['category', 'tags'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')->whereDate('created_at', $date)->first();
 
         if (!$content) {
             return redirect(route('home'));

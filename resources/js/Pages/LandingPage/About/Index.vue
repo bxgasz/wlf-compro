@@ -83,66 +83,7 @@ const ourTeam = [
    },
 ]
 
-const ourPartners = [
-   {
-      "data" : [
-         {
-            image: '/assets/img/about/acer.png'
-         },
-         {
-            image: '/assets/img/about/sid.png'
-         },
-         {
-            image: '/assets/img/about/binatani.png'
-         },
-         {
-            image: '/assets/img/about/satunama.png'
-         },
-         {
-            image: '/assets/img/about/desma.png'
-         },
-         {
-            image: '/assets/img/about/plus.png'
-         },
-         {
-            image: '/assets/img/about/inspirasi.png'
-         },
-         {
-            image: '/assets/img/about/remdec.png'
-         },
-      ]
-   },
-   {
-      "data" : [
-         {
-            image: '/assets/img/about/acer.png'
-         },
-         {
-            image: '/assets/img/about/sid.png'
-         },
-         {
-            image: '/assets/img/about/binatani.png'
-         },
-         {
-            image: '/assets/img/about/satunama.png'
-         },
-         {
-            image: '/assets/img/about/desma.png'
-         },
-         {
-            image: '/assets/img/about/plus.png'
-         },
-         {
-            image: '/assets/img/about/inspirasi.png'
-         },
-         {
-            image: '/assets/img/about/remdec.png'
-         },
-      ]
-   },
-]
-
-const tabOurTeam = ref('management')
+const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organization')
 </script>
 
 <template>
@@ -153,7 +94,7 @@ const tabOurTeam = ref('management')
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('about.title') }}
          </h1>
       </div>
@@ -286,7 +227,7 @@ const tabOurTeam = ref('management')
          </div>
       </div>
 
-      <div class="w-full flex justify-center mt-20" v-if="page.props.settings.show_organization_team">
+      <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl w-full px-8">
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
@@ -296,13 +237,13 @@ const tabOurTeam = ref('management')
                   </h2>
 
                   <div class="flex gap-2 mt-10">
-                     <button @click="tabOurTeam = 'management'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</button>
+                     <button v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</button>
                      <button @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</button>
                   </div>
                </div>
 
                <div class="bg-[#D86727] rounded-[20px] w-[100%] p-10 lg:-ms-44">
-                  <div class="flex flex-wrap gap-5 min-h-64 w-full items-center justify-center md:justify-between lg:justify-end">
+                  <div class="flex flex-wrap gap-5 min-h-64 w-full items-center justify-center md:justify-between lg:justify-end" v-if="page.props.settings.show_team">
                      <div class="text-white space-y-3" v-for="(data, index) in ourTeam" :key="index">
                         <div class="lg:w-72 h-44">
                            <img :src="data.image" alt="values" class="w-full h-full object-cover rounded-[20px]">
@@ -318,7 +259,7 @@ const tabOurTeam = ref('management')
                      Our Team
                   </h2>
 
-                  <p @click="tabOurTeam = 'management'" class="p-3 text-base rounded-tl-[20px] mt-10" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</p>
+                  <p v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-tl-[20px] mt-10" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</p>
                   <p @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-bl-[20px]" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</p>
                </div>
             </div>
@@ -348,21 +289,20 @@ const tabOurTeam = ref('management')
       </div>
 
       <div class="flex justify-center mt-20 w-full bg-[#2B3E8C] rounded-t-[100px] lg:rounded-t-[300px]">
-         <div class="max-w-7xl px-8 my-20">
+         <div class="max-w-7xl w-full px-8 my-20">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                <div class="w-full h-[284px]">
                   <iframe class="rounded-[20px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2342680692304!2d106.82871827509548!3d-6.232817993755369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ef32de8be3%3A0x9bb807c61923a77e!2sWilliam%20%26%20Lily%20Foundation!5e0!3m2!1sid!2sid!4v1748936984987!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                </div>
                <div class="flex flex-col gap-5">
                   <h1 class="text-5xl font-playfair text-white font-bold">{{ $t('about.contact') }}</h1>
-                  <p class="text-white">
-                     {{ page.props.settings.location ?? 'Menara Karya, Lt. 17, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950' }}
+                  <p class="text-white" v-html="page.props.settings.location">
                   </p>
-                  <div class="flex gap-2">
+                  <div class="flex gap-2 text-white">
                      <a href="'tel:'+page.props.settings.phone_no"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
                      <a href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
                   </div>
-                  <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
                </div>
             </div>
          </div>

@@ -118,9 +118,9 @@ const handleSubmit = async() => {
                <TextInput 
                   v-model="form.title_en"
                   type="text"
-                  title="Stories"
+                  title="Title"
                   :required="true"
-                  placeholder="Enter a stories"
+                  placeholder="Enter a title"
                />
                <label
                   class="block text-sm font-medium text-error-500"
@@ -135,9 +135,9 @@ const handleSubmit = async() => {
                <TextInput 
                   v-model="form.title_id"
                   type="text"
-                  title="Stories"
+                  title="Title"
                   :required="true"
-                  placeholder="Enter a stories"
+                  placeholder="Enter a title"
                />
                <label
                   class="block text-sm font-medium text-error-500"
@@ -153,7 +153,6 @@ const handleSubmit = async() => {
                   v-model="form.meta_title"
                   type="text"
                   title="Meta Head"
-                  :required="true"
                   placeholder="Enter a meta head"
                />
                <label
@@ -163,7 +162,7 @@ const handleSubmit = async() => {
                </label>
             </div>
             <div class="">
-               <TextArea :required="true" title="Meta Description" placeholder="Enter a meta description" v-model="form.meta_description" />
+               <TextArea title="Meta Description" placeholder="Enter a meta description" v-model="form.meta_description" />
                <label
                   class="block text-sm font-medium text-error-500"
                >
@@ -290,7 +289,6 @@ const handleSubmit = async() => {
                <SearchSelect 
                   :options="categories" 
                   v-model="form.category_id" 
-                  :required="true"
                   title="Category"
                />  
                <label
@@ -305,7 +303,6 @@ const handleSubmit = async() => {
                   v-model="form.writter"
                   type="text"
                   title="Writter"
-                  :required="true"
                   placeholder="Enter a writter name"
                />
                <label

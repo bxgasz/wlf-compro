@@ -24,7 +24,7 @@ const showMore = () => {
          <div class="image-container">
             <img src="/assets/img/ourImpact/bg-section.jpg" alt="ourImpact">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('our-impact.title') }}
          </h1>
       </div>
@@ -85,7 +85,7 @@ const showMore = () => {
       <div class="flex justify-center w-full my-20">
          <div class="max-w-7xl px-8 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
-               <Link :href="route('publications-detail', { category: data.category_id, title: data.slug ? data.slug : data.title[lang], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in stories" :key="i">
+               <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[lang], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in stories" :key="i">
                   <div class="relative w-full fading group">
                      <div class="w-full h-[10rem] overflow-hidden img-our-program rounded-2xl">
                         <img :src="data.banner"

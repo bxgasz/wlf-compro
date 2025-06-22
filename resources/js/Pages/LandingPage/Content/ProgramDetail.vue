@@ -158,7 +158,7 @@ onUnmounted(() => {
                <h2 class="text-[#2B3E8C] text-[2rem] md:text-4xl leading-[1.1] font-montserrat font-bold mb-10 text-center uppercase">{{ $t('sub-program.other') }}</h2>
 
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                  <Link :href="route('publications-detail', { category: data.category_id, title: data.slug ? data.slug : data.title[locale], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in otherContent.data" :key="i">
+                  <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[locale], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in otherContent.data" :key="i">
                      <div class="w-full h-[20rem] overflow-hidden img-our-program rounded-2xl">
                         <img :src="data.banner"
                               alt="" 
