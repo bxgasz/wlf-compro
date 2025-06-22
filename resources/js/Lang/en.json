@@ -38,9 +38,10 @@
 
   "our-program.title": "Our Programs",
   "our-program.description": "WLF focuses on three main areas in education, namely Early Childhood Education, Basic Literacy and Numeracy, and Vocational Education, using the three WLF approaches. In the context of education, program implementation emphasizes enhancing the capacity of educators, building relationships and connections among stakeholders, leveraging existing platforms such as KKG and School Committees, and advocating to the government to strengthen the policy framework related to these three focus areas. WLF's areas of work in the field of education.",
+  "our-program.button": "See What To Do",
   "sub-program.other": "Other Program",
   
-  "our-impact.title": "Pengaruh Kami",
+  "our-impact.title": "Our Impact",
   "our-impact.description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
 
   "publications.title": "publications",
@@ -110,6 +111,10 @@
   "contact.location": "location",
   "contact.modal.header": "Message sent successfully",
   "contact.modal.text": "Thank you for contacting us. We will study your message first.",
-  "contact.modal.button": "Back to Home"
+  "contact.modal.button": "Back to Home",
+  "contact.send-message": "Send us a message",
+
+  "footer.subscribe": "Subscribe To Our Newsletter",
+  "search.title": "Search Something"
 }
  

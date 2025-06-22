@@ -43,7 +43,7 @@ const submitForm = () => {
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-montserrat font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             Contact Us
          </h1>
       </div>
@@ -51,7 +51,7 @@ const submitForm = () => {
       <div class="px-8 lg:px-0 flex justify-center">
          <div class="grid grid-cols-1 lg:grid-cols-[20%,80%] w-full max-w-5xl gap-10 mt-20">
             <p class="text-center md:text-left text-[16px]">
-               Sebelum mulai, silakan lengkapi formulir berikut.Kirim dan tunggu kabar selanjutnya dari kami.
+               {{ $t('contact.description') }}
             </p>
             <div class="w-full">
                <div>
@@ -166,7 +166,7 @@ const submitForm = () => {
                      <a :href="'tel:'+page.props.settings.phone_no"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
                      <a :href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
                   </div>
-                  <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <Link href="#" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('contact.send-message') }}</Link>
                </div>
             </div>
          </div>

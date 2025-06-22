@@ -69,7 +69,7 @@ const handleSubscribe = () => {
                   </div>
                </p>
 
-               <h3 class="font-semibold mb-2 capitalize mt-5">Subscribe to our newsletter</h3>
+               <h3 class="font-semibold mb-2 capitalize mt-5">{{ $t('footer.subscribe') }}</h3>
                <div class="relative w-fit">
                   <input
                      type="email"

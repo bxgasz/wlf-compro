@@ -38,9 +38,10 @@
 
   "our-program.title": "Program Kami",
   "our-program.description": "WLF berfokus pada tiga bidang utama di bidang pendidikan, yaitu Pendidikan Anak Usia Dini, Keaksaraan dan Numerasi Dasar, dan Pendidikan Kejuruan, dengan menggunakan ketiga pendekatan WLF. Dalam konteks pendidikan, implementasi program menekankan peningkatan kapasitas pendidik, membangun hubungan dan keterkaitan antar pemangku kepentingan, memanfaatkan platform yang ada seperti KKG dan Komite Sekolah, serta melakukan advokasi kepada pemerintah terkait untuk memperkuat kerangka kebijakan terkait ketiga fokus tersebut. bidang kerja WLF di bidang pendidikan.",
+  "our-program.button": "Lihat Lebih Detail",
   "sub-program.other": "Program Lainnya",
 
-  "our-impact.title": "Program Kami",
+  "our-impact.title": "Pengaruh Kami",
   "our-impact.description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
 
   "publications.title": "Publikasi",
@@ -110,6 +111,11 @@
   "contact.location": "location",
   "contact.modal.header": "Pesan berhasil dikirim",
   "contact.moda.text": "Terima kasih telah menghubungi kami. Pihak kami akan mempelajari pesan Anda terlebih dahulu.",
-  "contact.moda.button": "Kembali Ke Beranda"
+  "contact.moda.button": "Kembali Ke Beranda",
+  "contact.send-message": "Kirim Pesan",
+
+  "footer.subscribe": "Berlangganan Kepada Berita Kami",
+
+  "search.title": "Cari Sesuatu"
 }
  

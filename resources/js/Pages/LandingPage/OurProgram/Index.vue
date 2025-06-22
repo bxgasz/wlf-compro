@@ -117,7 +117,7 @@ const ourProgram = [
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] lg:gap-5 p-5">
                   <div class="flex flex-col gap-5">
                      <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] uppercase font-bold">{{ list.title[locale] }}</h1>
-                     <Link :href="route('sub-program', list.slug)" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">See What to do</Link>
+                     <Link :href="route('sub-program', list.slug)" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">{{ $t('our-program.button') }}</Link>
                   </div>
                   <div class="w-full">
                      <swiper

@@ -19,7 +19,8 @@ const props = defineProps({
    banners: Object,
    programCategories: Object,
    stories: Object,
-   programs: Object
+   programs: Object,
+   newPublications: Object
 })
 
 const modules = [
@@ -181,8 +182,8 @@ const youtubeUrl = computed(() =>
          <div class="w-full flex justify-center absolute top-10">
             <div class="max-w-7xl px-8 w-full">
                <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">{{ $t('home.our-program') }}</h1>
-               <div class="flex gap-5 justify-start my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
-                  <Link :href="route('sub-program', data.slug)" class="w-[19rem] h-[23rem] sm:w-[24rem] sm:h-[27rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programCategories" :key="i">
+               <div :class="programCategories.length > 1 ? 'justify-start' : 'justify-center'" class="flex gap-5 my-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar-track]:bg-[#5A5A5A] [&::-webkit-scrollbar-thumb]:bg-[#D7261C]">
+                  <Link :href="route('sub-program', data.slug)" class="w-[16rem] h-[23rem] sm:w-[24rem] sm:h-[34rem] flex-shrink-0 flex justify-start relative fading group" v-for="(data, i) in programCategories" :key="i">
                      <div class="w-full h-full overflow-hidden rounded-2xl img-our-program">
                         <img :src="data.image" class="object-cover w-full h-full transition duration-500 ease-in-out group-hover:scale-125">
                      </div>
@@ -283,8 +284,6 @@ const youtubeUrl = computed(() =>
                      </div>
                   </div>
                </Link>
-
-               {{ console.log(stories.slice(1)) }}
                
                <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0" v-if="stories.length > 1">
                   <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[lang], date:  new Date(data.created_at).toISOString().split('T')[0] })" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="(data, i) in stories.slice(1)">
@@ -313,15 +312,15 @@ const youtubeUrl = computed(() =>
             <div class="bg-white max-w-7xl h-full w-full rounded-3xl mx-8">
                <div class="flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-32">
                   <div class="w-[15rem] border-2 border-gray-200 rounded-3xl -mt-32 flex md:hidden">
-                     <img src="/assets/img/home/publications.png" alt="publication" class="w-full h-auto rounded-3xl">
+                     <img :src="newPublications.banner" alt="publication" class="w-full h-full rounded-3xl">
                   </div>
-                  <div class="">
+                  <div class="pb-5 px-5">
                      <h1 class="font-playfair text-[#262C51] text-5xl font-bold">{{ $t('home.publication') }}</h1>
-                     <p class="text-[#262C51] text-base font-medium mt-5">16 Feb 2025</p>
-                     <p class="text-[#] text-2xl font-semibold">Permata Petani</p>
+                     <p class="text-[#262C51] text-base font-medium mt-5">{{ formatDate(newPublications.created_at) }}</p>
+                     <p class="text-[#] text-2xl font-semibold max-w-56">{{ newPublications.title[locale] }}</p>
                   </div>
-                  <div class="w-[24rem] lg:w-[26rem] border-2 border-gray-200 rounded-3xl -mt-32 hidden md:flex">
-                     <img src="/assets/img/home/publications.png" alt="publication" class="w-full h-auto rounded-3xl">
+                  <div class="w-[24rem] lg:w-[26rem] h-[26rem] border-2 border-gray-200 rounded-3xl -mt-32 hidden md:flex">
+                     <img :src="newPublications.banner" alt="publication" class="w-full h-full rounded-3xl">
                   </div>
                </div>
             </div>

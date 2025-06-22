@@ -20,6 +20,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
+use App\Models\NewsStories;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -172,3 +173,25 @@ Route::post('/subscribe-newsletter', function (Request $request) {
 Route::get('/login-grantee', [AuthController::class, 'loginGrantee'])->name('auth.login-grantee');
 Route::post('/login-grantee', [AuthController::class, 'authGrantee'])->name('auth.post-grantee');
 Route::post('/logout-grantee', [AuthController::class, 'destroyGrantee'])->name('grantee.logout');
+
+Route::get('/search', function () {
+    return Inertia::render('LandingPage/Search/Index');
+})->name('search');
+
+Route::get('/search-data', function (Request $request) {
+    $search = $request->search;
+
+    $newsStories = NewsStories::where('status', 'published')->when($search, function ($q) use($search) {
+        $q->whereRaw('LOWER(title) LIKE ?', '%'. $search .'%');
+    })
+    ->with('tags')
+    ->orderBy('id', 'desc')
+    ->get()->map(function ($new) {
+        return [
+            ...$new->toArray(),
+            'title' => json_decode($new->title),
+        ];
+    });
+
+    return $newsStories;
+})->name('search.post');

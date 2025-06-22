@@ -38,6 +38,9 @@ class LandingPageController extends Controller
             return $program;
         });
 
+        $newPublications = NewsStories::select('banner', 'title', 'created_at')->where('type', 'publication')->orderBy('created_at', 'desc')->first();
+        $newPublications->title = json_decode($newPublications->title, true);
+
         $stories = NewsStories::select('id', 'category_id', 'banner', 'type', 'title', 'created_at', 'slug')
         ->where('type', 'story')
         ->orderBy('id', 'desc')->paginate(3)
@@ -50,7 +53,8 @@ class LandingPageController extends Controller
             'banners' => $banners,
             'programs' => $programs,
             'programCategories' => $programCategories,
-            'stories' => $stories
+            'stories' => $stories,
+            'newPublications' => $newPublications
         ]);
     }
 

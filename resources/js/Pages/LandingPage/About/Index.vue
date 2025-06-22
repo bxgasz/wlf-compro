@@ -9,12 +9,15 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Link, usePage } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
    partners: Object
 })
 
 const page = usePage()
+
+const { locale } = useI18n()
 
 const modules = [
    Autoplay,
@@ -233,12 +236,12 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
 
                <div class="lg:hidden">
                   <h2 class="text-[#2B3E8C] text-4xl font-playfair font-extrabold">
-                     Our Team
+                     {{ $t('about.team') }}
                   </h2>
 
                   <div class="flex gap-2 mt-10">
-                     <button v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</button>
-                     <button @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</button>
+                     <button v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ locale == 'id' ? 'Manajemen' : 'Management' }}</button>
+                     <button @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-lg" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ locale == 'id' ? 'Struktur Organisasi' : 'Organization Strcuture' }}</button>
                   </div>
                </div>
 
@@ -302,7 +305,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                      <a href="'tel:'+page.props.settings.phone_no"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
                      <a href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
                   </div>
-                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">Send us a message</Link>
+                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('contact.send-message') }}</Link>
                </div>
             </div>
          </div>
