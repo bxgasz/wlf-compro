@@ -227,7 +227,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
          </div>
       </div>
 
-      <div class="w-full flex justify-center mt-20">
+      <div class="w-full flex justify-center mt-20" v-if="page.props.settings.show_team || page.props.settings.show_organization">
          <div class="max-w-7xl w-full px-8">
             <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
@@ -260,7 +260,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                   </h2>
 
                   <p v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-tl-[20px] mt-10" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</p>
-                  <p @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-bl-[20px]" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</p>
+                  <p v-if="page.props.settings.show_organization" @click="tabOurTeam = 'organization'" class="p-3 text-base rounded-bl-[20px]" :class="tabOurTeam == 'organization' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Organization Strcuture</p>
                </div>
             </div>
          </div>
