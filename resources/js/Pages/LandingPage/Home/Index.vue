@@ -84,7 +84,7 @@ const youtubeUrl = computed(() =>
       <Navbar/>
 
       <!-- hero section -->
-      <div class="min-h-screen h-[40rem] max-h-[50rem] w-full">
+      <div class="min-h-screen lg:min-h-[50rem] h-[40rem] max-h-[50rem] w-full">
          <swiper
             class="h-full"
             :modules="modules"

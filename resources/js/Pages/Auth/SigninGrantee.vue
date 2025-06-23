@@ -107,7 +107,7 @@
             </div>
          </div>
          <div class="w-full text-center text-white text-xs bg-[#2B3E8C] py-5">
-            @2025 William & Lily Foundation. All Rights Reseved.
+            {{ page.props.settings.footer_notes[locale] }}
          </div>
       </div>
    </div>

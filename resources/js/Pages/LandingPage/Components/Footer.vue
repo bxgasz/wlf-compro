@@ -28,15 +28,11 @@ const handleSubscribe = () => {
 }
 </script>
 <template>
-   <footer class="text-white py-20 bg-[#2F3C87] border-t border-[#262C51]">
+   <footer class="text-white pt-20 pb-10 bg-[#2F3C87] border-t border-[#262C51]">
       <div class="container mx-auto max-w-7xl px-8">
          <div class="flex justify-between flex-col sm:flex-wrap sm:flex-row gap-6">
             <div class="w-full sm:w-auto">
                <img :src="page.props.settings.logo" alt="BSS Logo" class="h-10 mb-4">
-
-               <div class="flex flex-col sm:flex-row justify-between text-gray-400 text-sm">
-                  <p>{{ page.props.settings.footer_notes[locale] != null ? page.props.settings.footer_notes[locale] : '© 2024 Hak cipta dilindungi oleh undang-undang.' }}</p>
-               </div>
             </div>
 
             <div class="grid">
@@ -51,10 +47,10 @@ const handleSubscribe = () => {
 
             <div class="w-[70%] md:w-[25%]">
                <h3 class="font-semibold mb-2">{{ locale == 'id' ? 'Alamat' : 'Address' }}</h3>
-               <p class="text-white text-md mb-5" v-html="page.props.settings.location">
+               <p class="text-white text-md" v-html="page.props.settings.location">
                </p>
-               <a :href="'tel:'+page.props.settings.phone_no" class="mt-10"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
-               <a :href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
+               <a :href="'tel:'+page.props.settings.phone_no" class="mt-10 flex gap-5"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
+               <a :href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`" class="flex gap-5 mt-5"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
             </div>
 
             <div>
@@ -91,8 +87,10 @@ const handleSubscribe = () => {
             </label>
             </div>
          </div>
-
-         <div class="border-t border-gray-700 my-6"></div>
+         <div class="flex w-full mt-20 justify-center text-gray-400 text-sm">
+            <p>{{ page.props.settings.footer_notes[locale] != null ? page.props.settings.footer_notes[locale] : '© 2024 Hak cipta dilindungi oleh undang-undang.' }}</p>
+         </div>
+         <!-- <div class="border-t border-gray-700 my-6"></div> -->
       </div>
    </footer>
 </template>

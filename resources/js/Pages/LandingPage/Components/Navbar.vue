@@ -60,7 +60,7 @@ const navLinks = [
    },
    {
       img: '',
-      text_id: 'Kesempatan',
+      text_id: 'Peluang Hibah',
       text_en: 'Grant Oppoturnities',
       key: 'grant-oppoturnities',
       link: '/grant-oppoturnities',

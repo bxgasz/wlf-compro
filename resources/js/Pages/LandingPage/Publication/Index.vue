@@ -4,15 +4,30 @@ import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import { Link } from '@inertiajs/vue3';
 import { formatDate } from '@/Helper/FormatDate';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
    datas: Object,
    type: String
 })
 
+const { locale } = useI18n()
+
 const categories = [
-   { title: 'Product Knowledge', value: 'publication' },
-   { title: 'Annual Report', value: 'annual_report' }
+   { 
+      title: {
+         en: 'Learning Document',
+         id: 'Document Pembelajaran'
+      },
+      value: 'publication'
+   },
+   { 
+      title: {
+         en: 'Annual Report',
+         id: 'Laporan Tahunan'
+      },
+      value: 'annual_report' 
+   }
 ]
 
 const tabActive = ref(props.type)
@@ -37,10 +52,10 @@ const lang = 'en'
          <div class="max-w-7xl w-full px-8">
             <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">
                <div class="lg:hidden">
-                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title }}</Link>
+                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title[locale] }}</Link>
                </div>
                <div class="hidden lg:flex flex-col">
-                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title }}</Link>
+                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title[locale] }}</Link>
                </div>
                <div class="">
                   <div class="w-full" v-if="datas.length > 0">

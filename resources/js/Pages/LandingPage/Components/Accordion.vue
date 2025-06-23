@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps({
    list: Object
@@ -10,6 +11,8 @@ const activeIndex = ref(null)
 const toggle = (index) => {
 activeIndex.value = activeIndex.value === index ? null : index
 }
+
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -24,7 +27,7 @@ activeIndex.value = activeIndex.value === index ? null : index
             @click="toggle(index)"
          >
             <span :class="{'font-bold': activeIndex === index}">
-               {{ item.question }}
+               {{ item.question[locale] }}
             </span>
             <span class="text-white h-fit rounded-full p-1" :class="activeIndex === index ? 'bg-[#2B3E8C]' : 'bg-[#FA8F21]'">
                <svg
@@ -54,7 +57,7 @@ activeIndex.value = activeIndex.value === index ? null : index
          v-show="activeIndex === index"
          class="mt-4 text-sm text-gray-700 leading-relaxed border-t border-orange-300 pt-4"
          >
-         <p v-html="item.answer"></p>
+         <p v-html="item.answer[locale]"></p>
          </div>
       </div>
    </div>
