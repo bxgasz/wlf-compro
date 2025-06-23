@@ -26,7 +26,7 @@ class LandingPageController extends Controller
             return $banner;
         });
 
-        $programCategories = ProgramCategory::orderBy('id', 'desc')->get()->map(function ($categories) {
+        $programCategories = ProgramCategory::orderBy('order', 'asc')->get()->map(function ($categories) {
             $categories->title = json_decode($categories->title, true);
             $categories->descrption = json_decode($categories->descrption, true);
 
@@ -84,7 +84,7 @@ class LandingPageController extends Controller
     {
         $programCategories = ProgramCategory::with(['programs' => function ($query) {
             $query->latest()->take(3);
-        }])->orderBy('id', 'desc')->get()->map(function ($category) {
+        }])->orderBy('order', 'asc')->get()->map(function ($category) {
             // Decode milik kategori
             $category->title = json_decode($category->title, true);
             $category->descrption = json_decode($category->descrption, true);
@@ -106,7 +106,7 @@ class LandingPageController extends Controller
 
     public function subProgram($categories) 
     {
-        $programCategories = ProgramCategory::select('title', 'slug')->orderBy('id', 'desc')->get()->map(function ($categories) {
+        $programCategories = ProgramCategory::select('title', 'slug')->orderBy('order', 'asc')->get()->map(function ($categories) {
             $categories->title = json_decode($categories->title, true);
 
             return $categories;
@@ -298,7 +298,7 @@ class LandingPageController extends Controller
 
     public function cfcn()
     {
-        $programCategories = ProgramCategory::orderBy('id', 'desc')->get()->map(function ($categories) {
+        $programCategories = ProgramCategory::orderBy('order', 'asc')->get()->map(function ($categories) {
             $categories->title = json_decode($categories->title, true);
             $categories->descrption = json_decode($categories->descrption, true);
 

@@ -110,15 +110,18 @@ class ProgramCategoryController extends Controller
 
     public function edit(ProgramCategory $program_category)
     {
+        $total = ProgramCategory::count();
         return Inertia::render('ProgramCategories/Edit', [
             'programCategory' => [
                 'id' => $program_category->id,
                 'title' => json_decode($program_category->title, true),
                 'image' => $program_category->image,
                 'slug' => $program_category->slug,
+                'order' => $program_category->order,
                 'description' => json_decode($program_category->description, true),
                 'summary' => json_decode($program_category->summary, true),
             ],
+            'total' => $total
         ]);
     }
 

@@ -12,8 +12,14 @@ import { router, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
-   programCategory: Object
+   programCategory: Object,
+   total: Number
 })
+
+const menuItems = Array.from({ length: props.total }, (_, i) => ({
+  label: `${i + 1}`,
+  value: i + 1,
+}))
 
 const form = useForm({
    'title_en': props.programCategory.title.en,
@@ -24,6 +30,7 @@ const form = useForm({
    'description_id': props.programCategory.description.en,
    'summary_en': props.programCategory.summary.en,
    'summary_id': props.programCategory.summary.en,
+   'order': props.programCategory.order
 })
 
 const tabActive = ref('id')
@@ -189,6 +196,19 @@ const handleSubmit = async() => {
                   >
                   {{ tabActive == 'id' ? form.errors.description_id : form.errors.description_en }}
                </label> 
+            </div>
+
+            <div class="">
+               <SelectInput
+                  title="Order Program"
+                  :options="menuItems"
+                  v-model="form.order"
+               />
+               <label
+                  class="block text-sm font-medium text-error-500"
+               >
+                  {{ form.errors.order }}
+               </label>
             </div>
          </div>
          <div class="flex justify-between items-center mt-3">

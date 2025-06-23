@@ -41,11 +41,11 @@ const handleSubscribe = () => {
 
             <div class="grid">
                <div class="space-y-3">
-                  <Link :href="route('about-us')" class="block hover:text-[#D86727] hover:font-semibold">{{ $t('about.title') }}</Link>
-                  <Link :href="route('our-program')" class="block hover:text-[#D86727] hover:font-semibold">{{ $t('our-program.title') }}</Link>
-                  <Link :href="route('publications')" class="block hover:text-[#D86727] hover:font-semibold">{{ $t('publications.title') }}</Link>
-                  <Link :href="route('contact')" class="block hover:text-[#D86727] hover:font-semibold">{{ $t('contact.title') }}</Link>
-                  <Link :href="route('career')" class="block hover:text-[#D86727] hover:font-semibold">{{ locale == 'id' ? 'Bergabung Dengan Kami' : 'Join Us' }}</Link>
+                  <Link :href="route('about-us')" class="block hover:text-[#D86727] hover:font-semibold capitalize">{{ $t('about.title') }}</Link>
+                  <Link :href="route('our-program')" class="block hover:text-[#D86727] hover:font-semibold capitalize">{{ $t('our-program.title') }}</Link>
+                  <Link :href="route('publications')" class="block hover:text-[#D86727] hover:font-semibold capitalize">{{ $t('publications.title') }}</Link>
+                  <Link :href="route('contact')" class="block hover:text-[#D86727] hover:font-semibold capitalize">{{ $t('contact.title') }}</Link>
+                  <Link :href="route('career')" class="block hover:text-[#D86727] hover:font-semibold capitalize">{{ locale == 'id' ? 'Bergabung Dengan Kami' : 'Join Us' }}</Link>
                </div>
             </div>
 

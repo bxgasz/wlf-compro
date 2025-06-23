@@ -107,7 +107,7 @@
             </div>
          </div>
          <div class="w-full text-center text-white text-xs bg-[#2B3E8C] py-5">
-            @2025 Yayasan William & Lily Foundation. All Rights Reseved.
+            @2025 William & Lily Foundation. All Rights Reseved.
          </div>
       </div>
    </div>
@@ -115,7 +115,12 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Link, useForm } from '@inertiajs/vue3'
+import { Link, useForm, usePage } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
+
+const page = usePage()
+
+const { locale } = useI18n()
 
 const showPassword = ref(false)
 const keepLoggedIn = ref(false)

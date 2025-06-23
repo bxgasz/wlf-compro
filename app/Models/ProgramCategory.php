@@ -14,6 +14,7 @@ class ProgramCategory extends Model
         'description',
         'slug',
         'image',
+        'order'
     ];
 
     public function programs() {
