@@ -35,23 +35,38 @@ const modulesJourney = [
 const ourValues = [
    {
       icon: '/assets/img/about/1.svg',
-      title: 'Empowerment',
+      title: {
+         en: 'Empowerment',
+         id: 'Pemberdayaan'
+      },
    },
    {
       icon: '/assets/img/about/2.svg',
-      title: 'Collaboration',
+      title: {
+         en: 'Collaboration',
+         id: 'Kolaborasi'
+      },
    },
    {
       icon: '/assets/img/about/3.png',
-      title: 'Accountability & Integrity',
+      title: {
+         en: 'Accountability & Integrity',
+         id: 'Akuntabilitas & Integritas'
+      },
    },
    {
       icon: '/assets/img/about/4.svg',
-      title: 'Sustainability',
+      title: {
+         en: 'Sustainability',
+         id: 'Keberlanjutan'
+      },
    },
    {
       icon: '/assets/img/about/5.svg',
-      title: 'Driven by Needs',
+      title: {
+         en: 'Driven by Needs',
+         id: 'Berdasarkan Kebutuhan'
+      },
    },
 ]
 
@@ -198,13 +213,9 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                </div>
                <div class="text-white">
                   <h1 class="font-montserrat text-2xl font-bold">{{ $t('about.visi.title') }}</h1>
-                  <p class="text-[#] text-base font-medium">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
+                  <p class="text-[#] text-base font-medium">{{ $t('about.visi.description') }}</p>
                   <h1 class="font-montserrat text-2xl font-bold mt-16">{{ $t('about.mission.title') }}</h1>
-                  <p class="text-[#] text-base font-medium">1. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
-                  <p class="text-[#] text-base font-medium">2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta facere, eius harum laboriosam, temporibus nemo sunt officia, sit at dolor necessitatibus nihil repudiandae fuga odio minus eos autem voluptatem.</p>
-                  <p class="text-[#] text-base font-medium">3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
-                  <p class="text-[#] text-base font-medium">4. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
-                  <p class="text-[#] text-base font-medium">5. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quam in distinctio perspiciati</p>
+                  <p class="text-[#] text-base font-medium">{{ $t('about.mission.1') }}</p>
                </div>
             </div>
          </div>
@@ -218,13 +229,13 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
             <div class="w-full flex justify-center -mt-[30rem]">
                <div class="max-w-7xl px-8 w-full justify-center">
                   <h1 class="text-5xl font-playfair text-[#262C51] font-bold text-center">{{ $t('about.values.title') }}</h1>
-                  <p class="text-center mt-5">Lorem ipsum dolor sit amet consectetur adipiscing elit. <br> Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+                  <p class="text-center mt-5">{{ $t('about.values.description') }}</p>
                   <div class="flex flex-col lg:flex-row flex-wrap gap-10 justify-center items-center mt-10 lg:mt-20 mb-8 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
                      <div class="w-[19rem] h-fit flex flex-col justify-center items-center gap-5 text-center" v-for="(values, index) in ourValues" :key="index">
                         <div class="w-20 h-20">
                            <img :src="values.icon" alt="values" class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-[20px] text-[#2B3E8C] font-bold">{{ values.title }}</h3>
+                        <h3 class="text-[20px] text-[#2B3E8C] font-bold">{{ values.title[locale] }}</h3>
                      </div>
                   </div>
                </div>

@@ -93,6 +93,7 @@ const lists = [
             <p class="">{{ $t('cfcn.description.1') }}</p>
             <p class="">{{ $t('cfcn.description.2') }}</p>
             <p class="">{{ $t('cfcn.description.3') }}</p>
+            <p class="">{{ $t('cfcn.description.4') }}</p>
          </div>
       </div>
 
@@ -106,7 +107,7 @@ const lists = [
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">1</p>
                   <p class="font-bold">{{ $t('cfcn.step1.title') }}</p>
                   <p>{{ $t('cfcn.step1.description') }}</p>
-                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</Link>
+                  <a href="https://drive.google.com/uc?export=download&&id=15k1iE7RaCXdZ_pNNsQm-4ivU0G5XW4Ly" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
                </div>
             </div>
 
@@ -116,7 +117,7 @@ const lists = [
                   <p class="font-bold">{{ $t('cfcn.step2.title') }}</p>
                   <p>{{ $t('cfcn.step2.description') }}
                   </p>
-                  <Link :href="route('contact')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</Link>
+                  <a href="https://drive.google.com/uc?export=download&id=1pbRtCmchJ9l_R3r1o7-yvRzaOKnrMEzt" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
                </div>
                <div class="w-72 h-80">
                   <img src="/assets/img/grandopp/step2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
