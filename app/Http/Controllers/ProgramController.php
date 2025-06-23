@@ -107,8 +107,8 @@ class ProgramController extends Controller
                'status' => 'draft',
                'location_id' => $request->location_id,
                'location' => $request->location,
-               'start_date' => $request->start_date,
-               'end_date' => $request->end_date,
+               'start_date' => $request->start_date . '-01',
+               'end_date' => Carbon::createFromFormat('Y-m', $request->end_date)->endOfMonth()->format('Y-m-d'),
                'program_category_id' => $request->program_category_id,
            ];
 
