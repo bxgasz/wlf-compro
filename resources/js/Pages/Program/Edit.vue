@@ -372,7 +372,7 @@ const handleSubmit = async() => {
                         </div>
       
                         <p class="mt-1 text-xs text-gray-400">
-                           Pick a file up to 10MB.
+                           Pick a file
                         </p>
                      </div>
                      <div class="mt-4 flex flex-wrap justify-center text-sm leading-6 text-gray-600" v-else>

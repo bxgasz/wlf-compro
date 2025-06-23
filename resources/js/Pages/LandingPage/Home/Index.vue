@@ -20,7 +20,8 @@ const props = defineProps({
    programCategories: Object,
    stories: Object,
    programs: Object,
-   newPublications: Object
+   newPublications: Object,
+   instagramPosts: Object
 })
 
 const modules = [
@@ -335,9 +336,9 @@ const youtubeUrl = computed(() =>
          </div>
       </div>
       <div class="flex gap-3 bg-[#2F3C87] pt-10 pb-20 overflow-x-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-0">
-         <div class="w-72 aspect-square rounded-3xl overflow-hidden flex-shrink-0" v-for="i in 15">
-            <img src="/assets/img/home/news.jpg" alt="instagram" class="w-full h-full object-cover">
-         </div>
+         <a :href="data.link" target="_blank" class="w-72 aspect-square rounded-3xl overflow-hidden flex-shrink-0" v-for="(data, i) in instagramPosts">
+            <img :src="data.media" alt="instagram" class="w-full h-full object-cover">
+         </a>
       </div>
 
       <Footer/>

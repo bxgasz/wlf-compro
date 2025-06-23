@@ -83,7 +83,7 @@ class NewsStoriesController extends Controller
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
                 'unique:news_stories,slug',
             ],
-            'banner' => 'required|mimes:jpeg,png,jpg,webp|max:1584',
+            'banner' => 'required|mimes:jpeg,png,jpg,webp',
             'type' => 'required|string',
             'tags' => 'required|array',
             '*tags' => 'required',
@@ -206,7 +206,7 @@ class NewsStoriesController extends Controller
             'status' => 'required|string',
             'tags' => 'required|array',
             '*tags' => 'required',
-            'document' => 'nullable|mimes:pdf,doc,docx|max:10124'
+            'document' => 'nullable|mimes:pdf,doc,docx'
         ]);
 
         try {

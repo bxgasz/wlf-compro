@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\GranteeManagementController;
 use App\Http\Controllers\InboxController;
+use App\Http\Controllers\InstagramPostController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ManagementController;
@@ -133,6 +134,10 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.logout');
     Route::post('show-section/{setting}/{section}', [SettingController::class, 'toggleShowSection'])->name('setting.show-section');
+
+    Route::resource('/instagram', InstagramPostController::class);
+    Route::post('/instagram-update/{instagram}', [InstagramPostController::class, 'update'])->name('instagram.update');
+    Route::get('/instagram-list/{type}', [InstagramPostController::class, 'data'])->name('instagram.data');
 
     Route::middleware(['role:admin,manager'])->group(function () {});
 });

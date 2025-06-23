@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Location;
 use App\Models\Program;
 use App\Models\ProgramCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -83,7 +84,7 @@ class ProgramController extends Controller
             ],
            'sector' => 'required',
            'type' => 'required',
-           'banner' => 'required_if:type,media|nullable|mimes:jpeg,png,jpg|max:51200',
+           'banner' => 'required_if:type,media|nullable|mimes:jpeg,png,jpg',
            'youtube_link' => 'required_if:type,link|nullable|url',
            'program_category_id' => 'required',
            'document' => 'nullable|mimes:pdf,doc,docx|max:10124',
@@ -207,7 +208,7 @@ class ProgramController extends Controller
                 // 'unique:programs,slug',
             ],
            'sector' => 'required',
-           'banner' => 'required_if:type,img|nullable|mimes:jpeg,png,jpg|max:51200',
+           'banner' => 'required_if:type,img|nullable|mimes:jpeg,png,jpg',
            'document' => 'nullable|mimes:pdf,doc,docx|max:10124',
            'program_category_id' => 'required',
        ]);

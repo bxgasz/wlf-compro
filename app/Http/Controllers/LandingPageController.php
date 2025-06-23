@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Career;
+use App\Models\InstagramPost;
 use App\Models\Management;
 use App\Models\NewsStories;
 use App\Models\Organization;
@@ -51,12 +52,15 @@ class LandingPageController extends Controller
             return $new;
         });
 
+        $instagramPosts = InstagramPost::orderBy('created_at', 'asc')->get();
+
         return Inertia::render('LandingPage/Home/Index', [
             'banners' => $banners,
             'programs' => $programs,
             'programCategories' => $programCategories,
             'stories' => $stories,
-            'newPublications' => $newPublications
+            'newPublications' => $newPublications,
+            'instagramPosts' => $instagramPosts,
         ]);
     }
 

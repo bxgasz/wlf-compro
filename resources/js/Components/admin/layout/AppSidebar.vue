@@ -334,6 +334,12 @@ const menuGroups = [
         path: "/admin/our-impact-management",
         role: ['admin', 'manager', 'staff']
       },
+      {
+        icon: ContentTypeIcon,
+        name: "Instagram Post",
+        path: '/admin/instagram',
+        role: ['admin', 'manager']
+      },
     ]
   },
   {
