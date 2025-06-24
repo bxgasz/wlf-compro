@@ -40,7 +40,7 @@ const navLinks = [
    {
       img: '',
       text_id: 'Program Kami',
-      text_en: 'Our Program',
+      text_en: 'Our Programs',
       key: 'our-program',
       link: '/our-program',
    },
@@ -61,7 +61,7 @@ const navLinks = [
    {
       img: '',
       text_id: 'Peluang Hibah',
-      text_en: 'Grant Oppoturnities',
+      text_en: 'Grant Oppoturnity',
       key: 'grant-oppoturnities',
       link: '/grant-oppoturnities',
    },

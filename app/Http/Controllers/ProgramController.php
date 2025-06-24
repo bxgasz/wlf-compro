@@ -84,7 +84,7 @@ class ProgramController extends Controller
             ],
            'sector' => 'required',
            'type' => 'required',
-           'banner' => 'required_if:type,media|nullable|mimes:jpeg,png,jpg',
+           'banner' => 'required_if:type,media|nullable|mimes:jpeg,png,jpg,webp',
            'youtube_link' => 'required_if:type,link|nullable|url',
            'program_category_id' => 'required',
            'document' => 'nullable|mimes:pdf,doc,docx|max:10124',
@@ -208,7 +208,7 @@ class ProgramController extends Controller
                 // 'unique:programs,slug',
             ],
            'sector' => 'required',
-           'banner' => 'required_if:type,img|nullable|mimes:jpeg,png,jpg',
+           'banner' => 'required_if:type,img|nullable|mimes:jpeg,png,jpg,webp',
            'document' => 'nullable|mimes:pdf,doc,docx|max:10124',
            'program_category_id' => 'required',
        ]);

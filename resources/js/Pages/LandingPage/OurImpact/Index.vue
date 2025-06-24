@@ -100,7 +100,7 @@ const showMore = () => {
                   </div>
                   <p class="w-full font-bold mt-3">{{ data.title[locale] }}</p>
                   <p class="w-full mt-3">{{ data.writter }}</p>
-                  <p class="w-full mt-3" v-html="data.content[locale].slice(0, 300)"></p>
+                  <p class="w-full mt-3" v-html="data.content[locale].slice(0, 200) + '...'"></p>
                </Link>
             </div>
 

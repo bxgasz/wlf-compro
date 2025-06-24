@@ -13,6 +13,7 @@
 
   "about.title": "Tentang Kami",
   "about.description": "William & Lily Foundation (WLF) adalah organisasi filantropi yang didirikan pada tahun 2009 untuk melanjutkan nilai-nilai filantropi dari William dan Lily Soeryadjaya di Indonesia. Sejak tahun 2017, WLF telah bertransformasi menjadi organisasi pemberi hibah yang secara aktif bekerja sama dengan berbagai organisasi masyarakat sipil di tingkat nasional dan daerah. Melalui pendekatan ini, WLF mendukung tiga area utama: pengembangan anak usia dini, literasi dan numerasi dasar, serta peluang ekonomi lokal.",
+  "about.description.2": "Melalui pendekatan ini, WLF berfokus pada tiga bidang utama: <strong>pengembangan anak usia dini, literasi</strong> dan <strong>numerasi dalam pendidikan dasar dan peluang ekonomi lokal</strong>",
   "about.journey": "Perjalanan Kami",
   "about.visi-mission": "Visi & Misi",
   "about.visi-mission.description": "Kesempatan yang setara bagi seluruh rakyat Indonesia untuk berkembang & Memberdayakan masyarakat rentan dan marjinal melalui proses pembelajaran dan akses terhadap peluang.",
@@ -42,7 +43,7 @@
 
   "publications.title": "Publikasi",
 
-  "grandopp.title": "CALL FOR CONCEPT NOTE 2025",
+  "grandopp.title": "CALL FOR CONCEPT NOTE",
   "cfcn.subtitle": "UNDANGAN MENGIRIMKAN CONCEPT NOTES UNTUK PELUANG DANA HIBAH WLF 2025",
   "cfcn.description": "William & Lily Foundation (WLF) membuka peluang dana hibah untuk mendukung proyek-proyek inovatif yang berfokus pada:",
   "cfcn.description.1": "WLF mengundang Organisasi Masyarakat Sipil, khususnya yang telah memiliki pengalaman bekerja di wilayah Provinsi Nusa Tenggara Timur (NTT)  untuk mengirimkan Pernyataan Minat Kerjasama dan Concept Note yang berisi deskripsi singkat ide proyek dan tujuan yang ingin dicapai.",
@@ -53,7 +54,7 @@
   "cfcn.step1.description": "Dokumen ini berisikan informasi lebih detail mengenai dana hibah WLF, persyaratan organisasi yang dapat mengajukan, tata cara mengajukan/mengirimkan concept note, proses seleksi dan informasi terkait lainnya.",
   "cfcn.step2.title": "Formulir Concept Note",
   "cfcn.syep2.description": "Dokumen ini berisikan formulir concept note yang harus diisi oleh organisasi yang berminat mengajukan pernyataan minat kerjasama hibah WLF. Mohon pastikan aplikasi yang Anda ajukan sudah memenuhi semua persyaratan dan kriteria dana hibah WLF. Hanya organisasi yang memenuhi persyaratan yang akan dipertimbangkan.",
-  "cfcn.sendbutton": "Detail",
+  "cfcn.sendbutton": "Unduh Dokumen",
   "cfcn.afterdesc1": "WLF akan mengadakan sesi penjelasan mengenai teknis Call for Concept Note WLF secara daring pada tanggal 15 Januari 2025 jam 10.00-11.30 WIB.",
   "cfcn.afterdesc2": "Bagi organisasi yang berminat silahkan melakukan Pendaftaran Sesi Penjelasan Call for Concept Note WLF paling lambat tanggal 14 Januari 2025.",
   "cfcn.afterdesc3": "*Sesi ini tidak bersifat wajib diikuti calon aplikan.",
@@ -111,7 +112,7 @@
   "contact.moda.button": "Kembali Ke Beranda",
   "contact.send-message": "Kirim Pesan",
 
-  "footer.subscribe": "Berlangganan Kepada Berita Kami",
+  "footer.subscribe": "Berlangganan Newsletter",
 
   "search.title": "Cari Sesuatu"
 }

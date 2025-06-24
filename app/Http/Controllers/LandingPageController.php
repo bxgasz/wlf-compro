@@ -157,8 +157,8 @@ class LandingPageController extends Controller
         }
 
         $otherContent = Program::whereNot('id', $content->id)
-            ->orderByRaw('CASE WHEN program_category_id = ? THEN 1 ELSE 2 END', [$content->category_id])
-            ->orderBy('category_id', 'desc')
+            ->orderByRaw('CASE WHEN program_category_id = ? THEN 1 ELSE 2 END', [$content->program_category_id])
+            ->orderBy('program_category_id', 'desc')
             ->paginate(3);
         
         $otherContent->setCollection(

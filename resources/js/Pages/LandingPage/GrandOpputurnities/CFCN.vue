@@ -29,8 +29,8 @@ const lists = [
                en: 'How can we submit a Statement of Interest and Concept Note to WLF?'
             },
             answer: {
-               id: 'Berikut ini langkah-langkah yang harus dilakukan untuk mengajukan kerjasama dana hibah WLF dan mengirimkan concept note ke WLF:Pertama, silakan mengakses halaman website WLF (http://wlf.or.id) kemudian silakan masuk ke menu Peluang Dana Hibah (Grant Opportunities). Kedua, pada halaman tersebut, silahkan mengunduh file Informasi Call for Concept Notes dan membacanya dengan seksama informasi yang ada di dalamnya. Ketiga, lanjutkan dengan mengunduh file Formulir Concept Notes kemudian silahkan melengkapi informasi yang diperlukan dalam formulir tersebut sesuai dengan desain usulan proyek yang ingin diajukan. Keempat, untuk mengirimkan (submit) Concept Notes anda, silakan membuka halaman Pengajuan Pernyataan Minat Kerjasama (link halaman ini dapat ditemukan di dalam dokumen Informasi Call for Concept Notes yang telah anda download sebelumnya).',
-               en: 'first Visit WLF’s website at http://wlf.or.id and go to the Grant Opportunities section. Second, Download and carefully read the Call for Concept Notes Information Sheet. Three,	Download the Concept Note Form and complete it based on your proposed project design. Four, To submit your application, go to the Submission Page for Statement of Interest (link available in the Information Sheet).'
+               id: 'Berikut ini langkah-langkah yang harus dilakukan untuk mengajukan kerjasama dana hibah WLF dan mengirimkan concept note ke WLF: <br> 1. Silahkan mengakses halaman website WLF (http://wlf.or.id), kemudian masuk ke menu Peluang Dana Hibah (Grant Opportunities). <br> 2. Pada halaman tersebut, silahkan mengunduh file Informasi Call for Concept Notes dan membacanya dengan seksama informasi yang ada di dalamnya.<br> 3. Lanjutkan dengan mengunduh file Formulir Concept Notes kemudian silahkan melengkapi informasi yang diperlukan dalam formulir tersebut sesuai dengan desain usulan proyek yang ingin diajukan.<br> 4. Kirimkan (submit) Concept Notes anda, silahkan membuka halaman Pengajuan Pernyataan Minat Kerjasama (link halaman ini dapat ditemukan di dalam dokumen Informasi Call for Concept Notes yang telah Anda unduh sebelumnya).',
+               en: '1.	Visit WLF’s website at http://wlf.or.id and go to the Grant Opportunities section. <br> 2. Download and carefully read the Call for Concept Notes Information Sheet. <br> 3. Download the Concept Note Form and complete it based on your proposed project design. <br> 4. To submit your application, go to the Submission Page for Statement of Interest (link available in the Information Sheet).'
             }
          },
       ]
@@ -453,7 +453,7 @@ const lists = [
          <div class="max-w-5xl px-8">
             <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] gap-5">
                <div class="w-72 h-80">
-                  <img src="/assets/img/grandopp/step1.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
+                  <img src="/assets/img/grandopp/step-1.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
                </div>
                <div class="flex flex-col gap-5">
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">1</p>
@@ -472,7 +472,7 @@ const lists = [
                   <a href="https://drive.google.com/uc?export=download&id=1pbRtCmchJ9l_R3r1o7-yvRzaOKnrMEzt" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
                </div>
                <div class="w-72 h-80">
-                  <img src="/assets/img/grandopp/step2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
+                  <img src="/assets/img/grandopp/step-2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
                </div>
             </div>
          </div>

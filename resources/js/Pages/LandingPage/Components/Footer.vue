@@ -32,7 +32,7 @@ const handleSubscribe = () => {
       <div class="container mx-auto max-w-7xl px-8">
          <div class="flex justify-between flex-col sm:flex-wrap sm:flex-row gap-6">
             <div class="w-full sm:w-auto">
-               <img :src="page.props.settings.logo" alt="BSS Logo" class="h-10 mb-4">
+               <img :src="page.props.settings.logo" alt="WLF Logo" class="h-28 mb-4">
             </div>
 
             <div class="grid">

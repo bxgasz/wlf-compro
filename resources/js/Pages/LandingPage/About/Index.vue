@@ -70,38 +70,75 @@ const ourValues = [
    },
 ]
 
-const ourTeam = [
-{
-      image: '/assets/img/about/our-team.jpg',
-      name: 'Brooklyn Simmons',
-      position: 'Director'
+const history = [
+   {
+      "year": 2009,
+      "title": {
+         "en": "ESTABLISHMENT",
+         "id": "PEMBENTUKAN"
+      },
+      "description": {
+         "en": "The William & Lily Foundation (WLF) was established by Edwin and Joyce Soeryadjaya to continue the philanthropic legacy of their parents, William and Lily Soeryadjaya.",
+         "id": "William & Lily Foundation (WLF) didirikan oleh Edwin dan Joyce Soeryadjaya untuk melanjutkan warisan filantropi orang tua mereka, William dan Lily Soeryadjaya."
+      }
    },
    {
-      image: '/assets/img/about/our-team.jpg',
-      name: 'Brooklyn Simmons',
-      position: 'Director'
+      "year": 2017,
+      "title": {
+         "en": "TRANSFORMATION",
+         "id": "TRANSFORMASI"
+      },
+      "description": {
+         "en": "WLF transitioned into a grant-making organization, focusing on supporting communities in Sumba and Bali across three key areas: education, health, and economic empowerment.",
+         "id": "WLF bertransformasi menjadi organisasi pemberi hibah, dengan fokus mendukung komunitas di Sumba dan Bali dalam tiga bidang utama: pendidikan, kesehatan, dan pemberdayaan ekonomi."
+      }
    },
    {
-      image: '/assets/img/about/our-team.jpg',
-      name: 'Brooklyn Simmons',
-      position: 'Director'
+      "year": 2021,
+      "title": {
+         "en": "EVALUATION",
+         "id": "EVALUASI"
+      },
+      "description": {
+         "en": "After a few years of disbursing grants in these three key sectors, WLF began reflecting and evaluating on the impact that it had been working towards and started making incremental changes to how it functioned as a grant-making foundation.",
+         "id": "Setelah beberapa tahun menyalurkan hibah di tiga sektor utama ini, WLF mulai melakukan refleksi dan evaluasi terhadap dampak yang telah diupayakan, serta mulai melakukan perubahan bertahap pada cara kerjanya sebagai lembaga pemberi hibah."
+      }
    },
    {
-      image: '/assets/img/about/our-team.jpg',
-      name: 'Brooklyn Simmons',
-      position: 'Director'
+      "year": 2021,
+      "title": {
+         "en": "RENEWED STRATEGY",
+         "id": "STRATEGI BARU"
+      },
+      "description": {
+         "en": "As a culmination of the reflections WLF underwent, in 2021 WLF developed a new Theory of Change and designed a new process for disbursing grants. WLF concluded the six programs initiated in 2021, and launched one new program under its renewed strategy.",
+         "id": "Sebagai puncak dari refleksi yang dilakukan, pada tahun 2021 WLF mengembangkan Teori Perubahan baru dan merancang proses baru untuk penyaluran hibah. WLF menyelesaikan enam program yang dimulai pada 2021, dan meluncurkan satu program baru di bawah strategi barunya."
+      }
    },
    {
-      image: '/assets/img/about/our-team.jpg',
-      name: 'Brooklyn Simmons',
-      position: 'Director'
+      "year": 2024,
+      "title": {
+         "en": "REINFORCING IDENTITY",
+         "id": "PENGUATAN IDENTITAS"
+      },
+      "description": {
+         "en": "WLF continues to reinforce its identity as a grant-making organization. In 2024, WLF launched five new programs focusing on early childhood development, basic literacy and numeracy, and local economic empowerment.",
+         "id": "WLF terus memperkuat identitasnya sebagai organisasi pemberi hibah. Pada tahun 2024, WLF meluncurkan lima program baru yang berfokus pada pengembangan anak usia dini, literasi dan numerasi dasar, serta pemberdayaan ekonomi lokal."
+      }
    },
    {
-      image: '/assets/img/about/our-team.jpg',
-      name: 'Brooklyn Simmons',
-      position: 'Director'
-   },
+      "year": "VISION",
+      "title": {
+         "en": "VISION",
+         "id": "VISI"
+      },
+      "description": {
+         "en": "Equal opportunity for all Indonesians to flourish.",
+         "id": "Kesempatan yang setara bagi seluruh masyarakat Indonesia untuk berkembang."
+      }
+   }
 ]
+
 
 const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organization')
 </script>
@@ -120,8 +157,10 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
       </div>
 
       <div class="w-full flex justify-center mt-20">
-         <div class="max-w-7xl text-center px-8 text-[#000000] font-medium flex justify-center">
-            <p class="max-w-[70%]">{{ $t('about.description') }}</p>
+         <div class="max-w-4xl w-full text-center px-8 text-[#000000] font-medium">
+            <p>{{ $t('about.description') }}</p>
+            <p v-html="$t('about.description.2')" class="mt-5"></p>
+            <!-- <p>{{ locale == 'id' ? 'Selengkapnya di dokumen' : 'More details in the document' }} <a href=""></a> </p> -->
          </div>
       </div>
 
@@ -133,7 +172,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                </h2>
 
                <div class="bg-[#D86727] rounded-[20px] w-full p-10">
-                  <div class="flex gap-5 h-64 w-full items-center">
+                  <div class="flex gap-5 h-[26rem] w-full items-center">
                      <swiper
                         :spaceBetween="5"
                         :centeredSlides="false"
@@ -161,13 +200,14 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                         }"
                         class="w-full"
                      >
-                        <swiper-slide v-for="i in 8">
+                        <swiper-slide v-for="(data, i) in history">
                            <div class="flex flex-col gap-5">
-                              <p class="font-bold text-xl text-white">20{{ 9 + i }}</p>
+                              <p class="font-bold text-xl text-white">{{ data.year }}</p>
                               <div class="w-40 h-24">
                                  <img src="/assets/img/about/journey.jpg" alt="journey" class="rounded-xl">
                               </div>
-                              <p class="text-white">Description of journey</p>
+                              <p class="text-white font-bold">{{ data.title[locale] }}</p>
+                              <p class="text-white text-xs">{{ data.description[locale] }}</p>
                            </div>
                         </swiper-slide>
                      </swiper>
@@ -181,7 +221,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
          </div>
       </div>
 
-      <div class="w-full flex justify-center mt-20">
+      <!-- <div class="w-full flex justify-center mt-20">
          <div class="w-full max-w-7xl px-8 space-y-5">
             <div class="w-full flex justify-center">
                <h2 class="text-[#2B3E8C] text-4xl font-extrabold font-playfair">
@@ -203,7 +243,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
                <img src="/assets/icon/kutip.svg" alt="kutip">
             </div>
          </div>
-      </div>
+      </div> -->
 
       <div class="flex justify-center mt-20">
          <div class="bg-[#2B3E8C] max-w-7xl h-full w-full rounded-3xl mx-8 p-10">

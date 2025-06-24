@@ -16,8 +16,8 @@ const { locale } = useI18n()
 const categories = [
    { 
       title: {
-         en: 'Learning Document',
-         id: 'Document Pembelajaran'
+         en: 'Learning Documents',
+         id: 'Dokumen Pembelajaran'
       },
       value: 'publication'
    },

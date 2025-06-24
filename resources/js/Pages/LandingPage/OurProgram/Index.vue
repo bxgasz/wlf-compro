@@ -137,7 +137,7 @@ const ourProgram = [
                               </div>
                               <div class="">
                                  <h1 class="font-montserrat text-2xl text-[#E75E00] uppercase font-bold">{{ item.title[locale] }}</h1>
-                                 <p v-html="item.description[locale]"></p>
+                                 <!-- <p v-html="item.description[locale]"></p> -->
                               </div>
                            </div>
                         </SwiperSlide>

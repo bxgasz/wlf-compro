@@ -4,7 +4,7 @@
          <div class="grid grid-cols-1 lg:grid-cols-2 w-full h-full">
             <div class="w-full h-full hidden lg:flex relative">
                <img src="/assets/img/grantee/login-grantee.svg" alt="login" class="w-full h-full object-cover">
-               <p class="absolute break-words text-wrap bottom-0 text-white text-xs p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia dignissimos facilis placeat voluptates veniam non, animi dolorem sapiente repellat et id vitae veritatis.</p>
+               <!-- <p class="absolute break-words text-wrap bottom-0 text-white text-xs p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia dignissimos facilis placeat voluptates veniam non, animi dolorem sapiente repellat et id vitae veritatis.</p> -->
             </div>
             <div class="p-10 space-y-5">
                <div class="flex justify-between items-center">
