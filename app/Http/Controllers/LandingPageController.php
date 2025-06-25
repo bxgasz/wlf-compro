@@ -41,7 +41,7 @@ class LandingPageController extends Controller
             return $program;
         });
 
-        $newPublications = NewsStories::select('banner', 'title', 'created_at')->where('type', 'publication')->orderBy('created_at', 'desc')->first();
+        $newPublications = NewsStories::select('banner', 'title', 'created_at')->orderBy('created_at', 'desc')->first();
         if ($newPublications != null) {
             $newPublications->title = json_decode($newPublications->title, true);
         }
