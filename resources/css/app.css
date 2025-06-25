@@ -570,3 +570,5 @@ span.flatpickr-weekday,
   position: relative;
   z-index: 9999999;
 }
+
+.richtext, .richtext * { all: revert; }

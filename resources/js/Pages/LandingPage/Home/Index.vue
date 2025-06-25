@@ -131,7 +131,7 @@ const youtubeUrl = computed(() =>
                {{ $t('home.who-we-are.title') }}
             </h1>
             <div class="text-[#262C51] text-sm flex flex-col justify-between gap-5 lg:gap-0">
-               <p class="font-medium text-base">{{ $t('home.who-we-are') }}</p>
+               <p class="font-medium text-base mb-3" v-html="$t('home.who-we-are')"></p>
                <Link :href="route('about-us')" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('home.readmore') }}</Link>
             </div>
             <div>
@@ -265,7 +265,7 @@ const youtubeUrl = computed(() =>
       </div>
 
       <!-- news section -->
-      <div class="bg-[#D86727] flex justify-center pt-20" v-if="stories.length > 0">
+      <div class="bg-[#D86727] flex justify-center pt-20" v-if="stories.length > 0" :class="newPublications ? '' : 'pb-20'">
          <div class="grid grid-cols-1 w-full lg:grid-cols-[30%,70%] max-w-7xl px-8 h-[80%] gap-10 lg:gap-0">
             <div class="flex flex-col gap-5">
                <h1 class="font-playfair text-white text-5xl font-bold">{{ $t('home.stories') }}</h1>
@@ -305,7 +305,7 @@ const youtubeUrl = computed(() =>
       </div>
 
       <!-- publications section -->
-      <div class="relative">
+      <div class="relative" v-if="newPublications">
          <div class="w-full h-72 md:h-96 bg-[#D86727]"></div>
          <div class="w-full h-72 md:h-52 bg-[#2F3C87]"></div>
 

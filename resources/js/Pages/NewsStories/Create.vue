@@ -148,42 +148,44 @@ const handleSubmit = async() => {
          </div>
 
          <div class="space-y-6">
-            <div class="">
-               <TextInput 
-                  v-model="form.meta_title"
-                  type="text"
-                  title="Meta Head"
-                  placeholder="Enter a meta head"
-               />
-               <label
-                  class="block text-sm font-medium text-error-500"
-               >
-                  {{ form.errors.meta_title }}
-               </label>
-            </div>
-            <div class="">
-               <TextArea title="Meta Description" placeholder="Enter a meta description" v-model="form.meta_description" />
-               <label
-                  class="block text-sm font-medium text-error-500"
-               >
-                  {{ form.errors.meta_description }}
-               </label>
-            </div>
+            <template v-if="form.type != 'publication'">
+               <div class="">
+                  <TextInput 
+                     v-model="form.meta_title"
+                     type="text"
+                     title="Meta Head"
+                     placeholder="Enter a meta head"
+                  />
+                  <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                     {{ form.errors.meta_title }}
+                  </label>
+               </div>
+               <div class="">
+                  <TextArea title="Meta Description" placeholder="Enter a meta description" v-model="form.meta_description" />
+                  <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                     {{ form.errors.meta_description }}
+                  </label>
+               </div>
 
-            <div class="">
-               <TextInput 
-                  v-model="form.slug"
-                  type="text"
-                  title="Slug"
-                  :required="true"
-                  placeholder="Enter a slug (exp: your-slug-title)"
-               />
-               <label
-                  class="block text-sm font-medium text-error-500"
-               >
-                  {{ form.errors.slug }}
-               </label>
-            </div>
+               <div class="">
+                  <TextInput 
+                     v-model="form.slug"
+                     type="text"
+                     title="Slug"
+                     :required="true"
+                     placeholder="Enter a slug (exp: your-slug-title)"
+                  />
+                  <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                     {{ form.errors.slug }}
+                  </label>
+               </div>
+            </template>
             
             <div class="">
                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
@@ -261,56 +263,58 @@ const handleSubmit = async() => {
                <input class="hidden" type="file" ref="fileInput" accept="application/pdf" name="file" @input="handleUpload" />
             </div>
 
-            <div class="description">
-               <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                  Content <span class="text-error-500">*</span>
-               </label>
-               <div class="h-72 mb-24">
-                  <QuillEditor toolbar="full" theme="snow" v-model:content="form.content_en" contentType="html" v-if="tabActive == 'en'" />
-                  <QuillEditor toolbar="full" theme="snow" v-model:content="form.content_id" contentType="html" v-if="tabActive == 'id'" />
+            <template v-if="form.type != 'publication'">
+               <div class="description">
+                  <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                     Content <span class="text-error-500">*</span>
+                  </label>
+                  <div class="h-72 mb-24">
+                     <QuillEditor toolbar="full" theme="snow" v-model:content="form.content_en" contentType="html" v-if="tabActive == 'en'" />
+                     <QuillEditor toolbar="full" theme="snow" v-model:content="form.content_id" contentType="html" v-if="tabActive == 'id'" />
+                  </div>
+                  <label
+                        class="block text-sm font-medium text-error-500"
+                     >
+                     {{ tabActive == 'id' ? form.errors.content_id : form.errors.content_en }}
+                  </label> 
                </div>
-               <label
-                     class="block text-sm font-medium text-error-500"
-                  >
-                  {{ tabActive == 'id' ? form.errors.content_id : form.errors.content_en }}
-               </label> 
-            </div>
 
-            <div class="mt-[calc(1.5rem /* 24px */ * calc(1 - var(--tw-space-y-reverse)))]">
-               <SearchSelect :multiple="true" v-model="form.tags" title="Tags" :required="true" :options="tags" class="w-full" />
-               <label
-                     class="block text-sm font-medium text-error-500"
-                  >
-                  {{ form.errors.tags }}
-               </label>   
-            </div>   
-            
-            <div class="">
-               <SearchSelect 
-                  :options="categories" 
-                  v-model="form.category_id" 
-                  title="Category"
-               />  
-               <label
-                     class="block text-sm font-medium text-error-500"
-                  >
-                  {{ form.errors.category_id }}
-               </label>   
-            </div>   
+               <div class="mt-[calc(1.5rem /* 24px */ * calc(1 - var(--tw-space-y-reverse)))]">
+                  <SearchSelect :multiple="true" v-model="form.tags" title="Tags" :required="true" :options="tags" class="w-full" />
+                  <label
+                        class="block text-sm font-medium text-error-500"
+                     >
+                     {{ form.errors.tags }}
+                  </label>   
+               </div>   
+               
+               <div class="">
+                  <SearchSelect 
+                     :options="categories" 
+                     v-model="form.category_id" 
+                     title="Category"
+                  />  
+                  <label
+                        class="block text-sm font-medium text-error-500"
+                     >
+                     {{ form.errors.category_id }}
+                  </label>   
+               </div>   
 
-            <div class="">
-               <TextInput 
-                  v-model="form.writter"
-                  type="text"
-                  title="Writter"
-                  placeholder="Enter a writter name"
-               />
-               <label
-                  class="block text-sm font-medium text-error-500"
-               >
-                  {{ form.errors.writter }}
-               </label>
-            </div>
+               <div class="">
+                  <TextInput 
+                     v-model="form.writter"
+                     type="text"
+                     title="Writter"
+                     placeholder="Enter a writter name"
+                  />
+                  <label
+                     class="block text-sm font-medium text-error-500"
+                  >
+                     {{ form.errors.writter }}
+                  </label>
+               </div>
+            </template>
          </div>
          <div class="flex justify-between items-center mt-3">
             <p class="text-gray-500 text-theme-sm dark:text-gray-400 italic">Warning: Please fill in all required fields in the Indonesian and English tabs. (title, description)</p>

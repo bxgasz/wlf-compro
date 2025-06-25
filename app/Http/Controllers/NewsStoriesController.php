@@ -73,49 +73,72 @@ class NewsStoriesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title_id' => 'required|string|min:5',
-            'title_en' => 'required|string|min:5',
-            'content_en' => 'required',
-            'content_id' => 'required',
-            'slug' => [
-                'required',
-                'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
-                'unique:news_stories,slug',
-            ],
-            'banner' => 'required|mimes:jpeg,png,jpg,webp',
-            'type' => 'required|string',
-            'tags' => 'required|array',
-            '*tags' => 'required',
-        ]);
+        
 
         if ($request->type == 'publication' || $request->type == 'annual_report') {
             $request->validate([
+                'title_id' => 'required|string|min:5',
+                'title_en' => 'required|string|min:5',
+                'banner' => 'required|mimes:jpeg,png,jpg,webp',
+                'type' => 'required|string',
                 'document' => 'required|mimes:pdf,doc,docx|max:10124'
+            ]);
+        } else {
+            $request->validate([
+                'title_id' => 'required|string|min:5',
+                'title_en' => 'required|string|min:5',
+                'content_en' => 'required',
+                'content_id' => 'required',
+                'slug' => [
+                    'required',
+                    'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
+                    'unique:news_stories,slug',
+                ],
+                'banner' => 'required|mimes:jpeg,png,jpg,webp',
+                'type' => 'required|string',
+                'tags' => 'required|array',
+                '*tags' => 'required',
             ]);
         }
 
         try {
             DB::beginTransaction();
 
-            $storeData = [
-                'title' => json_encode([
-                    'en' => $request->title_en,
-                    'id' => $request->title_id,
-                ]),
-                'slug' => $request->slug,
-                'meta_title' => $request->meta_title ?? '',
-                'meta_description' => $request->meta_description ?? '',
-                'type' => 'story',
-                'content' => json_encode([
-                    'en' => $request->content_en,
-                    'id' => $request->content_id,
-                ]),
-                'writter' => $request->writter ?? '',
-                'status' => 'draft',
-                'created_by' => Auth::user()->id,
-                'category_id' => $request->category_id,
-            ];
+            if ($request->type == 'publication') {
+                $storeData = [
+                    'title' => json_encode([
+                        'en' => $request->title_en,
+                        'id' => $request->title_id,
+                    ]),
+                    'slug' => '',
+                    'meta_title' => '',
+                    'meta_description' => '',
+                    'type' => $request->type,
+                    'content' => json_encode(''),
+                    'writter' => $request->writter ?? '',
+                    'status' => 'published',
+                    'created_by' => Auth::user()->id,
+                ];
+            } else {
+                $storeData = [
+                    'title' => json_encode([
+                        'en' => $request->title_en,
+                        'id' => $request->title_id,
+                    ]),
+                    'slug' => $request->slug,
+                    'meta_title' => $request->meta_title ?? '',
+                    'meta_description' => $request->meta_description ?? '',
+                    'type' => $request->type,
+                    'content' => json_encode([
+                        'en' => $request->content_en,
+                        'id' => $request->content_id,
+                    ]),
+                    'writter' => $request->writter ?? '',
+                    'status' => 'draft',
+                    'created_by' => Auth::user()->id,
+                    'category_id' => $request->category_id,
+                ];
+            }
 
             if ($request->hasFile('banner')) {
                 $fileName = time() . '_' . $request->file('banner')->getClientOriginalName();
@@ -191,45 +214,70 @@ class NewsStoriesController extends Controller
 
     public function update(Request $request, NewsStories $content)
     {
-        $request->validate([
-            'title_id' => 'required|string|min:5',
-            'title_en' => 'required|string|min:5',
-            'content_en' => 'required',
-            'content_id' => 'required',
-            'slug' => [
-                'required',
-                'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
-                // Rule::unique('news_stories', 'slug')->ignore($content->id),
-            ],
-            'banner' => 'nullable|mimes:jpeg,png,jpg,webp|max:1584',
-            'type' => 'required|string',
-            'status' => 'required|string',
-            'tags' => 'required|array',
-            '*tags' => 'required',
-            'document' => 'nullable|mimes:pdf,doc,docx'
-        ]);
+        if ($request->type == 'publication' || $request->type == 'annual_report') {
+            $request->validate([
+                'title_id' => 'required|string|min:5',
+                'title_en' => 'required|string|min:5',
+                'banner' => 'required|mimes:jpeg,png,jpg,webp',
+                'type' => 'required|string',
+                'document' => 'required|mimes:pdf,doc,docx|max:10124'
+            ]);
+        } else {
+            $request->validate([
+                'title_id' => 'required|string|min:5',
+                'title_en' => 'required|string|min:5',
+                'content_en' => 'required',
+                'content_id' => 'required',
+                'slug' => [
+                    'required',
+                    'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
+                    // 'unique:news_stories,slug',
+                ],
+                'banner' => 'required|mimes:jpeg,png,jpg,webp',
+                'type' => 'required|string',
+                'tags' => 'required|array',
+                '*tags' => 'required',
+            ]);
+        }
 
         try {
             DB::beginTransaction();
 
-            $updateData = [
-                'title' => json_encode([
-                    'en' => $request->title_en,
-                    'id' => $request->title_id,
-                ]),
-                'slug' => $request->slug,
-                'meta_title' => $request->meta_title ?? '',
-                'meta_description' => $request->meta_description ?? '',
-                'type' => $request->type,
-                'content' => json_encode([
-                    'en' => $request->content_en,
-                    'id' => $request->content_id,
-                ]),
-                'writter' => $request->writter ?? '',
-                'status' => $request->status,
-                'created_by' => Auth::user()->id,
-                'category_id' => $request->category_id,
-            ];
+            if ($request->type == 'publication') {
+                $updateData = [
+                    'title' => json_encode([
+                        'en' => $request->title_en,
+                        'id' => $request->title_id,
+                    ]),
+                    'slug' => '',
+                    'meta_title' => '',
+                    'meta_description' => '',
+                    'type' => $request->type,
+                    'content' => json_encode(''),
+                    'writter' => $request->writter ?? '',
+                    'status' => 'draft',
+                    'created_by' => Auth::user()->id,
+                ];
+            } else {
+                $updateData = [
+                    'title' => json_encode([
+                        'en' => $request->title_en,
+                        'id' => $request->title_id,
+                    ]),
+                    'slug' => $request->slug,
+                    'meta_title' => $request->meta_title ?? '',
+                    'meta_description' => $request->meta_description ?? '',
+                    'type' => $request->type,
+                    'content' => json_encode([
+                        'en' => $request->content_en,
+                        'id' => $request->content_id,
+                    ]),
+                    'writter' => $request->writter ?? '',
+                    'status' => 'draft',
+                    'created_by' => Auth::user()->id,
+                    'category_id' => $request->category_id,
+                ];
+            }
 
             if ($request->type == 'story') {
                 $oldMediaPath = str_replace(url('/storage/'), '', $content->document);

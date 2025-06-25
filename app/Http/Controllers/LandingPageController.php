@@ -42,7 +42,9 @@ class LandingPageController extends Controller
         });
 
         $newPublications = NewsStories::select('banner', 'title', 'created_at')->where('type', 'publication')->orderBy('created_at', 'desc')->first();
-        $newPublications->title = json_decode($newPublications->title, true);
+        if ($newPublications != null) {
+            $newPublications->title = json_decode($newPublications->title, true);
+        }
 
         $stories = NewsStories::select('id', 'category_id', 'banner', 'type', 'title', 'created_at', 'slug')
         ->where('type', 'story')
@@ -229,23 +231,13 @@ class LandingPageController extends Controller
     public function publication(Request $request) 
     {
         $type = $request->type ?? 'publication';
-        if ($type == 'publication') {
-            $data = NewsStories::where('type', '!=', 'annual_report')->where('status', 'published')->latest()->paginate(10)
-            ->map(function ($pg) {
-                $pg->title = json_decode($pg->title, true);
-                $pg->content = json_decode($pg->content, true);
-    
-                return $pg;
-            });
-        } else {
-            $data = NewsStories::where('type', $type)->where('status', 'published')->latest()->paginate(10)
-            ->map(function ($pg) {
-                $pg->title = json_decode($pg->title, true);
-                $pg->content = json_decode($pg->content, true);
-    
-                return $pg;
-            });
-        }
+        $data = NewsStories::where('type', $type)->where('status', 'published')->latest()->paginate(10)
+        ->map(function ($pg) {
+            $pg->title = json_decode($pg->title, true);
+            $pg->content = json_decode($pg->content, true);
+
+            return $pg;
+        });
 
         return Inertia::render('LandingPage/Publication/Index', [
             'datas' => $data,

@@ -27,7 +27,14 @@ const categories = [
          id: 'Laporan Tahunan'
       },
       value: 'annual_report' 
-   }
+   },
+   { 
+      title: {
+         en: 'Stories',
+         id: 'Cerita'
+      },
+      value: 'story' 
+   },
 ]
 
 const tabActive = ref(props.type)
@@ -58,7 +65,7 @@ const lang = 'en'
                   <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title[locale] }}</Link>
                </div>
                <div class="">
-                  <div class="w-full" v-if="datas.length > 0">
+                  <div class="w-full" v-if="datas.length > 0 && tabActive != 'publication'">
                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-[364px]">
                         <Link :href="route('publications-detail', { title: datas[0].slug ? datas[0].slug : datas[0].title[lang], date:  new Date(datas[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
                            <div class="w-full h-full overflow-hidden fading rounded-[20px]">
@@ -130,7 +137,37 @@ const lang = 'en'
                         <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
                      </div> -->
                   </div>
-                  <div class="w-full text-center " v-else>No data provided</div>
+
+                  <div class="w-full" v-if="datas.length > 0 && tabActive == 'publication'">
+                     <div class="mt-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                           <a
+                              v-for="(item, index) in datas"
+                              :key="index"
+                              :href="item.document"
+                              class="group flex flex-col w-full h-full rounded overflow-hidden"
+                           >
+                              <div class="w-full h-[219px] lg:h-[182px] overflow-hidden relative">
+                              <img
+                                 :src="item.banner"
+                                 alt="Thumbnail"
+                                 class="object-cover w-full h-full group-hover:scale-125 transition-transform duration-300 ease-in-out rounded-[20px]"
+                              />
+                              </div>
+                              <div class="p-4 flex flex-col justify-between flex-1">
+                                 <!-- <p class="text-gray-400 text-xs sm:text-sm">{{ formatDate(item.created_at, lang) }}</p> -->
+                                 <p class=" text-base mt-2">{{ item.title[lang] }}</p>
+                              </div>
+                           </a>
+                        </div>
+                     </div>
+
+
+                     <!-- <div class="w-full flex justify-center mt-10">
+                        <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
+                     </div> -->
+                  </div>
+                  <div class="w-full text-center " v-if="!datas.length">No data provided</div>
                </div>
             </div>
          </div>

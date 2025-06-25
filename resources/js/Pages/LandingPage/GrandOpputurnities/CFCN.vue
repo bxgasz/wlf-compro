@@ -478,13 +478,13 @@ const lists = [
          </div>
       </div>
 
-      <div class="w-full flex justify-center my-20">
+      <!-- <div class="w-full flex justify-center my-20">
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-3">
             <p class="">{{ $t('cfcn.afterdesc1') }}</p>
             <p>{{ $t('cfcn.afterdesc2') }}</p>
             <p>{{ $t('cfcn.afterdesc3') }}</p>
          </div>
-      </div>
+      </div> -->
 
       <div class="w-full flex justify-center mt-36 mb-20">
          <div class="max-w-5xl px-8 space-y-15">
