@@ -61,10 +61,10 @@ class OurImpactController extends Controller
                 'sdg_title_en' => 'required|string',
                 'sdg_title_id' => 'required|string',
                 'image' => 'required|mimes:jpeg,png,jpg,webp|max:2000',
-                // 'sub_icons' => 'required|array|min:1',
-                // 'sub_icons.*.icon' => 'required|mimes:jpeg,png,jpg,webp,svg|max:500',
-                // 'sub_icons.*.text_en' => 'required|string|max:50',
-                // 'sub_icons.*.text_id' => 'required|string|max:50',
+                'sub_icons' => 'required|array|min:1',
+                'sub_icons.*.icon' => 'required|mimes:jpeg,png,jpg,webp,svg|max:500',
+                'sub_icons.*.text_en' => 'required|string|max:50',
+                'sub_icons.*.text_id' => 'required|string|max:50',
             ]);
         }
 
@@ -88,10 +88,10 @@ class OurImpactController extends Controller
             'sdg_title_en' => 'required|string',
             'sdg_title_id' => 'required|string',
             'image' => 'nullable|mimes:jpeg,png,jpg,webp|max:2000',
-            // 'sub_icons' => 'required|array|min:1',
-            // 'sub_icons.*.icon' => 'nullable|mimes:jpeg,png,jpg,webp,svg|max:500',
-            // 'sub_icons.*.text_en' => 'required|string|max:50',
-            // 'sub_icons.*.text_id' => 'required|string|max:50',
+            'sub_icons' => 'required|array|min:1',
+            'sub_icons.*.icon' => 'nullable|mimes:jpeg,png,jpg,webp,svg|max:500',
+            'sub_icons.*.text_en' => 'required|string|max:50',
+            'sub_icons.*.text_id' => 'required|string|max:50',
         ]);
 
         try {
@@ -113,35 +113,35 @@ class OurImpactController extends Controller
                 $setting->image = asset('/storage/' . $filePath);
             }
         
-            // $oldSubIcons = json_decode($setting->sub_icons, true) ?? [];
-            // $subIcons = [];
-            // foreach ($request->sub_icons as $index => $subIcon) {
-            //     if (isset($subIcon['icon']) && $request->hasFile("sub_icons.$index.icon")) {
-            //         if (!empty($oldSubIcons[$index]['icon'] ?? null)) {
-            //             $oldIconPath = str_replace(asset('/storage/'), '', $oldSubIcons[$index]['icon']);
-            //             Storage::disk('public')->delete($oldIconPath);
-            //         }
+            $oldSubIcons = json_decode($setting->sub_icons, true) ?? [];
+            $subIcons = [];
+            foreach ($request->sub_icons as $index => $subIcon) {
+                if (isset($subIcon['icon']) && $request->hasFile("sub_icons.$index.icon")) {
+                    if (!empty($oldSubIcons[$index]['icon'] ?? null)) {
+                        $oldIconPath = str_replace(asset('/storage/'), '', $oldSubIcons[$index]['icon']);
+                        Storage::disk('public')->delete($oldIconPath);
+                    }
         
-            //         $subIconFileName = time() . "_subicon_{$index}_" . $subIcon['icon']->getClientOriginalName();
-            //         $subIconFilePath = Storage::disk('public')->putFileAs('/our_impacts/sub_icons', $subIcon['icon'], $subIconFileName);
+                    $subIconFileName = time() . "_subicon_{$index}_" . $subIcon['icon']->getClientOriginalName();
+                    $subIconFilePath = Storage::disk('public')->putFileAs('/our_impacts/sub_icons', $subIcon['icon'], $subIconFileName);
         
-            //         $subIcons[] = [
-            //             'icon' => asset('/storage/' . $subIconFilePath),
-            //             'text' => [
-            //                 'en' => $subIcon['text_en'],
-            //                 'id' => $subIcon['text_id'],
-            //             ],
-            //         ];
-            //     } else {
-            //         $subIcons[] = [
-            //             'icon' => $oldSubIcons[$index]['icon'],
-            //             'text' => [
-            //                 'en' => $subIcon['text_en'],
-            //                 'id' => $subIcon['text_id'],
-            //             ],
-            //         ];
-            //     }
-            // }
+                    $subIcons[] = [
+                        'icon' => asset('/storage/' . $subIconFilePath),
+                        'text' => [
+                            'en' => $subIcon['text_en'],
+                            'id' => $subIcon['text_id'],
+                        ],
+                    ];
+                } else {
+                    $subIcons[] = [
+                        'icon' => $oldSubIcons[$index]['icon'],
+                        'text' => [
+                            'en' => $subIcon['text_en'],
+                            'id' => $subIcon['text_id'],
+                        ],
+                    ];
+                }
+            }
         
             for ($i = 1; $i < 5; $i++) {
                 $key = 'title_' . $i;
@@ -162,7 +162,7 @@ class OurImpactController extends Controller
                 'id' => $request->sdg_title_id,
             ]);
 
-            // $setting->sub_icons = json_encode($subIcons);
+            $setting->sub_icons = json_encode($subIcons);
     
             $setting->save();
     
