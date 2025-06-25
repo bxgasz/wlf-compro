@@ -194,7 +194,7 @@ const partners = [
          <div class="w-full flex justify-center mt-20" v-if="granteePartners.length > 0">
             <div class="max-w-7xl px-8">
                <div class="flex flex-wrap justify-center gap-5 w-full">
-                  <Link :href="data.link" class="relative border border-[#E75E00] rounded-[20px] p-3 lg:w-[calc(18%)] shadow-xl shadow-[#D86727]/20" v-for="(data, i) in granteePartners" :key="i">
+                  <a target="_blank" :href="data.link" class="relative border border-[#E75E00] rounded-[20px] p-3 lg:w-[calc(18%)] shadow-xl shadow-[#D86727]/20" v-for="(data, i) in granteePartners" :key="i">
                      <div class="w-full h-56 flex items-center">
                         <img :src="data.logo" alt="image" class="w-full h-full object-contain rounded-t-[20px]">
                      </div>
@@ -204,7 +204,7 @@ const partners = [
                         </div>
                      </div>
                      <p class="font-montserrat text-[#E75E00] font-bold text-center capitalize">{{ data.title }}</p>
-                  </Link>
+                  </a>
                </div>
             </div>
          </div>
