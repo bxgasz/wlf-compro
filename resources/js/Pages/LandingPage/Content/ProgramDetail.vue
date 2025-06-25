@@ -87,9 +87,6 @@ onUnmounted(() => {
                   </template>
                </div>
                <div class="lg:max-w-[80%] mx-auto space-y-8 mt-8 px-8 lg:px-0">
-                  <div class="!text-[18px]">
-                     <p class="richtext" v-html="content.description[locale]"></p>
-                  </div>
 
                   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -136,6 +133,10 @@ onUnmounted(() => {
                               </tr>
                         </tbody>
                      </table>
+                  </div>
+
+                  <div class="!text-[18px]">
+                     <p class="richtext" v-html="content.description[locale]"></p>
                   </div>
 
                   <div class="mx-auto space-y-8 mt-20 px-8 lg:px-0">
