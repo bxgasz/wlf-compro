@@ -4,6 +4,7 @@ import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import ArrowBack from '@/Icons/ArrowBack.vue';
 import { Link } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
    granteePartners: Object
@@ -11,38 +12,56 @@ const props = defineProps({
 
 const tabActive = ref('home')
 
-const partners = [
+const { locale } = useI18n()
+
+const panduans = [
    {
-      title: 'acer',
-      image: '/assets/img/about/acer.png'
+      title: {
+         en: 'Project Management Guide',
+         id: 'Panduan Pengelolaan Proyek'
+      },
+      img: '/assets/img/grantee/panduan-pengelolaan.jpg',
+      link: 'https://drive.google.com/file/d/1PqhRlGNBHqV24A6E3IxHepck0l9ca0pF/view?usp=drive_link'
    },
    {
-      title: 'Sumba Integrated Development',
-      image: '/assets/img/about/sid.png'
+      title: {
+         en: 'Child Protection Policy',
+         id: 'Kebijakan perlindungan anak'
+      },
+      img: '/assets/img/grantee/kebijakan-perlindungan.jpg',
+      link: 'https://drive.google.com/file/d/1TLgJUmUoRh5beymufMA6cMqWE4lFufrI/view?usp=sharing'
    },
    {
-      title: 'Bina Tani Sejahtera',
-      image: '/assets/img/about/binatani.png'
+      title: {
+         en: 'Financial Management Guide',
+         id: 'Panduan pengelolaan keuangan'
+      },
+      img: '/assets/img/grantee/panduan-keuangan.jpg',
+      link: 'https://drive.google.com/file/d/1_kpYCAMCDW-QAUXodMpkU7s7wCk-XI1B/view?usp=drive_link'
    },
    {
-      title: 'SATUNAMA',
-      image: '/assets/img/about/satunama.png'
+      title: {
+         en: 'Guide to Writing Success Stories',
+         id: 'Panduan menulis cerita sukses'
+      },
+      img: '/assets/img/grantee/panduan-menulis.jpg',
+      link: 'https://drive.google.com/file/d/1n3Hos3csF2_hI67Ot_EbNuZtajUaEMBr/view?usp=sharing'
    },
    {
-      title: 'DESMA',
-      image: '/assets/img/about/desma.png'
+      title: {
+         en: 'Branding and Marketing Guide',
+         id: 'Panduan branding dan marketing'
+      },
+      img: '/assets/img/grantee/panduan-branding.jpg',
+      link: 'https://drive.google.com/file/d/1GdARo4yuI2i3MaPNjgb1P1mXJYylAR92/view?usp=sharing'
    },
    {
-      title: 'Platform Usaha Sosial',
-      image: '/assets/img/about/plus.png'
-   },
-   {
-      title: 'INSPIRASI',
-      image: '/assets/img/about/inspirasi.png'
-   },
-   {
-      title: 'REMDEC SWAPRAKARSA',
-      image: '/assets/img/about/remdec.png'
+      title: {
+         en: 'Photography and Videography Guide',
+         id: 'Panduan fotografi dan videografi'
+      },
+      img: '/assets/img/grantee/panduan-fotografi.jpg',
+      link: 'https://drive.google.com/file/d/16VwPG1uNMpde3FCfcHktPim23rCk1ayy/view?usp=sharing '
    },
 ]
 </script>
@@ -86,7 +105,7 @@ const partners = [
                   <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
-                           <img src="/assets/img/grantee/grantee-1.jpg" alt="grantee" class="w-full h-full object-cover rounded-t-[180px] lg:rounded-tl-[150px] lg:rounded-tr-none">
+                           <img src="/assets/img/grantee/project.jpg" alt="grantee" class="w-full h-full object-cover rounded-t-[180px] lg:rounded-tl-[150px] lg:rounded-tr-none">
                         </div>
                         <h3 class="text-2xl font-bold">{{ $t('grantee.values.title') }}</h3>
                         <p>{{ $t('grantee.values.description') }}</p>
@@ -97,7 +116,7 @@ const partners = [
 
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
-                           <img src="/assets/img/grantee/grantee-1.jpg" alt="grantee" class="w-full h-full object-cover">
+                           <img src="/assets/img/grantee/guiding.jpg" alt="grantee" class="w-full h-full object-cover">
                         </div>
                         <h3 class="text-2xl font-bold">{{ $t('grantee.guiding.title') }}</h3>
                         <p>{{ $t('grantee.guiding.description') }}</p>
@@ -105,7 +124,7 @@ const partners = [
 
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
-                           <img src="/assets/img/grantee/grantee-3.jpg" alt="grantee" class="w-full h-full object-cover lg:rounded-tr-[150px]">
+                           <img src="/assets/img/grantee/project.jpg" alt="grantee" class="w-full h-full object-cover lg:rounded-tr-[150px]">
                         </div>
                         <h3 class="text-2xl font-bold">{{ $t('grantee.cycle.title') }}</h3>
                         <ul class="list-decimal">
@@ -132,7 +151,7 @@ const partners = [
                <div class="max-w-7xl h-full w-full mx-8 grid grid-cols-1 lg:grid-cols-2 justify-center gap-10">
                   <div class="w-full space-y-8">
                      <div class="w-full h-[248px] flex justify-center">
-                        <img src="/assets/img/grantee/poin-1.png" alt="poin1" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
+                        <img src="/assets/img/grantee/quarterly.jpg" alt="poin1" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
                      </div>
                      <h3 class="text-center text-2xl text-[#E75E00] font-bold">{{ $t('grantee.quarterly') }}</h3>
                      <p class="font-medium">{{ $t('grantee.quarterly.desc') }}</p>
@@ -143,7 +162,7 @@ const partners = [
                   </div>
                   <div class="w-full space-y-8">
                      <div class="w-full h-[248px] flex justify-center">
-                        <img src="/assets/img/grantee/poin-2.png" alt="poin2" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
+                        <img src="/assets/img/grantee/question.jpg" alt="poin2" class="rounded-3xl h-full w-[80%] object-cover shadow-xl shadow-[#D86727]/20">
                      </div>
                      <h3 class="text-center text-2xl text-[#E75E00] font-bold">{{ $t('grantee.question.title') }}</h3>
                      <p class="font-medium">{{ $t('grantee.question.description') }}</p>
@@ -164,15 +183,15 @@ const partners = [
          <div class="flex justify-center my-20">
             <div class="max-w-7xl w-full px-8">
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                  <div v-for="i in 6" class="border border-[#E75E00] rounded-t-[20px]">
+                  <a target="_blank" :href="data.link" v-for="(data, i) in panduans" class="border border-[#E75E00] rounded-t-[20px]">
                      <div class="w-full h-[345px]">
-                        <img src="/assets/img/grantee/poin-1.png" alt="lala" class="w-full h-full object-cover rounded-t-[20px]">
+                        <img :src="data.img" alt="lala" class="w-full h-full object-cover rounded-t-[20px]">
                      </div>
                      <div class="bg-[#E75E00] text-center text-white py-5">
-                        <p class="text-2xl font-extrabold">Title 1</p>
-                        <p class="text-2xl font-extrabold">Sentence 1</p>
+                        <p class="text-2xl font-extrabold">{{ data.title[locale] }}</p>
+                        <!-- <p class="text-2xl font-extrabold">Sentence 1</p> -->
                      </div>
-                  </div>
+                  </a>
                </div>
             </div>
          </div>
