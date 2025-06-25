@@ -58,11 +58,11 @@ const lang = 'en'
       <div class="w-full flex justify-center my-20">
          <div class="max-w-7xl w-full px-8">
             <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">
-               <div class="lg:hidden">
-                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title[locale] }}</Link>
+               <div class="lg:hidden flex flex-wrap gap-2">
+                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base rounded-lg" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title[locale] }}</Link>
                </div>
                <div class="hidden lg:flex flex-col">
-                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title[locale] }}</Link>
+                  <Link :href="route('publications', { type: i.value })" role="button" v-for="(i, index) in categories" @click="tabActive = i" class="p-3 text-base rounded-lg" :class="tabActive == i.value ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == categories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title[locale] }}</Link>
                </div>
                <div class="">
                   <div class="w-full" v-if="datas.length > 0 && tabActive != 'publication'">

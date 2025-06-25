@@ -464,14 +464,14 @@ const lists = [
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-[70%,30%] mt-20 gap-5">
-               <div class="flex flex-col gap-5">
+               <div class="flex flex-col gap-5 order-2 lg:order-1">
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">2</p>
                   <p class="font-bold">{{ $t('cfcn.step2.title') }}</p>
                   <p>{{ $t('cfcn.step2.description') }}
                   </p>
                   <a href="https://drive.google.com/uc?export=download&id=1pbRtCmchJ9l_R3r1o7-yvRzaOKnrMEzt" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
                </div>
-               <div class="w-72 h-80">
+               <div class="w-72 h-80 order-1 lg:order-2">
                   <img src="/assets/img/grandopp/step-2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
                </div>
             </div>

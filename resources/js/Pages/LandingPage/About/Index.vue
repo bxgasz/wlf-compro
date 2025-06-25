@@ -305,7 +305,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
 
                <div class="w-[20%] hidden lg:block">
                   <h2 class="text-[#2B3E8C] text-4xl font-playfair font-extrabold">
-                     Our Team
+                     {{ $t('about.team') }}
                   </h2>
 
                   <p role="button" v-if="page.props.settings.show_team" @click="tabOurTeam = 'management'" class="p-3 text-base rounded-tl-[20px] mt-10" :class="tabOurTeam == 'management' ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">Management</p>

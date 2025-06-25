@@ -39,8 +39,8 @@ const tabActive = ref(props.category)
       <div class="w-full flex justify-center my-20">
          <div class="max-w-7xl w-full px-8">
             <div class="grid w-full grid-cols-1 lg:grid-cols-[25%,70%] gap-10">
-               <div class="lg:hidden">
-                  <Link :href="route('sub-program', i.slug)" v-for="(i, index) in programCategories" class="p-3 text-base" :class="tabActive == i.slug ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title[locale] }}</Link>
+               <div class="lg:hidden flex flex-wrap gap-2">
+                  <Link :href="route('sub-program', i.slug)" v-for="(i, index) in programCategories" class="p-3 text-base rounded-lg" :class="tabActive == i.slug ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]'">{{ i.title[locale] }}</Link>
                </div>
                <div class="hidden lg:flex flex-col">
                   <Link :href="route('sub-program', i.slug)" v-for="(i, index) in programCategories" class="p-3 text-base" :class="tabActive == i.slug ? 'bg-[#D86727] text-white font-semibold' : 'border border-[#D86727]', index == 0 ? 'rounded-tr-[20px]' : index == programCategories.length - 1 ? 'rounded-br-[20px]' : ''">{{ i.title[locale] }}</Link>
