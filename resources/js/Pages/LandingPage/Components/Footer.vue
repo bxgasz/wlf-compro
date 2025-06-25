@@ -49,19 +49,19 @@ const handleSubscribe = () => {
                <h3 class="font-semibold mb-2">{{ locale == 'id' ? 'Alamat' : 'Address' }}</h3>
                <p class="text-white text-md" v-html="page.props.settings.location">
                </p>
-               <a :href="'tel:'+page.props.settings.phone_no" class="mt-10 flex gap-5"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
-               <a :href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`" class="flex gap-5 mt-5"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
+               <a target="_blank" :href="'tel:'+page.props.settings.phone_no" class="mt-10 flex gap-5"><img role="button" src="/assets/icon/phone.svg" alt="x"> {{ page.props.settings.phone_no }} <br></a>
+               <a target="_blank" :href="`https://mail.google.com/mail/?view=cm&fs=1&to=${page.props.settings.email}`" class="flex gap-5 mt-5"><img role="button" src="/assets/icon/mail.svg" alt="x"> {{ page.props.settings.email }}</a>
             </div>
 
             <div>
                <h3 class="font-semibold mb-2">{{ locale == 'id' ? 'Ikuti Kami' : 'Follow Us' }}</h3>
                <p class="text-gray-400 text-sm">
                   <div class="flex gap-3 mt-5 items-center">
-                     <a v-if="page.props.settings.x_url" :href="page.props.settings.x_url"><img role="button" src="/assets/icon/twitter.svg" alt="x"></a>
-                     <a v-if="page.props.settings.linkedin_url" :href="page.props.settings.linkedin_url"><img role="button" src="/assets/icon/linkedin.svg" alt="linkedin"></a>
-                     <a v-if="page.props.settings.facebook_url" :href="page.props.settings.facebook_url"><img role="button" src="/assets/icon/facebook.svg" alt="facebook"></a>
-                     <a v-if="page.props.settings.instagram_url" :href="page.props.settings.instagram_url"><img role="button" src="/assets/icon/instagram.svg" alt="instagram"></a>
-                     <a v-if="page.props.settings.youtube_url" :href="page.props.settings.youtube_url" class="w-7 h-7 text-[#f26522]"><img role="button" src="/assets/icon/yt.svg" alt="youtube" class="h-full w-full object-contain"></a>
+                     <a target="_blank" v-if="page.props.settings.x_url" :href="page.props.settings.x_url"><img role="button" src="/assets/icon/twitter.svg" alt="x"></a>
+                     <a target="_blank" v-if="page.props.settings.linkedin_url" :href="page.props.settings.linkedin_url"><img role="button" src="/assets/icon/linkedin.svg" alt="linkedin"></a>
+                     <a target="_blank" v-if="page.props.settings.facebook_url" :href="page.props.settings.facebook_url"><img role="button" src="/assets/icon/facebook.svg" alt="facebook"></a>
+                     <a target="_blank" v-if="page.props.settings.instagram_url" :href="page.props.settings.instagram_url"><img role="button" src="/assets/icon/instagram.svg" alt="instagram"></a>
+                     <a target="_blank" v-if="page.props.settings.youtube_url" :href="page.props.settings.youtube_url" class="w-7 h-7 text-[#f26522]"><img role="button" src="/assets/icon/yt.svg" alt="youtube" class="h-full w-full object-contain"></a>
                   </div>
                </p>
 

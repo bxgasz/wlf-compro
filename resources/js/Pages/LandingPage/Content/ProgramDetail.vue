@@ -14,6 +14,21 @@ const props = defineProps({
 
 const { locale } = useI18n()
 
+const statusMap = {
+  en: {
+    ongoing: 'Ongoing',
+    closed: 'Closed',
+  },
+  id: {
+    ongoing: 'Berjalan',
+    closed: 'Ditutup',
+  },
+}
+
+const statusText = computed(() => {
+  return statusMap[locale.value]?.[props.content.status] ?? props.content.status
+})
+
 const contentTitle = computed(() => props.content?.title?.[locale.value]);
 const contentUrl = computed(() => route('program-detail', { category: props.content.program_category_id, title: props.content?.slug ? props.content?.slug : props.content?.title[locale.value], date: new Date(props.content?.created_at).toISOString().split('T')[0] }));
 const { copyLink, shareOnFacebook, shareOnLinkedIn, shareOnX } = useShare(contentTitle.value, contentUrl.value);
@@ -128,7 +143,7 @@ onUnmounted(() => {
                                     Status
                                  </th>
                                  <td class="px-6 py-4">
-                                    {{ content.status }}
+                                    {{ statusText }}
                                  </td>
                               </tr>
                         </tbody>

@@ -114,8 +114,8 @@ const youtubeUrl = computed(() =>
                         <p class="text-xl text-slate-300">{{ banner.desc[locale] }}</p>
                      </div>
                      <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
-                        <a v-if="banner.link_01" :href="banner.link_01" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More' }}</a>
-                        <a v-if="banner.link_02" :href="banner.link_02" class="border border-[#D86727] text-[#D86727] px-6 py-3 font-semibold rounded-xl w-fit">{{ locale == 'id' ? 'Informasi Lainnya' : 'Another Information' }}</a>
+                        <a target="_blank" v-if="banner.link_01" :href="banner.link_01" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ locale == 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More' }}</a>
+                        <a target="_blank" v-if="banner.link_02" :href="banner.link_02" class="border border-[#D86727] text-[#D86727] px-6 py-3 font-semibold rounded-xl w-fit">{{ locale == 'id' ? 'Informasi Lainnya' : 'Another Information' }}</a>
                      </div>
                   </div>
                </div>

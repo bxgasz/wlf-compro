@@ -61,10 +61,10 @@ class OurImpactController extends Controller
                 'sdg_title_en' => 'required|string',
                 'sdg_title_id' => 'required|string',
                 'image' => 'required|mimes:jpeg,png,jpg,webp|max:2000',
-                'sub_icons' => 'required|array|min:1',
-                'sub_icons.*.icon' => 'required|mimes:jpeg,png,jpg,webp,svg|max:500',
-                'sub_icons.*.text_en' => 'required|string|max:50',
-                'sub_icons.*.text_id' => 'required|string|max:50',
+                // 'sub_icons' => 'required|array|min:1',
+                // 'sub_icons.*.icon' => 'required|mimes:jpeg,png,jpg,webp,svg|max:500',
+                // 'sub_icons.*.text_en' => 'required|string|max:50',
+                // 'sub_icons.*.text_id' => 'required|string|max:50',
             ]);
         }
 
@@ -88,10 +88,10 @@ class OurImpactController extends Controller
             'sdg_title_en' => 'required|string',
             'sdg_title_id' => 'required|string',
             'image' => 'nullable|mimes:jpeg,png,jpg,webp|max:2000',
-            'sub_icons' => 'required|array|min:1',
-            'sub_icons.*.icon' => 'nullable|mimes:jpeg,png,jpg,webp,svg|max:500',
-            'sub_icons.*.text_en' => 'required|string|max:50',
-            'sub_icons.*.text_id' => 'required|string|max:50',
+            // 'sub_icons' => 'required|array|min:1',
+            // 'sub_icons.*.icon' => 'nullable|mimes:jpeg,png,jpg,webp,svg|max:500',
+            // 'sub_icons.*.text_en' => 'required|string|max:50',
+            // 'sub_icons.*.text_id' => 'required|string|max:50',
         ]);
 
         try {
