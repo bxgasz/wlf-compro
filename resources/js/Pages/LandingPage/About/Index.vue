@@ -125,17 +125,6 @@ const history = [
          "en": "WLF continues to reinforce its identity as a grant-making organization. In 2024, WLF launched five new programs focusing on early childhood development, basic literacy and numeracy, and local economic empowerment.",
          "id": "WLF terus memperkuat identitasnya sebagai organisasi pemberi hibah. Pada tahun 2024, WLF meluncurkan lima program baru yang berfokus pada pengembangan anak usia dini, literasi dan numerasi dasar, serta pemberdayaan ekonomi lokal."
       }
-   },
-   {
-      "year": "VISION",
-      "title": {
-         "en": "VISION",
-         "id": "VISI"
-      },
-      "description": {
-         "en": "Equal opportunity for all Indonesians to flourish.",
-         "id": "Kesempatan yang setara bagi seluruh masyarakat Indonesia untuk berkembang."
-      }
    }
 ]
 
