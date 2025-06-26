@@ -232,7 +232,7 @@ const format = [
          <div class="flex justify-center my-20">
             <div class="max-w-7xl w-full px-8 flex flex-col justify-center items-center">
                 <div class="w-[400px] h-[345px]">
-                    <img src="/assets/img/gratee/format.jpg" alt="lala" class="w-full h-full object-cover rounded-[20px]">
+                    <img src="/assets/img/grantee/format.jpeg" alt="lala" class="w-full h-full object-cover rounded-[20px]">
                 </div>
 
                 <div class="w-full flex flex-col gap-3 mt-20">
