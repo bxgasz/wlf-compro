@@ -64,6 +64,37 @@ const panduans = [
       link: 'https://drive.google.com/file/d/16VwPG1uNMpde3FCfcHktPim23rCk1ayy/view?usp=sharing '
    },
 ]
+
+const format = [
+    {
+        title: {
+            en: 'Monthly Discussion Presentation Outline',
+            id: 'Outline Presentasi Diskusi Bulanan'
+        },
+        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+    },
+    {
+        title: {
+            id: 'Format Laporam Kemajuan Proyek',
+            en: 'Project Progress Report Format'
+        },
+        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+    },
+    {
+        title: {
+            en: 'Project Final Report Format',
+            id: 'Format Laporan Akhir Proyek'
+        },
+        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+    },
+    {
+        title: {
+            en: 'Work Plan Adjustment Submission Format',
+            id: 'Format Pengajuan Penyesuaian Rencana Kerja'
+        },
+        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+    },
+]
 </script>
 
 <template>
@@ -193,6 +224,22 @@ const panduans = [
                      </div>
                   </a>
                </div>
+            </div>
+         </div>
+      </template>
+
+      <template v-if="tabActive == 'format_pelaporan'">
+         <div class="flex justify-center my-20">
+            <div class="max-w-7xl w-full px-8 flex flex-col justify-center items-center">
+                <div class="w-[400px] h-[345px]">
+                    <img src="/assets/img/gratee/format.jpg" alt="lala" class="w-full h-full object-cover rounded-[20px]">
+                </div>
+
+                <div class="w-full flex flex-col gap-3 mt-20">
+                    <a target="_blank" :href="data.link" class="border-2 border-[#E75E00] p-3 rounded-[20px]" v-for="(data, i) in format">
+                        {{ data.title[locale] }}
+                    </a>
+                </div>
             </div>
          </div>
       </template>
