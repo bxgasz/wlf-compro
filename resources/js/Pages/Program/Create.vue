@@ -102,7 +102,7 @@ const handleSubmit = async() => {
 
          <div class="space-y-6" v-if="tabActive == 'en'">
             <div class="">
-               <TextInput 
+               <TextInput
                   v-model="form.title_en"
                   type="text"
                   title="Title"
@@ -119,7 +119,7 @@ const handleSubmit = async() => {
 
          <div class="space-y-6" v-if="tabActive == 'id'">
             <div class="">
-               <TextInput 
+               <TextInput
                   v-model="form.title_id"
                   type="text"
                   title="Title"
@@ -136,7 +136,7 @@ const handleSubmit = async() => {
 
          <div class="space-y-6">
             <div class="">
-               <TextInput 
+               <TextInput
                   v-model="form.slug"
                   type="text"
                   title="Slug"
@@ -151,7 +151,7 @@ const handleSubmit = async() => {
             </div>
 
             <div class="">
-               <TextInput 
+               <TextInput
                   v-model="form.implementing_partner"
                   type="text"
                   title="Implementing Partner"
@@ -166,7 +166,7 @@ const handleSubmit = async() => {
             </div>
 
             <div class="">
-               <TextInput 
+               <TextInput
                   v-model="form.sector"
                   type="text"
                   title="Sector"
@@ -181,7 +181,7 @@ const handleSubmit = async() => {
             </div>
 
             <div class="">
-               <TextInput 
+               <TextInput
                   v-model="form.location"
                   type="text"
                   title="Location"
@@ -198,69 +198,69 @@ const handleSubmit = async() => {
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                <div class="">
                   <DatePicker
-                     v-model="form.start_date" 
+                     v-model="form.start_date"
                      :required="false"
                      title="Start Date"
-                  />  
+                  />
                   <label
                         class="block text-sm font-medium text-error-500"
                      >
                      {{ form.errors.start_date }}
-                  </label>   
-               </div>   
+                  </label>
+               </div>
                <div class="">
                   <DatePicker
-                     v-model="form.end_date" 
+                     v-model="form.end_date"
                      :required="false"
                      title="End Date"
-                  />  
+                  />
                   <label
                         class="block text-sm font-medium text-error-500"
                      >
                      {{ form.errors.end_date }}
-                  </label>   
-               </div>   
+                  </label>
+               </div>
             </div>
 
             <div class="">
-               <SearchSelect 
-                  :options="categories" 
-                  v-model="form.program_category_id" 
+               <SearchSelect
+                  :options="categories"
+                  v-model="form.program_category_id"
                   :required="true"
                   title="Program Category"
-               />  
+               />
                <label
                      class="block text-sm font-medium text-error-500"
                   >
                   {{ form.errors.program_category_id }}
-               </label>   
+               </label>
             </div>
-            
+
             <div class="">
-               <SearchSelect 
-                  :options="locations" 
-                  v-model="form.location_id" 
+               <SearchSelect
+                  :options="locations"
+                  v-model="form.location_id"
                   :required="true"
                   title="Location point"
-               />  
+               />
                <label
                      class="block text-sm font-medium text-error-500"
                   >
                   {{ form.errors.location_id }}
-               </label>   
+               </label>
             </div>
 
             <label class="text-sm font-medium text-gray-700 dark:text-gray-400 flex gap-3 items-center">
                <div class="">
-                  Banner 
+                  Banner
                   <span class="text-error-500">*</span>
                </div>
                <p class="gap-2 flex">
                   <span @click="tabBanner = 'media'" :class="tabBanner == 'media' ? 'bg-indigo-500 text-white' : 'border-indigo-500 text-indigo-500 border-2'" class="cursor-pointer p-1 px-2 rounded-lg hover:bg-indigo-500 hover:text-white transition ease-in-out">Media ( Video/Img )</span>
                   <span @click="tabBanner = 'link'" :class="tabBanner == 'link' ? 'bg-indigo-500 text-white' : 'border-indigo-500 text-indigo-500 border-2'" class="cursor-pointer p-1 px-2 rounded-lg hover:bg-indigo-500 hover:text-white transition ease-in-out">Link</span>
-               </p> 
+               </p>
             </label>
-            
+
             <div class="" v-if="tabBanner == 'media'">
                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                banner (Banner) <span class="text-error-500">*</span></label>
@@ -292,12 +292,12 @@ const handleSubmit = async() => {
                      class="block text-sm font-medium text-error-500"
                   >
                   {{ form.errors.banner }}
-               </label>   
+               </label>
                <input class="hidden" type="file" ref="bannerInput" name="file" accept="banner/*" @input="handleUploadbanner" />
             </div>
 
             <div class="" v-if="tabBanner == 'link'">
-               <TextInput 
+               <TextInput
                   :label="false"
                   v-model="form.youtube_link"
                   type="url"
@@ -324,7 +324,7 @@ const handleSubmit = async() => {
                      class="block text-sm font-medium text-error-500"
                   >
                   {{ tabActive == 'id' ? form.errors.description_id : form.errors.description_en }}
-               </label> 
+               </label>
             </div>
 
             <div class="space-y-6">
@@ -348,7 +348,7 @@ const handleSubmit = async() => {
                            </span>
                            <span class="font-semibold text-blue-600 hover:text-blue-700 rounded-lg decoration-2 hover:underline focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2">browse</span>
                         </div>
-      
+
                         <p class="mt-1 text-xs text-gray-400">
                            Pick a file
                         </p>
@@ -364,7 +364,7 @@ const handleSubmit = async() => {
                      class="block text-sm font-medium text-error-500"
                   >
                   {{ form.errors.document }}
-               </label>   
+               </label>
                <input class="hidden" type="file" ref="documentInput" accept="application/pdf" name="file" @input="handleUpload" />
             </div>
          </div>

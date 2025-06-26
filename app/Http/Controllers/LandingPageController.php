@@ -86,7 +86,7 @@ class LandingPageController extends Controller
         ]);
     }
 
-    public function  ourProgram() 
+    public function  ourProgram()
     {
         $programCategories = ProgramCategory::with(['programs' => function ($query) {
             $query->latest()->take(3);
@@ -110,7 +110,7 @@ class LandingPageController extends Controller
         ]);
     }
 
-    public function subProgram($categories) 
+    public function subProgram($categories)
     {
         $programCategories = ProgramCategory::select('title', 'slug')->orderBy('order', 'asc')->get()->map(function ($categories) {
             $categories->title = json_decode($categories->title, true);
@@ -119,10 +119,10 @@ class LandingPageController extends Controller
         });
 
         $programCategory = ProgramCategory::with('programs')->where('slug', $categories)->first();
-    
+
         $programCategory->title = json_decode($programCategory->title, true);
         $programCategory->description = json_decode($programCategory->description, true);
-        
+
         $programCategory->programs->transform(function ($program) {
             $program->title = json_decode($program->title, true);
             $program->description = json_decode($program->description, true);
@@ -136,7 +136,7 @@ class LandingPageController extends Controller
         ]);
     }
 
-    public function getPrograms ($programCategoryId) 
+    public function getPrograms ($programCategoryId)
     {
         return Program::where('program_category_id', $programCategoryId)->latest()->paginate(10)
         ->map(function ($pg) {
@@ -145,7 +145,7 @@ class LandingPageController extends Controller
         });
     }
 
-    public function programDetail($category, $title, $date) 
+    public function programDetail($category, $title, $date)
     {
         if (!$title && !$date) {
             return redirect()->back();
@@ -162,7 +162,7 @@ class LandingPageController extends Controller
             ->orderByRaw('CASE WHEN program_category_id = ? THEN 1 ELSE 2 END', [$content->program_category_id])
             ->orderBy('program_category_id', 'desc')
             ->paginate(3);
-        
+
         $otherContent->setCollection(
             $otherContent->getCollection()->map(function ($item) {
                 return [
@@ -190,15 +190,15 @@ class LandingPageController extends Controller
                 'location_id' => $content->location_id,
                 'category' => $content->programCategory ? json_decode($content->programCategory->title, true) : null,
                 'status' => $content->status,
-                'document' => $content->document, 
-                'program_category_id' => $content->program_category_id, 
+                'document' => $content->document,
+                'program_category_id' => $content->program_category_id,
                 'created_at' => $content->created_at,
             ],
             'otherContent' => $otherContent
         ]);
     }
 
-    public function ourImpact() 
+    public function ourImpact()
     {
         $stories = NewsStories::where('type', 'story')->where('status', 'published')->latest()->paginate(10)
         ->map(function ($pg) {
@@ -214,11 +214,11 @@ class LandingPageController extends Controller
             for ($i = 1; $i < 5; $i++) {
                 $key = 'title_' . $i;
                 $impact->$key = json_decode($impact->$key, true);
-    
+
                 $key2 = 'subtitle_' . $i;
                 $impact->$key2 = json_decode($impact->$key2, true);
             }
-    
+
             $impact->sub_icons = json_decode($impact->sub_icons, true);
         }
 
@@ -228,7 +228,7 @@ class LandingPageController extends Controller
         ]);
     }
 
-    public function publication(Request $request) 
+    public function publication(Request $request)
     {
         $type = $request->type ?? 'publication';
         $data = NewsStories::where('type', $type)->where('status', 'published')->latest()->paginate(10)
@@ -243,9 +243,9 @@ class LandingPageController extends Controller
             'datas' => $data,
             'type' => $type,
         ]);
-    
+
     }
-    public function detailContent($title, $date) 
+    public function detailContent($title, $date)
     {
         if (!$title && !$date) {
             return redirect()->back();
@@ -262,7 +262,7 @@ class LandingPageController extends Controller
             ->orderByRaw('CASE WHEN category_id = ? THEN 1 ELSE 2 END', [$content->category_id])
             ->orderBy('category_id', 'desc')
             ->paginate(3);
-        
+
         $otherContent->setCollection(
             $otherContent->getCollection()->map(function ($item) {
                 return [
@@ -331,7 +331,7 @@ class LandingPageController extends Controller
         ]);
     }
 
-    public function careerDetail(Career $career) 
+    public function careerDetail(Career $career)
     {
         return Inertia::render('LandingPage/Content/CareerDetail', [
             'content' => [
@@ -367,7 +367,7 @@ class LandingPageController extends Controller
     {
         return Inertia::render('LandingPage/Contact/Index');
     }
-    
+
     public function donate()
     {
         return Inertia::render('LandingPage/Donate/Index');
