@@ -52,16 +52,16 @@ class NewsStoriesController extends Controller
         $tags = Tag::all()->map(function ($tag) {
             $title = json_decode($tag->title, true);
             return [
-                'value' => $tag->id, 
-                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
+                'value' => $tag->id,
+                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id']
             ];
         });
 
         $categories = Category::all()->map(function ($category) {
             $title = json_decode($category->title, true);
             return [
-                'value' => $category->id, 
-                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
+                'value' => $category->id,
+                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id']
             ];
         });
 
@@ -73,7 +73,7 @@ class NewsStoriesController extends Controller
 
     public function store(Request $request)
     {
-        
+
 
         if ($request->type == 'publication' || $request->type == 'annual_report') {
             $request->validate([
@@ -81,7 +81,7 @@ class NewsStoriesController extends Controller
                 'title_en' => 'required|string|min:5',
                 'banner' => 'required|mimes:jpeg,png,jpg,webp',
                 'type' => 'required|string',
-                'document' => 'required|mimes:pdf,doc,docx|max:10124'
+                'document' => 'required|mimes:pdf,doc,docx'
             ]);
         } else {
             $request->validate([
@@ -153,7 +153,7 @@ class NewsStoriesController extends Controller
                 $filePath = Storage::disk('public')->putFileAs('/content/' . $storeData['type'], $request->file('document'), $fileName);
 
                 $storeData['document'] = asset('/storage/' . $filePath);
-            } 
+            }
 
             $newsStories = NewsStories::create($storeData);
 
@@ -178,16 +178,16 @@ class NewsStoriesController extends Controller
         $tags = Tag::all()->map(function ($tag) {
             $title = json_decode($tag->title, true);
             return [
-                'value' => $tag->id, 
-                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
+                'value' => $tag->id,
+                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id']
             ];
         });
 
         $categories = Category::all()->map(function ($category) {
             $title = json_decode($category->title, true);
             return [
-                'value' => $category->id, 
-                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id'] 
+                'value' => $category->id,
+                'label' => 'en : ' . $title['en'] . ' | ' . 'id : ' . $title['id']
             ];
         });
 
@@ -220,7 +220,7 @@ class NewsStoriesController extends Controller
                 'title_en' => 'required|string|min:5',
                 'banner' => 'required|mimes:jpeg,png,jpg,webp',
                 'type' => 'required|string',
-                'document' => 'required|mimes:pdf,doc,docx|max:10124'
+                'document' => 'required|mimes:pdf,doc,docx'
             ]);
         } else {
             $request->validate([
@@ -312,7 +312,7 @@ class NewsStoriesController extends Controller
                 $filePath = Storage::disk('public')->putFileAs('/content/' . $updateData['type'], $request->file('document'), $fileName);
 
                 $updateData['document'] = asset('/storage/' . $filePath);
-            } 
+            }
 
             if ($updateData['status'] == 'published') {
                 $updateData['editor_by'] = Auth::user()->id;
