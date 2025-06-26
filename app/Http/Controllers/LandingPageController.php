@@ -68,7 +68,7 @@ class LandingPageController extends Controller
 
     public function aboutUs()
     {
-        $partners = Partner::orderBy('id', 'desc')->get()->chunk(10);
+        $partners = Partner::where('type', 'partner')->orderBy('id', 'desc')->get()->chunk(10);
 
         $managements = Management::orderBy('id', 'desc')->where('is_active', true)->get()->map(function ($management) {
             $management->title = json_decode($management->title, true);
