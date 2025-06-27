@@ -103,7 +103,7 @@ const values = []
                         </div> -->
                      </div>
                      <div class="w-full -mt-20 order-1 lg:order-2">
-                        <img :src="impact.image ?? '/assets/img/ourImpact/our-impact.png'" alt="bg" class="w-full h-full object-contain">
+                        <img :src="impact.image ?? '/assets/img/ourimpact/our-impact.png'" alt="bg" class="w-full h-full object-contain">
                      </div>
                      <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:ms-4 lg:order-3">
                         <div class="" v-for="i in 5">

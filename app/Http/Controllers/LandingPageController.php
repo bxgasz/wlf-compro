@@ -257,7 +257,7 @@ class LandingPageController extends Controller
             return redirect(route('home'));
         }
 
-        $otherContent = NewsStories::whereNot('id', $content->id)
+        $otherContent = NewsStories::select('slug', 'title', 'banner', 'created_at')->whereNot('id', $content->id)
             ->where('type', $content->type)
             ->orderByRaw('CASE WHEN category_id = ? THEN 1 ELSE 2 END', [$content->category_id])
             ->orderBy('category_id', 'desc')

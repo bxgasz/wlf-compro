@@ -67,32 +67,129 @@ const panduans = [
 
 const format = [
     {
-        title: {
-            en: 'Monthly Discussion Presentation Outline',
-            id: 'Outline Presentasi Diskusi Bulanan'
-        },
-        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+      img: '/assets/img/grantee/format.jpeg',
+      title: {
+         en: 'Project Substance',
+         id: 'Substansi proyek'
+      },
+      data: [
+         {
+            title: {
+                  en: 'Monthly Discussion Presentation Outline',
+                  id: 'Outline Presentasi Diskusi Bulanan'
+            },
+            link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  id: 'Format Laporam Kemajuan Proyek',
+                  en: 'Project Progress Report Format'
+            },
+            link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  en: 'Project Final Report Format',
+                  id: 'Format Laporan Akhir Proyek'
+            },
+            link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  en: 'Work Plan Adjustment Submission Format',
+                  id: 'Format Pengajuan Penyesuaian Rencana Kerja'
+            },
+            link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+      ]
     },
     {
-        title: {
-            id: 'Format Laporam Kemajuan Proyek',
-            en: 'Project Progress Report Format'
-        },
-        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+      img: '/assets/img/grantee/keuangan.jpg',
+      title: {
+         en: 'Finance',
+         id: 'Keuangan'
+      },
+      data: [
+         {
+            title: {
+                  en: 'Financial Report Format',
+                  id: 'Format Laporan Keuangan'
+            },
+            link: 'https://docs.google.com/spreadsheets/d/1kjI5xkBnHFSO2zg6cf282V8TabGbL4ynxRABZDhczLc/edit?usp=sharing'
+         },
+         {
+            title: {
+                  id: 'Forecast Format',
+                  en: 'Format Forecast'
+            },
+            link: 'https://docs.google.com/spreadsheets/d/1ni5HuiN9h_QYN0--n-SjD-7JIXjCCPDIYwdGHHGNmiQ/edit?usp=sharing'
+         },
+         {
+            title: {
+                  id: 'Format Realokasi Anggaran',
+                  en: 'Budget Reallocation Format'
+            },
+            link: 'https://docs.google.com/spreadsheets/d/1sGzb8DU3us3yLMmZiUT1pZIOr2liWOzyGS-GuWvG464/edit#gid=389132779'
+         },
+         {
+            title: {
+                  en: 'Quarterly Financial Report Format',
+                  id: 'Format Laporan Keuangan Kuartal'
+            },
+            link: 'https://docs.google.com/document/d/1NydajIM6WchIkGcMBvgGpUvVq57UFinA91mfZPgQhME/edit?usp=drive_link'
+         },
+         {
+            title: {
+                  en: 'Final Financial Report Format',
+                  id: 'Format Laporan Keuangan Akhir'
+            },
+            link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  en: 'Grant Disbursement Request Format',
+                  id: 'Format Permohonan Pencairan Dana Hibah'
+            },
+            link: 'https://docs.google.com/document/d/1Bq8sZ9RmBmIRVMKeEtauvGK1ouBrZCXqZksuyPoEOJg/edit?usp=sharing'
+         },
+      ]
     },
     {
-        title: {
-            en: 'Project Final Report Format',
-            id: 'Format Laporan Akhir Proyek'
-        },
-        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
-    },
-    {
-        title: {
-            en: 'Work Plan Adjustment Submission Format',
-            id: 'Format Pengajuan Penyesuaian Rencana Kerja'
-        },
-        link: 'https://docs.google.com/presentation/d/1FHpUOLTgQTmXS2Rl3C6EXxJLH3MxOTCf/edit?usp=drive_link&ouid=108852466687183722203&rtpof=true&sd=true'
+      img: '/assets/img/grantee/others.jpg',
+      title: {
+         en: 'Others',
+         id: 'Lain-lain'
+      },
+      data: [
+         {
+            title: {
+                  en: 'Conflict of Interest Prevention Statement Format',
+                  id: 'Format Pernyataan Pencegahan Konflik Kepentingan'
+            },
+            link: 'https://docs.google.com/document/d/1P0ko0aTuB9lplSGmNAhP82d3HuD0y1VQ/edit?usp=sharing&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  id: 'Documentation Retrieval and Use Approval Format',
+                  en: 'Format Forecast'
+            },
+            link: 'https://docs.google.com/document/d/1EKl5Noc-TLrf4yr6DiN3iLo795GOsLWF/edit?usp=sharing&ouid=106573849897693678649&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  id: 'Grantee Portal Access Request Format',
+                  en: 'Budget Reallocation Format'
+            },
+            link: 'https://docs.google.com/document/d/1EdVuA3wmQz3PqBQ8RV9OGraQn02UunHx/edit?usp=sharing&ouid=108852466687183722203&rtpof=true&sd=true'
+         },
+         {
+            title: {
+                  en: 'WLF Logo',
+                  id: 'Logo WLF'
+            },
+            link: 'https://drive.google.com/drive/folders/1_RxI1-aYfXbGVKgaaP8mnZMiwdCNZZo1'
+         },
+      ]
     },
 ]
 </script>
@@ -229,15 +326,17 @@ const format = [
       </template>
 
       <template v-if="tabActive == 'format_pelaporan'">
-         <div class="flex justify-center my-20">
+         <div class="flex justify-center my-20" v-for="(data, i) in format">
             <div class="max-w-7xl w-full px-8 flex flex-col justify-center items-center">
                 <div class="w-[400px] h-[345px]">
-                    <img src="/assets/img/grantee/format.jpeg" alt="lala" class="w-full h-full object-cover rounded-[20px]">
+                    <img :src="data.img" alt="lala" class="w-full h-full object-cover rounded-[20px]">
                 </div>
 
+                <p class="text-center font-bold text-4xl">{{ data.title[locale] }}</p>
+
                 <div class="w-full flex flex-col gap-3 mt-20">
-                    <a target="_blank" :href="data.link" class="border-2 border-[#E75E00] p-3 rounded-[20px]" v-for="(data, i) in format">
-                        {{ data.title[locale] }}
+                    <a target="_blank" :href="d.link" class="border-2 border-[#E75E00] p-3 rounded-[20px]" v-for="(d, i) in data.data">
+                        {{ d.title[locale] }}
                     </a>
                 </div>
             </div>

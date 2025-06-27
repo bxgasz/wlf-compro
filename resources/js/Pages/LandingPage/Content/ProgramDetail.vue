@@ -39,6 +39,15 @@ const handleScroll = () => {
   showPopupShare.value = window.scrollY > 100;
 };
 
+const formatYearMonth = (dateString) => {
+  const date = new Date(dateString);
+
+  // getMonth() mulai dari 0 ⇒ +1 lalu pad 2 digit
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+
+  return `${date.getFullYear()}-${month}`;
+};
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
@@ -72,8 +81,8 @@ onUnmounted(() => {
                   {{ content.title[locale] }}
                </h1>
                <div class="flex mt-6 mx-auto justify-center">
-                  <p class="text-gray-600 text-[16px]">{{ formatDate(content.created_at) }}</p>
-                  <span class="text-gray-600 mx-3">|</span>
+                  <!-- <p class="text-gray-600 text-[16px]">{{ formatDate(content.created_at) }}</p>
+                  <span class="text-gray-600 mx-3">|</span> -->
                   <p class="text-gray-600 text-[16px]">{{ content.category[locale] }}</p>
                </div>
             </div>
@@ -130,14 +139,14 @@ onUnmounted(() => {
                                     {{ content.location }}
                                  </td>
                               </tr>
-                              <!-- <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                              <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
                                  <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
                                     Date
                                  </th>
                                  <td class="px-6 py-4">
-                                    {{ content.start_date }} - {{ content.end_date }}
+                                    {{ formatYearMonth(content.start_date) }} - {{ formatYearMonth(content.end_date) }}
                                  </td>
-                              </tr> -->
+                              </tr>
                               <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
                                  <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
                                     Status
