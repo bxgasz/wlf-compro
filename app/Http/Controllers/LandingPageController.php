@@ -41,7 +41,7 @@ class LandingPageController extends Controller
             return $program;
         });
 
-        $newPublications = NewsStories::select('banner', 'title', 'created_at')->where('type', 'publication')->orderBy('created_at', 'desc')->first();
+        $newPublications = NewsStories::select('banner', 'title', 'created_at', 'slug', 'document')->where('type', 'publication')->orderBy('created_at', 'desc')->first();
         if ($newPublications != null) {
             $newPublications->title = json_decode($newPublications->title, true);
         }
@@ -89,7 +89,7 @@ class LandingPageController extends Controller
     public function  ourProgram()
     {
         $programCategories = ProgramCategory::with(['programs' => function ($query) {
-            $query->latest()->take(3);
+            $query->take(3);
         }])->orderBy('order', 'asc')->get()->map(function ($category) {
             // Decode milik kategori
             $category->title = json_decode($category->title, true);
@@ -138,7 +138,7 @@ class LandingPageController extends Controller
 
     public function getPrograms ($programCategoryId)
     {
-        return Program::where('program_category_id', $programCategoryId)->latest()->paginate(10)
+        return Program::where('program_category_id', $programCategoryId)->get()
         ->map(function ($pg) {
             $pg->title = json_decode($pg->title, true);
             $pg->description = json_decode($pg->description, true);
@@ -200,7 +200,7 @@ class LandingPageController extends Controller
 
     public function ourImpact()
     {
-        $stories = NewsStories::where('type', 'story')->where('status', 'published')->latest()->paginate(10)
+        $stories = NewsStories::select('title', 'created_at', 'banner', 'status', 'content', 'writter', 'slug')->where('type', 'story')->where('status', 'published')->get()
         ->map(function ($pg) {
             $pg->title = json_decode($pg->title, true);
             $pg->content = json_decode($pg->content, true);
@@ -231,7 +231,7 @@ class LandingPageController extends Controller
     public function publication(Request $request)
     {
         $type = $request->type ?? 'publication';
-        $data = NewsStories::where('type', $type)->where('status', 'published')->latest()->paginate(10)
+        $data = NewsStories::where('type', $type)->where('status', 'published')->paginate(10)
         ->map(function ($pg) {
             $pg->title = json_decode($pg->title, true);
             $pg->content = json_decode($pg->content, true);
@@ -318,7 +318,7 @@ class LandingPageController extends Controller
 
     public function career()
     {
-        $careers = Career::where('status', 'open')->latest()->paginate(10)
+        $careers = Career::where('status', 'open')->paginate(10)
         ->map(function ($pg) {
             $pg->title = json_decode($pg->title, true);
             $pg->description = json_decode($pg->description, true);

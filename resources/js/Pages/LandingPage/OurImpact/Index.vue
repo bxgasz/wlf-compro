@@ -11,9 +11,51 @@ const props = defineProps({
 })
 
 const { locale } = useI18n()
-const showMore = () => {
 
+const impact = {
+    title_1: {
+        en: 'Direct beneficiaries: 1.634 individuals',
+        id: 'Penerima manfaat langsung 1.634 individu'
+    },
+    title_2: {
+        en: 'Indirect beneficiaries: 19665 individuals',
+        id: 'Penerima manfaat tidak langsung 19.665 individu'
+    },
+    title_3: {
+        en: '5 districts',
+        id: '5 Kabupaten'
+    },
+    title_4: {
+        en: '89 villages',
+        id: '89 Desa'
+    },
+    title_5: {
+        en: '91 early childhood education centers (PAUD)',
+        id: '91 PAUD'
+    },
+    title_6: {
+        en: '38 primary schools',
+        id: '38 SD'
+    },
+    title_7: {
+        en: '2 vocational high schools (SMK)',
+        id: '2 SMK'
+    },
+    title_8: {
+        en: '29 teacher working groups (KKG/PKG)',
+        id: '29 KKG / PKG'
+    },
+    title_9: {
+        en: '71 integrated health posts (Posyandu)',
+        id: '71 Posyandu'
+    },
+    title_10: {
+        en: '58 local economic development groups',
+        id: '58 Kelompok Pengembangan Ekonomi'
+    },
 }
+
+const values = []
 </script>
 
 <template>
@@ -43,11 +85,11 @@ const showMore = () => {
                <div class="max-w-7xl px-8 w-full">
                   <div class="grid grid-cols-1 lg:grid-cols-[25%,55%,20%] items-center">
                      <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:order-1">
-                        <div class="">
-                           <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_1[locale] }}</h2>
-                           <p>{{ impact.subtitle_1[locale] }}</p>
+                        <div class="" v-for="i in 5">
+                           <h2 class="text-2xl font-montserrat text-[#2B3E8C] font-bold">{{ impact['title_' + i][locale] }}</h2>
+                           <!-- <p>{{ impact.subtitle_1[locale] }}</p> -->
                         </div>
-                        <div class="">
+                        <!-- <div class="">
                            <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_2[locale] }}</h2>
                            <p>{{ impact.subtitle_2[locale] }}</p>
                         </div>
@@ -58,12 +100,18 @@ const showMore = () => {
                         <div class="">
                            <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_4[locale] }}</h2>
                            <p>{{ impact.subtitle_4[locale] }}</p>
-                        </div>
+                        </div> -->
                      </div>
                      <div class="w-full -mt-20 order-1 lg:order-2">
-                        <img :src="impact.image ?? '/assets/img/ourImpact/img2.png'" alt="bg" class="w-full h-full object-contain">
+                        <img :src="impact.image ?? '/assets/img/ourImpact/our-impact.png'" alt="bg" class="w-full h-full object-contain">
                      </div>
-                     <div class="flex flex-col gap-5 justify-center items-center order-3 my-10 lg:mt-0">
+                     <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:ms-4 lg:order-3">
+                        <div class="" v-for="i in 5">
+                           <h2 class="text-2xl font-montserrat text-[#2B3E8C] font-bold">{{ impact['title_' + (i + 5)][locale] }}</h2>
+                           <!-- <p>{{ impact.subtitle_1[locale] }}</p> -->
+                        </div>
+                    </div>
+                     <!-- <div class="flex flex-col gap-5 justify-center items-center order-3 my-10 lg:mt-0">
                         <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold text-center lg:text-left">{{ impact.sdg_title[locale] }}</h2>
                         <div class="flex flex-row lg:flex-col gap-5">
                            <div class="flex flex-col justify-center items-center gap-2" v-for="(data, i) in impact.sub_icons">
@@ -71,7 +119,7 @@ const showMore = () => {
                               <h3 class="text-[20px] text-[#C7202F] font-bold">{{ data.text[locale] }}</h3>
                            </div>
                         </div>
-                     </div>
+                     </div> -->
                   </div>
                </div>
             </div>
@@ -89,7 +137,7 @@ const showMore = () => {
                   <div class="relative w-full fading group">
                      <div class="w-full h-[10rem] overflow-hidden img-our-program rounded-2xl">
                         <img :src="data.banner"
-                              alt="" 
+                              alt=""
                               class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                      <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50 text-white p-4 z-20">
@@ -109,7 +157,7 @@ const showMore = () => {
             </div> -->
          </div>
       </div>
-      
+
       <Footer/>
    </div>
 </template>

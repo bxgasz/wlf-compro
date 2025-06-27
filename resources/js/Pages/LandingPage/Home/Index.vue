@@ -121,7 +121,7 @@ const youtubeUrl = computed(() =>
                </div>
             </swiper-slide>
          </swiper>
-         
+
       </div>
 
       <!-- who are we section -->
@@ -209,7 +209,7 @@ const youtubeUrl = computed(() =>
             <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 lg:gap-20 mt-20">
                <div class="relative w-full h-full">
                   <img src="/assets/img/home/map.png" alt="project location" class="w-full h-full brightness-[0.8]">
-                  
+
                   <div
                      v-for="(data, index) in programs"
                      :key="index"
@@ -275,7 +275,7 @@ const youtubeUrl = computed(() =>
                <Link :href="route('publications-detail', { title: stories[0].slug ? stories[0].slug : stories[0].title[lang], date:  new Date(stories[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button">
                   <div class="w-full h-full overflow-hidden img-our-program rounded-2xl">
                   <img :src="stories[0].banner"
-                           alt="" 
+                           alt=""
                            class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                   </div>
                   <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50 text-white p-8 z-20">
@@ -285,12 +285,12 @@ const youtubeUrl = computed(() =>
                      </div>
                   </div>
                </Link>
-               
+
                <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0" v-if="stories.length > 1">
                   <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[lang], date:  new Date(data.created_at).toISOString().split('T')[0] })" class="grid grid-cols-[45%,55%] lg:grid-cols-[50%,50%] group gap-5" role="button" v-for="(data, i) in stories.slice(1)">
                      <div class="w-full h-full overflow-hidden rounded-2xl">
                         <img :src="data.banner"
-                           alt="" 
+                           alt=""
                            class="object-cover h-[140px] md:h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                      <div class="w-[95%]">
@@ -311,7 +311,7 @@ const youtubeUrl = computed(() =>
 
          <div class="absolute w-full top-[70%] -translate-y-1/2 flex justify-center h-96">
             <div class="bg-white max-w-7xl h-full w-full rounded-3xl mx-8">
-               <div class="flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-32">
+               <a target="_blank" :href="newPublications.document" class="flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-32">
                   <div class="w-[15rem] border-2 border-gray-200 rounded-3xl -mt-32 flex md:hidden">
                      <img :src="newPublications.banner" alt="publication" class="w-full h-full rounded-3xl">
                   </div>
@@ -323,7 +323,7 @@ const youtubeUrl = computed(() =>
                   <div class="w-[24rem] lg:w-[26rem] h-[26rem] border-2 border-gray-200 rounded-3xl -mt-32 hidden md:flex">
                      <img :src="newPublications.banner" alt="publication" class="w-full h-full rounded-3xl">
                   </div>
-               </div>
+                </a>
             </div>
          </div>
       </div>

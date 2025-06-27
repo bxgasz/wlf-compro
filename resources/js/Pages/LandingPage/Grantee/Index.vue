@@ -136,7 +136,7 @@ const format = [
                   <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                      <div class="w-full text-white space-y-5">
                         <div class="h-90 w-full">
-                           <img src="/assets/img/grantee/project.jpg" alt="grantee" class="w-full h-full object-cover rounded-t-[180px] lg:rounded-tl-[150px] lg:rounded-tr-none">
+                           <img src="/assets/img/grantee/values.jpeg" alt="grantee" class="w-full h-full object-cover rounded-t-[180px] lg:rounded-tl-[150px] lg:rounded-tr-none">
                         </div>
                         <h3 class="text-2xl font-bold">{{ $t('grantee.values.title') }}</h3>
                         <p>{{ $t('grantee.values.description') }}</p>

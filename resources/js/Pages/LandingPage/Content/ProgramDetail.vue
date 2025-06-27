@@ -62,7 +62,7 @@ onUnmounted(() => {
          <img src="/assets/img/about/bg-section.png" alt="about-us">
       </div>
    </div>
-   
+
    <div class="w-full z-0 font-lato text-[18px] overflow-hidden">
       <Navbar/>
       <div class="flex justify-center px-8 lg:px-0">
@@ -130,14 +130,14 @@ onUnmounted(() => {
                                     {{ content.location }}
                                  </td>
                               </tr>
-                              <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                              <!-- <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
                                  <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
                                     Date
                                  </th>
                                  <td class="px-6 py-4">
                                     {{ content.start_date }} - {{ content.end_date }}
                                  </td>
-                              </tr>
+                              </tr> -->
                               <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
                                  <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
                                     Status
@@ -177,7 +177,7 @@ onUnmounted(() => {
                   <Link :href="route('program-detail', { category: content.id, title: data.slug ? data.slug : data.title[locale], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in otherContent.data" :key="i">
                      <div class="w-full h-[20rem] overflow-hidden img-our-program rounded-2xl">
                         <img :src="data.banner"
-                              alt="" 
+                              alt=""
                               class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                      </div>
                      <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50 text-white p-8 z-20">

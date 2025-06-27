@@ -1,4 +1,4 @@
-<?php
+;<?php
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BannerController;
@@ -37,7 +37,7 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
     Route::get('/profile', [UserController::class, 'getProfile'])->name('profile');
     Route::post('/profile', [UserController::class, 'updateProfile'])->name('profile.update');
     Route::post('/change-password', [UserController::class, 'updatePassword'])->name('update.password');
-    
+
     Route::get('/inbox', [InboxController::class, 'index'])->name('inbox.index');
     Route::get('/inbox/data', [InboxController::class, 'data'])->name('inbox.data');
     Route::get('/inbox/{inbox}', [InboxController::class, 'show'])->name('inbox.show');
@@ -126,7 +126,7 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
             $q->whereRaw('LOWER(email) LIKE ?', '%'. $search .'%');
         })->orderBy('created_at', 'desc')
         ->paginate(10);
-        
+
         return Inertia::render('Subcription/Index', [
             'subscriptions' => $subscriptions
         ]);
