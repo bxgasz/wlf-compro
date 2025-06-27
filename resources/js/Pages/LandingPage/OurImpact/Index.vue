@@ -14,12 +14,20 @@ const { locale } = useI18n()
 
 const impact = {
     title_1: {
-        en: 'Direct beneficiaries: 1.634 individuals',
-        id: 'Penerima manfaat langsung 1.634 individu'
+        en: 'Direct beneficiaries',
+        id: 'Penerima manfaat langsung'
+    },
+    subtitle_1: {
+      en: '1.634 individuals',
+      id: '1.634 individu'
     },
     title_2: {
-        en: 'Indirect beneficiaries: 19665 individuals',
-        id: 'Penerima manfaat tidak langsung 19.665 individu'
+        en: 'Indirect beneficiaries',
+        id: 'Penerima manfaat tidak langsung'
+    },
+    subtitle_2: {
+      en: '19665 individuals',
+      id: '19.665 individu'
     },
     title_3: {
         en: '5 districts',
@@ -56,6 +64,11 @@ const impact = {
 }
 
 const values = []
+
+const splitNumberText = (text) => {
+  const match = text.match(/^(\d+)\s?(.*)/)
+  return match ? { number: match[1], text: match[2] } : { number: '', text }
+}
 </script>
 
 <template>
@@ -83,11 +96,11 @@ const values = []
 
             <div class="w-full flex justify-center -mt-56">
                <div class="max-w-7xl px-8 w-full">
-                  <div class="grid grid-cols-1 lg:grid-cols-[25%,55%,20%] items-center">
+                  <div class="grid grid-cols-1 lg:grid-cols-2 items-center"> <!-- lg:grid-cols-[25%,55%,20%] -->
                      <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:order-1">
-                        <div class="" v-for="i in 5">
+                        <div class="text-center" v-for="i in 2">
+                           <p class="text-4xl font-montserrat font-bold text-[#2B3E8C]">{{ impact['subtitle_' + i][locale] }}</p>
                            <h2 class="text-2xl font-montserrat text-[#2B3E8C] font-bold">{{ impact['title_' + i][locale] }}</h2>
-                           <!-- <p>{{ impact.subtitle_1[locale] }}</p> -->
                         </div>
                         <!-- <div class="">
                            <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold">{{ impact.title_2[locale] }}</h2>
@@ -105,12 +118,11 @@ const values = []
                      <div class="w-full -mt-20 order-1 lg:order-2">
                         <img :src="impact.image ?? '/assets/img/ourimpact/our-impact.png'" alt="bg" class="w-full h-full object-contain">
                      </div>
-                     <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:ms-4 lg:order-3">
+                     <!-- <div class="flex flex-col justify-center text-center lg:text-left gap-5 order-2 mt-10 lg:mt-0 lg:ms-4 lg:order-3">
                         <div class="" v-for="i in 5">
                            <h2 class="text-2xl font-montserrat text-[#2B3E8C] font-bold">{{ impact['title_' + (i + 5)][locale] }}</h2>
-                           <!-- <p>{{ impact.subtitle_1[locale] }}</p> -->
                         </div>
-                    </div>
+                    </div> -->
                      <!-- <div class="flex flex-col gap-5 justify-center items-center order-3 my-10 lg:mt-0">
                         <h2 class="text-2xl lg:text-4xl font-montserrat text-[#2B3E8C] font-bold text-center lg:text-left">{{ impact.sdg_title[locale] }}</h2>
                         <div class="flex flex-row lg:flex-col gap-5">
@@ -120,6 +132,16 @@ const values = []
                            </div>
                         </div>
                      </div> -->
+                  </div>
+                  <div class="flex justify-center w-full">
+                     <div class="grid grid-cols-2 lg:grid-cols-[30%,40%,30%] w-full gap-5 my-10 items-center">
+                        <div class="border border-[#2B3E8C] rounded-lg p-5" v-for="i in 8">
+                           <h3 class="font-montserrat text-[#2B3E8C] font-bold items-center grid grid-cols-1 lg:grid-cols-[20%,80%]">
+                              <span class="text-4xl block">{{ splitNumberText(impact['title_' + (i + 2)][locale]).number }}</span>
+                              <span class="text-base">{{ splitNumberText(impact['title_' + (i + 2)][locale]).text }}</span>
+                           </h3>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
