@@ -310,7 +310,7 @@ const youtubeUrl = computed(() =>
          <div class="w-full h-72 md:h-52 bg-[#2F3C87]"></div>
 
          <div class="absolute w-full top-[70%] -translate-y-1/2 flex justify-center h-96">
-            <div class="bg-white max-w-7xl h-full w-full rounded-3xl mx-8">
+            <div class="bg-white max-w-7xl h-full min-h-fit w-full rounded-3xl mx-8">
                <a target="_blank" :href="newPublications.document" class="flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-32">
                   <div class="w-[15rem] border-2 border-gray-200 rounded-3xl -mt-32 flex md:hidden">
                      <img :src="newPublications.banner" alt="publication" class="w-full h-full rounded-3xl">

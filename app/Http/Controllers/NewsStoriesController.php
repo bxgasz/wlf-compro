@@ -30,7 +30,7 @@ class NewsStoriesController extends Controller
         $sort = $request->sort ?? 'id';
         $order = $request->order ?? 'desc';
 
-        $newsStories = NewsStories::when($search, function ($q) use($search) {
+        $newsStories = NewsStories::select('id', 'title', 'writter', 'type')->when($search, function ($q) use($search) {
             $q->whereRaw('LOWER(title) LIKE ?', '%'. $search .'%');
         })
         ->with('tags')

@@ -29,7 +29,7 @@ class ProgramController extends Controller
        $sort = $request->sort ?? 'id';
        $order = $request->order ?? 'desc';
 
-       $newsStories = Program::when($search, function ($q) use($search) {
+       $newsStories = Program::select('id', 'title')->when($search, function ($q) use($search) {
            $q->whereRaw('LOWER(title) LIKE ?', '%'. $search .'%');
        })
        ->orderBy($sort, $order)
