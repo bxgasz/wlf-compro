@@ -26,7 +26,7 @@ const impact = {
         id: 'Penerima manfaat tidak langsung'
     },
     subtitle_2: {
-      en: '19665 individuals',
+      en: '19.665 individuals',
       id: '19.665 individu'
     },
     title_3: {

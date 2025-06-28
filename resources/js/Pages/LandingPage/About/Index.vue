@@ -34,35 +34,35 @@ const modulesJourney = [
 
 const ourValues = [
    {
-      icon: '/assets/img/about/1.svg',
+      icon: '/assets/img/about/empowerment.png',
       title: {
          en: 'Empowerment',
          id: 'Pemberdayaan'
       },
    },
    {
-      icon: '/assets/img/about/2.svg',
+      icon: '/assets/img/about/collaboration.png',
       title: {
          en: 'Collaboration',
          id: 'Kolaborasi'
       },
    },
    {
-      icon: '/assets/img/about/3.png',
+      icon: '/assets/img/about/accountability.png',
       title: {
          en: 'Accountability & Integrity',
          id: 'Akuntabilitas & Integritas'
       },
    },
    {
-      icon: '/assets/img/about/4.svg',
+      icon: '/assets/img/about/sustainability.png',
       title: {
          en: 'Sustainability',
          id: 'Keberlanjutan'
       },
    },
    {
-      icon: '/assets/img/about/5.svg',
+      icon: '/assets/img/about/driven.png',
       title: {
          en: 'Driven by Needs',
          id: 'Berdasarkan Kebutuhan'
@@ -147,8 +147,7 @@ const tabOurTeam = ref(page.props.settings.show_team ? 'management' : 'organizat
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-4xl w-full text-center px-8 text-[#000000] font-medium">
-            <p>{{ $t('about.description') }}</p>
-            <p v-html="$t('about.description.2')" class="mt-5"></p>
+            <p v-html="$t('about.description')"></p>
             <!-- <p>{{ locale == 'id' ? 'Selengkapnya di dokumen' : 'More details in the document' }} <a href=""></a> </p> -->
          </div>
       </div>

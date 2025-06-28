@@ -30,7 +30,7 @@ const form = useForm({
    'title_en': props.program.title.en,
    'title_id': props.program.title.id,
    'description_en': props.program.description.en,
-   'description_id': props.program.description.en,
+   'description_id': props.program.description.id,
    'implementing_partner': props.program.implementing_partner,
    'slug': props.program.slug,
    'sector': props.program.sector,

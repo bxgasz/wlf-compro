@@ -27,9 +27,9 @@ const form = useForm({
    'slug': props.programCategory.slug,
    'image': null,
    'description_en': props.programCategory.description.en,
-   'description_id': props.programCategory.description.en,
+   'description_id': props.programCategory.description.id,
    'summary_en': props.programCategory.summary.en,
-   'summary_id': props.programCategory.summary.en,
+   'summary_id': props.programCategory.summary.id,
    'order': props.programCategory.order
 })
 

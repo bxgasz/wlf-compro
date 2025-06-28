@@ -107,7 +107,7 @@ const ourProgram = [
 
       <div class="w-full flex justify-center mt-20">
          <div class="max-w-7xl text-center px-8 text-[#000000] font-medium flex justify-center">
-            <p class="max-w-[70%]">{{ $t('our-program.description') }}</p>
+            <p class="max-w-[70%]" v-html="$t('our-program.description')"></p>
          </div> 
       </div>
 
