@@ -11,17 +11,11 @@ import { HelperService } from '@/Helper/Alert';
 import DocumentIcons from '@/Icons/DocumentIcons.vue';
 import { router, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import QuillBetterTable from 'quill-better-table';
 
 const props = defineProps({
    categories: Array,
    locations: Array
 })
-
-const modules = {
-   name: 'quillBetterTable',
-   module: QuillBetterTable,
-}
 
 const form = useForm({
    'title_en': '',
@@ -322,11 +316,6 @@ const handleSubmit = async() => {
                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                   Description <span class="text-error-500">*</span>
                </label>
-               <div class="btn-group">
-                  <button id="insert-table">Insert table</button>
-                  <button id="get-table">Get table</button>
-                  <button id="get-contents">Get contents</button>
-               </div>
                <div class="h-72 mb-24">
                   <QuillEditor :modules="modules" toolbar="full" theme="snow" v-model:content="form.description_en" contentType="html" v-if="tabActive == 'en'" />
                   <QuillEditor :modules="modules" toolbar="full" theme="snow" v-model:content="form.description_id" contentType="html" v-if="tabActive == 'id'" />
