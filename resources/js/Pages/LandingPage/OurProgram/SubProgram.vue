@@ -21,6 +21,15 @@ const categories = [
 const { locale } = useI18n()
 
 const tabActive = ref(props.category)
+
+const formatYearMonth = (dateString) => {
+  const date = new Date(dateString);
+
+  // getMonth() mulai dari 0 ⇒ +1 lalu pad 2 digit
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+
+  return `${date.getFullYear()}-${month}`;
+};
 </script>
 
 <template>
@@ -54,7 +63,7 @@ const tabActive = ref(props.category)
                            <img :src="data.banner" alt="program" class="object-cover w-full h-full group-hover:scale-125 transform ease-in-out duration-300">
                         </div>
                         <div class="flex w-full justify-between my-5">
-                           <p class="text-gray-500">{{ formatDate(data.created_at) }}</p>
+                           <p class="text-gray-500 text-xs">{{ formatYearMonth(data.start_date) }} - {{ formatYearMonth(data.end_date) }}</p>
                            <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white">{{ data.status }}</p>
                         </div>
                         <p class="w-full font-medium">{{ data.title[locale] }}</p>

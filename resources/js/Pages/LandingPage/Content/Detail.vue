@@ -88,7 +88,7 @@ onUnmounted(() => {
                </div>
                <div class="lg:max-w-[80%] mx-auto space-y-8 mt-8 px-8 lg:px-0">
                   <div class="! !text-[18px]">
-                     <p v-html="content.description[locale]"></p>
+                     <p class="richtext" v-html="content.description[locale]"></p>
                   </div>
 
                   <div class="flex items-center mt-20">
