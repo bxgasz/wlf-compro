@@ -218,9 +218,9 @@ class NewsStoriesController extends Controller
             $request->validate([
                 'title_id' => 'required|string|min:5',
                 'title_en' => 'required|string|min:5',
-                'banner' => 'required|mimes:jpeg,png,jpg,webp',
+                'banner' => 'nullable|mimes:jpeg,png,jpg,webp',
                 'type' => 'required|string',
-                'document' => 'required|mimes:pdf,doc,docx'
+                'document' => 'nullable|mimes:pdf,doc,docx'
             ]);
         } else {
             $request->validate([
@@ -233,7 +233,7 @@ class NewsStoriesController extends Controller
                     'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
                     // 'unique:news_stories,slug',
                 ],
-                'banner' => 'required|mimes:jpeg,png,jpg,webp',
+                'banner' => 'nullable|mimes:jpeg,png,jpg,webp',
                 'type' => 'required|string',
                 'tags' => 'required|array',
                 '*tags' => 'required',
