@@ -193,6 +193,19 @@ const handleSubmit = async() => {
                   </label>
                </div>
             </template>
+
+            <div class="">
+               <SelectInput
+                  title="Status"
+                  :options="status"
+                  v-model="form.status"
+               />
+               <label
+                  class="block text-sm font-medium text-error-500"
+               >
+                  {{ form.errors.status }}
+               </label>
+            </div>
             
             <div class="">
                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">

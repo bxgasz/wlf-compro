@@ -478,15 +478,16 @@ const lists = [
          </div>
       </div>
 
-      <!-- <div class="w-full flex justify-center my-20">
+      <div class="w-full flex justify-center my-20">
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-3">
-            <p class="">{{ $t('cfcn.afterdesc1') }}</p>
-            <p>{{ $t('cfcn.afterdesc2') }}</p>
-            <p>{{ $t('cfcn.afterdesc3') }}</p>
+            <p class="">{{ $t('cfcn.video') }}</p>
+            <div class="w-full object-contain">
+               <iframe width="100%" height="400" src="https://www.youtube.com/embed/m1MiimX47vc?si=C9QhbImH9vFNtVh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
          </div>
-      </div> -->
+      </div>
 
-      <div class="w-full flex justify-center mt-36 mb-20">
+      <div class="w-full flex justify-center mt-20 mb-20">
          <div class="max-w-5xl px-8 space-y-15">
             <h1 class="uppercase text-4xl font-playfair font-bold text-center">{{ $t('cfcn.faq.title') }}</h1>
             <p class="text-center">{{ $t('cfcn.faq.description') }}</p>

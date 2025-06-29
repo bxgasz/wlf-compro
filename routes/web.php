@@ -160,8 +160,8 @@ Route::get('/our-impact', [LandingPageController::class, 'ourImpact'])->name('ou
 Route::get('/publications', [LandingPageController::class, 'publication'])->name('publications');
 
 // content-detail all (stories, annual_report, publication)
-Route::get('/publication/{title}/{date}', [LandingPageController::class, 'detailContent'])->name('publications-detail');
-Route::get('/program/{category}/{title}/{date}', [LandingPageController::class, 'programDetail'])->name('program-detail');
+Route::get('/publication/{title}', [LandingPageController::class, 'detailContent'])->name('publications-detail');
+Route::get('/program/{category}/{title}', [LandingPageController::class, 'programDetail'])->name('program-detail');
 Route::get('/career/{career}', [LandingPageController::class, 'careerDetail'])->name('career-detail');
 
 Route::get('/grant-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');

@@ -41,7 +41,7 @@ class LandingPageController extends Controller
             return $program;
         });
 
-        $newPublications = NewsStories::select('banner', 'title', 'created_at', 'slug', 'document')->where('type', 'publication')->orderBy('created_at', 'desc')->first();
+        $newPublications = NewsStories::select('banner', 'title', 'created_at', 'slug', 'document')->where('type', 'publication')->where('status', 'published')->orderBy('created_at', 'desc')->first();
         if ($newPublications != null) {
             $newPublications->title = json_decode($newPublications->title, true);
         }
@@ -145,14 +145,14 @@ class LandingPageController extends Controller
         });
     }
 
-    public function programDetail($category, $title, $date)
+    public function programDetail($category, $title)
     {
-        if (!$title && !$date) {
+        if (!$title) {
             return redirect()->back();
         }
 
         $content = Program::with(['programCategory'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')
-        ->where('program_category_id', $category)->whereDate('created_at', $date)->first();
+        ->where('program_category_id', $category)->first();
 
         if (!$content) {
             return redirect(route('home'));
@@ -231,7 +231,7 @@ class LandingPageController extends Controller
     public function publication(Request $request)
     {
         $type = $request->type ?? 'publication';
-        $data = NewsStories::where('type', $type)->where('status', 'published')->paginate(10)
+        $data = NewsStories::select('banner', 'created_at', 'title', 'content', 'document')->where('type', $type)->where('status', 'published')->paginate(10)
         ->map(function ($pg) {
             $pg->title = json_decode($pg->title, true);
             $pg->content = json_decode($pg->content, true);
@@ -245,13 +245,13 @@ class LandingPageController extends Controller
         ]);
 
     }
-    public function detailContent($title, $date)
+    public function detailContent($title)
     {
-        if (!$title && !$date) {
+        if (!$title) {
             return redirect()->back();
         }
 
-        $content = NewsStories::with(['category', 'tags'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')->whereDate('created_at', $date)->first();
+        $content = NewsStories::with(['category', 'tags'])->where('slug', 'LIKE', '%'. $title .'%')->orWhere('title', 'LIKE', '%'. $title .'%')->first();
 
         if (!$content) {
             return redirect(route('home'));
