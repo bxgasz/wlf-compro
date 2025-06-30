@@ -406,7 +406,7 @@ const lists = [
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white text-4xl leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
+         <h1 class="text-white text-[2rem] md:text-[72px] w-full md:w-max px-8 leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
             {{ $t('grandopp.title') }}
          </h1>
       </div>
@@ -490,7 +490,7 @@ const lists = [
       <div class="w-full flex justify-center mt-20 mb-20">
          <div class="max-w-5xl px-8 space-y-15">
             <h1 class="capitalize font-extrabold text-center text-4xl">{{ $t('cfcn.faq.title') }}</h1>
-            <p class="text-center">{{ $t('cfcn.faq.description') }}</p>
+            <p class="text-center text-justify">{{ $t('cfcn.faq.description') }}</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">
                <div class="lg:hidden">

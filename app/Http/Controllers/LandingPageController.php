@@ -200,11 +200,11 @@ class LandingPageController extends Controller
 
     public function ourImpact()
     {
-        $stories = NewsStories::select('title', 'created_at', 'banner', 'status', 'content', 'writter', 'slug')
+        $stories = NewsStories::select('title', 'created_at', 'banner', 'status', 'content', 'slug')
             ->where('type', 'story')
             ->where('status', 'published')
             ->orderBy('created_at', 'DESC')
-            ->paginate(10);
+            ->paginate(8);
         $stories->getCollection()->transform(function ($pg) {
             $pg->title   = json_decode($pg->title, true);
             $pg->content = json_decode($pg->content, true);

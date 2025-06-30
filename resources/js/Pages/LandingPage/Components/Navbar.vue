@@ -61,7 +61,7 @@ const navLinks = [
    {
       img: '',
       text_id: 'Peluang Hibah',
-      text_en: 'Grant Opportunities',
+      text_en: 'Grant Oppoturnities',
       key: 'grant-oppoturnities',
       link: '/grant-oppoturnities',
    },
@@ -113,7 +113,7 @@ const isActive = (path) => '/' + page.url.split('?')[0].split('/')[1] === path;
 <template>
    <nav class="w-full flex justify-center items-center py-5 absolute top-0 z-40 bg-transparent px-8">
       <div class="w-full bg-[#D86727] min-h-7 max-h-fit absolute top-0 flex justify-center">
-         <div class="max-w-7xl w-full px-8 flex justify-between items-center text-sm">
+         <div class="max-w-7xl w-full px-8 flex justify-end items-center text-sm">
             <!-- <p class="text-white text-[10px] md:text-base">{{ $t('nav.text') }}</p> -->
             <div class="flex items-center gap-4">
                <!-- <p class="hidden lg:flex text-white">Change Language</p> -->

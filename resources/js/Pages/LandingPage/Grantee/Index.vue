@@ -202,7 +202,7 @@ const format = [
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white capitalize text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('grantee.title') }}
          </h1>
       </div>
@@ -267,7 +267,7 @@ const format = [
          </div>
 
          <div class="relative">
-            <div class="w-full h-20 lg:h-72 md:h-52 bg-[#2B3E8C]"></div>
+            <div class="w-full h-52 md:h-32 bg-[#2B3E8C]"></div>
             <div class="flex justify-center mt-4 w-full">
                <div class="w-full max-w-[1600px] h-96 rounded-t-[35%] lg:rounded-t-full border-t border-[#D86727]"></div>
             </div>
@@ -275,7 +275,7 @@ const format = [
                <div class="w-full max-w-[1600px] h-[60rem] lg:h-96 rounded-t-[35%] lg:rounded-t-[200px] border-t border-[#D86727] -mt-52"></div>
             </div>
 
-            <div class="absolute w-full top-[50%] -translate-y-1/2 flex justify-center">
+            <div class="absolute w-full top-[45%] md:top-[40%] -translate-y-1/2 flex justify-center">
                <div class="max-w-7xl h-full w-full mx-8 grid grid-cols-1 lg:grid-cols-2 justify-center gap-10">
                   <div class="w-full space-y-8">
                      <div class="w-full h-[248px] flex justify-center">
@@ -345,7 +345,7 @@ const format = [
 
       <template v-if="tabActive == 'pelaporan'">
          <div class="w-full flex justify-center mt-20">
-            <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
+            <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-5">
                <p class="">{{ $t('grantee.reporting.1') }}</p>
                <p class="">{{ $t('grantee.reporting.2') }}</p>
                <p class="">{{ $t('grantee.reporting.3') }}</p>
