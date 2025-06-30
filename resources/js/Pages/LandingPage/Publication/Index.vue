@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { formatDate } from '@/Helper/FormatDate';
 import { useI18n } from 'vue-i18n';
 
@@ -37,7 +37,25 @@ const categories = [
    },
 ]
 
+const datas = ref([...props.datas.data ?? []])
+const currentPage = ref(props.datas.current_page)
+const lastPage = ref(props.datas.last_page)
+
 const tabActive = ref(props.type)
+
+const handleShowMore = () => {
+   if (currentPage.value < lastPage.value) {
+      router.get(route('publications', { type: tabActive.value, page: currentPage.value + 1 }), {}, 
+      {
+         preserveScroll: true,
+         preserveState: true,
+         onSuccess: (page) => {
+            datas.value.push(...page.props.datas.data)
+            currentPage.value = page.props.datas.current_page
+         }
+      })
+   }
+}
 
 const lang = 'en'
 </script>
@@ -50,7 +68,7 @@ const lang = 'en'
          <div class="image-container-hero">
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
-         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
+         <h1 class="text-white text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
             {{ $t('publications.title') }}
          </h1>
       </div>
@@ -76,7 +94,7 @@ const lang = 'en'
                            <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50  p-8 z-20">
                               <div class="">
                                  <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[0].created_at, lang) }}</p>
-                                 <p class="text-white text-[16px] sm:text-[20px] w-full">{{ datas[0].title[lang] }}</p>
+                                 <p class="text-white text-[16px] sm:text-[20px] w-full">{{ datas[0].title[lang].slice(0, 100) }}</p>
                               </div>
                            </div>
                         </Link>
@@ -90,7 +108,7 @@ const lang = 'en'
                               </div>
                               <div class="md:ml-4 mt-4 md:mb-4 lg:mt-0">
                                  <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[1].created_at, lang) }}</p>
-                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[1].title[lang] }}</p>
+                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[1].title[lang].slice(0, 100) }} ...</p>
                               </div>
                            </Link>
 
@@ -102,7 +120,7 @@ const lang = 'en'
                               </div>
                               <div class="md:ml-4 mt-4 lg:mt-0">
                                  <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[2].created_at, lang) }}</p>
-                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[2].title[lang] }}</p>
+                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[2].title[lang].slice(0, 100) }} ...</p>
                               </div>
                            </Link>
                         </div>
@@ -126,16 +144,16 @@ const lang = 'en'
                               </div>
                               <div class="p-4 flex flex-col flex-1">
                                  <p class="text-gray-400 text-xs sm:text-sm">{{ formatDate(item.created_at, lang) }}</p>
-                                 <p class=" text-base mt-2">{{ item.title[lang] }}</p>
+                                 <p class=" text-base mt-2">{{ item.title[lang].slice(0, 100) }} ...</p>
                               </div>
                            </Link>
                         </div>
                      </div>
 
 
-                     <!-- <div class="w-full flex justify-center mt-10">
-                        <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
-                     </div> -->
+                     <div class="w-full flex justify-center mt-10" v-if="currentPage < lastPage">
+                        <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
+                     </div>
                   </div>
 
                   <div class="w-full" v-if="datas.length > 0 && tabActive == 'publication'">
@@ -163,9 +181,9 @@ const lang = 'en'
                      </div>
 
 
-                     <!-- <div class="w-full flex justify-center mt-10">
-                        <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
-                     </div> -->
+                     <div class="w-full flex justify-center mt-10" v-if="currentPage < lastPage">
+                        <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
+                     </div>
                   </div>
                   <div class="w-full text-center " v-if="!datas.length">No data provided</div>
                </div>

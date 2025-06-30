@@ -91,9 +91,9 @@ onUnmounted(() => {
                      <p class="richtext" v-html="content.description[locale]"></p>
                   </div>
 
-                  <div class="flex items-center mt-20">
+                  <!-- <div class="flex items-center mt-20">
                      <p v-for="tag in content.tags" class="border border-[#E75E00] rounded-full p-1 px-3 font-semibold text-[#E75E00] text-[14px]">{{ tag['en'] }}</p>
-                  </div>
+                  </div> -->
                </div>
                <div class="mx-auto space-y-8 mt-20 px-8 lg:px-0" v-if="content.type == 'publication' || content.type == 'anual_report'">
                   <a target="_blank" :href="content.document" class="flex items-center gap-2 w-max border border-[#E75E00] rounded-md p-5 text-[#E75E00] font-bold">

@@ -406,14 +406,14 @@ const lists = [
          <div class="image-container">
             <img src="/assets/img/about/bg-section.png" alt="about-us">
          </div>
-         <h1 class="text-white uppercase text-[2rem] md:text-[42px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 uppercase">
+         <h1 class="text-white text-[2rem] md:text-[42px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 capitalize">
             {{ $t('grandopp.title') }}
          </h1>
       </div>
 
       <div class="w-full flex justify-center mt-20">
-         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
-            <p class="font-extrabold text-center">{{ $t('cfcn.subtitle') }}</p>
+         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10 capitalize">
+            <p class="font-extrabold text-center text-4xl">{{ $t('cfcn.subtitle') }}</p>
             <p class="">{{ $t('cfcn.description') }}</p>
          </div>
       </div>
@@ -441,7 +441,7 @@ const lists = [
       </div>
 
       <div class="w-full flex justify-center mt-20">
-         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
+         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-5">
             <p class="">{{ $t('cfcn.description.1') }}</p>
             <p class="">{{ $t('cfcn.description.2') }}</p>
             <p class="">{{ $t('cfcn.description.3') }}</p>
@@ -480,7 +480,7 @@ const lists = [
 
       <div class="w-full flex justify-center my-20">
          <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-3">
-            <p class="">{{ $t('cfcn.video') }}</p>
+            <p class="text-justify">{{ $t('cfcn.video') }}</p>
             <div class="w-full object-contain">
                <iframe width="100%" height="400" src="https://www.youtube.com/embed/m1MiimX47vc?si=C9QhbImH9vFNtVh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
@@ -489,7 +489,7 @@ const lists = [
 
       <div class="w-full flex justify-center mt-20 mb-20">
          <div class="max-w-5xl px-8 space-y-15">
-            <h1 class="uppercase text-4xl font-playfair font-bold text-center">{{ $t('cfcn.faq.title') }}</h1>
+            <h1 class="capitalize font-extrabold text-center text-4xl">{{ $t('cfcn.faq.title') }}</h1>
             <p class="text-center">{{ $t('cfcn.faq.description') }}</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">

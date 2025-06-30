@@ -200,11 +200,14 @@ class LandingPageController extends Controller
 
     public function ourImpact()
     {
-        $stories = NewsStories::select('title', 'created_at', 'banner', 'status', 'content', 'writter', 'slug')->where('type', 'story')->where('status', 'published')->get()
-        ->map(function ($pg) {
-            $pg->title = json_decode($pg->title, true);
+        $stories = NewsStories::select('title', 'created_at', 'banner', 'status', 'content', 'writter', 'slug')
+            ->where('type', 'story')
+            ->where('status', 'published')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+        $stories->getCollection()->transform(function ($pg) {
+            $pg->title   = json_decode($pg->title, true);
             $pg->content = json_decode($pg->content, true);
-
             return $pg;
         });
 
@@ -231,8 +234,13 @@ class LandingPageController extends Controller
     public function publication(Request $request)
     {
         $type = $request->type ?? 'publication';
-        $data = NewsStories::select('banner', 'created_at', 'title', 'content', 'document')->where('type', $type)->where('status', 'published')->paginate(10)
-        ->map(function ($pg) {
+        $data = NewsStories::select('banner', 'created_at', 'title', 'document')
+        ->where('type', $type)
+        ->where('status', 'published')
+        ->orderBy('created_at', 'DESC')
+        ->paginate(10);
+
+        $data->getCollection()->transform(function ($pg) {
             $pg->title = json_decode($pg->title, true);
             $pg->content = json_decode($pg->content, true);
 

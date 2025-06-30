@@ -1,9 +1,10 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import Footer from '../Components/Footer.vue';
 import Navbar from '../Components/Navbar.vue';
 import { formatDate } from '@/Helper/FormatDate';
 import { useI18n } from 'vue-i18n';
+import { ref } from 'vue';
 
 const props = defineProps({
    stories: Object,
@@ -63,7 +64,23 @@ const impact = {
     },
 }
 
-const values = []
+const datas = ref([...props.stories.data ?? []])
+const currentPage = ref(props.stories.current_page)
+const lastPage = ref(props.stories.last_page)
+
+const handleShowMore = () => {
+   if (currentPage.value < lastPage.value) {
+      router.get(route('our-impact', { page: currentPage.value + 1 }), {}, 
+      {
+         preserveScroll: true,
+         preserveState: true,
+         onSuccess: (page) => {
+            datas.value.push(...page.props.stories.data)
+            currentPage.value = page.props.stories.current_page
+         }
+      })
+   }
+}
 
 const splitNumberText = (text) => {
   const match = text.match(/^(\d+)\s?(.*)/)
@@ -155,7 +172,7 @@ const splitNumberText = (text) => {
       <div class="flex justify-center w-full my-20">
          <div class="max-w-7xl px-8 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
-               <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[lang], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in stories" :key="i">
+               <Link :href="route('publications-detail', { title: data.slug ? data.slug : data.title[lang], date: new Date(data.created_at).toISOString().split('T')[0] })" class="relative w-full fading group" role="button" v-for="(data, i) in datas" :key="i">
                   <div class="relative w-full fading group">
                      <div class="w-full h-[10rem] overflow-hidden img-our-program rounded-2xl">
                         <img :src="data.banner"
@@ -174,9 +191,9 @@ const splitNumberText = (text) => {
                </Link>
             </div>
 
-            <!-- <div class="w-full flex justify-center mt-10">
-               <button @click="showMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">Read More Stories</button>
-            </div> -->
+            <div class="w-full flex justify-center mt-10" v-if="currentPage < lastPage">
+               <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">Read More Stories</button>
+            </div>
          </div>
       </div>
 

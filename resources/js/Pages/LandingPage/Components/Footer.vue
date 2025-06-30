@@ -28,7 +28,7 @@ const handleSubscribe = () => {
 }
 </script>
 <template>
-   <footer class="text-white pt-20 pb-10 bg-[#2F3C87] border-t border-[#262C51]">
+   <footer class="text-white pt-20 font-light pb-10 bg-[#2F3C87] border-t border-[#262C51]">
       <div class="container mx-auto max-w-7xl px-8">
          <div class="flex justify-between flex-col sm:flex-wrap sm:flex-row gap-6">
             <div class="w-full sm:w-auto">

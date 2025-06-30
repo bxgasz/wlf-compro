@@ -100,7 +100,7 @@ const ourProgram = [
          <div class="image-container">
             <img src="/assets/img/ourprogram/bg-section.png" alt="our-program">
          </div>
-         <h1 class="text-white uppercase text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white capitalize text-[2rem] md:text-[72px] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
             {{ $t('our-program.title') }}
          </h1> 
       </div>
@@ -131,7 +131,7 @@ const ourProgram = [
                         }"
                      >
                         <SwiperSlide v-if="list.programs.length > 0" v-for="(item, index) in list.programs">
-                           <div class="grid grid-cols-1 lg:grid-cols-2 w-full gap-10">
+                           <div class="grid grid-cols-1 lg:grid-cols-2 w-full gap-10 px-5">
                               <div class="w-full h-64">
                                  <img :src="item.banner" :alt="item.title[locale]" class="w-full h-full object-cover rounded-[20px]">
                               </div>
