@@ -116,7 +116,7 @@ const ourProgram = [
             <div v-if="programCategories.length > 0" class="w-full border border-[#E75E00] rounded-2xl shadow-xl shadow-[#D86727]/20 my-10" v-for="(list, index) in programCategories">
                <div class="grid grid-cols-1 lg:grid-cols-[30%,70%] lg:gap-5 p-5">
                   <div class="flex flex-col gap-5">
-                     <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] uppercase font-bold">{{ list.title[locale] }}</h1>
+                     <h1 class="font-montserrat text-2xl sm:text-4xl text-[#E75E00] capitalize font-bold">{{ list.title[locale] }}</h1>
                      <Link :href="route('sub-program', list.slug)" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit mb-6">{{ $t('our-program.button') }}</Link>
                   </div>
                   <div class="w-full">
@@ -136,7 +136,7 @@ const ourProgram = [
                                  <img :src="item.banner" :alt="item.title[locale]" class="w-full h-full object-cover rounded-[20px]">
                               </div>
                               <div class="">
-                                 <h1 class="font-montserrat text-2xl text-[#E75E00] uppercase font-bold">{{ item.title[locale] }}</h1>
+                                 <h1 class="font-montserrat text-2xl text-[#E75E00] capitalize font-bold">{{ item.title[locale] }}</h1>
                                  <!-- <p v-html="item.description[locale]"></p> -->
                               </div>
                            </div>
