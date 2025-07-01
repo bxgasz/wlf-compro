@@ -196,9 +196,10 @@ Route::get('/search', function () {
 Route::get('/search-data', function (Request $request) {
     $search = $request->search;
 
-    $newsStories = NewsStories::where('status', 'published')->when($search, function ($q) use($search) {
-        $q->whereRaw('LOWER(title) LIKE ?', '%'. $search .'%');
+    $newsStories = NewsStories::select('id', 'title', 'writter', 'type', 'created_at', 'banner')->when($search, function ($q) use($search) {
+        $q->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($search) . '%']);
     })
+    ->where('status', 'published')
     ->with('tags')
     ->orderBy('id', 'desc')
     ->get()->map(function ($new) {
