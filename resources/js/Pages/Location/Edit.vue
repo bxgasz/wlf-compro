@@ -114,7 +114,7 @@ const handleSubmit = async() => {
             Location Point <span class="text-error-500">*</span>
          </label>
          <div class="relative w-full">
-            <img src="/assets/img/home/map.png" alt="project location" class="w-full brightness-[0.3]" @click="addLocation">
+            <img src="/assets/img/home/map-new.png" alt="project location" class="w-full brightness-[0.3]" @click="addLocation">
             
             <div
                v-if="form.top && form.left"

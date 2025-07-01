@@ -208,7 +208,7 @@ const youtubeUrl = computed(() =>
 
             <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 lg:gap-20 mt-20">
                <div class="relative w-full h-full">
-                  <img src="/assets/img/home/map.png" alt="project location" class="w-full h-full brightness-[0.8]">
+                  <img src="/assets/img/home/map-new.png" alt="project location" class="w-full h-full brightness-[0.8]">
 
                   <div
                      v-for="(data, index) in programs"
