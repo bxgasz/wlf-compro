@@ -8,6 +8,7 @@ import { HelperService } from '@/Helper/Alert';
 import axios from 'axios';
 import { Link } from '@inertiajs/vue3';
 import { formatDate } from '@/Helper/FormatDate';
+import SearchIcon from '@/Icons/SearchIcon.vue';
 
 const { locale } = useI18n()
 
@@ -44,13 +45,14 @@ const getContent = async (page) => {
       </div>
 
       <div class="w-full flex justify-center my-20">
-         <div class="max-w-7xl w-full px-8">
+         <div class="max-w-2xl w-full px-8 flex items-center justify-center gap-5">
             <TextInput
                @keyup.enter="getContent"
                :placeholder="locale == 'id' ? 'Temukan cerita dan publikasi..' : 'Find Stories and newest publications..'"
                v-model="search"
                class="w-full"
             />
+            <SearchIcon class="w-10 h-10 text-[#f26522]" role="button" @click="getContent" />
          </div>
       </div>
 
@@ -63,7 +65,7 @@ const getContent = async (page) => {
                   </div>
                   <div class="flex w-full justify-between my-5">
                      <p class="text-gray-500">{{ formatDate(data.created_at) }}</p>
-                     <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white">{{ data.type }}</p>
+                     <p class="bg-[#2B3E8C] text-sm p-1 px-3 rounded-full text-white" v-if="data.type">{{ data.type }}</p>
                   </div>
                   <p class="w-full font-medium">{{ data.title[locale] }}</p>
                </Link>

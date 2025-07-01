@@ -24,6 +24,7 @@ use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\NewsStories;
+use App\Models\Program;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -199,8 +200,21 @@ Route::get('/search-data', function (Request $request) {
     $newsStories = NewsStories::select('id', 'title', 'writter', 'type', 'created_at', 'banner')->when($search, function ($q) use($search) {
         $q->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($search) . '%']);
     })
-    ->where('status', 'published')
-    ->with('tags')
+    ->where('status', 'published');
+
+    $programs = Program::selectRaw("
+        id,
+        title,
+        '' AS writter,
+        'program' AS type,
+        created_at,
+        banner
+    ")
+    ->when($search, function ($q) use ($search) {
+        $q->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($search) . '%']);
+    });
+
+    $results = $newsStories->unionAll($programs)
     ->orderBy('id', 'desc')
     ->get()->map(function ($new) {
         return [
@@ -209,5 +223,5 @@ Route::get('/search-data', function (Request $request) {
         ];
     });
 
-    return $newsStories;
+    return $results;
 })->name('search.post');
