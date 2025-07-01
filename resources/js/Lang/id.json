@@ -43,16 +43,16 @@
   "publications.title": "Publikasi",
 
   "grandopp.title": "Call For Concept Note",
-  "cfcn.subtitle": "UNDANGAN MENGIRIMKAN CONCEPT NOTES UNTUK PELUANG DANA HIBAH WLF 2025",
+  "cfcn.subtitle": "Undangan mengirimkan concept notes untuk peluang dana hibah wlf 2025",
   "cfcn.description": "William & Lily Foundation (WLF) membuka peluang dana hibah untuk mendukung proyek-proyek yang berfokus pada:",
-  "cfcn.description.1": "WLF mengundang Organisasi Masyarakat Sipil, khususnya yang telah memiliki pengalaman bekerja di wilayah Provinsi Nusa Tenggara Timur (NTT)  untuk mengirimkan Pernyataan Minat Kerjasama dan Concept Note yang berisi deskripsi singkat ide proyek dan tujuan yang ingin dicapai.",
+  "cfcn.description.1": "WLF mengundang organisasi masyarakat sipil, khususnya yang telah memiliki pengalaman bekerja di wilayah Provinsi Nusa Tenggara Timur (NTT)  untuk mengirimkan Pernyataan Minat Kerjasama dan Concept Note yang berisi deskripsi singkat ide proyek dan tujuan yang ingin dicapai.",
   "cfcn.description.2": "Durasi proyek yang dapat diajukan minimal 12 bulan hingga maksimal 18 bulan, dengan anggaran maksimal sebesar 1 (satu) miliar rupiah.",
   "cfcn.description.3": "Lokasi pelaksanaan proyek yang diusulkan harus berada di Provinsi Nusa Tenggara Timur, sesuai dengan wilayah kerja WLF saat ini.",
-  "cfcn.description.4": "Pengajuan Pernyataan Minat Kerjasama Hibah WLF dapat dilakukan mulai 1 Juli 2025 sampai dengan selambat-lambatnya Selasa, 15 Juli 2025 jam 23.59 WIB. ",
+  "cfcn.description.4": "Pengajuan pernyataan minat kerjasama hibah WLF dapat dilakukan mulai 1 Juli 2025 sampai dengan selambat-lambatnya Selasa, 15 Juli 2025 jam 23.59 WIB. ",
   "cfcn.step1.title": "Informasi Call for Concept Note.",
   "cfcn.step1.description": "Dokumen ini berisikan informasi lebih detail mengenai dana hibah WLF, persyaratan organisasi yang dapat mengajukan, tata cara mengajukan/mengirimkan concept note, proses seleksi dan informasi terkait lainnya.",
   "cfcn.step2.title": "Formulir Concept Note",
-  "cfcn.syep2.description": "Dokumen ini berisikan formulir concept note yang harus diisi oleh organisasi yang berminat mengajukan pernyataan minat kerjasama hibah WLF. Mohon pastikan aplikasi yang Anda ajukan sudah memenuhi semua persyaratan dan kriteria dana hibah WLF. Hanya organisasi yang memenuhi persyaratan yang akan dipertimbangkan.",
+  "cfcn.step2.description": "Dokumen ini berisikan formulir concept note yang harus diisi oleh organisasi yang berminat mengajukan pernyataan minat kerjasama hibah WLF. Mohon pastikan aplikasi yang Anda ajukan sudah memenuhi semua persyaratan dan kriteria dana hibah WLF. Hanya organisasi yang memenuhi persyaratan yang akan dipertimbangkan.",
   "cfcn.sendbutton": "Unduh Dokumen",
   "cfcn.afterdesc1": "WLF akan mengadakan sesi penjelasan mengenai teknis Call for Concept Note WLF secara daring pada tanggal 15 Januari 2025 jam 10.00-11.30 WIB.",
   "cfcn.afterdesc2": "Bagi organisasi yang berminat silahkan melakukan Pendaftaran Sesi Penjelasan Call for Concept Note WLF paling lambat tanggal 14 Januari 2025.",
@@ -117,6 +117,9 @@
 
   "footer.subscribe": "Berlangganan Newsletter",
 
-  "search.title": "Cari Sesuatu"
+  "search.title": "Cari Sesuatu",
+
+  "button.read-more.stories": "Baca lebih banyak cerita",
+  "button.read-more": "Lihat lebih lanjut"
 }
  

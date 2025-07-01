@@ -45,7 +45,7 @@
   "grandopp.title": "Call For Concept Note",
   "cfcn.subtitle": "Call for concept notes WLF 2025 Grant opportunity",
   "cfcn.description": "William & Lily Foundation (WLF) is inviting proposals for grant funding to support projects focused on the following areas:",
-  "cfcn.description.1": "Civil Society Organizations, particularly those with experience working in East Nusa Tenggara (NTT), are invited to submit a Statement of Interest and a Concept Note outlining the project idea and its intended outcomes.",
+  "cfcn.description.1": "Civil society organizations, particularly those with experience working in East Nusa Tenggara (NTT), are invited to submit a Statement of Interest and a Concept Note outlining the project idea and its intended outcomes.",
   "cfcn.description.2": "Project proposals should have a minimum duration of 12 months and a maximum of 18 months, with a total proposed budget of up to IDR 1 billion.",
   "cfcn.description.3": "The proposed project must be implemented within the province of East Nusa Tenggara, aligning with WLF’s current area of work.",
   "cfcn.description.4": "The submission period for the Statement of Interest and Concept Note is open from 1 July 2025 and will close on Tuesday, 15 July 2025 at 23:59 WIB.",
@@ -116,6 +116,9 @@
   "contact.send-message": "Send us a message",
 
   "footer.subscribe": "Subscribe To Our Newsletter",
-  "search.title": "Search Something"
+  "search.title": "Search Something",
+
+  "button.read-more.stories": "Read more stories",
+  "button.read-more": "See more"
 }
  

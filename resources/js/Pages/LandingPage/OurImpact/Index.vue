@@ -151,7 +151,7 @@ const splitNumberText = (text) => {
                      </div> -->
                   </div>
                   <div class="flex justify-center w-full">
-                     <div class="grid grid-cols-2 lg:grid-cols-[30%,40%,30%] w-full gap-5 my-10 items-center">
+                     <div class="grid grid-cols-2 lg:grid-cols-[30%,40%,30%] w-full gap-5 my-10 items-center max-w-7xl px-8">
                         <div class="border border-[#2B3E8C] rounded-lg p-5" v-for="i in 8">
                            <h3 class="font-montserrat text-[#2B3E8C] font-bold items-center grid grid-cols-1 lg:grid-cols-[20%,80%]">
                               <span class="text-4xl block">{{ splitNumberText(impact['title_' + (i + 2)][locale]).number }}</span>
@@ -166,7 +166,7 @@ const splitNumberText = (text) => {
       </div>
 
       <div class="w-full text-center bg-[#2B3E8C]">
-         <h2 class="text-2xl lg:text-4xl font-bold font-playfair py-8 text-white">Stories of Our Impact</h2>
+         <h2 class="text-2xl lg:text-4xl font-bold font-playfair py-8 text-white">{{ locale == 'en' ? 'Stories of Our Impact' : 'Cerita Pengaruh Kami' }}</h2>
       </div>
 
       <div class="flex justify-center w-full my-20">
@@ -192,7 +192,7 @@ const splitNumberText = (text) => {
             </div>
 
             <div class="w-full flex justify-center mt-10" v-if="currentPage < lastPage">
-               <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">Read More Stories</button>
+               <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">{{ $t('button.read-more.stories') }}</button>
             </div>
          </div>
       </div>

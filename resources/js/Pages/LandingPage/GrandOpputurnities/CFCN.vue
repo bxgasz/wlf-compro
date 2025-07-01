@@ -45,7 +45,7 @@ const lists = [
             category: 'organizational',
             question: {
                id: 'Apakah organisasi berbasis komunitas yang belum memiliki legalitas, atau lembaga yang berbentuk perusahaan (profit) bisa mengakses dana hibah WLF baik secara mandiri maupun sebagai anggota konsorsium?',
-               en: 'Can community-based organizations without legal status, or for-profit entities, apply for the'
+               en: 'Can community-based organizations without legal status, or for-profit entities, apply for the grant?'
             },
             answer: {
                id: 'Call for Concept Notes yang sedang dipublikasikan saat ini ditujukan untuk organisasi masyarakat sipil atau organisasi non-profit yang berbadan hukum resmi sebagai yayasan atau perkumpulan serta terdaftar pada Kementerian Hukum dan Hak Asasi Manusia. Hal ini juga berlaku bagi calon mitra yang mengajukannya sebagai konsorsium.',
@@ -55,8 +55,8 @@ const lists = [
          {
             category: 'organizational',
             question: {
-               id: 'Apakah organisasi yang belum memiliki NPWP dan/atau belum melaporkan pajak tahunan bisa mengajukan concept note? ',
-               en: 'Can organizations without an NPWP (Tax Identification Number) or tax report submit a concept '
+               id: 'Apakah organisasi yang belum memiliki NPWP dan/atau belum melaporkan pajak tahunan bisa mengajukan concept note?',
+               en: 'Can organizations without an NPWP (Tax Identification Number) or tax report submit a concept note?'
             },
             answer: {
                id: 'Organisasi yang belum memiliki NPWP (Nomor Pokok Wajib Pajak) maupun belum pernah melaporkan atau memiliki laporan SPT (Surat Pemberitahuan Tahunan) Tahunan Wajib Pajak Badan karena alasan tertentu, dipersilakan untuk mengajukan concept note.',
@@ -66,7 +66,7 @@ const lists = [
          {
             category: 'organizational',
             question: {
-               id: ' Terkait pengalaman pengelolaan dana, apakah ada batas minimal besaran dana yang pernah dikelola maupun ketentuan khusus terkait sumber pendanaannya?',
+               id: 'Terkait pengalaman pengelolaan dana, apakah ada batas minimal besaran dana yang pernah dikelola maupun ketentuan khusus terkait sumber pendanaannya?',
                en: 'Is there a minimum previous grant amount or specific funding source required?'
             },
             answer: {
@@ -83,6 +83,28 @@ const lists = [
             answer: {
                id: 'Organisasi yang mengajukan usulan proyek harus memiliki pengalaman dalam menjalankan proyek sesuai tema yang diajukan tersebut.',
                en: 'Yes. Applicants must demonstrate experience in implementing programs that align with the chosen theme.'
+            }
+         },
+         {
+            category: 'organizational',
+            question: {
+               id: 'Apakah organisasi yang berdomisili di luar NTT bisa mengajukan concept note?',
+               en: 'Can organizations based outside of East Nusa Tenggara (NTT) apply?'
+            },
+            answer: {
+               id: 'Organisasi yang berkantor di luar NTT bisa mengajukan concept note sepanjang memenuhi kriteria yang telah ditetapkan.',
+               en: 'Yes, as long as all eligibility criteria are met.'
+            }
+         },
+         {
+            category: 'organizational',
+            question: {
+               id: 'Apakah organisasi yang belum pernah diaudit bisa mengajukan concept note?',
+               en: 'Can organizations that have never been audited still apply?'
+            },
+            answer: {
+               id: 'Bisa mengajukan. Namun meskipun tidak menjadi syarat mutlak, hasil audit  akan menjadi pertimbangan pada saat proses seleksi.',
+               en: 'Yes. An audit report is not mandatory, but it may be taken into consideration during the selection process.'
             }
          },
          {
@@ -164,7 +186,7 @@ const lists = [
    {
       category: {
          en: 'Location & Scope',
-         id: 'Lokasi & Cangkupan'
+         id: 'Lokasi & Cakupan'
       },
       data: [
          {
@@ -183,7 +205,7 @@ const lists = [
                en: "Can we add a new project location in addition to one we've worked in before?"
             },
             answer: {
-               id: 'Diperbolehkan untuk menambahkan lokasi baru selain lokasi proyek yang sebelumnya. ',
+               id: 'Diperbolehkan untuk menambahkan lokasi baru selain lokasi proyek yang sebelumnya.',
                en: "Yes. You may include both existing and new locations."
             }
          },
@@ -281,8 +303,18 @@ const lists = [
                en: 'Can grant funds be used to purchase learning materials (e.g., books, teaching aids)?'
             },
             answer: {
-               id: 'Penggunaan dana untuk pengadaan barang yang berkaitan langsung dengan capaian proyek dapat  dipertimbangkan selama hal tersebut merupakan bagian dari strategi program serta besaran/proporsinya wajar bila dibandingkan dengan proporsi belanja program yang diajukan. Selain proporsi biaya, WLF juga akan mempertimbangkan cakupan program, desain intervensi, dan mekanisme pemilihan vendor pengadaan yang diajukan sebelum memberikan izin penggunaan dana untuk pengadaan barang.',
+               id: 'Penggunaan dana untuk pengadaan barang yang berkaitan langsung dengan capaian proyek dapat dipertimbangkan selama hal tersebut merupakan bagian dari strategi program serta besaran/proporsinya wajar bila dibandingkan dengan proporsi belanja program yang diajukan. Selain proporsi biaya, WLF juga akan mempertimbangkan cakupan program, desain intervensi, dan mekanisme pemilihan vendor pengadaan yang diajukan sebelum memberikan izin penggunaan dana untuk pengadaan barang.',
                en: 'Yes, if the items directly support project outcomes and are reasonable in proportion to the overall program budget. Final approval will consider program scope, intervention design, and procurement mechanisms.'
+            }
+         },
+         {
+            question: {
+               id: 'Untuk tema peluang ekonomi lokal, apakah boleh menggunakan dana untuk pengadaan barang atau peralatan pendukung kegiatan ekonomi?',
+               en: 'For local economic projects, can funds be used to purchase equipment for economic activities?'
+            },
+            answer: {
+               id: 'Penggunaan dana untuk pengadaan barang yang berkaitan langsung dengan capaian proyek dapat dipertimbangkan selama hal tersebut merupakan bagian dari strategi program serta besaran/proporsinya wajar bila dibandingkan dengan proporsi belanja program yang diajukan. Selain proporsi biaya, WLF juga akan mempertimbangkan cakupan program, desain intervensi, dan mekanisme pemilihan vendor pengadaan yang diajukan sebelum memberikan izin penggunaan dana untuk pengadaan barang.',
+               en: 'Yes, with the same considerations as above.'
             }
          },
       ]
@@ -290,7 +322,7 @@ const lists = [
    {
       category: {
          en: 'Concept Notes',
-         id: 'Substansial Concept Notes'
+         id: 'Substansi Concept Notes'
       },
       data: [
          {
@@ -336,7 +368,7 @@ const lists = [
          {
             question: {
                id: 'Untuk tema peluang ekonomi lokal, apakah aktor kunci yang disasar hanya individu/keluarga yang memiliki anak berusia 0-9 tahun?',
-               en: 'For local economic themes, must the target group only include households with children aged'
+               en: 'For local economic themes, must the target group only include households with children aged 0–9?'
             },
             answer: {
                id: 'Pada prinsipnya, proyek yang diajukan harus berkontribusi terhadap atau menunjukkan dampak terhadap anak usia 0-9 tahun sebagai penerima manfaat akhir. Sehingga aktor kunci utama untuk tema ini salah satunya adalah orang tua/pengasuh anak usia 0-9 tahun dan tidak tertutup kemungkinan melibatkan aktor-aktor lainnya yang relevan dengan desain proyek.',
@@ -390,7 +422,7 @@ const lists = [
             },
             answer: {
                en: 'Projects should assess and respond to harmful gender norms that may affect implementation or impact. Where relevant, the project should propose actions to challenge such norms.',
-               id: 'Usulan proyek perlu menguraikan bagaimana mekanisme yang akan dilakukan untuk mengidentifikasi dan merefleksikan adanya norma-norma gender yang tidak adil/tidak setara yang ada dan berlaku di masyarakat di lokasi program yang berkaitan dengan implementasi kegiatan untuk mencapai hasil akhir proyek, serta bagaimana upaya aktif akan dilakukan apabila memungkinkan untuk menentang norma tersebut.  '
+               id: 'Usulan proyek perlu menguraikan bagaimana mekanisme yang akan dilakukan untuk mengidentifikasi dan merefleksikan adanya norma-norma gender yang tidak adil/tidak setara yang ada dan berlaku di masyarakat di lokasi program yang berkaitan dengan implementasi kegiatan untuk mencapai hasil akhir proyek, serta bagaimana upaya aktif akan dilakukan apabila memungkinkan untuk menentang norma tersebut.'
             }
          },
       ]
@@ -412,8 +444,8 @@ const lists = [
       </div>
 
       <div class="w-full flex justify-center mt-20">
-         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10 capitalize">
-            <p class="font-extrabold text-center text-4xl">{{ $t('cfcn.subtitle') }}</p>
+         <div class="max-w-3xl px-8 text-[#000000] font-medium flex flex-col justify-center gap-10">
+            <p class="font-extrabold text-center text-4xl capitalize">{{ $t('cfcn.subtitle') }}</p>
             <p class="">{{ $t('cfcn.description') }}</p>
          </div>
       </div>
@@ -459,7 +491,7 @@ const lists = [
                   <p class="text-xl bg-[#D86727] rounded-full p-1 w-8 h-8 text-center text-white">1</p>
                   <p class="font-bold">{{ $t('cfcn.step1.title') }}</p>
                   <p>{{ $t('cfcn.step1.description') }}</p>
-                  <a href="https://drive.google.com/uc?export=download&&id=15k1iE7RaCXdZ_pNNsQm-4ivU0G5XW4Ly" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
+                  <a href=" https://drive.google.com/uc?export=download&id=15k1iE7RaCXdZ_pNNsQm-4ivU0G5XW4Ly" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
                </div>
             </div>
 
@@ -469,7 +501,7 @@ const lists = [
                   <p class="font-bold">{{ $t('cfcn.step2.title') }}</p>
                   <p>{{ $t('cfcn.step2.description') }}
                   </p>
-                  <a href="https://drive.google.com/uc?export=download&id=1pbRtCmchJ9l_R3r1o7-yvRzaOKnrMEzt" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
+                  <a href="https://drive.google.com/uc?export=download&id=1AA_n2DWQJEF4bpefoGYfVnER65-AQJRf" class="bg-[#D86727] hover:bg-[#e47636] ease-in-out duration-500 px-6 py-2 text-white rounded-full font-medium w-fit">{{ $t('cfcn.sendbutton') }}</a>
                </div>
                <div class="w-72 h-80 order-1 lg:order-2">
                   <img src="/assets/img/grandopp/step-2.jpg" alt="grandopp" class="w-full h-full object-cover rounded-[20px]">
@@ -489,7 +521,7 @@ const lists = [
 
       <div class="w-full flex justify-center mt-20 mb-20">
          <div class="max-w-5xl px-8 space-y-15">
-            <h1 class="capitalize font-extrabold text-center text-4xl">{{ $t('cfcn.faq.title') }}</h1>
+            <h1 class="font-extrabold text-center text-4xl">{{ $t('cfcn.faq.title') }}</h1>
             <p class="text-center text-justify">{{ $t('cfcn.faq.description') }}</p>
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%,70%] gap-10">

@@ -56,8 +56,6 @@ const handleShowMore = () => {
       })
    }
 }
-
-const lang = 'en'
 </script>
 
 <template>
@@ -85,7 +83,7 @@ const lang = 'en'
                <div class="">
                   <div class="w-full" v-if="datas.length > 0 && tabActive != 'publication'">
                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-[364px]">
-                        <Link :href="route('publications-detail', { title: datas[0].slug ? datas[0].slug : datas[0].title[lang], date:  new Date(datas[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
+                        <Link :href="route('publications-detail', { title: datas[0].slug ? datas[0].slug : datas[0].title[locale], date:  new Date(datas[0].created_at).toISOString().split('T')[0] })" class="relative w-full fading bg-white group" role="button">
                            <div class="w-full h-full overflow-hidden fading rounded-[20px]">
                               <img :src="datas[0].banner"
                                     alt="Excavator" 
@@ -93,34 +91,34 @@ const lang = 'en'
                            </div>
                            <div class="absolute h-full w-full flex flex-col top-0 justify-end bg-opacity-50  p-8 z-20">
                               <div class="">
-                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[0].created_at, lang) }}</p>
-                                 <p class="text-white text-[16px] sm:text-[20px] w-full">{{ datas[0].title[lang].slice(0, 100) }}</p>
+                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[0].created_at, locale) }}</p>
+                                 <p class="text-white text-[16px] sm:text-[20px] w-full">{{ datas[0].title[locale].slice(0, 100) }}</p>
                               </div>
                            </div>
                         </Link>
                         
                         <div class="grid grid-rows-2 gap-4 mt-4 md:mt-0">
-                           <Link v-if="datas.length >= 2" :href="route('publications-detail', { title: datas[1].slug ? datas[1].slug : datas[1].title[lang], date:  new Date(datas[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group gap-5" role="button">
+                           <Link v-if="datas.length >= 2" :href="route('publications-detail', { title: datas[1].slug ? datas[1].slug : datas[1].title[locale], date:  new Date(datas[1].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group gap-5" role="button">
                               <div class="w-full h-full overflow-hidden rounded-[20px]">
                                  <img :src="datas[1].banner"
                                     alt="Excavator" 
                                     class="object-cover h-[219px] lg:h-[182px] rounded-[20px] w-full group-hover:scale-125 transform ease-in-out duration-300">
                               </div>
                               <div class="md:ml-4 mt-4 md:mb-4 lg:mt-0">
-                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[1].created_at, lang) }}</p>
-                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[1].title[lang].slice(0, 100) }} ...</p>
+                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[1].created_at, locale) }}</p>
+                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[1].title[locale].slice(0, 100) }} ...</p>
                               </div>
                            </Link>
 
-                           <Link v-if="datas.length >= 3" :href="route('publications-detail', { title: datas[2].slug ? datas[2].slug : datas[2].title[lang], date:  new Date(datas[2].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group" role="button">
+                           <Link v-if="datas.length >= 3" :href="route('publications-detail', { title: datas[2].slug ? datas[2].slug : datas[2].title[locale], date:  new Date(datas[2].created_at).toISOString().split('T')[0] })" class="grid grid-cols-1 lg:grid-cols-[40%,60%] group" role="button">
                               <div class="w-full h-full overflow-hidden rounded-[20px]">
                                  <img :src="datas[2].banner"
                                     alt="Excavator" 
                                     class="object-cover h-[219px] lg:h-[182px] w-full group-hover:scale-125 transform ease-in-out duration-300 rounded-[20px]">
                               </div>
                               <div class="md:ml-4 mt-4 lg:mt-0">
-                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[2].created_at, lang) }}</p>
-                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[2].title[lang].slice(0, 100) }} ...</p>
+                                 <p class="text-gray-400 text-[10px] sm:text-[16px] w-full">{{ formatDate(datas[2].created_at, locale) }}</p>
+                                 <p class=" text-[16px] sm:text-[20px] w-full">{{ datas[2].title[locale].slice(0, 100) }} ...</p>
                               </div>
                            </Link>
                         </div>
@@ -132,7 +130,7 @@ const lang = 'en'
                            <Link
                               v-for="(item, index) in datas.slice(3)"
                               :key="index"
-                              :href="route('publications-detail', { title: item.slug ? item.slug : item.title[lang], date: new Date(item.created_at).toISOString().split('T')[0] })"
+                              :href="route('publications-detail', { title: item.slug ? item.slug : item.title[locale], date: new Date(item.created_at).toISOString().split('T')[0] })"
                               class="group flex flex-col w-full h-full rounded overflow-hidden"
                            >
                               <div class="w-full h-[219px] lg:h-[182px] overflow-hidden relative">
@@ -143,8 +141,8 @@ const lang = 'en'
                               />
                               </div>
                               <div class="p-4 flex flex-col flex-1">
-                                 <p class="text-gray-400 text-xs sm:text-sm">{{ formatDate(item.created_at, lang) }}</p>
-                                 <p class=" text-base mt-2">{{ item.title[lang].slice(0, 100) }} ...</p>
+                                 <p class="text-gray-400 text-xs sm:text-sm">{{ formatDate(item.created_at, locale) }}</p>
+                                 <p class=" text-base mt-2">{{ item.title[locale].slice(0, 100) }} ...</p>
                               </div>
                            </Link>
                         </div>
@@ -152,7 +150,7 @@ const lang = 'en'
 
 
                      <div class="w-full flex justify-center mt-10" v-if="currentPage < lastPage">
-                        <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
+                        <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">{{ $t('button.read-more') }}</button>
                      </div>
                   </div>
 
@@ -172,8 +170,8 @@ const lang = 'en'
                                  />
                                  </div>
                                  <div class="p-4 flex flex-col flex-1">
-                                    <!-- <p class="text-gray-400 text-xs sm:text-sm">{{ formatDate(item.created_at, lang) }}</p> -->
-                                    <p class=" text-base mt-2">{{ item.title[lang] }}</p>
+                                    <!-- <p class="text-gray-400 text-xs sm:text-sm">{{ formatDate(item.created_at, locale) }}</p> -->
+                                    <p class=" text-base mt-2">{{ item.title[locale] }}</p>
                                  </div>
                               </a>
                            </template>
@@ -182,7 +180,7 @@ const lang = 'en'
 
 
                      <div class="w-full flex justify-center mt-10" v-if="currentPage < lastPage">
-                        <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">See More</button>
+                        <button @click="handleShowMore" class="bg-[#E75E00] px-6 py-3 text-white rounded-full w-fit">{{ $t('button.read-more') }}</button>
                      </div>
                   </div>
                   <div class="w-full text-center " v-if="!datas.length">No data provided</div>

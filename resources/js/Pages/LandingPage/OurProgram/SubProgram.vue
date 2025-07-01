@@ -40,7 +40,7 @@ const formatYearMonth = (dateString) => {
          <div class="image-container">
             <img src="/assets/img/ourprogram/program1.png" alt="our-program">
          </div>
-         <h1 class="text-white capitalize w-full max-w-7xl px-8 text-[2rem] md:text-[2.5rem] leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2">
+         <h1 class="text-white capitalize w-full max-w-7xl px-8 text-[2rem] md:text-[72px] w-full md:w-max px-8 leading-[1.1] font-playfair font-bold absolute inset-0 left-1/2 -translate-x-1/2 -translate-y-1/2" :class="tabActive == 'literasi-numerasi' ? 'top-[65%]' : 'top-[70%]'">
             {{ programCategory.title[locale] }}
          </h1>
       </div>
@@ -82,7 +82,7 @@ const formatYearMonth = (dateString) => {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 20rem;
+  height: 22rem;
 }
 
 .image-container::after {
