@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Career;
 use App\Models\InstagramPost;
+use App\Models\Location;
 use App\Models\Management;
 use App\Models\NewsStories;
 use App\Models\Organization;
@@ -33,6 +34,8 @@ class LandingPageController extends Controller
 
             return $categories;
         });
+
+        $locationPoints = Location::orderBy('id', 'DESC')->get();
 
         $programs = Program::with('locationMap')->orderBy('id', 'desc')->paginate(10)->map(function ($program) {
             $program->title = json_decode($program->title, true);
@@ -63,6 +66,7 @@ class LandingPageController extends Controller
             'stories' => $stories,
             'newPublications' => $newPublications,
             'instagramPosts' => $instagramPosts,
+            'locationPoints' => $locationPoints,
         ]);
     }
 

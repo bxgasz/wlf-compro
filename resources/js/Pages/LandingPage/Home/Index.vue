@@ -21,7 +21,8 @@ const props = defineProps({
    stories: Object,
    programs: Object,
    newPublications: Object,
-   instagramPosts: Object
+   instagramPosts: Object,
+   locationPoints: Object
 })
 
 const modules = [
@@ -193,7 +194,7 @@ const youtubeUrl = computed(() =>
                            <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
                         </div>
                         <div class="">
-                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold capitalize">{{ data.title[locale] }}</p>
+                           <p class="text-white text-[20px] sm:text-4xl w-full font-bold capitalize">{{ data.title[locale] }}</p>
                         </div>
                      </div>
                   </Link>
@@ -209,17 +210,17 @@ const youtubeUrl = computed(() =>
             <div class="grid grid-cols-1 lg:grid-cols-[70%,25%] gap-10 lg:gap-20 mt-20">
                <div class="relative w-full h-full">
                   <img src="/assets/img/home/map-new.png" alt="project location" class="w-full h-full brightness-[0.8]">
-
                   <div
-                     v-for="(data, index) in programs"
-                     :key="index"
-                     class="absolute w-[8px] md:w-[15px] h-[8px] md:h-[15px] rounded-[50%] cursor-pointer -translate-x-1/2 -translate-y-1/2 bg-[#E75E00]"
-                     :style="{
-                     top: data.location_map.top + '%',
-                     left: data.location_map.left + '%',
-                     }"
+                  v-for="(data, index) in locationPoints"
+                  :key="index"
+                  class="absolute w-[8px] md:w-[15px] h-[8px] md:h-[15px] rounded-[50%] cursor-pointer -translate-x-1/2 -translate-y-1/2 bg-[#E75E00]"
+                  :style="{
+                     top: data.top + '%',
+                     left: data.left + '%',
+                  }"
                      @click="handleShowPopup(data.location)"
-                  >
+                     >
+                     {{ console.log(data) }}
                      <span class="absolute inline-flex right-0 h-full w-full animate-ping rounded-full opacity-75 bg-[#E75E00]"></span>
                   </div>
 

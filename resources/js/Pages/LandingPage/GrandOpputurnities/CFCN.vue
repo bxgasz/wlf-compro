@@ -463,7 +463,7 @@ const lists = [
                            <ArrowBack class="bg-white/30 backdrop-blur-sm border-white border-2 rounded-full p-1 w-6 h-6 sm:w-9 sm:h-9 text-[#D86727] group-hover:text-white group-hover:bg-[#D86727] ease-in-out duration-500 rotate-[135deg] z-20 mb-8" />
                         </div>
                         <div class="">
-                           <p class="text-white text-[20px] sm:text-3xl w-full font-bold">{{ data.title[locale] }}</p>
+                           <p class="text-white text-[20px] sm:text-3xl lg:text-4xl w-full font-bold">{{ data.title[locale] }}</p>
                         </div>
                      </div>
                   </Link>
