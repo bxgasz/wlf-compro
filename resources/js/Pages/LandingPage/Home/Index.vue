@@ -14,6 +14,7 @@ import ChevronIcon from '@/Icons/ChevronIcon.vue';
 import { computed, ref } from 'vue';
 import { formatDate } from '@/Helper/FormatDate';
 import PlayIcon from '@/Icons/PlayIcon.vue';
+import { watch } from 'vue';
 
 const props = defineProps({
    banners: Object,
@@ -79,6 +80,29 @@ const youtubeUrl = computed(() =>
 //       image: '/assets/img/home/program-3.png'
 //    },
 // ]
+
+const showPopup       = ref(false)
+const popupRef = ref(null);
+const selectedLocation = ref({})
+
+const handleShowPopup = (data) => {
+   selectedLocation.value = data
+   showPopup.value = true
+}
+
+const handleClickOutside = (event) => {
+   if (popupRef.value && !popupRef.value.contains(event.target)) {
+      showPopup.value = false;
+   }
+};
+
+watch(showPopup, (isVisible) => {
+   if (isVisible) {
+      setTimeout(() => document.addEventListener("click", handleClickOutside), 0);
+   } else {
+      document.removeEventListener("click", handleClickOutside);
+   }
+});
 </script>
 
 <template>
@@ -218,15 +242,19 @@ const youtubeUrl = computed(() =>
                      top: data.top + '%',
                      left: data.left + '%',
                   }"
-                     @click="handleShowPopup(data.location)"
+                     @click="handleShowPopup(data)"
                      >
-                     {{ console.log(data) }}
                      <span class="absolute inline-flex right-0 h-full w-full animate-ping rounded-full opacity-75 bg-[#E75E00]"></span>
                   </div>
 
-                  <div v-if="showPopup" @click.stop ref="popupRef" class="absolute bg-[#24252A80]/50 backdrop-blur-sm rounded-lg p-3 -translate-x-[50%] -translate-y-[120%]" :style="{ top: selectedLocation.top + '%', left: selectedLocation.left + '%', }">
+                  <div v-if="showPopup" @click.stop ref="popupRef" class="absolute w-fit bg-[#24252A80]/50 backdrop-blur-sm rounded-lg p-3 -translate-x-[50%] -translate-y-[120%] px-8" :style="{ top: selectedLocation.top + '%', left: selectedLocation.left + '%', }">
                      <p class="text-white text-[16px]"><strong>{{ selectedLocation.title[locale] }}</strong></p>
-                     <!-- <p class="text-white text-[14px]" v-html="selectedLocation.address"></p> -->
+                     <ul class="text-white text-sm space-y-1 mt-1 list-disc">
+                        <li v-for="row in selectedLocation.program_counts_array"
+                              :key="row.category">
+                           {{ row.total }} program {{ row.category[locale] }}
+                        </li>
+                     </ul>
                   </div>
 
                </div>

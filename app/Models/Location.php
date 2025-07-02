@@ -14,4 +14,9 @@ class Location extends Model
         'top',
         'left',
     ];
+
+    public function programs()
+    {
+        return $this->hasMany(Program::class);
+    }
 }

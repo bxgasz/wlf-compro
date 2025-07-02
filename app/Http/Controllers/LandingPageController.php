@@ -35,7 +35,34 @@ class LandingPageController extends Controller
             return $categories;
         });
 
-        $locationPoints = Location::orderBy('id', 'DESC')->get();
+        // $locationPoints = Location::orderBy('id', 'DESC')->get();
+
+        $locationPoints = Location::with([
+            'programs' => function ($query) {
+                $query->where('status', '!=', 'draft'); // hanya program published
+            },
+            'programs.programCategory'
+        ])
+        ->orderByDesc('id')
+        ->get()
+        ->map(function ($loc) {
+            $loc->title = json_decode($loc->title, true);
+
+            $loc->program_counts = $loc->programs
+                ->groupBy(fn ($p) => $p->programCategory->title ?? 'Uncategorised')
+                ->map(fn ($g) => $g->count());
+
+            $loc->program_counts_array = $loc->program_counts
+                ->map(fn ($total, $cat) => [
+                    'category' => json_decode($cat, true),
+                    'total'    => $total,
+                ])
+                ->values();
+
+            unset($loc->programs);
+
+            return $loc;
+        });
 
         $programs = Program::with('locationMap')->orderBy('id', 'desc')->paginate(10)->map(function ($program) {
             $program->title = json_decode($program->title, true);
