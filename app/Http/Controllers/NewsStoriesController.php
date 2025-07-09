@@ -255,7 +255,7 @@ class NewsStoriesController extends Controller
                     'type' => $request->type,
                     'content' => json_encode(''),
                     'writter' => $request->writter ?? '',
-                    'status' => 'draft',
+                    'status' => $request->status ?? 'published',
                     'created_by' => Auth::user()->id,
                 ];
             } else {
@@ -273,7 +273,7 @@ class NewsStoriesController extends Controller
                         'id' => $request->content_id,
                     ]),
                     'writter' => $request->writter ?? '',
-                    'status' => 'draft',
+                    'status' => $request->status ?? 'published',
                     'created_by' => Auth::user()->id,
                     'category_id' => $request->category_id,
                 ];
