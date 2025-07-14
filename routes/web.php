@@ -165,7 +165,7 @@ Route::get('/publication/{title}', [LandingPageController::class, 'detailContent
 Route::get('/program/{category}/{title}', [LandingPageController::class, 'programDetail'])->name('program-detail');
 Route::get('/career/{career}', [LandingPageController::class, 'careerDetail'])->name('career-detail');
 
-Route::get('/grant-oppoturnities', [LandingPageController::class, 'cfcn'])->name('cfcn');
+Route::get('/grant-opportunities', [LandingPageController::class, 'cfcn'])->name('cfcn');
 Route::get('/career', [LandingPageController::class, 'career'])->name('career');
 
 Route::get('/grantee', [LandingPageController::class, 'grantee'])->name('grantee')->middleware('auth:grantee');
