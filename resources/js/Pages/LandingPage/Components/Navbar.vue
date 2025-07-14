@@ -62,8 +62,8 @@ const navLinks = [
       img: '',
       text_id: 'Peluang Hibah',
       text_en: 'Grant Opportunities',
-      key: 'grant-oppoturnities',
-      link: '/grant-oppoturnities',
+      key: 'grant-opportunities',
+      link: '/grant-opportunities',
    },
 ]
 
