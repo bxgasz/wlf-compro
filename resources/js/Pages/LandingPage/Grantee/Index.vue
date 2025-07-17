@@ -49,8 +49,8 @@ const panduans = [
    },
    {
       title: {
-         en: 'Branding and Marketing Guide',
-         id: 'Panduan branding dan marketing'
+         en: 'Branding and Marking',
+         id: 'Panduan branding dan marking'
       },
       img: '/assets/img/grantee/panduan-branding.jpg',
       link: 'https://drive.google.com/file/d/1GdARo4yuI2i3MaPNjgb1P1mXJYylAR92/view?usp=sharing'

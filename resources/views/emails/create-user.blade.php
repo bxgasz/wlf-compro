@@ -55,10 +55,10 @@
             <p>For security reasons, please change your password upon first login.</p>
             <p>🔗 Login here: {{ $mailData['url'] }}</p>
             <p>Best regards,</p>
-            <p>wlf@gmail.com</p>
+            <p>William & Lily Foundation</p>
         </div>
         <div class="footer">
-            <p>&copy; 2025 PT wlf. All rights reserved.</p>
+            <p>&copy; 2025 William & Lily Foundation. All Rights Reserved.</p>
         </div>
     </div>
 </body>

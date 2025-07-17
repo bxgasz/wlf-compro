@@ -30,8 +30,8 @@ const categories = [
    },
    { 
       title: {
-         en: 'Stories',
-         id: 'Cerita'
+         en: 'Media Coverage',
+         id: 'Liputan Media'
       },
       value: 'story' 
    },
