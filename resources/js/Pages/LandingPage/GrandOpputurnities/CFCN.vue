@@ -98,7 +98,7 @@ const lists = props.faqs
                </div>
             </div> -->
 
-            <div v-for="(step, index) in steps" :key="index">
+            <div v-for="(step, index) in steps" :key="index" class="mb-10">
                <!-- Ganjil -->
                <div v-if="index % 2 === 0" class="grid grid-cols-1 lg:grid-cols-[30%,70%] gap-5">
                   <div class="w-72 h-80">
