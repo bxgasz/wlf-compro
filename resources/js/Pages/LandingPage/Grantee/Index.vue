@@ -119,7 +119,7 @@ const format = [
          },
          {
             title: {
-                  id: 'Forecast Format',
+                  id: 'Format Perkiraan',
                   en: 'Format Forecast'
             },
             link: 'https://docs.google.com/spreadsheets/d/1ni5HuiN9h_QYN0--n-SjD-7JIXjCCPDIYwdGHHGNmiQ/edit?usp=sharing'
@@ -170,15 +170,15 @@ const format = [
          },
          {
             title: {
-                  id: 'Documentation Retrieval and Use Approval Format',
-                  en: 'Format Forecast'
+                  id: 'Format Persetujuan Pengambilan dan Penggunaan Dokumentasi',
+                  en: 'Documentation Retrieval and Use Approval Format'
             },
             link: 'https://docs.google.com/document/d/1EKl5Noc-TLrf4yr6DiN3iLo795GOsLWF/edit?usp=sharing&ouid=106573849897693678649&rtpof=true&sd=true'
          },
          {
             title: {
-                  id: 'Grantee Portal Access Request Format',
-                  en: 'Budget Reallocation Format'
+                  id: 'Format Permohonan Akses Portal Penerima Dana',
+                  en: 'Grantee Portal Access Request Format'
             },
             link: 'https://docs.google.com/document/d/1EdVuA3wmQz3PqBQ8RV9OGraQn02UunHx/edit?usp=sharing&ouid=108852466687183722203&rtpof=true&sd=true'
          },
