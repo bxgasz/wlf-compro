@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Career;
+use App\Models\FAQ;
 use App\Models\InstagramPost;
 use App\Models\Location;
 use App\Models\Management;
@@ -13,6 +14,7 @@ use App\Models\OurImpact;
 use App\Models\Partner;
 use App\Models\Program;
 use App\Models\ProgramCategory;
+use App\Models\StepCFCN;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -350,8 +352,51 @@ class LandingPageController extends Controller
             return $categories;
         });
 
+        $faqs = FAQ::all();
+
+        $grouped = $faqs->groupBy(function ($item) {
+            return $item->category_en;
+        });
+
+        $result = [];
+
+        foreach ($grouped as $categoryEn => $items) {
+            $categoryId = $items->first()->category_id;
+
+            $data = $items->map(function ($faq) {
+                return [
+                    'category' => $faq->category_en,
+                    'question' => [
+                        'en' => $faq->question_en,
+                        'id' => $faq->question_id,
+                    ],
+                    'answer' => [
+                        'en' => $faq->answer_en,
+                        'id' => $faq->answer_id,
+                    ],
+                ];
+            })->values();
+
+            $result[] = [
+                'category' => [
+                    'en' => $categoryEn,
+                    'id' => $categoryId,
+                ],
+                'data' => $data,
+            ];
+        }
+
+        $steps = StepCFCN::orderBy('order', 'ASC')->get()->map(function ($item) {
+            $item->title = json_decode($item->title, true);
+            $item->description = json_decode($item->description, true);
+
+            return $item;
+        });
+
         return Inertia::render('LandingPage/GrandOpputurnities/CFCN', [
-            'programCategories' => $programCategories
+            'programCategories' => $programCategories,
+            'faqs' => $result,
+            'steps' => $steps
         ]);
     }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentTypeController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\GranteeManagementController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\InstagramPostController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StaticPageController;
+use App\Http\Controllers\StepCFCNController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\NewsStories;
@@ -89,6 +91,13 @@ Route::middleware('auth:web')->prefix('/admin')->group(function () {
     Route::resource('/partner', PartnerController::class);
     Route::post('/partner-update/{partner}', [PartnerController::class, 'update'])->name('partner.update');
     Route::get('/partner-list/{type}', [PartnerController::class, 'data'])->name('partner.data');
+
+    Route::resource('/faq', FAQController::class);
+    Route::get('/faq-list', [FAQController::class, 'data'])->name('faq.data');
+
+    Route::resource('/step-cfcn', StepCFCNController::class);
+    Route::post('/step-update/{step_cfcn}', [StepCFCNController::class, 'update'])->name('step-cfcn.update-data');
+    Route::get('/step-cfcn-list', [StepCFCNController::class, 'data'])->name('step-cfcn.data');
 
     Route::get('/grantee-partner-management', [PartnerController::class, 'indexGrantee'])->name('grantee.partner');
     Route::get('/grantee-partner-management-create', [PartnerController::class, 'createGrantee'])->name('grantee.partner-create');

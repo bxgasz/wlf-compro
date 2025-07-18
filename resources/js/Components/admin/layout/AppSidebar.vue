@@ -359,6 +359,23 @@ const menuGroups = [
       //   role: ['admin', 'manager', 'staff']
       // },
       {
+        icon: GridIcon,
+        name: "CFCN Management",
+        role: ['admin', 'manager', 'staff'],
+        subItems: [
+          {
+            name: "Step",
+            path: "/admin/step-cfcn",
+            role: ['admin', 'manager', 'staff']
+          },
+          {
+            name: "FAQ",
+            path: "/admin/faq",
+            role: ['admin', 'manager', 'staff']
+          },
+        ]
+      },
+      {
         icon: ProgramIcon,
         name: "Program Category",
         path: "/admin/program-categories",
